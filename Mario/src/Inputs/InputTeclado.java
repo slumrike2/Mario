@@ -21,18 +21,18 @@ public class InputTeclado implements KeyListener {
     public void keyPressed(java.awt.event.KeyEvent e) {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_A:
-                System.out.println("izquierda");
-                panel.setX(-5);
+                
+                
                 break;
             case KeyEvent.VK_W:
-                panel.setY(-5);
+                
                 break;
             case KeyEvent.VK_D:
 
-                panel.setX(5);
+                
                 break;
             case KeyEvent.VK_S:
-                panel.setY(5);
+                
                 break;
             case KeyEvent.VK_SPACE:
                 System.out.println("salto");
@@ -47,17 +47,17 @@ public class InputTeclado implements KeyListener {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_A:
                 System.out.println("izquierda");
-                panel.setX(-5);
+                
                 break;
             case KeyEvent.VK_W:
-                panel.setY(-5);
+            
                 break;
             case KeyEvent.VK_D:
 
-                panel.setX(5);
+              
                 break;
             case KeyEvent.VK_S:
-                panel.setY(5);
+               
                 break;
             case KeyEvent.VK_SPACE:
                 System.out.println("salto");

@@ -21,7 +21,7 @@ public class InptutMouse implements MouseListener, MouseMotionListener {
 
     @Override
     public void mouseMoved(MouseEvent e) {
-        System.out.println("Mouse moved");
+        //System.out.println("Mouse moved");
     }
 
     @Override
