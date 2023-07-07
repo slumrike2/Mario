@@ -9,6 +9,12 @@ import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
-public class Personaje {
+public class Personaje extends Entidad{
+
+    public Personaje(String Dir) {
+        super(Dir);
+    }
+
+    
     
 }

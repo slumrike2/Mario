@@ -1,13 +1,13 @@
 package Graficos2;
 
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-
 import ClasesPadre.Personaje;
 import Inputs.InptutMouse;
 import Inputs.InputTeclado;
-
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
@@ -18,11 +18,10 @@ public class GamePanel extends JPanel {
 
     private InptutMouse mouseimput = new InptutMouse(this);
     private int x = 0, y = 0;
-    BufferedImage imagen;
+    Personaje mario = new Personaje("res/MarioSheet.png");
 
     public GamePanel() {
         setPreferredSize(new Dimension(1280, 800));
-
         addKeyListener(new InputTeclado(this));
         addMouseListener(mouseimput);
         addMouseMotionListener(mouseimput);
@@ -30,7 +29,7 @@ public class GamePanel extends JPanel {
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(imagen, x, y, null);
+        g.drawImage(mario.imagen, x, y, null);
 
     }
 
