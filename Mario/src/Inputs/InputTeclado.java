@@ -21,14 +21,18 @@ public class InputTeclado implements KeyListener {
     public void keyPressed(java.awt.event.KeyEvent e) {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_A:
-                
+
                 panel.mario.posicionX -= 10;
+                panel.mario.moverDerecha = true;
+                panel.mario.quieto = false;
                 break;
             case KeyEvent.VK_W:
                 panel.mario.posicionY -= 10;
                 break;
             case KeyEvent.VK_D:
                 panel.mario.posicionX += 10;
+                panel.mario.moverDerecha = true;
+                panel.mario.quieto = false;
                 break;
             case KeyEvent.VK_S:
                 panel.mario.posicionY += 10;
@@ -45,14 +49,18 @@ public class InputTeclado implements KeyListener {
 
         switch (e.getKeyCode()) {
             case KeyEvent.VK_A:
-                
+
                 panel.mario.posicionX -= 10;
+                panel.mario.moverDerecha = false;
+                panel.mario.quieto = true;
                 break;
             case KeyEvent.VK_W:
                 panel.mario.posicionY -= 10;
                 break;
             case KeyEvent.VK_D:
                 panel.mario.posicionX += 10;
+                panel.mario.moverDerecha = false;
+                panel.mario.quieto = true;
                 break;
             case KeyEvent.VK_S:
                 panel.mario.posicionY += 10;

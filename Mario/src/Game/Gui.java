@@ -101,9 +101,10 @@ public class Gui extends Canvas implements Runnable {
 
             while (delta >= 1) {
                 actualizar();
+                mostrar();
                 delta--;
             }
-            mostrar();
+            
         }
     }
 

@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import ClasesPadre.Personaje;
 import Inputs.InptutMouse;
 import Inputs.InputTeclado;
+
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.KeyListener;
@@ -17,8 +18,11 @@ import java.awt.Dimension;
 public class GamePanel extends JPanel {
 
     private InptutMouse mouseimput = new InptutMouse(this);
-    private int x = 0, y = 0;
-    public Personaje mario = new Personaje("res/MarioSheet.png");
+    private int x = 0, y = 0, direccionanimacion = 1;
+    public Personaje mario = new Personaje("res/mario.png");
+    static int contador = 0;
+    public BufferedImage aux;
+    private int xanimacion;
 
     public GamePanel() {
         setPreferredSize(new Dimension(1280, 800));
@@ -29,7 +33,24 @@ public class GamePanel extends JPanel {
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(mario.imagen.getSubimage(1 * 24, 0, 24, 16), mario.posicionX, mario.posicionY, null);
+        contador++;
+        if (mario.quieto) {
+            aux = mario.quietoder;
+        }
+        if (contador >= mario.velocidadAnimacion && mario.moverDerecha) {
+            contador = 0;
+            if (xanimacion == 2) {
+                direccionanimacion = -1;
+            }
+            if (xanimacion == 0) {
+                direccionanimacion = 1;
+            }
+
+            xanimacion += direccionanimacion;
+            aux = mario.animacionCaminarGrande[xanimacion];
+        }
+
+        g.drawImage(aux, mario.posicionX, mario.posicionY, null);
 
     }
 
