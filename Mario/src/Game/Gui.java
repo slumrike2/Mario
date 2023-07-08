@@ -92,6 +92,7 @@ public class Gui extends Canvas implements Runnable {
     public void mostrar() {
         // fps
         ventana.repaint();
+        
     }
 
     // todo Funcion que actualiza el juego

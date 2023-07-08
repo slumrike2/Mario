@@ -3,6 +3,8 @@ package Inputs;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import ClasesPadre.Personaje.AccionPlayer;
+import ClasesPadre.Personaje.dirMov;
 import Graficos2.GamePanel;
 
 public class InputTeclado implements KeyListener {
@@ -21,28 +23,28 @@ public class InputTeclado implements KeyListener {
     public void keyPressed(java.awt.event.KeyEvent e) {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_A:
-
-                panel.mario.posX -= 10;
-                panel.mario.moverDerecha = true;
-                panel.mario.quieto = false;
+                panel.mario.direccion = dirMov.Izquierda;
+                panel.mario.accion = AccionPlayer.Correr;
                 break;
             case KeyEvent.VK_W:
-                panel.mario.posY -= 10;
+                panel.mario.direccion = dirMov.Arriba;
                 break;
             case KeyEvent.VK_D:
-                panel.mario.posX += 10;
-                panel.mario.moverDerecha = true;
-                panel.mario.quieto = false;
+                panel.mario.direccion = dirMov.Derecha;
+                panel.mario.accion = AccionPlayer.Correr;
                 break;
             case KeyEvent.VK_S:
-                panel.mario.posY += 10;
+                panel.mario.direccion = dirMov.Abajo;
+                panel.mario.accion = AccionPlayer.Agacharse;
                 break;
             case KeyEvent.VK_SPACE:
-                System.out.println("salto");
+                panel.mario.accion = AccionPlayer.Saltar;
                 break;
             default:
                 break;
+
         }
+
     }
 
     public void keyReleased(java.awt.event.KeyEvent e) {
@@ -50,27 +52,23 @@ public class InputTeclado implements KeyListener {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_A:
 
-                panel.mario.posX -= 10;
-                panel.mario.moverDerecha = true;
-                panel.mario.quieto = false;
                 break;
             case KeyEvent.VK_W:
-                panel.mario.posY -= 10;
+
                 break;
             case KeyEvent.VK_D:
-                panel.mario.posX += 10;
-                panel.mario.moverDerecha = true;
-                panel.mario.quieto = false;
+
                 break;
             case KeyEvent.VK_S:
-                panel.mario.posY += 10;
+
                 break;
             case KeyEvent.VK_SPACE:
-                System.out.println("salto");
+
                 break;
             default:
                 break;
         }
+        panel.mario.accion = AccionPlayer.Quieto;
     }
 
 }
