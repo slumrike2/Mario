@@ -19,7 +19,7 @@ public class GamePanel extends JPanel {
 
     private InptutMouse mouseimput = new InptutMouse(this);
     private int x = 0, y = 0, direccionanimacion = 1;
-    public Personaje mario = new Personaje("res/mario.png");
+    public Personaje mario = new Personaje("res/marioAnimations.png", 0, 0);
     static int contador = 0;
     public BufferedImage aux;
     private int xanimacion;
@@ -34,23 +34,28 @@ public class GamePanel extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         contador++;
-        if (mario.quieto) {
-            aux = mario.quietoder;
-        }
-        if (contador >= mario.velocidadAnimacion && mario.moverDerecha) {
-            contador = 0;
-            if (xanimacion == 2) {
-                direccionanimacion = -1;
-            }
-            if (xanimacion == 0) {
-                direccionanimacion = 1;
-            }
+        /*
+         * if (mario.quieto) {
+         * aux = mario.quietoder;
+         * }
+         * if (contador >= mario.velocidadAnimacion && mario.moverDerecha) {
+         * contador = 0;
+         * if (xanimacion == 2) {
+         * direccionanimacion = -1;
+         * }
+         * if (xanimacion == 0) {
+         * direccionanimacion = 1;
+         * }
+         * 
+         * xanimacion += direccionanimacion;
+         * aux = mario.animaciones[xanimacion];
+         * }
+         */
+        g.drawImage(mario.animaciones[2][0], mario.posX, mario.posY, null);
 
-            xanimacion += direccionanimacion;
-            aux = mario.animacionCaminarGrande[xanimacion];
-        }
+    }
 
-        g.drawImage(aux, mario.posicionX, mario.posicionY, null);
+    public void FrameUpdate() {
 
     }
 

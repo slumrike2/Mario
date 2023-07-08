@@ -14,6 +14,7 @@ public class Gui extends Canvas implements Runnable {
 
     // *se genera un objeto de tipo JFrame
     static JFrame ventana;
+    public GamePanel panel;
 
     public enum PantallasPosiblesMenu {
         MENU_PRINCIPAL, REGISTRO, INICIO_SESION, MENU_GESTIONAR_COLECCION
@@ -49,6 +50,7 @@ public class Gui extends Canvas implements Runnable {
         // *para que la ventana se muestre en el centro de la pantalla
         ventana.setLocationRelativeTo(null);
         ventana.add(panel);
+        this.panel = panel;
 
         // *para que la ventana se muestre
         ventana.setVisible(true);
@@ -82,6 +84,8 @@ public class Gui extends Canvas implements Runnable {
     // TODO movimientos y funcionamientos del juego
     public void actualizar() {
         // aps
+        panel.FrameUpdate();
+
     }
 
     // TODO Funcion que dibuja en el juego
@@ -104,7 +108,7 @@ public class Gui extends Canvas implements Runnable {
                 mostrar();
                 delta--;
             }
-            
+
         }
     }
 
