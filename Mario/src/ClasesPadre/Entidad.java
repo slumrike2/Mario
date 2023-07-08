@@ -1,4 +1,3 @@
-
 package ClasesPadre;
 
 import java.awt.image.BufferedImage;
@@ -22,4 +21,11 @@ public class Entidad {
         }
     }
 
+    public BufferedImage[] animacion(int size, int xInicial, int xfinal, int ancho, int alto, int fila) {
+        BufferedImage[] animacion = new BufferedImage[size];
+        for (int i = xInicial; i < xfinal; i++) {
+            animacion[i - xInicial] = imagen.getSubimage(i * ancho, fila * alto, ancho, alto);
+        }
+        return animacion;
+    }
 }

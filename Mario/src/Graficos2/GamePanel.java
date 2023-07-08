@@ -18,7 +18,7 @@ public class GamePanel extends JPanel {
 
     private InptutMouse mouseimput = new InptutMouse(this);
     private int x = 0, y = 0;
-    Personaje mario = new Personaje("res/MarioSheet.png");
+    public Personaje mario = new Personaje("res/MarioSheet.png");
 
     public GamePanel() {
         setPreferredSize(new Dimension(1280, 800));
@@ -29,7 +29,7 @@ public class GamePanel extends JPanel {
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(mario.imagen, x, y, null);
+        g.drawImage(mario.imagen.getSubimage(1 * 24, 0, 24, 16), mario.posicionX, mario.posicionY, null);
 
     }
 

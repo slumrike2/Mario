@@ -22,17 +22,16 @@ public class InputTeclado implements KeyListener {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_A:
                 
-                
+                panel.mario.posicionX -= 10;
                 break;
             case KeyEvent.VK_W:
-                
+                panel.mario.posicionY -= 10;
                 break;
             case KeyEvent.VK_D:
-
-                
+                panel.mario.posicionX += 10;
                 break;
             case KeyEvent.VK_S:
-                
+                panel.mario.posicionY += 10;
                 break;
             case KeyEvent.VK_SPACE:
                 System.out.println("salto");
@@ -46,18 +45,17 @@ public class InputTeclado implements KeyListener {
 
         switch (e.getKeyCode()) {
             case KeyEvent.VK_A:
-                System.out.println("izquierda");
                 
+                panel.mario.posicionX -= 10;
                 break;
             case KeyEvent.VK_W:
-            
+                panel.mario.posicionY -= 10;
                 break;
             case KeyEvent.VK_D:
-
-              
+                panel.mario.posicionX += 10;
                 break;
             case KeyEvent.VK_S:
-               
+                panel.mario.posicionY += 10;
                 break;
             case KeyEvent.VK_SPACE:
                 System.out.println("salto");
