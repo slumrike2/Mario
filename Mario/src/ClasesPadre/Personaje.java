@@ -12,7 +12,7 @@ public class Personaje extends Entidad {
     public BufferedImage[][] animaciones; // ! todas las animaciones del personaje
     public Boolean enMovimiento = false, saltando = false; // ? Boleanos que determinaran acciones del personaje
     public Boolean MovDerecha = false, MovIzquierda = false, MovAbajo = false, MovArriba = false;
-    public int ultimoPrecionado = 0;
+
     // *se encarga de determinar la direccion del personaje
 
     // *se encarga de determinar la accion del personaje
@@ -41,19 +41,26 @@ public class Personaje extends Entidad {
 
         movimiento();
         ActualizarAccion();
-
+        // *funcion que determina que animacion sigue y que frame de la animacion
+        ActualizarFrame();
     }
 
     // *se encarga de dibujar los frames del personaje
     public void updateFrames(Graphics g) {
-        ActualizarFrame(); // *funcion que determina que animacion sigue y que frame de la animacion
+
         // *se dibuja el frame correspondiente
         g.drawImage(animaciones[AccionAnimation][frameAniamcion], posX, posY, null);
+
     }
 
     // ?Determina la animacion que sigue
     public void ActualizarFrame() {
         contFrames++;
+        if (accion == AccionPlayer.Quieto) {
+            frameAniamcion = 0;
+            return;
+        }
+
         if (contFrames >= velocidadAnimacion) {
             contFrames = 0;
             frameAniamcion++;
@@ -64,6 +71,7 @@ public class Personaje extends Entidad {
                     frameAniamcion = 1;
                 }
             }
+
         }
 
     }
@@ -71,26 +79,22 @@ public class Personaje extends Entidad {
     // ?Determina la accion que sigue y su direccion
     public void ActualizarAccion() {
         int aux = 0;
+        AccionPlayer prev = accion;
         // ! se suman 10 para que se pueda acceder a las animaciones de la izquierda
-        if (MovIzquierda == true && MovDerecha == false) {
-
+        accion = AccionPlayer.Quieto;
+        if (MovDerecha == true && MovIzquierda == false) {
             accion = AccionPlayer.Correr;
-        }
-        if (MovIzquierda == false && MovDerecha == true) {
 
+        } else if (MovIzquierda == true && MovDerecha == false) {
             accion = AccionPlayer.Correr;
-        }
-        if (MovIzquierda == true && MovDerecha == true) {
-            accion = AccionPlayer.Quieto;
+            aux = 10;
         }
         if (MovAbajo == true) {
             accion = AccionPlayer.Agacharse;
         }
-        if (MovIzquierda == false && MovDerecha == false && MovAbajo == false) {
-            accion = AccionPlayer.Quieto;
-        }
-        if (ultimoPrecionado == -1) {
-            aux = 10;
+
+        if (prev == accion) {
+            return;
         }
 
         switch (accion) {

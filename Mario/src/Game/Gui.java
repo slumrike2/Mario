@@ -26,7 +26,7 @@ public class Gui extends Canvas implements Runnable {
 
     Thread hilo;
 
-    private float FramesPorSegundo = 120.0f, TiempoPorActualizacion = 1000000000 / FramesPorSegundo;
+    private float FramesPorSegundo = 120, TiempoPorActualizacion = 1000000000 / FramesPorSegundo;
     long referenciaActualizacion = System.nanoTime();
     private double tiempoTranscurrido, delta = 0;
 
@@ -107,11 +107,12 @@ public class Gui extends Canvas implements Runnable {
             delta += tiempoTranscurrido / TiempoPorActualizacion;
 
             while (delta >= 1) {
-                mostrar();
-                actualizar();
 
+                actualizar();
+                mostrar();
                 delta--;
             }
+            
 
         }
     }
