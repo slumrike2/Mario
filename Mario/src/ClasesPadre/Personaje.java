@@ -11,18 +11,15 @@ public class Personaje extends Entidad {
     private int velocidadAnimacion = 20, AccionAnimation = 0, frameAniamcion = 0, contFrames = 0;
     public BufferedImage[][] animaciones; // ! todas las animaciones del personaje
     public Boolean enMovimiento = false, saltando = false; // ? Boleanos que determinaran acciones del personaje
-
+    public Boolean MovDerecha = false, MovIzquierda = false, MovAbajo = false, MovArriba = false;
+    public int ultimoPrecionado = 0;
     // *se encarga de determinar la direccion del personaje
-    public enum dirMov {
-        Izquierda, Derecha, Arriba, Abajo
-    }
 
     // *se encarga de determinar la accion del personaje
     public enum AccionPlayer {
         Saltar, Agacharse, Correr, Escalar, Quieto
     }
 
-    public dirMov direccion = dirMov.Derecha;
     public AccionPlayer accion = AccionPlayer.Quieto;
     // #endregion
 
@@ -75,9 +72,27 @@ public class Personaje extends Entidad {
     public void ActualizarAccion() {
         int aux = 0;
         // ! se suman 10 para que se pueda acceder a las animaciones de la izquierda
-        if (direccion == dirMov.Izquierda) {
+        if (MovIzquierda == true && MovDerecha == false) {
+
+            accion = AccionPlayer.Correr;
+        }
+        if (MovIzquierda == false && MovDerecha == true) {
+
+            accion = AccionPlayer.Correr;
+        }
+        if (MovIzquierda == true && MovDerecha == true) {
+            accion = AccionPlayer.Quieto;
+        }
+        if (MovAbajo == true) {
+            accion = AccionPlayer.Agacharse;
+        }
+        if (MovIzquierda == false && MovDerecha == false && MovAbajo == false) {
+            accion = AccionPlayer.Quieto;
+        }
+        if (ultimoPrecionado == -1) {
             aux = 10;
         }
+
         switch (accion) {
             case Quieto:
                 AccionAnimation = 0 + aux;
@@ -103,23 +118,13 @@ public class Personaje extends Entidad {
     // *se encarga de mover al personaje
     public void movimiento() {
 
-        if (enMovimiento) {
-            switch (direccion) {
-                case Derecha:
+        if (MovAbajo != true) {
 
-                    posX += 1;
-                    break;
-                case Izquierda:
-                    posX -= 1;
-                    break;
-                case Arriba:
-                    posY -= 1;
-                    break;
-                case Abajo:
-                    posY += 1;
-                    break;
-                default:
-                    break;
+            if (MovDerecha == true && MovIzquierda == false) {
+                posX += 1;
+            }
+            if (MovIzquierda == true && MovDerecha == false) {
+                posX -= 1;
             }
         }
 

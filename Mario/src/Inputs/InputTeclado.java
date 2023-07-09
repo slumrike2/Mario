@@ -4,12 +4,13 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import ClasesPadre.Personaje.AccionPlayer;
-import ClasesPadre.Personaje.dirMov;
+
 import Graficos2.GamePanel;
 
 public class InputTeclado implements KeyListener {
 
     public GamePanel panel;
+    public int dir;
 
     public InputTeclado(GamePanel panel) {
         this.panel = panel;
@@ -25,20 +26,22 @@ public class InputTeclado implements KeyListener {
 
         switch (e.getKeyCode()) {
             case KeyEvent.VK_A:
-                panel.mario.direccion = dirMov.Izquierda;
-                panel.mario.accion = AccionPlayer.Correr;
-                panel.mario.enMovimiento = true;
+                panel.mario.MovIzquierda = true;
+                panel.mario.ultimoPrecionado = -1;
+                dir = 1;
+
                 break;
             case KeyEvent.VK_W:
-                panel.mario.direccion = dirMov.Arriba;
+                panel.mario.MovArriba = true;
                 break;
             case KeyEvent.VK_D:
-                panel.mario.direccion = dirMov.Derecha;
-                panel.mario.accion = AccionPlayer.Correr;
-                panel.mario.enMovimiento = true;
+                panel.mario.ultimoPrecionado = 1;
+                panel.mario.MovDerecha = true;
+                dir = -1;
+
                 break;
             case KeyEvent.VK_S:
-                panel.mario.direccion = dirMov.Abajo;
+                panel.mario.MovAbajo = true;
                 panel.mario.accion = AccionPlayer.Agacharse;
                 break;
             case KeyEvent.VK_SPACE:
@@ -58,21 +61,22 @@ public class InputTeclado implements KeyListener {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_A:
 
-                panel.mario.enMovimiento = false;
-                panel.mario.accion = AccionPlayer.Quieto;
+                panel.mario.MovIzquierda = false;
+                if (panel.mario.ultimoPrecionado == 1)
+                    panel.mario.ultimoPrecionado = dir;
 
                 break;
             case KeyEvent.VK_W:
-
+                panel.mario.MovArriba = false;
                 break;
             case KeyEvent.VK_D:
-
-                panel.mario.enMovimiento = false;
-                panel.mario.accion = AccionPlayer.Quieto;
+                panel.mario.MovDerecha = false;
+                if (panel.mario.ultimoPrecionado == -1)
+                    panel.mario.ultimoPrecionado = dir;
 
                 break;
             case KeyEvent.VK_S:
-
+                panel.mario.MovAbajo = false;
                 break;
             case KeyEvent.VK_SPACE:
                 panel.mario.saltando = false;
