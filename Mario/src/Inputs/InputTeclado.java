@@ -20,11 +20,14 @@ public class InputTeclado implements KeyListener {
 
     }
 
+    // *se encarga de detectar las teclas presionadas
     public void keyPressed(java.awt.event.KeyEvent e) {
+
         switch (e.getKeyCode()) {
             case KeyEvent.VK_A:
                 panel.mario.direccion = dirMov.Izquierda;
                 panel.mario.accion = AccionPlayer.Correr;
+                panel.mario.enMovimiento = true;
                 break;
             case KeyEvent.VK_W:
                 panel.mario.direccion = dirMov.Arriba;
@@ -32,6 +35,7 @@ public class InputTeclado implements KeyListener {
             case KeyEvent.VK_D:
                 panel.mario.direccion = dirMov.Derecha;
                 panel.mario.accion = AccionPlayer.Correr;
+                panel.mario.enMovimiento = true;
                 break;
             case KeyEvent.VK_S:
                 panel.mario.direccion = dirMov.Abajo;
@@ -39,6 +43,7 @@ public class InputTeclado implements KeyListener {
                 break;
             case KeyEvent.VK_SPACE:
                 panel.mario.accion = AccionPlayer.Saltar;
+                panel.mario.saltando = true;
                 break;
             default:
                 break;
@@ -47,10 +52,14 @@ public class InputTeclado implements KeyListener {
 
     }
 
+    // *se encarga de detectar las teclas soltadas
     public void keyReleased(java.awt.event.KeyEvent e) {
 
         switch (e.getKeyCode()) {
             case KeyEvent.VK_A:
+
+                panel.mario.enMovimiento = false;
+                panel.mario.accion = AccionPlayer.Quieto;
 
                 break;
             case KeyEvent.VK_W:
@@ -58,17 +67,22 @@ public class InputTeclado implements KeyListener {
                 break;
             case KeyEvent.VK_D:
 
+                panel.mario.enMovimiento = false;
+                panel.mario.accion = AccionPlayer.Quieto;
+
                 break;
             case KeyEvent.VK_S:
 
                 break;
             case KeyEvent.VK_SPACE:
+                panel.mario.saltando = false;
 
                 break;
             default:
+
                 break;
         }
-        panel.mario.accion = AccionPlayer.Quieto;
+
     }
 
 }

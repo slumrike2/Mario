@@ -84,6 +84,7 @@ public class Gui extends Canvas implements Runnable {
     // TODO movimientos y funcionamientos del juego
     public void actualizar() {
         // aps
+        // *Llama a la actualizacion del panel en funcionalidad */
         panel.FrameUpdate();
 
     }
@@ -91,8 +92,9 @@ public class Gui extends Canvas implements Runnable {
     // TODO Funcion que dibuja en el juego
     public void mostrar() {
         // fps
+        // * Se encarga de pintar los graficos
         ventana.repaint();
-        
+
     }
 
     // todo Funcion que actualiza el juego
@@ -105,8 +107,9 @@ public class Gui extends Canvas implements Runnable {
             delta += tiempoTranscurrido / TiempoPorActualizacion;
 
             while (delta >= 1) {
-                actualizar();
                 mostrar();
+                actualizar();
+
                 delta--;
             }
 

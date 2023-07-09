@@ -9,18 +9,22 @@ public class Personaje extends Entidad {
 
     // *Cada cuantos frames se actualiza la animacion
     private int velocidadAnimacion = 20, AccionAnimation = 0, frameAniamcion = 0, contFrames = 0;
-    public BufferedImage[][] animaciones;
+    public BufferedImage[][] animaciones; // ! todas las animaciones del personaje
+    public Boolean enMovimiento = false, saltando = false; // ? Boleanos que determinaran acciones del personaje
 
+    // *se encarga de determinar la direccion del personaje
     public enum dirMov {
         Izquierda, Derecha, Arriba, Abajo
     }
 
+    // *se encarga de determinar la accion del personaje
     public enum AccionPlayer {
         Saltar, Agacharse, Correr, Escalar, Quieto
     }
 
     public dirMov direccion = dirMov.Derecha;
     public AccionPlayer accion = AccionPlayer.Quieto;
+    // #endregion
 
     // #region Metodos
     // *Dir reseprenta la direccion de la hoja de sprite correspondiente */
@@ -30,20 +34,27 @@ public class Personaje extends Entidad {
 
     }
 
+    // *se encarga de cargar las animaciones del personaje
     public void GetAnimations() {
         animaciones = animacion(20, 0, 3, 16, 32);
     }
 
+    // *se encarga de la actualizacion del personaje en acciones
     public void update() {
+
         movimiento();
         ActualizarAccion();
+
     }
 
+    // *se encarga de dibujar los frames del personaje
     public void updateFrames(Graphics g) {
-        ActualizarFrame();
+        ActualizarFrame(); // *funcion que determina que animacion sigue y que frame de la animacion
+        // *se dibuja el frame correspondiente
         g.drawImage(animaciones[AccionAnimation][frameAniamcion], posX, posY, null);
     }
 
+    // ?Determina la animacion que sigue
     public void ActualizarFrame() {
         contFrames++;
         if (contFrames >= velocidadAnimacion) {
@@ -60,8 +71,10 @@ public class Personaje extends Entidad {
 
     }
 
+    // ?Determina la accion que sigue y su direccion
     public void ActualizarAccion() {
         int aux = 0;
+        // ! se suman 10 para que se pueda acceder a las animaciones de la izquierda
         if (direccion == dirMov.Izquierda) {
             aux = 10;
         }
@@ -87,29 +100,33 @@ public class Personaje extends Entidad {
 
     }
 
+    // *se encarga de mover al personaje
     public void movimiento() {
-        if (accion == AccionPlayer.Quieto) {
-            return;
-        }
-        switch (direccion) {
-            case Derecha:
-                posX += 1;
-                break;
-            case Izquierda:
-                posX -= 1;
-                break;
-            case Arriba:
-                posY -= 1;
-                break;
-            case Abajo:
-                posY += 1;
-                break;
-            default:
-                break;
+
+        if (enMovimiento) {
+            switch (direccion) {
+                case Derecha:
+
+                    posX += 1;
+                    break;
+                case Izquierda:
+                    posX -= 1;
+                    break;
+                case Arriba:
+                    posY -= 1;
+                    break;
+                case Abajo:
+                    posY += 1;
+                    break;
+                default:
+                    break;
+            }
         }
 
     }
 
+    // *se encarga de deterinar cuantos frames tienen las animaciones
+    // ?se cuenta desde el 0
     public static int CantidadSprites(AccionPlayer AccionPlayer) {
         switch (AccionPlayer) {
             case Quieto:

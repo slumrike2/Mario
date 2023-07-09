@@ -18,14 +18,13 @@ import java.awt.Dimension;
 public class GamePanel extends JPanel {
 
     private InptutMouse mouseimput = new InptutMouse(this);
-    private int x = 0, y = 0, direccionanimacion = 1;
     public Personaje mario = new Personaje("res/marioAnimations.png", 0, 0);
     static int contador = 0;
     public BufferedImage aux;
-    private int xanimacion;
 
     public GamePanel() {
         setPreferredSize(new Dimension(1280, 800));
+        // ? se encargan de agregar los inputs
         addKeyListener(new InputTeclado(this));
         addMouseListener(mouseimput);
         addMouseMotionListener(mouseimput);
@@ -33,6 +32,7 @@ public class GamePanel extends JPanel {
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+        // *se encarga de dibujar los frames del peronsaje
         mario.updateFrames(g);
     }
 
