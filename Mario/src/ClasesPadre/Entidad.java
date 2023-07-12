@@ -10,7 +10,6 @@ public abstract class Entidad {
     public int posX, posY;
     public BufferedImage imagen;
 
-    public Entidad(String Dir, int Posx, int Posy) {
     public Entidad(String Dir, int Posx, int Posy, int velocidad) {
         importarImagen(Dir);
         this.posX = Posx;
