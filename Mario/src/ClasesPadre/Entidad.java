@@ -6,13 +6,16 @@ import javax.imageio.ImageIO;
 
 public abstract class Entidad {
 
+    public int velocidadHorizontal; //velocidad en pixeles de forma horizontal
     public int posX, posY;
     public BufferedImage imagen;
 
     public Entidad(String Dir, int Posx, int Posy) {
+    public Entidad(String Dir, int Posx, int Posy, int velocidad) {
         importarImagen(Dir);
         this.posX = Posx;
         this.posY = Posy;
+        this.velocidadHorizontal = velocidad;
     }
 
     public Entidad(String Dir) {

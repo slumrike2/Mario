@@ -15,7 +15,7 @@ import java.awt.Dimension;
 public class GamePanel extends JPanel {
 
     private InptutMouse mouseimput = new InptutMouse(this);
-    public Personaje mario = new Personaje("res/marioAnimations.png", 0, 0);
+    public Personaje mario = new Personaje("res/marioAnimations.png", 0, 0, 5);
     static int contador = 0;
     public BufferedImage aux;
 
