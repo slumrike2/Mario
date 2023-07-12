@@ -10,7 +10,6 @@ import Graficos2.GamePanel;
 public class InputTeclado implements KeyListener {
 
     public GamePanel panel;
-    
 
     public InputTeclado(GamePanel panel) {
         this.panel = panel;
@@ -27,7 +26,6 @@ public class InputTeclado implements KeyListener {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_A:
                 panel.mario.MovIzquierda = true;
-                
 
                 break;
             case KeyEvent.VK_W:
@@ -36,7 +34,7 @@ public class InputTeclado implements KeyListener {
             case KeyEvent.VK_D:
 
                 panel.mario.MovDerecha = true;
-                
+
                 break;
             case KeyEvent.VK_S:
                 panel.mario.MovAbajo = true;
@@ -50,7 +48,6 @@ public class InputTeclado implements KeyListener {
                 break;
             default:
                 break;
-
         }
 
     }
@@ -76,7 +73,6 @@ public class InputTeclado implements KeyListener {
                 break;
             case KeyEvent.VK_SPACE:
                 panel.mario.saltando = false;
-                panel.mario.EnSuelo = true;
 
                 break;
             default:
