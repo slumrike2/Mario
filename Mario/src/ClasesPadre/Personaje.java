@@ -8,16 +8,15 @@ import Inputs.InputTeclado;
 
 public class Personaje extends Entidad {
     // #region Constantes
-    private int velocidad = 2, gravedad = 1;
+    private int velocidad = 2, gravedad = 3;
     public int FuerzaSalto = 0;
 
     // #region Variables
 
     // *Cada cuantos frames se actualiza la animacion
     private int velocidadAnimacion = 10, AccionAnimation = 0, frameAniamcion = 0, contFrames = 0;
-    public BufferedImage[][] animaciones; // ! todas las animaciones del personaje
-    public Boolean enMovimiento = false, saltando = false, EnSuelo = true; // ? Boleanos que determinaran acciones del
-                                                                           // personaje
+    public BufferedImage[][] animaciones; // * todas las animaciones del personaje
+    public Boolean enMovimiento = false, saltando = false, EnSuelo = true; // * Boleanos que determinaran acciones
     public Boolean MovDerecha = false, MovIzquierda = false, MovAbajo = false, MovArriba = false;
 
     // *se encarga de determinar la direccion del personaje
@@ -84,7 +83,7 @@ public class Personaje extends Entidad {
 
     }
 
-    // ?Determina la accion que sigue y su direccion
+    // *Determina la accion que sigue y su direccion
     public void ActualizarAccion() {
         int aux = 0;
 
@@ -101,6 +100,12 @@ public class Personaje extends Entidad {
         }
         if (MovAbajo == true) {
             accion = AccionPlayer.Agacharse;
+        }
+        if (saltando) {
+            accion = AccionPlayer.Saltar;
+            if (MovIzquierda == true)
+                aux = 10;
+
         }
         // * determina la accion a realizar y su direccion gracias al aux */
         switch (accion) {
@@ -140,12 +145,14 @@ public class Personaje extends Entidad {
                 System.out.println("izquierda");
             }
         }
-        // ?Gravedad
+        // *Gravedad
         if (FuerzaSalto != 0) {
             posY -= gravedad;
             FuerzaSalto--;
             System.out.println(FuerzaSalto);
         }
+        // Todo Agregar colisiones para poner el en suelo activo y falso para el
+        // funcionamiento del salto
         if (EnSuelo == false && FuerzaSalto == 0) {
             posY += gravedad;
         }
@@ -153,7 +160,7 @@ public class Personaje extends Entidad {
     }
 
     // *se encarga de deterinar cuantos frames tienen las animaciones
-    // ?se cuenta desde el 0
+    // *se cuenta desde el 0
     public static int CantidadSprites(AccionPlayer AccionPlayer) {
         switch (AccionPlayer) {
             case Quieto:
