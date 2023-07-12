@@ -1,18 +1,15 @@
 package Graficos2;
 
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
+
 import javax.swing.JPanel;
 import ClasesPadre.Personaje;
 import Inputs.InptutMouse;
 import Inputs.InputTeclado;
 
 import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseListener;
+
 import java.awt.image.BufferedImage;
-import java.nio.Buffer;
+
 import java.awt.Dimension;
 
 public class GamePanel extends JPanel {

@@ -2,7 +2,6 @@ package ClasesPadre;
 
 import java.awt.image.BufferedImage;
 
-
 import javax.imageio.ImageIO;
 
 public abstract class Entidad {
@@ -14,6 +13,10 @@ public abstract class Entidad {
         importarImagen(Dir);
         this.posX = Posx;
         this.posY = Posy;
+    }
+
+    public Entidad(String Dir) {
+        importarImagen(Dir);
     }
 
     private void importarImagen(String Dir) {

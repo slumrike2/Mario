@@ -5,12 +5,17 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 public class Personaje extends Entidad {
+    // #region Constantes
+    private int velocidad = 2, gravedad = 1;
+    public int FuerzaSalto = 0;
+
     // #region Variables
 
     // *Cada cuantos frames se actualiza la animacion
     private int velocidadAnimacion = 20, AccionAnimation = 0, frameAniamcion = 0, contFrames = 0;
     public BufferedImage[][] animaciones; // ! todas las animaciones del personaje
-    public Boolean enMovimiento = false, saltando = false; // ? Boleanos que determinaran acciones del personaje
+    public Boolean enMovimiento = false, saltando = false, EnSuelo = true; // ? Boleanos que determinaran acciones del
+                                                                           // personaje
     public Boolean MovDerecha = false, MovIzquierda = false, MovAbajo = false, MovArriba = false;
 
     // *se encarga de determinar la direccion del personaje
@@ -21,6 +26,7 @@ public class Personaje extends Entidad {
     }
 
     public AccionPlayer accion = AccionPlayer.Quieto;
+    AccionPlayer Accionprevia = accion;
     // #endregion
 
     // #region Metodos
@@ -56,7 +62,7 @@ public class Personaje extends Entidad {
     // ?Determina la animacion que sigue
     public void ActualizarFrame() {
         contFrames++;
-        if (accion == AccionPlayer.Quieto) {
+        if (accion == AccionPlayer.Quieto || accion == AccionPlayer.Agacharse) {
             frameAniamcion = 0;
             return;
         }
@@ -79,7 +85,7 @@ public class Personaje extends Entidad {
     // ?Determina la accion que sigue y su direccion
     public void ActualizarAccion() {
         int aux = 0;
-        AccionPlayer prev = accion;
+
         // ! se suman 10 para que se pueda acceder a las animaciones de la izquierda
         accion = AccionPlayer.Quieto;
         if (MovDerecha == true && MovIzquierda == false) {
@@ -91,10 +97,6 @@ public class Personaje extends Entidad {
         }
         if (MovAbajo == true) {
             accion = AccionPlayer.Agacharse;
-        }
-
-        if (prev == accion) {
-            return;
         }
 
         switch (accion) {
@@ -125,11 +127,20 @@ public class Personaje extends Entidad {
         if (MovAbajo != true) {
 
             if (MovDerecha == true && MovIzquierda == false) {
-                posX += 1;
+                posX += velocidad;
             }
             if (MovIzquierda == true && MovDerecha == false) {
-                posX -= 1;
+                posX -= velocidad;
             }
+        }
+        // Gravedad
+        if (FuerzaSalto != 0) {
+            posY -= gravedad;
+            FuerzaSalto--;
+            System.out.println(FuerzaSalto);
+        }
+        if (EnSuelo == false && FuerzaSalto == 0) {
+            posY += gravedad;
         }
 
     }

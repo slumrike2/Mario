@@ -43,6 +43,8 @@ public class InputTeclado implements KeyListener {
             case KeyEvent.VK_SPACE:
                 panel.mario.accion = AccionPlayer.Saltar;
                 panel.mario.saltando = true;
+                panel.mario.EnSuelo = false;
+                panel.mario.FuerzaSalto = 20;
                 break;
             default:
                 break;
@@ -72,6 +74,7 @@ public class InputTeclado implements KeyListener {
                 break;
             case KeyEvent.VK_SPACE:
                 panel.mario.saltando = false;
+                panel.mario.EnSuelo = true;
 
                 break;
             default:
