@@ -128,13 +128,16 @@ public class Personaje extends Entidad {
     // *se encarga de mover al personaje
     public void movimiento() {
 
+        System.out.println("posX: " + posX + " posY: " + posY);
         if (MovAbajo != true) {
 
             if (MovDerecha == true && MovIzquierda == false) {
                 posX += velocidad;
+                System.out.println("derecha");
             }
             if (MovIzquierda == true && MovDerecha == false) {
                 posX -= velocidad;
+                System.out.println("izquierda");
             }
         }
         // ?Gravedad

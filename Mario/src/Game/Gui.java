@@ -2,10 +2,12 @@ package Game;
 
 import java.awt.BorderLayout;
 import java.awt.Canvas;
+import java.awt.CardLayout;
 
 import javax.swing.JFrame;
 
 import Graficos2.GamePanel;
+import Graficos2.MenuPanel;
 
 public class Gui extends Canvas implements Runnable {
     // #region Variables
@@ -14,7 +16,14 @@ public class Gui extends Canvas implements Runnable {
 
     // *se genera un objeto de tipo JFrame
     static JFrame ventana;
-    public GamePanel panel;
+    public static GamePanel panel;
+    public static MenuPanel menu;
+    public static GameState estadoJuego = GameState.MENU;
+    public static CardLayout cardLayout = new CardLayout();
+
+    public enum GameState {
+        MENU, JUEGO
+    }
 
     public enum PantallasPosiblesMenu {
         MENU_PRINCIPAL, REGISTRO, INICIO_SESION, MENU_GESTIONAR_COLECCION
@@ -58,6 +67,59 @@ public class Gui extends Canvas implements Runnable {
         ventana.add(this, BorderLayout.CENTER);
     }
 
+    public Gui() {
+        // *se crea la ventana
+        ventana = new JFrame("Mario");
+        // *se le da un tamaño a la ventana
+        ventana.setSize(WIDTH, HEIGHT);
+        // *se le da un comportamiento al cerrar la ventana
+        // !sin esto no se cierra y queda en ejecucion
+        ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // *para que no se pueda cambiar el tamaño de la ventana
+        ventana.setResizable(false);
+        // *para que la ventana se centre en la pantalla
+        ventana.setLayout(cardLayout);
+        // *para que la ventana se muestre en el centro de la pantalla
+        ventana.setLocationRelativeTo(null);
+
+        estadoJuego = GameState.MENU;
+        menu = new MenuPanel();
+        panel = new GamePanel();
+        // ventana.add(panel, "Juego");
+        ventana.add(menu, "Menu");
+        menu.requestFocusInWindow();
+        cardLayout.show(ventana.getContentPane(), "Menu");
+
+        // *para que la ventana se muestre
+        ventana.setVisible(true);
+        // *para que la ventana se muestre en el centro de la pantalla
+        ventana.add(this, BorderLayout.CENTER);
+
+    }
+
+    // #region funciones de cambio de pantalla y estado
+    public static void switchState() {
+        if (estadoJuego == GameState.JUEGO) {
+            estadoJuego = GameState.MENU;
+            ventana.remove(panel);
+            panel = null;
+            menu = new MenuPanel();
+            ventana.add(menu, "Menu");
+            cardLayout.show(ventana.getContentPane(), "Menu");
+        } else {
+            ventana.remove(menu);
+            menu = null;
+            panel = new GamePanel();
+            ventana.add(panel, "Juego");
+            cardLayout.show(ventana.getContentPane(), "Juego");
+            panel.requestFocusInWindow();
+            estadoJuego = GameState.JUEGO;
+        }
+
+    }
+
+    // #endregion
+
     // #region ThreadManagers
     // todo Funcion que inicia el hilo y el juego
     public void iniciar() {
@@ -85,7 +147,9 @@ public class Gui extends Canvas implements Runnable {
     public void actualizar() {
         // aps
         // *Llama a la actualizacion del panel en funcionalidad */
-        panel.FrameUpdate();
+        if (estadoJuego == GameState.JUEGO) {
+            panel.FrameUpdate();
+        }
 
     }
 

@@ -9,8 +9,8 @@ public class Game {
     public Game() {
 
         panel = new GamePanel();
-        ventana = new Gui(panel);
-        panel.requestFocus();
+        ventana = new Gui();
+        // panel.requestFocus();
         ventana.iniciar();
     }
 

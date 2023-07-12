@@ -4,13 +4,12 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import ClasesPadre.Personaje.AccionPlayer;
-
+import Game.Gui;
 import Graficos2.GamePanel;
 
 public class InputTeclado implements KeyListener {
 
     public GamePanel panel;
-    
 
     public InputTeclado(GamePanel panel) {
         this.panel = panel;
@@ -23,11 +22,11 @@ public class InputTeclado implements KeyListener {
 
     // *se encarga de detectar las teclas presionadas
     public void keyPressed(java.awt.event.KeyEvent e) {
+        System.out.println("mamamelguebo");
 
         switch (e.getKeyCode()) {
             case KeyEvent.VK_A:
                 panel.mario.MovIzquierda = true;
-                
 
                 break;
             case KeyEvent.VK_W:
@@ -36,7 +35,7 @@ public class InputTeclado implements KeyListener {
             case KeyEvent.VK_D:
 
                 panel.mario.MovDerecha = true;
-                
+
                 break;
             case KeyEvent.VK_S:
                 panel.mario.MovAbajo = true;
@@ -47,6 +46,9 @@ public class InputTeclado implements KeyListener {
                 panel.mario.saltando = true;
                 panel.mario.EnSuelo = false;
                 panel.mario.FuerzaSalto = 20;
+                break;
+            case KeyEvent.VK_ESCAPE:
+                Gui.switchState();
                 break;
             default:
                 break;
