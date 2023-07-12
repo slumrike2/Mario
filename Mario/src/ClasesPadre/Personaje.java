@@ -4,6 +4,8 @@ import java.awt.Graphics;
 
 import java.awt.image.BufferedImage;
 
+import Inputs.InputTeclado;
+
 public class Personaje extends Entidad {
     // #region Constantes
     private int velocidad = 2, gravedad = 1;
@@ -12,7 +14,7 @@ public class Personaje extends Entidad {
     // #region Variables
 
     // *Cada cuantos frames se actualiza la animacion
-    private int velocidadAnimacion = 20, AccionAnimation = 0, frameAniamcion = 0, contFrames = 0;
+    private int velocidadAnimacion = 10, AccionAnimation = 0, frameAniamcion = 0, contFrames = 0;
     public BufferedImage[][] animaciones; // ! todas las animaciones del personaje
     public Boolean enMovimiento = false, saltando = false, EnSuelo = true; // ? Boleanos que determinaran acciones del
                                                                            // personaje
@@ -88,6 +90,8 @@ public class Personaje extends Entidad {
 
         // ! se suman 10 para que se pueda acceder a las animaciones de la izquierda
         accion = AccionPlayer.Quieto;
+        // *confimacioines para la animacion y vista de la direccion
+
         if (MovDerecha == true && MovIzquierda == false) {
             accion = AccionPlayer.Correr;
 
@@ -98,7 +102,7 @@ public class Personaje extends Entidad {
         if (MovAbajo == true) {
             accion = AccionPlayer.Agacharse;
         }
-
+        // * determina la accion a realizar y su direccion gracias al aux */
         switch (accion) {
             case Quieto:
                 AccionAnimation = 0 + aux;
@@ -127,20 +131,13 @@ public class Personaje extends Entidad {
         if (MovAbajo != true) {
 
             if (MovDerecha == true && MovIzquierda == false) {
-<<<<<<< HEAD
                 posX += velocidad;
             }
             if (MovIzquierda == true && MovDerecha == false) {
                 posX -= velocidad;
-=======
-                posX += velocidadHorizontal;
-            }
-            if (MovIzquierda == true && MovDerecha == false) {
-                posX -= velocidadHorizontal;
->>>>>>> 7f828d291f3c2c1d2dc872d1d86ab22fb8c3c8df
             }
         }
-        // Gravedad
+        // ?Gravedad
         if (FuerzaSalto != 0) {
             posY -= gravedad;
             FuerzaSalto--;

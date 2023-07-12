@@ -1,6 +1,5 @@
 package Graficos2;
 
-
 import javax.swing.JPanel;
 import ClasesPadre.Personaje;
 import Inputs.InptutMouse;
@@ -25,6 +24,7 @@ public class GamePanel extends JPanel {
         addKeyListener(new InputTeclado(this));
         addMouseListener(mouseimput);
         addMouseMotionListener(mouseimput);
+        setFocusable(true);
     }
 
     public void paintComponent(Graphics g) {

@@ -112,7 +112,6 @@ public class Gui extends Canvas implements Runnable {
                 mostrar();
                 delta--;
             }
-            
 
         }
     }

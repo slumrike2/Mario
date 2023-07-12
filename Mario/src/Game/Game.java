@@ -13,7 +13,7 @@ public class Game {
         panel.requestFocus();
         ventana.iniciar();
     }
-    
+
     public static void main(String[] args) throws Exception {
         Game game = new Game();
     }
