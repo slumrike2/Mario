@@ -25,8 +25,8 @@ public class Personaje extends Entidad {
 
     // #region Metodos
     // *Dir reseprenta la direccion de la hoja de sprite correspondiente */
-    public Personaje(String Dir, int Posx, int Posy) {
-        super(Dir, Posx, Posy);
+    public Personaje(String Dir, int Posx, int Posy, int velocidad) {
+        super(Dir, Posx, Posy, velocidad);
         GetAnimations();
 
     }
@@ -125,10 +125,10 @@ public class Personaje extends Entidad {
         if (MovAbajo != true) {
 
             if (MovDerecha == true && MovIzquierda == false) {
-                posX += 1;
+                posX += velocidadHorizontal;
             }
             if (MovIzquierda == true && MovDerecha == false) {
-                posX -= 1;
+                posX -= velocidadHorizontal;
             }
         }
 
