@@ -6,10 +6,19 @@ import java.util.ArrayList;
 import interfaces.Identificable;
 
 public class Usuario implements Comparable<Usuario>, Serializable, Identificable {
+    // #region variables de instancia
     private String nombre;
     private String nombreUsuario;
+    private String estadisticas_fileName;
     private String contrasenia;
-    private String Estadisticas_fileName;
+    // #endregion
+
+    // #region variables de usuario (estadisticas)
+    private int cantidadPartidasJugadas;
+    private int cantidadPartidasGanadas;
+    private int cantidadPartidasPerdidas;
+    private int cantidadPartidasAbandonadas;
+    // #endregion
 
     public Usuario(String nombre, String nombreUsuario, String contrasenia) {
         this.nombre = nombre;
@@ -17,9 +26,8 @@ public class Usuario implements Comparable<Usuario>, Serializable, Identificable
         this.contrasenia = contrasenia;
 
         // Se crea el archivo correspondiente al usuario.
-        coleccion_fileName = "coleccion_" + nombreUsuario;
-        ArchivoSerializable.crearArchivo(coleccion_fileName);
-
+        estadisticas_fileName = "stats_" + nombreUsuario;
+        ArchivoSerializable.crearArchivo(estadisticas_fileName);
     }
 
     public String getNombre() {
@@ -38,16 +46,8 @@ public class Usuario implements Comparable<Usuario>, Serializable, Identificable
         this.nombreUsuario = nombreUsuario;
     }
 
-    public String getColeccion_fileName() {
-        return coleccion_fileName;
-    }
-
-    public ArrayList<Pelicula> getPeliculas() {
-        return new ArchivoSerializable<Pelicula>(coleccion_fileName).leerArchivo();
-    }
-
-    public void setColeccion_fileName(String coleccion_fileName) {
-        this.coleccion_fileName = coleccion_fileName;
+    public String getEstadisticas_fileName() {
+        return estadisticas_fileName;
     }
 
     public String getContrasenia() {
@@ -78,6 +78,42 @@ public class Usuario implements Comparable<Usuario>, Serializable, Identificable
 
     public boolean identificar(String nombreUsuario) {
         return this.nombreUsuario.equals(nombreUsuario);
+    }
+
+    public void setEstadisticas_fileName(String estadisticas_fileName) {
+        this.estadisticas_fileName = estadisticas_fileName;
+    }
+
+    public int getCantidadPartidasJugadas() {
+        return cantidadPartidasJugadas;
+    }
+
+    public void setCantidadPartidasJugadas(int cantidadPartidasJugadas) {
+        this.cantidadPartidasJugadas = cantidadPartidasJugadas;
+    }
+
+    public int getCantidadPartidasGanadas() {
+        return cantidadPartidasGanadas;
+    }
+
+    public void setCantidadPartidasGanadas(int cantidadPartidasGanadas) {
+        this.cantidadPartidasGanadas = cantidadPartidasGanadas;
+    }
+
+    public int getCantidadPartidasPerdidas() {
+        return cantidadPartidasPerdidas;
+    }
+
+    public void setCantidadPartidasPerdidas(int cantidadPartidasPerdidas) {
+        this.cantidadPartidasPerdidas = cantidadPartidasPerdidas;
+    }
+
+    public int getCantidadPartidasAbandonadas() {
+        return cantidadPartidasAbandonadas;
+    }
+
+    public void setCantidadPartidasAbandonadas(int cantidadPartidasAbandonadas) {
+        this.cantidadPartidasAbandonadas = cantidadPartidasAbandonadas;
     }
 
 }
