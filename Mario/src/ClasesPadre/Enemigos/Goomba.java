@@ -5,17 +5,17 @@ import java.awt.image.BufferedImage;
 
 import ClasesPadre.Entidad;
 
-
 public class Goomba extends Entidad {
 
     BufferedImage[][] animaciones;
-    private int velocidadAnimacion = 12;
+
     private int AccionAnimation = 0, frameAniamcion = 0, contFrames = 0;
     public boolean Vivo = true, enMovimiento = true;
 
     public Goomba(String Dir, int Posx, int Posy, int velocidad) {
         super(Dir, Posx, Posy, velocidad);
         animaciones = animacion(3, 0, 2, 16, 16);
+        velocidadAnimacion = 12;
     }
 
     public void update() {

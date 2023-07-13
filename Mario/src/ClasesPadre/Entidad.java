@@ -8,7 +8,10 @@ public abstract class Entidad {
 
     public int velocidad; // velocidad en pixeles de forma horizontal
     public int posX, posY;
-    public BufferedImage imagen;
+    public boolean vivo = true;
+    protected BufferedImage imagen;
+    protected BufferedImage[][] animaciones;
+    protected int AccionAnimation = 0, frameAniamcion = 0, contFrames = 0, velocidadAnimacion;
 
     public Entidad(String Dir, int Posx, int Posy, int velocidad) {
         importarImagen(Dir);
@@ -16,7 +19,6 @@ public abstract class Entidad {
         this.posY = Posy;
         this.velocidad = velocidad;
     }
-    
 
     public Entidad(String Dir) {
         importarImagen(Dir);
@@ -41,4 +43,10 @@ public abstract class Entidad {
     }
 
     public abstract void update();
+
+    public void updateFrames(java.awt.Graphics g) {
+        g.drawImage(animaciones[AccionAnimation][frameAniamcion], posX, posY, null);
+    }
+
+    public abstract void ActualizarFrame();
 }
