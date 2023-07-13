@@ -1,19 +1,16 @@
 package Graficos2;
 
 import javax.swing.JPanel;
-
 import ClasesPadre.Enemigos.Goomba;
 import ClasesPadre.Enemigos.Koopa;
 import ClasesPadre.Enemigos.KoopaVolador;
 import ClasesPadre.Enemigos.Bowser;
 import ClasesPadre.Jugador.Personaje;
+import Constantes.Constantes.*;
 import Inputs.InptutMouse;
 import Inputs.InputTeclado;
-
 import java.awt.Graphics;
-
 import java.awt.image.BufferedImage;
-
 import java.awt.Dimension;
 import java.util.ArrayList;
 import ClasesPadre.Entidad;
@@ -33,7 +30,7 @@ public class GamePanel extends JPanel {
     public BufferedImage aux;
 
     public GamePanel() {
-        setPreferredSize(new Dimension(1080, 720));
+        setPreferredSize(new Dimension(PANTALLA.SCREEN_WIDTH, PANTALLA.SCREEN_HEIGHT));
         // ? se encargan de agregar los inputs
         addKeyListener(new InputTeclado(this));
         addMouseListener(mouseimput);
@@ -47,7 +44,7 @@ public class GamePanel extends JPanel {
         entidades.add(goomba);
         entidades.add(koopa);
         entidades.add(koopaVolador);
-       entidades.add(bowser);
+        entidades.add(bowser);
     }
 
     public void paintComponent(Graphics g) {
