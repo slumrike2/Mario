@@ -59,7 +59,7 @@ public class Gui extends Canvas implements Runnable {
         // *para que la ventana se muestre en el centro de la pantalla
         ventana.setLocationRelativeTo(null);
         ventana.add(panel);
-        this.panel = panel;
+        Gui.panel = panel;
 
         // *para que la ventana se muestre
         ventana.setVisible(true);

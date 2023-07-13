@@ -3,7 +3,7 @@ package Inputs;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import ClasesPadre.Personaje.AccionPlayer;
+import ClasesPadre.Jugador.Personaje.AccionPlayer;
 import Game.Gui;
 import Graficos2.GamePanel;
 
@@ -22,7 +22,6 @@ public class InputTeclado implements KeyListener {
 
     // *se encarga de detectar las teclas presionadas
     public void keyPressed(java.awt.event.KeyEvent e) {
-        System.out.println("mamamelguebo");
 
         switch (e.getKeyCode()) {
             case KeyEvent.VK_A:
@@ -50,6 +49,8 @@ public class InputTeclado implements KeyListener {
             case KeyEvent.VK_ESCAPE:
                 Gui.switchState();
                 break;
+            
+                
             default:
                 break;
         }

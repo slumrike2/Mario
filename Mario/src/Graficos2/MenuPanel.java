@@ -2,7 +2,7 @@ package Graficos2;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import ClasesPadre.Personaje;
+
 import Game.Gui;
 import Graficos2.pantallas.menues.MenuPrincipal;
 import Inputs.InptutMouse;

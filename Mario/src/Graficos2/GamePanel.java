@@ -1,7 +1,9 @@
 package Graficos2;
 
 import javax.swing.JPanel;
-import ClasesPadre.Personaje;
+
+import ClasesPadre.Enemigos.Goomba;
+import ClasesPadre.Jugador.Personaje;
 import Inputs.InptutMouse;
 import Inputs.InputTeclado;
 
@@ -14,7 +16,8 @@ import java.awt.Dimension;
 public class GamePanel extends JPanel {
 
     private InptutMouse mouseimput = new InptutMouse(this);
-    public Personaje mario = new Personaje("res/marioAnimations.png", 300, 300, 5);
+    public Personaje mario = new Personaje("res/marioAnimations.png", 300, 300, 2);
+    public Goomba goomba = new Goomba("Sprites/cusGoombaSprite.png", 500, 500, 1);
     static int contador = 0;
     public BufferedImage aux;
 
@@ -31,10 +34,12 @@ public class GamePanel extends JPanel {
         super.paintComponent(g);
         // *se encarga de dibujar los frames del peronsaje
         mario.updateFrames(g);
+        goomba.updateFrames(g);
     }
 
     public void FrameUpdate() {
         mario.update();
+        goomba.update();
 
     }
 
