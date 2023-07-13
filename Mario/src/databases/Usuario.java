@@ -73,7 +73,7 @@ public class Usuario implements Comparable<Usuario>, Serializable, Identificable
                 "nombre='" + nombre + '\'' +
                 ", nombreUsuario='" + nombreUsuario + '\'' +
                 ", contrasenia='" + contrasenia + '\'' +
-                '}';
+                '}'; 
     }
 
     public boolean identificar(String nombreUsuario) {
