@@ -3,6 +3,7 @@ package Inputs;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import ClasesPadre.Enemigos.Goomba;
 import ClasesPadre.Jugador.Personaje.AccionPlayer;
 import Game.Gui;
 import Graficos2.GamePanel;
@@ -46,11 +47,13 @@ public class InputTeclado implements KeyListener {
                 panel.mario.EnSuelo = false;
                 panel.mario.FuerzaSalto = 20;
                 break;
+            // !Para pruebas. Borrar
             case KeyEvent.VK_ESCAPE:
                 Gui.switchState();
+            case KeyEvent.VK_ENTER:
+                panel.goomba.cambiarDireccion();
                 break;
-            
-                
+
             default:
                 break;
         }

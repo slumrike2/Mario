@@ -34,7 +34,7 @@ public class MenuPrincipal extends JPanel {
     }
 
     private void botonSinglePlayerActionPerformed() {
-        // TODO add your handling code here:
+        Gui.switchState();
     }
 
     private void botonMultiPlayerActionPerformed() {
