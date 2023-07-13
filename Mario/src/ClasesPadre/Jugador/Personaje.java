@@ -144,6 +144,7 @@ public class Personaje extends Entidad {
 
             }
         }
+        //Todo Actualizar el sistema de graveddad con mas presision y crear clase vector
         // *Gravedad
         if (FuerzaSalto != 0) {
             posY -= gravedad;

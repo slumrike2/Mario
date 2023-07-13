@@ -7,6 +7,8 @@ import ClasesPadre.Entidad;
 
 public class Goomba extends Entidad {
 
+
+    //Todo Faltan la muerte y las hitboxes
     BufferedImage[][] animaciones;
 
     private int AccionAnimation = 0, frameAniamcion = 0, contFrames = 0;

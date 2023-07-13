@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 import ClasesPadre.Enemigos.Goomba;
 import ClasesPadre.Enemigos.Koopa;
 import ClasesPadre.Enemigos.KoopaVolador;
+import ClasesPadre.Enemigos.Bowser;
 import ClasesPadre.Jugador.Personaje;
 import Inputs.InptutMouse;
 import Inputs.InputTeclado;
@@ -20,11 +21,12 @@ import ClasesPadre.Entidad;
 public class GamePanel extends JPanel {
 
     private InptutMouse mouseimput = new InptutMouse(this);
-    // !warning, cambiar en un futuro
+    // !warning, cambiar en un futuro lo de las direcciones
     public Personaje mario = new Personaje("res/marioAnimations.png", 300, 300, 2);
     public Goomba goomba = new Goomba("Sprites/cusGoombaSprite.png", 500, 500, 1);
     public Koopa koopa = new Koopa("Sprites/KoopaSprite.png", 400, 400, -1);
     public KoopaVolador koopaVolador = new KoopaVolador("Sprites/KoopaVoladorSprite.png", 50, 50, 1);
+    public Bowser bowser = new Bowser("Sprites/BowserSprite.png", 50, 50, 1);
     public ArrayList<Entidad> entidades = new ArrayList<Entidad>();
 
     static int contador = 0;
@@ -45,6 +47,7 @@ public class GamePanel extends JPanel {
         entidades.add(goomba);
         entidades.add(koopa);
         entidades.add(koopaVolador);
+       entidades.add(bowser);
     }
 
     public void paintComponent(Graphics g) {
