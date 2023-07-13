@@ -16,6 +16,7 @@ public abstract class Entidad {
         this.posY = Posy;
         this.velocidad = velocidad;
     }
+    
 
     public Entidad(String Dir) {
         importarImagen(Dir);
