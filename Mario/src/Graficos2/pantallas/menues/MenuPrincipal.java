@@ -3,11 +3,8 @@ package Graficos2.pantallas.menues;
 import Game.*;
 import java.awt.Dimension;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.JToggleButton;
-import javax.swing.UIManager;
 
 public class MenuPrincipal extends JPanel {
     JButton botonSinglePlayer = new JButton("Un solo jugador");

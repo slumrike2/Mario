@@ -16,6 +16,7 @@ import java.awt.Dimension;
 public class GamePanel extends JPanel {
 
     private InptutMouse mouseimput = new InptutMouse(this);
+    // !warning, cambiar en un futuro
     public Personaje mario = new Personaje("res/marioAnimations.png", 300, 300, 2);
     public Goomba goomba = new Goomba("Sprites/cusGoombaSprite.png", 500, 500, 1);
     static int contador = 0;
