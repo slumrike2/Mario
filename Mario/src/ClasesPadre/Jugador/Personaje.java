@@ -45,7 +45,7 @@ public class Personaje extends Entidad {
 
     // *se encarga de la actualizacion del personaje en acciones
     public void update() {
-
+        ActualizarHitbox();
         movimiento();
         ActualizarAccion();
         // *funcion que determina que animacion sigue y que frame de la animacion
@@ -57,6 +57,7 @@ public class Personaje extends Entidad {
 
         // *se dibuja el frame correspondiente
         g.drawImage(animaciones[AccionAnimation][frameAniamcion], posX, posY, null);
+        DibujarHitbox(g);
 
     }
 
@@ -144,7 +145,8 @@ public class Personaje extends Entidad {
 
             }
         }
-        //Todo Actualizar el sistema de graveddad con mas presision y crear clase vector
+        // Todo Actualizar el sistema de graveddad con mas presision y crear clase
+        // vector
         // *Gravedad
         if (FuerzaSalto != 0) {
             posY -= gravedad;
@@ -176,5 +178,15 @@ public class Personaje extends Entidad {
                 return 0;
         }
 
+    }
+
+    // *Hitbox es del sistema de collisiones
+    // ? se necesita actualizar o mostrarla para verificacion
+    protected void InicializarHitbox() {
+        Hitbox = new java.awt.Rectangle(posX, posY, 16, 32);
+    }
+
+    public void DibujarHitbox(Graphics g) {
+        g.drawRect(Hitbox.x, Hitbox.y, Hitbox.width, Hitbox.height);
     }
 }

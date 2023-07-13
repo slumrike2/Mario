@@ -59,4 +59,7 @@ public class Bowser extends Entidad {
         }
     }
 
+    protected void InicializarHitbox() {
+        Hitbox = new java.awt.Rectangle(posX, posY, 16, 32);
+    }
 }
