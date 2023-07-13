@@ -1,15 +1,14 @@
 package Graficos2;
 
-import javax.swing.JButton;
+
 import javax.swing.JPanel;
 
-import Game.Gui;
+
 import Graficos2.pantallas.menues.MenuPrincipal;
-import Inputs.InptutMouse;
-import Inputs.InputTeclado;
+
 
 import java.awt.Graphics;
-import java.awt.event.ActionListener;
+
 import java.awt.image.BufferedImage;
 import java.awt.CardLayout;
 import java.awt.Color;

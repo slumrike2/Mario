@@ -3,7 +3,7 @@ package Inputs;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import ClasesPadre.Enemigos.Goomba;
+
 import ClasesPadre.Jugador.Personaje.AccionPlayer;
 import Game.Gui;
 import Graficos2.GamePanel;

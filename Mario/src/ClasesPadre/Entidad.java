@@ -1,5 +1,6 @@
 package ClasesPadre;
 
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import javax.imageio.ImageIO;
@@ -13,15 +14,20 @@ public abstract class Entidad {
     protected BufferedImage[][] animaciones;
     protected int AccionAnimation = 0, frameAniamcion = 0, contFrames = 0, velocidadAnimacion;
 
+    // * Colliision
+    protected Rectangle Hitbox;
+
     public Entidad(String Dir, int Posx, int Posy, int velocidad) {
         importarImagen(Dir);
         this.posX = Posx;
         this.posY = Posy;
         this.velocidad = velocidad;
+        InicializarHitbox();
     }
 
     public Entidad(String Dir) {
         importarImagen(Dir);
+        InicializarHitbox();
     }
 
     private void importarImagen(String Dir) {
@@ -49,4 +55,11 @@ public abstract class Entidad {
     }
 
     public abstract void ActualizarFrame();
+
+    protected void ActualizarHitbox() {
+        Hitbox.setLocation(posX, posY);
+    }
+
+    protected abstract void InicializarHitbox();
+
 }
