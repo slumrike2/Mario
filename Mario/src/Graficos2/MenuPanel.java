@@ -3,10 +3,7 @@ package Graficos2;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import ClasesPadre.Jugador.Personaje;
 import Game.Gui;
-import Inputs.InptutMouse;
-import Inputs.InputTeclado;
 
 import java.awt.Graphics;
 import java.awt.event.ActionListener;

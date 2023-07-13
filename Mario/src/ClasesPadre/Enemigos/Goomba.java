@@ -1,11 +1,10 @@
 package ClasesPadre.Enemigos;
 
-<<<<<<< Updated upstream
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 import ClasesPadre.Entidad;
-import ClasesPadre.Jugador.Personaje.AccionPlayer;
+
 
 public class Goomba extends Entidad {
 
@@ -33,25 +32,12 @@ public class Goomba extends Entidad {
     public void movimiento() {
         if (enMovimiento == true)
             posX -= velocidad;
-=======
-import ClasesPadre.Entidad;
-
-public class Goomba extends Entidad {
-
-    public Goomba(String Dir, int Posx, int Posy, int velocidad) {
-        super(Dir, Posx, Posy, velocidad);
-    }
-
-    public void mover() {
-        posX += velocidad;
->>>>>>> Stashed changes
     }
 
     public void cambiarDireccion() {
         velocidad *= -1;
     }
 
-<<<<<<< Updated upstream
     public void ActualizarAccion() {
         AccionAnimation = 1;
         if (Vivo == false) {
@@ -86,10 +72,4 @@ public class Goomba extends Entidad {
 
         }
     }
-=======
-    public void actualizar() {
-        mover();
-    }
-
->>>>>>> Stashed changes
 }
