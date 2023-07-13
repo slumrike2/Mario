@@ -19,11 +19,11 @@ public class GamePanel extends JPanel {
 
     private InptutMouse mouseimput = new InptutMouse(this);
     // !warning, cambiar en un futuro lo de las direcciones
-    public Personaje mario = new Personaje("res/marioAnimations.png", 300, 300, 2);
-    public Goomba goomba = new Goomba("Sprites/cusGoombaSprite.png", 500, 500, 1);
-    public Koopa koopa = new Koopa("Sprites/KoopaSprite.png", 400, 400, -1);
-    public KoopaVolador koopaVolador = new KoopaVolador("Sprites/KoopaVoladorSprite.png", 50, 50, 1);
-    public Bowser bowser = new Bowser("Sprites/BowserSprite.png", 50, 50, 1);
+    public Personaje mario = new Personaje(PANTALLA.MarioDir, 300, 300, 2);
+    public Goomba goomba = new Goomba(PANTALLA.GoombaDir, 500, 500, 1);
+    public Koopa koopa = new Koopa(PANTALLA.KoopaDir, 400, 400, -1);
+    public KoopaVolador koopaVolador = new KoopaVolador(PANTALLA.KoopaVoladorDir, 50, 50, 1);
+    public Bowser bowser = new Bowser(PANTALLA.BowserDir, 50, 50, 1);
     public ArrayList<Entidad> entidades = new ArrayList<Entidad>();
 
     static int contador = 0;
