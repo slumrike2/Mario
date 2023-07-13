@@ -39,8 +39,8 @@ public class Gui extends Canvas implements Runnable {
     long referenciaActualizacion = System.nanoTime();
     private double tiempoTranscurrido, delta = 0;
 
-    final int WIDTH = 1280; // *altura y anchura de la ventana
-    final int HEIGHT = 800;
+    public final static int WIDTH = 1080; // *altura y anchura de la ventana
+    public final static int HEIGHT = 720;
     private static volatile boolean Corriendo = false;
     // #endregion
 
@@ -118,6 +118,10 @@ public class Gui extends Canvas implements Runnable {
 
     }
 
+    public static void salir() {
+        System.exit(0);
+    }
+    
     // #endregion
 
     // #region ThreadManagers

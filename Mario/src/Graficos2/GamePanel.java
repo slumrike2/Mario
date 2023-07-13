@@ -19,7 +19,7 @@ public class GamePanel extends JPanel {
     public BufferedImage aux;
 
     public GamePanel() {
-        setPreferredSize(new Dimension(1280, 800));
+        setPreferredSize(new Dimension(1080, 720));
         // ? se encargan de agregar los inputs
         addKeyListener(new InputTeclado(this));
         addMouseListener(mouseimput);

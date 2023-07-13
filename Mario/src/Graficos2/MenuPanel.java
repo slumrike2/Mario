@@ -4,36 +4,38 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import ClasesPadre.Personaje;
 import Game.Gui;
+import Graficos2.pantallas.menues.MenuPrincipal;
 import Inputs.InptutMouse;
 import Inputs.InputTeclado;
 
 import java.awt.Graphics;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-
+import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 
+//*Panel encargado de contener todos los paneles del menu */
 public class MenuPanel extends JPanel {
 
-    JButton boton = new JButton("Iniciar");
+    // #region pantallas
+    CardLayout cardLayout = new CardLayout();
+    public static MenuPrincipal menuPrincipal = new MenuPrincipal();
+    // #endregion
 
     static int contador = 0;
     public BufferedImage aux;
 
     public MenuPanel() {
-        setPreferredSize(new Dimension(1280, 800));
+        setPreferredSize(new Dimension(1080, 720));
         // ? se encargan de agregar los inputs
 
-        boton.setBounds(100, 100, 100, 100);
-        boton.addActionListener(new ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Gui.switchState();
-            }
+        setBackground(Color.BLACK);
 
-        });
-        add(boton);
+        setLayout(cardLayout);
+        add(menuPrincipal, "MenuPrincipal");
+        cardLayout.show(this, "MenuPrincipal");
 
-        setBackground(java.awt.Color.BLACK);
         setFocusable(true);
 
     }
@@ -45,6 +47,10 @@ public class MenuPanel extends JPanel {
 
     public void FrameUpdate() {
 
+    }
+
+    public void cambiarPantalla(String nombre) {
+        cardLayout.show(this, nombre);
     }
 
 }
