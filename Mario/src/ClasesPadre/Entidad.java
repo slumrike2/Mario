@@ -6,7 +6,11 @@ import javax.imageio.ImageIO;
 
 public abstract class Entidad {
 
+<<<<<<< Updated upstream
     public int velocidad; // velocidad en pixeles de forma horizontal
+=======
+    public int velocidad; //velocidad en pixeles de forma horizontal
+>>>>>>> Stashed changes
     public int posX, posY;
     public BufferedImage imagen;
 
