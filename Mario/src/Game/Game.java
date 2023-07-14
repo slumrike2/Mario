@@ -18,7 +18,9 @@ public class Game {
     }
 
     public static void main(String[] args) throws Exception {
+        // ! - THIS IS A TEST
         Sesion.INSTANCE.crearSession(new Usuario("1", "1", "1"));
+        // ! - THIS IS A TEST
         new Game();
 
     }
