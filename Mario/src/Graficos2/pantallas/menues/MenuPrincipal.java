@@ -1,12 +1,14 @@
 package Graficos2.pantallas.menues;
 
 import Game.*;
+
 import java.awt.Dimension;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class MenuPrincipal extends JPanel {
+
     JButton botonSinglePlayer = new JButton("Un solo jugador");
     JButton botonMultiPlayer = new JButton("Multijugador");
     JButton botonIniciarSesion = new JButton("Iniciar sesion");
@@ -39,11 +41,11 @@ public class MenuPrincipal extends JPanel {
     }
 
     private void botonIniciarSesionActionPerformed() {
-        // TODO add your handling code here:
+        Gui.switchPantallaMenu(Gui.PantallasPosiblesMenu.INICIO_SESION);
     }
 
     private void botonnRegistrarseActionPerformed() {
-        // TODO add your handling code here:
+        Gui.switchPantallaMenu(Gui.PantallasPosiblesMenu.REGISTRO);
     }
 
     private void botonOpcionesActionPerformed() {

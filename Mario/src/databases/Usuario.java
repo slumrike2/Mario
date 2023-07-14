@@ -2,7 +2,6 @@ package databases;
 
 import java.io.Serializable;
 
-
 import interfaces.Identificable;
 
 public class Usuario implements Comparable<Usuario>, Serializable, Identificable {
@@ -30,6 +29,29 @@ public class Usuario implements Comparable<Usuario>, Serializable, Identificable
         ArchivoSerializable.crearArchivo(estadisticas_fileName);
     }
 
+    public boolean validar(String contrasenia) {
+        return this.contrasenia.equals(contrasenia);
+    }
+
+    @Override
+    public int compareTo(Usuario u) {
+        return this.nombre.compareTo(u.getNombre());
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "nombre='" + nombre + '\'' +
+                ", nombreUsuario='" + nombreUsuario + '\'' +
+                ", contrasenia='" + contrasenia + '\'' +
+                '}';
+    }
+
+    public boolean identificar(String nombreUsuario) {
+        return this.nombreUsuario.equals(nombreUsuario);
+    }
+
+    // #region getters y setters
     public String getNombre() {
         return nombre;
     }
@@ -56,28 +78,6 @@ public class Usuario implements Comparable<Usuario>, Serializable, Identificable
 
     public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
-    }
-
-    public boolean validar(String contrasenia) {
-        return this.contrasenia.equals(contrasenia);
-    }
-
-    @Override
-    public int compareTo(Usuario u) {
-        return this.nombre.compareTo(u.getNombre());
-    }
-
-    @Override
-    public String toString() {
-        return "Usuario{" +
-                "nombre='" + nombre + '\'' +
-                ", nombreUsuario='" + nombreUsuario + '\'' +
-                ", contrasenia='" + contrasenia + '\'' +
-                '}'; 
-    }
-
-    public boolean identificar(String nombreUsuario) {
-        return this.nombreUsuario.equals(nombreUsuario);
     }
 
     public void setEstadisticas_fileName(String estadisticas_fileName) {
@@ -115,5 +115,7 @@ public class Usuario implements Comparable<Usuario>, Serializable, Identificable
     public void setCantidadPartidasAbandonadas(int cantidadPartidasAbandonadas) {
         this.cantidadPartidasAbandonadas = cantidadPartidasAbandonadas;
     }
+
+    // #endregion
 
 }
