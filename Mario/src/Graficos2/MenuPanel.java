@@ -24,9 +24,7 @@ public class MenuPanel extends JPanel {
     public static Registro registro = new Registro();
     public static InicioSesion inicioSesion = new InicioSesion();
 
-    public enum Pantallas {
-        MENU_PRINCIPAL, REGISTRO, INICIO_SESION
-    }
+  
 
     // #endregion
 
