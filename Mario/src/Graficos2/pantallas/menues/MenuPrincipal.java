@@ -49,11 +49,13 @@ public class MenuPrincipal extends JPanel {
     }
 
     private void botonSinglePlayerActionPerformed() {
-        Gui.switchState();
+        if (Sesion.INSTANCE.isSesionIniciada())
+            Gui.switchState();
+        // TODO crear menu en el que se seleccion la forma de juego
     }
 
     private void botonMultiPlayerActionPerformed() {
-        // TODO add your handling code here:
+        // TODO crear sistema de multijugador, pipipipipi
     }
 
     private void botonIniciarSesionActionPerformed() {
