@@ -4,20 +4,25 @@ import java.awt.Graphics;
 
 import java.awt.image.BufferedImage;
 
+import Constantes.Constantes.*;
 import ClasesPadre.Entidad;
+import java.awt.Rectangle;
 
 public class Personaje extends Entidad {
     // #region Constantes
-    private int gravedad = 3;
-    public int FuerzaSalto = 0;
+    private int gravedad = Globales.GRAVEDAD;
+    public int FuerzaSalto = Jugador.MARIO_JUMP_FORCE;
+    private int invensibilityFrames = Jugador.INVENSIBILITY_FRAMES, contInvensibilityFrames = 0;
 
     // #region Variables
 
     // *Cada cuantos frames se actualiza la animacion
-    private int velocidadAnimacion = 10, AccionAnimation = 0, frameAniamcion = 0, contFrames = 0;
+    private int velocidadAnimacion = Jugador.MARIO_VELCIDAD_ANIMACION, AccionAnimation = 0, frameAniamcion = 0,
+            contFrames = 0;
     public BufferedImage[][] animaciones; // * todas las animaciones del personaje
     public Boolean enMovimiento = false, saltando = false, EnSuelo = true; // * Boleanos que determinaran acciones
     public Boolean MovDerecha = false, MovIzquierda = false, MovAbajo = false, MovArriba = false;
+    private Boolean pequeño = false;
 
     // *se encarga de determinar la direccion del personaje
 
@@ -45,11 +50,14 @@ public class Personaje extends Entidad {
 
     // *se encarga de la actualizacion del personaje en acciones
     public void update() {
-        ActualizarHitbox();
+        cambiarHitbox();
+        ActualizarPosHitbox();
+
         movimiento();
         ActualizarAccion();
         // *funcion que determina que animacion sigue y que frame de la animacion
         ActualizarFrame();
+        contInvensibilityFrames++;
     }
 
     // *se encarga de dibujar los frames del personaje
@@ -151,7 +159,7 @@ public class Personaje extends Entidad {
         if (FuerzaSalto != 0) {
             posY -= gravedad;
             FuerzaSalto--;
-            
+
         }
         // Todo Agregar colisiones para poner el en suelo activo y falso para el
         // funcionamiento del salto
@@ -183,10 +191,39 @@ public class Personaje extends Entidad {
     // *Hitbox es del sistema de collisiones
     // ? se necesita actualizar o mostrarla para verificacion
     protected void InicializarHitbox() {
-        Hitbox = new java.awt.Rectangle(posX, posY, 16, 32);
+        Hitbox = new Rectangle(posX, posY, 16, 32);
     }
 
-    public void DibujarHitbox(Graphics g) {
-        g.drawRect(Hitbox.x, Hitbox.y, Hitbox.width, Hitbox.height);
+    // *hitBox para enemigos
+    public void HitEnemigo(Rectangle HitboxEnemigo) {
+        if (Hitbox.intersects(HitboxEnemigo)) {
+            // *Tiempo Entre golpes
+            if (contInvensibilityFrames >= invensibilityFrames) {
+                // Todo VolverMarioChiquito con el golpe
+                vivo = false;
+                System.out.println("Muerto");
+                contInvensibilityFrames = 0;
+            }
+        }
+    }
+
+    public void cambiarHitbox() {
+
+        InicializarHitbox();
+        if (accion == AccionPlayer.Agacharse) {
+
+            Hitbox = new Rectangle(posX, posY, Jugador.SPRITE_WIDTH,
+                    Jugador.MARIO_BIG_DOWN_HEIGHT);
+        }
+    }
+
+    // * Se sobre escribio por mas comodidad
+    // * Cambia la posicion de la hitbox y se adapta a la accion
+    public void ActualizarPosHitbox() {
+        int newposy = posY;
+        if (accion == AccionPlayer.Agacharse) {
+            newposy = posY + Jugador.BIG_SPRITE_HEIGTH - Jugador.MARIO_BIG_DOWN_HEIGHT;
+        }
+        Hitbox.setLocation(posX, newposy);
     }
 }

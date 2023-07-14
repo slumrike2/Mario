@@ -2,6 +2,7 @@ package ClasesPadre;
 
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
+import java.awt.Graphics;
 
 import javax.imageio.ImageIO;
 
@@ -56,10 +57,17 @@ public abstract class Entidad {
 
     public abstract void ActualizarFrame();
 
-    protected void ActualizarHitbox() {
+    protected void ActualizarPosHitbox() {
         Hitbox.setLocation(posX, posY);
     }
 
     protected abstract void InicializarHitbox();
 
+    public void DibujarHitbox(Graphics g) {
+        g.drawRect(Hitbox.x, Hitbox.y, Hitbox.width, Hitbox.height);
+    }
+
+    public Rectangle getHitbox() {
+        return Hitbox;
+    }
 }

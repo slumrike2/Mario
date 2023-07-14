@@ -7,8 +7,7 @@ import ClasesPadre.Entidad;
 
 public class Goomba extends Entidad {
 
-
-    //Todo Faltan la muerte y las hitboxes
+    // Todo Faltan la muerte y las hitboxes
     BufferedImage[][] animaciones;
 
     private int AccionAnimation = 0, frameAniamcion = 0, contFrames = 0;
@@ -18,6 +17,7 @@ public class Goomba extends Entidad {
         super(Dir, Posx, Posy, velocidad);
         animaciones = animacion(3, 0, 2, 16, 16);
         velocidadAnimacion = 12;
+        InicializarHitbox();
     }
 
     public void update() {
@@ -25,10 +25,12 @@ public class Goomba extends Entidad {
         movimiento();
         ActualizarAccion();
         ActualizarFrame();
+
     }
 
     public void updateFrames(Graphics g) {
         g.drawImage(animaciones[AccionAnimation][frameAniamcion], posX, posY, null);
+        DibujarHitbox(g);
     }
 
     public void movimiento() {
@@ -76,6 +78,6 @@ public class Goomba extends Entidad {
     }
 
     protected void InicializarHitbox() {
-        Hitbox = new java.awt.Rectangle(posX, posY, 16, 32);
+        Hitbox = new java.awt.Rectangle(posX, posY, 16, 16);
     }
 }

@@ -6,6 +6,7 @@ import ClasesPadre.Enemigos.Koopa;
 import ClasesPadre.Enemigos.KoopaVolador;
 import ClasesPadre.Enemigos.Bowser;
 import ClasesPadre.Jugador.Personaje;
+import Constantes.Constantes;
 import Constantes.Constantes.*;
 import Inputs.InptutMouse;
 import Inputs.InputTeclado;
@@ -20,7 +21,7 @@ public class GamePanel extends JPanel {
     private InptutMouse mouseimput = new InptutMouse(this);
     // !warning, cambiar en un futuro lo de las direcciones
     public Personaje mario = new Personaje(PANTALLA.MarioDir, 300, 300, 2);
-    public Goomba goomba = new Goomba(PANTALLA.GoombaDir, 500, 500, 1);
+    public Goomba goomba = new Goomba(PANTALLA.GoombaDir, 500, 300, Constantes.Enemigos.GOOMBA_VELC);
     public Koopa koopa = new Koopa(PANTALLA.KoopaDir, 400, 400, -1);
     public KoopaVolador koopaVolador = new KoopaVolador(PANTALLA.KoopaVoladorDir, 50, 50, 1);
     public Bowser bowser = new Bowser(PANTALLA.BowserDir, 50, 50, 1);
@@ -51,6 +52,7 @@ public class GamePanel extends JPanel {
         super.paintComponent(g);
         // *se encarga de dibujar los frames del peronsaje
         for (Entidad entidad : entidades) {
+
             entidad.updateFrames(g);
         }
     }
@@ -58,6 +60,10 @@ public class GamePanel extends JPanel {
     public void FrameUpdate() {
         for (Entidad entidad : entidades) {
             entidad.update();
+            if (!(entidad instanceof Personaje)) {
+
+                mario.HitEnemigo(entidad.getHitbox());
+            }
         }
 
     }
