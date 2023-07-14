@@ -1,6 +1,7 @@
 package Game;
 
 import Graficos2.GamePanel;
+import Graficos2.Gui;
 
 public class Game {
     GamePanel panel;

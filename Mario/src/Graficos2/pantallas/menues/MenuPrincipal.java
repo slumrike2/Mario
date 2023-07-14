@@ -1,20 +1,24 @@
 package Graficos2.pantallas.menues;
 
 import Game.*;
+import Graficos2.Gui;
 import Constantes.*;
 import java.awt.Dimension;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import databases.Database;
+import databases.Sesion;
 
 public class MenuPrincipal extends JPanel {
 
-    JButton botonSinglePlayer = new JButton("Un solo jugador");
-    JButton botonMultiPlayer = new JButton("Multijugador");
-    JButton botonIniciarSesion = new JButton("Iniciar sesion");
-    JButton botonnRegistrarse = new JButton("Registrarse");
-    JButton botonOpciones = new JButton("Opciones");
-    JButton botonSalir = new JButton("Salir");
+    JButton bttSinglePlayer = new JButton("Un solo jugador");
+    JButton bttMultiPlayer = new JButton("Multijugador");
+    JButton bttIniciarSesion = new JButton("Iniciar sesion");
+    JButton bttCerrarSesion = new JButton("Cerrar sesion");
+    JButton bttRegistrarse = new JButton("Registrarse");
+    JButton bttOpciones = new JButton("Opciones");
+    JButton bttSalir = new JButton("Salir");
 
     public MenuPrincipal() {
         setPreferredSize(new Dimension(1080, 720));
@@ -22,14 +26,26 @@ public class MenuPrincipal extends JPanel {
 
         inicializarBotones();
         inicializarPosiciones();
-        add(botonSinglePlayer);
-        add(botonMultiPlayer);
-        add(botonIniciarSesion);
-        add(botonnRegistrarse);
-        add(botonOpciones);
-        add(botonSalir);
+        add(bttSinglePlayer);
+        add(bttMultiPlayer);
+        add(bttIniciarSesion);
+        add(bttCerrarSesion);
+        add(bttRegistrarse);
+        add(bttOpciones);
+        add(bttSalir);
 
         setVisible(true);
+    }
+
+    public void SetBotonSesion() {
+        if (Sesion.INSTANCE.isSesionIniciada()) {
+            bttIniciarSesion.setVisible(false);
+            bttCerrarSesion.setVisible(true);
+        } else {
+            bttIniciarSesion.setVisible(true);
+            bttCerrarSesion.setVisible(false);
+        }
+
     }
 
     private void botonSinglePlayerActionPerformed() {
@@ -41,11 +57,16 @@ public class MenuPrincipal extends JPanel {
     }
 
     private void botonIniciarSesionActionPerformed() {
-        Gui.switchPantallaMenu(Constantes.PANTALLAS_MENUES.INICIO_SESION);
+        Gui.switchPantallaMenu(Constantes.Pantallas_Menues.INICIO_SESION);
+    }
+
+    private void botonCerrarSesionActionPerformed() {
+        Sesion.INSTANCE.cerrarSesion();
+        SetBotonSesion();
     }
 
     private void botonnRegistrarseActionPerformed() {
-        Gui.switchPantallaMenu(Constantes.PANTALLAS_MENUES.REGISTRO);
+        Gui.switchPantallaMenu(Constantes.Pantallas_Menues.REGISTRO);
     }
 
     private void botonOpcionesActionPerformed() {
@@ -65,24 +86,26 @@ public class MenuPrincipal extends JPanel {
         // boton1.setOpaque(false);
         // botonSinglePlayer.setVisible(true);
 
-        botonSinglePlayer.addActionListener(e -> botonSinglePlayerActionPerformed());
-        botonMultiPlayer.addActionListener(e -> botonMultiPlayerActionPerformed());
-        botonIniciarSesion.addActionListener(e -> botonIniciarSesionActionPerformed());
-        botonnRegistrarse.addActionListener(e -> botonnRegistrarseActionPerformed());
-        botonOpciones.addActionListener(e -> botonOpcionesActionPerformed());
-        botonSalir.addActionListener(e -> botonSalirActionPerformed());
-        
+        bttSinglePlayer.addActionListener(e -> botonSinglePlayerActionPerformed());
+        bttMultiPlayer.addActionListener(e -> botonMultiPlayerActionPerformed());
+        bttIniciarSesion.addActionListener(e -> botonIniciarSesionActionPerformed());
+        bttCerrarSesion.addActionListener(e -> botonCerrarSesionActionPerformed());
+        bttRegistrarse.addActionListener(e -> botonnRegistrarseActionPerformed());
+        bttOpciones.addActionListener(e -> botonOpcionesActionPerformed());
+        bttSalir.addActionListener(e -> botonSalirActionPerformed());
+
     }
 
     private void inicializarPosiciones() {
 
         // Se coloca el boton a la mitad de la pantalla
-        botonSinglePlayer.setBounds(530 - 100, 360 - 50, 200, 50);
-        botonMultiPlayer.setBounds(530 - 100, 360, 200, 50);
-        botonIniciarSesion.setBounds(530 - 100, 360 + 50, 200, 50);
-        botonnRegistrarse.setBounds(530 - 100, 360 + 100, 200, 50);
-        botonOpciones.setBounds(530 - 100, 360 + 150, 200, 50);
-        botonSalir.setBounds(530 - 100, 360 + 200, 200, 50);
+        bttSinglePlayer.setBounds(530 - 100, 360 - 50, 200, 50);
+        bttMultiPlayer.setBounds(530 - 100, 360, 200, 50);
+        bttIniciarSesion.setBounds(530 - 100, 360 + 50, 200, 50);
+        bttCerrarSesion.setBounds(530 - 100, 360 + 50, 200, 50);
+        bttRegistrarse.setBounds(530 - 100, 360 + 100, 200, 50);
+        bttOpciones.setBounds(530 - 100, 360 + 150, 200, 50);
+        bttSalir.setBounds(530 - 100, 360 + 200, 200, 50);
 
     }
 

@@ -2,7 +2,6 @@ package Graficos2;
 
 import javax.swing.JPanel;
 
-import Game.Gui;
 import Graficos2.pantallas.menues.*;
 
 import Graficos2.pantallas.menues.MenuPrincipal;
@@ -23,8 +22,6 @@ public class MenuPanel extends JPanel {
     public static MenuPrincipal menuPrincipal = new MenuPrincipal();
     public static Registro registro = new Registro();
     public static InicioSesion inicioSesion = new InicioSesion();
-
-  
 
     // #endregion
 

@@ -12,7 +12,7 @@ public enum Sesion {
         sesionIniciada = true;
     }
 
-    public void cerrarSession() {
+    public void cerrarSesion() {
         usuario = null;
         sesionIniciada = false;
     }
