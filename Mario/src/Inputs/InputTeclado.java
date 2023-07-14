@@ -1,12 +1,11 @@
-package Inputs;
+package inputs;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-
-import ClasesPadre.Jugador.Personaje.AccionPlayer;
-import Graficos2.GamePanel;
-import Graficos2.Gui;
+import clasesPadre.Jugador.Personaje.AccionPlayer;
+import graficos.GamePanel;
+import graficos.Gui;
 
 public class InputTeclado implements KeyListener {
 

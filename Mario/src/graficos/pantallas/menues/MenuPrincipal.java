@@ -1,14 +1,16 @@
-package Graficos2.pantallas.menues;
+package graficos.pantallas.menues;
 
-import Game.*;
-import Graficos2.Gui;
-import Constantes.*;
 import java.awt.Dimension;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
+import constantes.*;
 import databases.Database;
 import databases.Sesion;
+import game.*;
+import graficos.Gui;
 
 public class MenuPrincipal extends JPanel {
 
@@ -51,6 +53,9 @@ public class MenuPrincipal extends JPanel {
     private void botonSinglePlayerActionPerformed() {
         if (Sesion.INSTANCE.isSesionIniciada())
             Gui.switchState();
+        else
+            JOptionPane.showMessageDialog(null, "Inicie sesion para jugar", "Error", JOptionPane.ERROR_MESSAGE);
+
         // TODO crear menu en el que se seleccion la forma de juego
     }
 

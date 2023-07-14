@@ -1,10 +1,10 @@
-package Inputs;
+package inputs;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
-import Graficos2.GamePanel;
+import graficos.GamePanel;
 
 public class InptutMouse implements MouseListener, MouseMotionListener {
 

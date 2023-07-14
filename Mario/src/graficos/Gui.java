@@ -1,14 +1,16 @@
-package Graficos2;
+package graficos;
 
 import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.CardLayout;
 import java.awt.Menu;
-import Constantes.Constantes;
-import Graficos2.pantallas.menues.MenuPrincipal;
+
 import databases.Sesion;
+import graficos.pantallas.menues.MenuPrincipal;
 
 import javax.swing.JFrame;
+
+import constantes.Constantes;
 
 public class Gui extends Canvas implements Runnable {
     // #region Variables

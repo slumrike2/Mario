@@ -1,4 +1,4 @@
-package Constantes;
+package constantes;
 
 public class Constantes {
     public static class PANTALLA {

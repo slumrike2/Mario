@@ -1,4 +1,4 @@
-package Graficos2.pantallas.menues;
+package graficos.pantallas.menues;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -6,11 +6,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import constantes.Constantes.Pantallas_Menues;
 import databases.Database;
 import databases.Sesion;
 import databases.Usuario;
-import Constantes.Constantes.Pantallas_Menues;
-import Graficos2.Gui;
+import graficos.Gui;
 
 public class InicioSesion extends JPanel {
 

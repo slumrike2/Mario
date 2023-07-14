@@ -1,7 +1,9 @@
-package Game;
+package game;
 
-import Graficos2.GamePanel;
-import Graficos2.Gui;
+import databases.Sesion;
+import databases.Usuario;
+import graficos.GamePanel;
+import graficos.Gui;
 
 public class Game {
     GamePanel panel;
@@ -16,6 +18,8 @@ public class Game {
     }
 
     public static void main(String[] args) throws Exception {
+        Sesion.INSTANCE.crearSession(new Usuario("1", "1", "1"));
         new Game();
+
     }
 }

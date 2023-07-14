@@ -1,11 +1,12 @@
-package ClasesPadre.Jugador;
+package clasesPadre.Jugador;
 
 import java.awt.Graphics;
 
 import java.awt.image.BufferedImage;
 
-import Constantes.Constantes.*;
-import ClasesPadre.Entidad;
+import clasesPadre.Entidad;
+import constantes.Constantes.*;
+
 import java.awt.Rectangle;
 
 public class Personaje extends Entidad {

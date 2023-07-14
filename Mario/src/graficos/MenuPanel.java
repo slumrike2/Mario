@@ -1,12 +1,10 @@
-package Graficos2;
+package graficos;
 
 import javax.swing.JPanel;
 
-import Graficos2.pantallas.menues.*;
+import constantes.Constantes.*;
+import graficos.pantallas.menues.*;
 
-import Graficos2.pantallas.menues.MenuPrincipal;
-
-import Constantes.Constantes.*;
 import java.awt.Graphics;
 
 import java.awt.image.BufferedImage;
@@ -15,6 +13,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 
 //*Panel encargado de contener todos los paneles del menu */
+//TODO Mejorar la vista de todos los paneles de menu
 public class MenuPanel extends JPanel {
 
     // #region pantallas

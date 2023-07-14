@@ -1,9 +1,9 @@
-package Graficos2.pantallas.menues;
+package graficos.pantallas.menues;
 
-import Game.*;
-import Graficos2.Gui;
 import databases.Database;
 import databases.Usuario;
+import game.*;
+import graficos.Gui;
 
 import java.awt.Dimension;
 
@@ -12,7 +12,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import Constantes.*;
+
+import constantes.*;
 
 public class Registro extends JPanel {
 
