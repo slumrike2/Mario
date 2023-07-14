@@ -5,6 +5,9 @@ import javax.swing.JPanel;
 import Game.Gui;
 import Graficos2.pantallas.menues.*;
 
+import Graficos2.pantallas.menues.MenuPrincipal;
+
+import Constantes.Constantes.*;
 import java.awt.Graphics;
 
 import java.awt.image.BufferedImage;
@@ -31,7 +34,7 @@ public class MenuPanel extends JPanel {
     public BufferedImage aux;
 
     public MenuPanel() {
-        setPreferredSize(new Dimension(1080, 720));
+        setPreferredSize(new Dimension(PANTALLA.SCREEN_WIDTH, PANTALLA.SCREEN_HEIGHT));
         // ? se encargan de agregar los inputs
 
         setBackground(Color.BLACK);

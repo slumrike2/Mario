@@ -151,7 +151,7 @@ public class Personaje extends Entidad {
         if (FuerzaSalto != 0) {
             posY -= gravedad;
             FuerzaSalto--;
-            System.out.println(FuerzaSalto);
+            
         }
         // Todo Agregar colisiones para poner el en suelo activo y falso para el
         // funcionamiento del salto
