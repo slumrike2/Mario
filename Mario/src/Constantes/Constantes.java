@@ -36,4 +36,11 @@ public class Constantes {
         public static final int GRAVEDAD = 3;
     }
 
+    public enum PANTALLAS_MENUES {
+        MENU_PRINCIPAL, REGISTRO, INICIO_SESION, MENU_GESTIONAR_COLECCION
+    }
+
+    public enum PANTALLAS_MUNDOS {
+        MUNDO_1, PANTALLA_2, PANTALLA_3, PANTALLA_4, PANTALLA_5
+    }
 }

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import interfaces.Identificable;
 
 public class ArchivoSerializable<T> {
-    private static String globalPath = ".\\src\\Data\\";
+    private static String globalPath = "Mario\\src\\userData\\";
 
     private ObjectInputStream inputStream;
     private ObjectOutputStream outputStream;
@@ -27,10 +27,9 @@ public class ArchivoSerializable<T> {
     static public void crearArchivo(String nombreArchivo) {
         try {
             File file = new File(globalPath + nombreArchivo + ".dat");
-
+            System.out.println(file.getAbsolutePath());
             if (!file.exists()) {
                 file.createNewFile();
-
                 // Se realiza la cabecera del archivo
                 OutputStream outputStream = new ObjectOutputStream(new FileOutputStream(file, true));
                 outputStream.close();
@@ -138,7 +137,6 @@ public class ArchivoSerializable<T> {
         } catch (EOFException e) {
             return null;
         } catch (Exception e) {
-            System.out.println(e.getClass().getName());
             return null;
         }
     }

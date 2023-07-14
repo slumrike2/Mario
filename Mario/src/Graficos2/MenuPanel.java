@@ -2,6 +2,9 @@ package Graficos2;
 
 import javax.swing.JPanel;
 
+import Game.Gui;
+import Graficos2.pantallas.menues.*;
+
 import Graficos2.pantallas.menues.MenuPrincipal;
 
 import Constantes.Constantes.*;
@@ -16,8 +19,13 @@ import java.awt.Dimension;
 public class MenuPanel extends JPanel {
 
     // #region pantallas
-    CardLayout cardLayout = new CardLayout();
+    public static CardLayout cardLayout = new CardLayout();
     public static MenuPrincipal menuPrincipal = new MenuPrincipal();
+    public static Registro registro = new Registro();
+    public static InicioSesion inicioSesion = new InicioSesion();
+
+  
+
     // #endregion
 
     static int contador = 0;
@@ -31,6 +39,9 @@ public class MenuPanel extends JPanel {
 
         setLayout(cardLayout);
         add(menuPrincipal, "MenuPrincipal");
+        add(registro, "Registro");
+        add(inicioSesion, "InicioSesion");
+
         cardLayout.show(this, "MenuPrincipal");
 
         setFocusable(true);
@@ -44,10 +55,6 @@ public class MenuPanel extends JPanel {
 
     public void FrameUpdate() {
 
-    }
-
-    public void cambiarPantalla(String nombre) {
-        cardLayout.show(this, nombre);
     }
 
 }

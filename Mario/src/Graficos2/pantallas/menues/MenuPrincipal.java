@@ -1,12 +1,14 @@
 package Graficos2.pantallas.menues;
 
 import Game.*;
+import Constantes.*;
 import java.awt.Dimension;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class MenuPrincipal extends JPanel {
+
     JButton botonSinglePlayer = new JButton("Un solo jugador");
     JButton botonMultiPlayer = new JButton("Multijugador");
     JButton botonIniciarSesion = new JButton("Iniciar sesion");
@@ -39,11 +41,11 @@ public class MenuPrincipal extends JPanel {
     }
 
     private void botonIniciarSesionActionPerformed() {
-        // TODO add your handling code here:
+        Gui.switchPantallaMenu(Constantes.PANTALLAS_MENUES.INICIO_SESION);
     }
 
     private void botonnRegistrarseActionPerformed() {
-        // TODO add your handling code here:
+        Gui.switchPantallaMenu(Constantes.PANTALLAS_MENUES.REGISTRO);
     }
 
     private void botonOpcionesActionPerformed() {
@@ -63,42 +65,13 @@ public class MenuPrincipal extends JPanel {
         // boton1.setOpaque(false);
         // botonSinglePlayer.setVisible(true);
 
-        botonSinglePlayer.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonSinglePlayerActionPerformed();
-            }
-        });
-
-        botonMultiPlayer.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonMultiPlayerActionPerformed();
-            }
-        });
-
-        botonIniciarSesion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonIniciarSesionActionPerformed();
-            }
-        });
-
-        botonnRegistrarse.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonnRegistrarseActionPerformed();
-            }
-        });
-
-        botonOpciones.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonOpcionesActionPerformed();
-            }
-        });
-
-        botonSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonSalirActionPerformed();
-            }
-        });
-
+        botonSinglePlayer.addActionListener(e -> botonSinglePlayerActionPerformed());
+        botonMultiPlayer.addActionListener(e -> botonMultiPlayerActionPerformed());
+        botonIniciarSesion.addActionListener(e -> botonIniciarSesionActionPerformed());
+        botonnRegistrarse.addActionListener(e -> botonnRegistrarseActionPerformed());
+        botonOpciones.addActionListener(e -> botonOpcionesActionPerformed());
+        botonSalir.addActionListener(e -> botonSalirActionPerformed());
+        
     }
 
     private void inicializarPosiciones() {

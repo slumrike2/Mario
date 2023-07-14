@@ -3,7 +3,8 @@ package Game;
 import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.CardLayout;
-
+import java.awt.Menu;
+import Constantes.Constantes;
 import javax.swing.JFrame;
 
 import Graficos2.GamePanel;
@@ -23,14 +24,6 @@ public class Gui extends Canvas implements Runnable {
 
     public enum GameState {
         MENU, JUEGO
-    }
-
-    public enum PantallasPosiblesMenu {
-        MENU_PRINCIPAL, REGISTRO, INICIO_SESION, MENU_GESTIONAR_COLECCION
-    }
-
-    public enum PantallasPosiblesJuego {
-        MUNDO_1, PANTALLA_2, PANTALLA_3, PANTALLA_4, PANTALLA_5
     }
 
     Thread hilo;
@@ -118,10 +111,26 @@ public class Gui extends Canvas implements Runnable {
 
     }
 
+    public static void switchPantallaMenu(Constantes.PANTALLAS_MENUES pantalla) {
+        switch (pantalla) {
+            case MENU_PRINCIPAL:
+                MenuPanel.cardLayout.show(menu, "MenuPrincipal");
+                break;
+            case REGISTRO:
+                MenuPanel.cardLayout.show(menu, "Registro");
+                break;
+            case INICIO_SESION:
+                MenuPanel.cardLayout.show(menu, "InicioSesion");
+                break;
+            default:
+                break;
+        }
+    }
+
     public static void salir() {
         System.exit(0);
     }
-    
+
     // #endregion
 
     // #region ThreadManagers
