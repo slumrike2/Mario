@@ -11,6 +11,7 @@ import constantes.Constantes.*;
 import java.awt.Rectangle;
 
 public class Personaje extends Entidad {
+
     // #region Constantes
     private int gravedad = Globales.GRAVEDAD;
     public int FuerzaSalto = Jugador.MARIO_JUMP_FORCE;
@@ -43,7 +44,7 @@ public class Personaje extends Entidad {
     // #region Metodos
     // *Dir reseprenta la direccion de la hoja de sprite correspondiente */
     public Personaje(String Dir, int Posx, int Posy, int velocidad) {
-        super(Dir, Posx, Posy, velocidad);
+        super(Dir, Posx, Posy, velocidad, 2, 1);
         GetAnimations();
 
     }
@@ -66,12 +67,12 @@ public class Personaje extends Entidad {
     }
 
     // *se encarga de dibujar los frames del personaje
-    public void updateFrames(Graphics g) {
 
-        // *se dibuja el frame correspondiente
-        g.drawImage(animaciones[AccionAnimation][frameAniamcion], posX, posY, null);
+    public void updateFrames(java.awt.Graphics g) {
+        g.drawImage(animaciones[AccionAnimation][frameAniamcion], posX, posY,
+                PANTALLA.TILES_ACTUAL_SIZE * anchura_Tiles,
+                PANTALLA.TILES_ACTUAL_SIZE * altura_Tiles, null);
         DibujarHitbox(g);
-
     }
 
     // *Determina la animacion que sigue
@@ -217,7 +218,8 @@ public class Personaje extends Entidad {
     // *Hitbox es del sistema de collisiones
     // ? se necesita actualizar o mostrarla para verificacion
     protected void InicializarHitbox() {
-        Hitbox = new Rectangle(posX, posY, 16, 32);
+        Hitbox = new java.awt.Rectangle(posX, posY, PANTALLA.TILES_ACTUAL_SIZE * anchura_Tiles,
+                PANTALLA.TILES_ACTUAL_SIZE * altura_Tiles);
     }
 
     // *hitBox para enemigos

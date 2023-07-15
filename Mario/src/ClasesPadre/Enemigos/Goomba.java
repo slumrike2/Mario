@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 import clasesPadre.Entidad;
+import constantes.Constantes.PANTALLA;
 
 public class Goomba extends Entidad {
 
@@ -14,7 +15,7 @@ public class Goomba extends Entidad {
     public boolean Vivo = true, enMovimiento = true;
 
     public Goomba(String Dir, int Posx, int Posy, int velocidad) {
-        super(Dir, Posx, Posy, velocidad);
+        super(Dir, Posx, Posy, velocidad, 1, 1);
         animaciones = animacion(3, 0, 2, 16, 16);
         velocidadAnimacion = 12;
         InicializarHitbox();
@@ -29,7 +30,9 @@ public class Goomba extends Entidad {
     }
 
     public void updateFrames(Graphics g) {
-        g.drawImage(animaciones[AccionAnimation][frameAniamcion], posX, posY, null);
+       g.drawImage(animaciones[AccionAnimation][frameAniamcion], posX, posY,
+                PANTALLA.TILES_ACTUAL_SIZE * anchura_Tiles,
+                PANTALLA.TILES_ACTUAL_SIZE * altura_Tiles, null);
         DibujarHitbox(g);
     }
 
@@ -78,6 +81,7 @@ public class Goomba extends Entidad {
     }
 
     protected void InicializarHitbox() {
-        Hitbox = new java.awt.Rectangle(posX, posY, 16, 16);
+        Hitbox = new java.awt.Rectangle(posX, posY, PANTALLA.TILES_ACTUAL_SIZE * anchura_Tiles,
+                PANTALLA.TILES_ACTUAL_SIZE * altura_Tiles);
     }
 }

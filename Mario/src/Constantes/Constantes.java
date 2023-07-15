@@ -5,13 +5,13 @@ public class Constantes {
         // !public static final int SCREEN_WIDTH = 1080;
         // !public static final int SCREEN_HEIGHT = 720;
         public static final int TILES_DEFAULT_SIZE = 16;
-        public static final float TILES_DEFAULT_SCALE = 1f;
+        public static final float PIXEL_SCALE = 1.5f;
         public static final int TILES_IN_WIDTH = 30;
-        public static final int TILES_IN_HEIGHT = 30;
-        public static final int TILES_SIZE = (int) (TILES_DEFAULT_SCALE * TILES_DEFAULT_SIZE);
+        public static final int TILES_IN_HEIGHT = 20;
+        public static final int TILES_ACTUAL_SIZE = (int) (PIXEL_SCALE * TILES_DEFAULT_SIZE);
 
-        public static final int SCREEN_WIDTH = TILES_IN_WIDTH * TILES_SIZE;
-        public static final int SCREEN_HEIGHT = TILES_IN_HEIGHT * TILES_SIZE;
+        public static final int SCREEN_WIDTH = TILES_IN_WIDTH * TILES_ACTUAL_SIZE;
+        public static final int SCREEN_HEIGHT = TILES_IN_HEIGHT * TILES_ACTUAL_SIZE;
 
         public static final String MarioDir = "res/marioAnimations.png";
         public static final String GoombaDir = "Sprites/cusGoombaSprite.png";

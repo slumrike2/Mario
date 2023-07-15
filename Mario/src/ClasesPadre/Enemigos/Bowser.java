@@ -2,6 +2,8 @@ package clasesPadre.Enemigos;
 
 import clasesPadre.Entidad;
 
+import constantes.Constantes.PANTALLA;
+
 public class Bowser extends Entidad {
 
     private int velocidadAtaque = 80, contVelcAtaque = 0;
@@ -10,7 +12,7 @@ public class Bowser extends Entidad {
     private int tiempoSalto = 120 * 5;
 
     public Bowser(String Dir, int Posx, int Posy, int velocidad) {
-        super(Dir, Posx, Posy, velocidad);
+        super(Dir, Posx, Posy, velocidad, 2, 2);
         animaciones = animacion(2, 0, 2, 32, 32);
         velocidadAnimacion = 30;
     }
@@ -60,7 +62,8 @@ public class Bowser extends Entidad {
     }
 
     protected void InicializarHitbox() {
-        Hitbox = new java.awt.Rectangle(posX, posY, 16, 32);
+        Hitbox = new java.awt.Rectangle(posX, posY, PANTALLA.TILES_ACTUAL_SIZE * anchura_Tiles,
+                PANTALLA.TILES_ACTUAL_SIZE * altura_Tiles);
     }
 
     public void DibujarHitbox(java.awt.Graphics g) {
@@ -68,7 +71,8 @@ public class Bowser extends Entidad {
     }
 
     public void updateFrames(java.awt.Graphics g) {
-        g.drawImage(animaciones[AccionAnimation][frameAniamcion], posX, posY, null);
-        
+        g.drawImage(animaciones[AccionAnimation][frameAniamcion], posX, posY,
+                PANTALLA.TILES_ACTUAL_SIZE * anchura_Tiles,
+                PANTALLA.TILES_ACTUAL_SIZE * altura_Tiles, null);
     }
 }

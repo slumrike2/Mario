@@ -9,6 +9,8 @@ import javax.swing.AbstractAction;
 
 public abstract class Entidad {
 
+    public int altura_Tiles;
+    public int anchura_Tiles;
     public int velocidad; // velocidad en pixeles de forma horizontal
     public int posX, posY;
     public boolean vivo = true;
@@ -19,8 +21,10 @@ public abstract class Entidad {
     // * Colliision
     protected Rectangle Hitbox;
 
-    public Entidad(String Dir, int Posx, int Posy, int velocidad) {
+    public Entidad(String Dir, int Posx, int Posy, int velocidad, int altura_Tiles, int anchura_Tiles) {
         importarImagen(Dir);
+        this.altura_Tiles = altura_Tiles;
+        this.anchura_Tiles = anchura_Tiles;
         this.posX = Posx;
         this.posY = Posy;
         this.velocidad = velocidad;

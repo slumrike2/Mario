@@ -3,6 +3,7 @@ package graficos;
 import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.CardLayout;
+import java.awt.Dimension;
 
 import javax.swing.JFrame;
 
@@ -38,7 +39,7 @@ public class Gui extends Canvas implements Runnable {
         // *se crea la ventana
         ventana = new JFrame("Mario");
         // *se le da un tamaño a la ventana
-        ventana.setSize(PANTALLA.SCREEN_WIDTH, PANTALLA.SCREEN_HEIGHT);
+        ventana.setPreferredSize(new Dimension(PANTALLA.SCREEN_WIDTH, PANTALLA.SCREEN_HEIGHT));
         // *se le da un comportamiento al cerrar la ventana
         // !sin esto no se cierra y queda en ejecucion
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -48,7 +49,7 @@ public class Gui extends Canvas implements Runnable {
         ventana.setLayout(new BorderLayout());
         // *para que la ventana se muestre en el centro de la pantalla
         ventana.setLocationRelativeTo(null);
-        ventana.add(panel);
+        ventana.getContentPane().add(panel);
         Gui.panel = panel;
 
         // *para que la ventana se muestre
@@ -76,10 +77,11 @@ public class Gui extends Canvas implements Runnable {
         menu = new MenuPanel();
         panel = new GamePanel();
         // ventana.add(panel, "Juego");
-        ventana.add(menu, "Menu");
+        ventana.getContentPane().add(menu, "Menu");
         menu.requestFocusInWindow();
         cardLayout.show(ventana.getContentPane(), "Menu");
 
+        ventana.pack();
         // *para que la ventana se muestre
         ventana.setVisible(true);
         // *para que la ventana se muestre en el centro de la pantalla
@@ -100,7 +102,7 @@ public class Gui extends Canvas implements Runnable {
             ventana.remove(menu);
             menu = null;
             panel = new GamePanel();
-            ventana.add(panel, "Juego");
+            ventana.getContentPane().add(panel, "Juego");
             cardLayout.show(ventana.getContentPane(), "Juego");
             panel.requestFocusInWindow();
             estadoJuego = GameState.JUEGO;

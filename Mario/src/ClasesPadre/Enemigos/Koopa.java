@@ -1,6 +1,7 @@
 package clasesPadre.Enemigos;
 
 import clasesPadre.Entidad;
+import constantes.Constantes.PANTALLA;
 
 public class Koopa extends Entidad {
 
@@ -11,7 +12,7 @@ public class Koopa extends Entidad {
     }
 
     public Koopa(String Dir, int Posx, int Posy, int velocidad) {
-        super(Dir, Posx, Posy, velocidad);
+        super(Dir, Posx, Posy, velocidad, 2, 1);
         animaciones = animacion(3, 0, 2, 16, 32);
         velocidadAnimacion = 12;
     }
@@ -25,7 +26,9 @@ public class Koopa extends Entidad {
     }
 
     public void updateFrames(java.awt.Graphics g) {
-        g.drawImage(animaciones[AccionAnimation][frameAniamcion], posX, posY, null);
+        g.drawImage(animaciones[AccionAnimation][frameAniamcion], posX, posY,
+                PANTALLA.TILES_ACTUAL_SIZE * anchura_Tiles,
+                PANTALLA.TILES_ACTUAL_SIZE * altura_Tiles, null);
     }
 
     public void movimiento() {
@@ -65,7 +68,8 @@ public class Koopa extends Entidad {
     }
 
     protected void InicializarHitbox() {
-        Hitbox = new java.awt.Rectangle(posX, posY, 16, 32);
+        Hitbox = new java.awt.Rectangle(posX, posY, PANTALLA.TILES_ACTUAL_SIZE * anchura_Tiles,
+                PANTALLA.TILES_ACTUAL_SIZE * altura_Tiles);
     }
 
 }

@@ -5,6 +5,8 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 import javax.imageio.ImageIO;
+import javax.sound.midi.Patch;
+
 import graficos.GamePanel;
 
 import utils.LoadSave;
@@ -42,7 +44,8 @@ public class LevelManager {
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 6; j++) {
                 int index = i * 6 + j;
-                levelSprite[index] = imagen.getSubimage(j * 16, i * 16, 16, 16);
+                levelSprite[index] = imagen.getSubimage(j * PANTALLA.TILES_DEFAULT_SIZE,
+                        i * PANTALLA.TILES_DEFAULT_SIZE, PANTALLA.TILES_DEFAULT_SIZE,PANTALLA.TILES_DEFAULT_SIZE);
             }
         }
     }
@@ -51,12 +54,10 @@ public class LevelManager {
         for (int i = 0; i < PANTALLA.TILES_IN_HEIGHT; i++) {
             for (int j = 0; j < PANTALLA.TILES_IN_WIDTH; j++) {
                 int tile = level1.getTile(j, i);
-                    g.drawImage(levelSprite[tile], j * PANTALLA.TILES_DEFAULT_SIZE, i * PANTALLA.TILES_DEFAULT_SIZE,
-                            PANTALLA.TILES_DEFAULT_SIZE, PANTALLA.TILES_DEFAULT_SIZE,
-                            null);
-                }
+                g.drawImage(levelSprite[tile], j * PANTALLA.TILES_ACTUAL_SIZE, i * PANTALLA.TILES_ACTUAL_SIZE,
+                        PANTALLA.TILES_ACTUAL_SIZE, PANTALLA.TILES_ACTUAL_SIZE,
+                        null);
             }
         }
     }
-
-
+}
