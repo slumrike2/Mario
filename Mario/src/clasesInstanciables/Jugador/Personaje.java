@@ -3,14 +3,14 @@ package clasesInstanciables.Jugador;
 import java.awt.image.BufferedImage;
 
 import clasesInstanciables.Entidad;
-import constantes.constantes;
-import constantes.constantes.*;
+
+import constantes.Constantes.*;
 
 import java.awt.Rectangle;
 
 public class Personaje extends Entidad {
 
-    // #region constantes
+    // #region Constantes
     private int gravedad = Globales.GRAVEDAD;
 
     // #endregion

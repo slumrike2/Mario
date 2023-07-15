@@ -6,7 +6,7 @@ import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 
-import constantes.constantes.PANTALLA;
+import constantes.Constantes.PANTALLA;
 
 public class LoadSave {
 

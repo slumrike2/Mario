@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage;
 import graficos.GamePanel;
 
 import utils.LoadSave;
-import constantes.constantes.PANTALLA;
+import constantes.Constantes.PANTALLA;
 
 public class LevelManager {
 

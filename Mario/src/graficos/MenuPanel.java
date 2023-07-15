@@ -2,7 +2,7 @@ package graficos;
 
 import javax.swing.JPanel;
 
-import constantes.constantes.*;
+import constantes.Constantes.*;
 import graficos.pantallas.menues.*;
 
 import java.awt.Graphics;

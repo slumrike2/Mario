@@ -1,16 +1,8 @@
-<<<<<<<< Updated upstream:Mario/src/clasesPadre/enemigos/Bowser.java
-package clasesPadre.enemigos;
-========
-<<<<<<<< HEAD:Mario/src/clasesInstanciables/Enemigos/Bowser.java
 package clasesInstanciables.Enemigos;
-========
-package clasesPadre.enemigos;
->>>>>>>> cf8cf87921214ca3eab205bd839ecebb485d4336:Mario/src/clasesPadre/enemigos/Bowser.java
->>>>>>>> Stashed changes:Mario/src/clasesInstanciables/Enemigos/Bowser.java
 
 import clasesInstanciables.Entidad;
 //siva
-import constantes.constantes.PANTALLA;
+import constantes.Constantes.PANTALLA;
 
 public class Bowser extends Entidad {
 

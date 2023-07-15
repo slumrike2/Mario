@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import constantes.constantes.Pantallas_Menues;
+import constantes.Constantes.Pantallas_Menues;
 import databases.Database;
 import databases.Sesion;
 import databases.Usuario;

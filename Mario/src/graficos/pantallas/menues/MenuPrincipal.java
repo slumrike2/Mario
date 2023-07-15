@@ -62,7 +62,7 @@ public class MenuPrincipal extends JPanel {
     }
 
     private void botonIniciarSesionActionPerformed() {
-        Gui.switchPantallaMenu(constantes.Pantallas_Menues.INICIO_SESION);
+        Gui.switchPantallaMenu(Constantes.Pantallas_Menues.INICIO_SESION);
     }
 
     private void botonCerrarSesionActionPerformed() {
@@ -71,7 +71,7 @@ public class MenuPrincipal extends JPanel {
     }
 
     private void botonnRegistrarseActionPerformed() {
-        Gui.switchPantallaMenu(constantes.Pantallas_Menues.REGISTRO);
+        Gui.switchPantallaMenu(Constantes.Pantallas_Menues.REGISTRO);
     }
 
     private void botonOpcionesActionPerformed() {

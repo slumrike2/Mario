@@ -1,14 +1,10 @@
-<<<<<<<< HEAD:Mario/src/clasesInstanciables/Enemigos/Goomba.java
 package clasesInstanciables.Enemigos;
-========
-package clasesPadre.enemigos;
->>>>>>>> cf8cf87921214ca3eab205bd839ecebb485d4336:Mario/src/clasesPadre/enemigos/Goomba.java
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 import clasesInstanciables.Entidad;
-import constantes.constantes.PANTALLA;
+import constantes.Constantes.PANTALLA;
 
 public class Goomba extends Entidad {
 

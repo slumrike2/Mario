@@ -67,7 +67,7 @@ public class Registro extends JPanel {
     }
 
     private void botonVolverActionPerformed() {
-        Gui.switchPantallaMenu(constantes.Pantallas_Menues.MENU_PRINCIPAL);
+        Gui.switchPantallaMenu(Constantes.Pantallas_Menues.MENU_PRINCIPAL);
     }
 
     private void inicializarBotones() {
@@ -133,7 +133,7 @@ public class Registro extends JPanel {
             if (Database.INSTANCE.agregarUsuario(usuario) == 1) {
                 JOptionPane.showMessageDialog(this, "Usuario registrado", "Dialog",
                         JOptionPane.INFORMATION_MESSAGE);
-                Gui.switchPantallaMenu(constantes.Pantallas_Menues.MENU_PRINCIPAL);
+                Gui.switchPantallaMenu(Constantes.Pantallas_Menues.MENU_PRINCIPAL);
                 limpiarLabels();
             } else
                 JOptionPane.showMessageDialog(this, "El usuario ya existe", "Dialog",
