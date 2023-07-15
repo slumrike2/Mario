@@ -1,6 +1,6 @@
-package ClasesPadre.Enemigos;
+package clasesPadre.Enemigos;
 
-import ClasesPadre.Entidad;
+import clasesPadre.Entidad;
 
 import Constantes.Constantes.PANTALLA;
 

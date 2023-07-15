@@ -1,4 +1,4 @@
-package ClasesPadre.PowerUps;
+package clasesPadre.PowerUps;
 
 public class Recolectable {
 

@@ -1,10 +1,10 @@
-package ClasesPadre.Jugador;
+package clasesPadre.Jugador;
 
-import java.awt.Graphics;
+
 
 import java.awt.image.BufferedImage;
 
-import ClasesPadre.Entidad;
+import clasesPadre.Entidad;
 import Constantes.Constantes;
 import Constantes.Constantes.*;
 

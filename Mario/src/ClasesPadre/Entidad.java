@@ -1,4 +1,4 @@
-package ClasesPadre;
+package clasesPadre;
 
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
