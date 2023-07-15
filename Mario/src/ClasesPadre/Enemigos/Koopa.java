@@ -21,6 +21,11 @@ public class Koopa extends Entidad {
         movimiento();
         ActualizarAccion();
         ActualizarFrame();
+        ActualizarPosHitbox();
+    }
+
+    public void updateFrames(java.awt.Graphics g) {
+        g.drawImage(animaciones[AccionAnimation][frameAniamcion], posX, posY, null);
     }
 
     public void movimiento() {

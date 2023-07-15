@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 import ClasesPadre.Entidad;
+import Constantes.Constantes;
 import Constantes.Constantes.*;
 
 import java.awt.Rectangle;
@@ -13,13 +14,16 @@ public class Personaje extends Entidad {
     // #region Constantes
     private int gravedad = Globales.GRAVEDAD;
     public int FuerzaSalto = Jugador.MARIO_JUMP_FORCE;
-    private int invensibilityFrames = Jugador.INVENSIBILITY_FRAMES, contInvensibilityFrames = 0;
+    private int invensibilityFrames = Jugador.INVENSIBILITY_FRAMES,
+            velocidadAnimacion = Jugador.MARIO_VELCIDAD_ANIMACION,
+            velocidadAnimacionMuerte = Jugador.CANT_FRAMES_MUERTE;
+    // #endregion
 
     // #region Variables
 
     // *Cada cuantos frames se actualiza la animacion
-    private int velocidadAnimacion = Jugador.MARIO_VELCIDAD_ANIMACION, AccionAnimation = 0, frameAniamcion = 0,
-            contFrames = 0;
+    private int contInvensibilityFrames = 0, AccionAnimation = 0, frameAniamcion = 0,
+            contFrames = 0, contFramesMuerte = 0;
     public BufferedImage[][] animaciones; // * todas las animaciones del personaje
     public Boolean enMovimiento = false, saltando = false, EnSuelo = true; // * Boleanos que determinaran acciones
     public Boolean MovDerecha = false, MovIzquierda = false, MovAbajo = false, MovArriba = false;
@@ -46,18 +50,18 @@ public class Personaje extends Entidad {
 
     // *se encarga de cargar las animaciones del personaje
     public void GetAnimations() {
-        animaciones = animacion(20, 0, 3, 16, 32);
+        animaciones = animacion(21, 0, 3, 16, 32);
     }
 
     // *se encarga de la actualizacion del personaje en acciones
     public void update() {
-        cambiarHitbox();
-        ActualizarPosHitbox();
 
         movimiento();
         ActualizarAccion();
         // *funcion que determina que animacion sigue y que frame de la animacion
         ActualizarFrame();
+        VerificarMuerte();
+        ActHitbox();
         contInvensibilityFrames++;
     }
 
@@ -70,7 +74,7 @@ public class Personaje extends Entidad {
 
     }
 
-    // ?Determina la animacion que sigue
+    // *Determina la animacion que sigue
     public void ActualizarFrame() {
         contFrames++;
         if (accion == AccionPlayer.Quieto || accion == AccionPlayer.Agacharse) {
@@ -95,8 +99,15 @@ public class Personaje extends Entidad {
 
     // *Determina la accion que sigue y su direccion
     public void ActualizarAccion() {
-        int aux = 0;
+        if (vivo == false) {
+            AccionAnimation = 20;
+            accion = AccionPlayer.Quieto;
+            return;
+        }
 
+        int aux = 0;
+        if (pequeño)
+            aux = 5;
         // ! se suman 10 para que se pueda acceder a las animaciones de la izquierda
         accion = AccionPlayer.Quieto;
         // *confimacioines para la animacion y vista de la direccion
@@ -106,16 +117,23 @@ public class Personaje extends Entidad {
 
         } else if (MovIzquierda == true && MovDerecha == false) {
             accion = AccionPlayer.Correr;
-            aux = 10;
+            aux += 10;
         }
         if (MovAbajo == true) {
-            accion = AccionPlayer.Agacharse;
+            if (!pequeño) {
+                accion = AccionPlayer.Agacharse;
+            } else {
+                accion = AccionPlayer.Quieto;
+            }
         }
+
         if (saltando) {
             accion = AccionPlayer.Saltar;
-            if (MovIzquierda == true)
-                aux = 10;
+        }
 
+        if (vivo == false) {
+            accion = AccionPlayer.Quieto;
+            aux = 18;
         }
         // * determina la accion a realizar y su direccion gracias al aux */
         switch (accion) {
@@ -143,7 +161,7 @@ public class Personaje extends Entidad {
     // *se encarga de mover al personaje
     public void movimiento() {
 
-        if (MovAbajo != true) {
+        if (MovAbajo != true && vivo == true) {
 
             if (MovDerecha == true && MovIzquierda == false) {
                 posX += velocidad;
@@ -154,6 +172,13 @@ public class Personaje extends Entidad {
 
             }
         }
+        if (MovArriba == true && MovAbajo == false) {
+            posY -= velocidad;
+        }
+        if (MovAbajo == true && MovArriba == false) {
+            posY += velocidad;
+        }
+
         // Todo Actualizar el sistema de graveddad con mas presision y crear clase
         // vector
         // *Gravedad
@@ -199,8 +224,22 @@ public class Personaje extends Entidad {
     public void HitEnemigo(Rectangle HitboxEnemigo) {
         if (Hitbox.intersects(HitboxEnemigo)) {
             // *Tiempo Entre golpes
+            // *Si esta por encima del enemigo salta sobre el
+            // Todo Que el enemigo reciba el golpe perse
+            if ((Hitbox.y + Hitbox.height) <= (HitboxEnemigo.y + HitboxEnemigo.height)) {
+                FuerzaSalto = Constantes.Jugador.MARIO_JUMP_FORCE;
+                System.out.println("Salto enemigo");
+                return;
+            }
+            // * Sino le hara damage a mario */
             if (contInvensibilityFrames >= invensibilityFrames) {
                 // Todo VolverMarioChiquito con el golpe
+                if (pequeño == false) {
+                    pequeño = true;
+                    System.out.println("Recibio golpe");
+                    contInvensibilityFrames = 0;
+                    return;
+                }
                 vivo = false;
                 System.out.println("Muerto");
                 contInvensibilityFrames = 0;
@@ -208,23 +247,45 @@ public class Personaje extends Entidad {
         }
     }
 
-    public void cambiarHitbox() {
+    // * Se sobre escribio por mas comodidad
+    // * Cambia la posicion de la hitbox y se adapta a la accion
 
+    public void ActHitbox() {
         InicializarHitbox();
-        if (accion == AccionPlayer.Agacharse) {
-
+        int newposy = posY;
+        if (accion == AccionPlayer.Agacharse && !pequeño) {
+            newposy = posY + Jugador.BIG_SPRITE_HEIGTH - Jugador.MARIO_BIG_DOWN_HEIGHT;
             Hitbox = new Rectangle(posX, posY, Jugador.SPRITE_WIDTH,
                     Jugador.MARIO_BIG_DOWN_HEIGHT);
         }
-    }
-
-    // * Se sobre escribio por mas comodidad
-    // * Cambia la posicion de la hitbox y se adapta a la accion
-    public void ActualizarPosHitbox() {
-        int newposy = posY;
-        if (accion == AccionPlayer.Agacharse) {
-            newposy = posY + Jugador.BIG_SPRITE_HEIGTH - Jugador.MARIO_BIG_DOWN_HEIGHT;
+        if (pequeño) {
+            newposy = posY + Jugador.BIG_SPRITE_HEIGTH - Jugador.SMALL_SPRITE_HEIGTH;
+            Hitbox = new Rectangle(posX, posY, Jugador.SPRITE_WIDTH, Jugador.SMALL_SPRITE_HEIGTH);
         }
         Hitbox.setLocation(posX, newposy);
+
     }
+
+    // *Verifica vidas y si se va a morir se pone resetean variables */
+    // Todo Poner Que se ponga en el spanw/
+    public void VerificarMuerte() {
+        if (vivo == false) {
+            if (contFramesMuerte == 0) {
+                FuerzaSalto = 20;
+                EnSuelo = false;
+            }
+
+            contFramesMuerte++;
+            if (contFramesMuerte >= velocidadAnimacionMuerte) {
+                posX = 300;
+                posY = 300;
+                vivo = true;
+                pequeño = false;
+                EnSuelo = true;
+                contFramesMuerte = 0;
+            }
+
+        }
+    }
+
 }

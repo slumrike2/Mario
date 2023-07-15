@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import java.awt.Graphics;
 
 import javax.imageio.ImageIO;
+import javax.swing.AbstractAction;
 
 public abstract class Entidad {
 
@@ -51,9 +52,7 @@ public abstract class Entidad {
 
     public abstract void update();
 
-    public void updateFrames(java.awt.Graphics g) {
-        g.drawImage(animaciones[AccionAnimation][frameAniamcion], posX, posY, null);
-    }
+    public abstract void updateFrames(Graphics g);
 
     public abstract void ActualizarFrame();
 
