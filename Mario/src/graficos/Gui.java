@@ -3,10 +3,7 @@ package graficos;
 import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.CardLayout;
-import java.awt.Menu;
 
-import databases.Sesion;
-import graficos.pantallas.menues.MenuPrincipal;
 
 import javax.swing.JFrame;
 

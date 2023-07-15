@@ -7,9 +7,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import constantes.*;
-import databases.Database;
 import databases.Sesion;
-import game.*;
 import graficos.Gui;
 
 public class MenuPrincipal extends JPanel {

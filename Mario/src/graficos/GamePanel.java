@@ -17,6 +17,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.awt.Dimension;
 import java.util.ArrayList;
+import niveles.*;
 
 public class GamePanel extends JPanel {
 
@@ -28,9 +29,11 @@ public class GamePanel extends JPanel {
     public KoopaVolador koopaVolador = new KoopaVolador(PANTALLA.KoopaVoladorDir, 50, 50, 1);
     public Bowser bowser = new Bowser(PANTALLA.BowserDir, 50, 50, 1);
     public ArrayList<Entidad> entidades = new ArrayList<Entidad>();
-  
+
     static int contador = 0;
     public BufferedImage aux;
+
+    public LevelManager levelManager;
 
     public GamePanel() {
         setPreferredSize(new Dimension(PANTALLA.SCREEN_WIDTH, PANTALLA.SCREEN_HEIGHT));
@@ -40,6 +43,8 @@ public class GamePanel extends JPanel {
         addMouseMotionListener(mouseimput);
         setFocusable(true);
         InicializarEntiendades();
+
+        levelManager = new LevelManager(this);
     }
 
     public void InicializarEntiendades() {
@@ -49,9 +54,10 @@ public class GamePanel extends JPanel {
         entidades.add(koopaVolador);
         entidades.add(bowser);
     }
-
+ 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+        levelManager.draw(g);
         // *se encarga de dibujar los frames del peronsaje
         for (Entidad entidad : entidades) {
 

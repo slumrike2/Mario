@@ -2,7 +2,6 @@ package graficos.pantallas.menues;
 
 import databases.Database;
 import databases.Usuario;
-import game.*;
 import graficos.Gui;
 
 import java.awt.Dimension;
