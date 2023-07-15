@@ -1,4 +1,4 @@
-package ClasesPadre;
+package clasesPadre;
 
 public class Escenario {
 
