@@ -1,5 +1,5 @@
 package clasesInstanciables;
 
-public class Escenario {
+public class Recolectable {
 
 }

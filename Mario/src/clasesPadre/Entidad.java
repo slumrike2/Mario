@@ -1,4 +1,4 @@
-package clasesPadre;
+package clasesInstanciables;
 
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;

@@ -1,4 +1,4 @@
-package clasesPadre;
+package clasesInstanciables;
 
 public class Recolectable {
 

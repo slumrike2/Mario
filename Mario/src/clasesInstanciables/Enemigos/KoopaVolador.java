@@ -1,12 +1,8 @@
-<<<<<<< Updated upstream:Mario/src/clasesPadre/enemigos/KoopaVolador.java
-package clasesPadre.enemigos;
-=======
 <<<<<<<< HEAD:Mario/src/clasesInstanciables/Enemigos/KoopaVolador.java
 package clasesInstanciables.Enemigos;
 ========
 package clasesPadre.enemigos;
 >>>>>>>> cf8cf87921214ca3eab205bd839ecebb485d4336:Mario/src/clasesPadre/enemigos/KoopaVolador.java
->>>>>>> Stashed changes:Mario/src/ClasesPadre/Enemigos/KoopaVolador.java
 
 public class KoopaVolador extends Koopa {
 

@@ -2,16 +2,16 @@ package graficos;
 
 import javax.swing.JPanel;
 
-import clasesPadre.*;
+import clasesInstanciables.*;
 import constantes.constantes;
 import constantes.constantes.PANTALLA;
 import inputs.InptutMouse;
 import inputs.InputTeclado;
-import clasesPadre.Enemigos.Bowser;
-import clasesPadre.Enemigos.Koopa;
-import clasesPadre.Enemigos.Goomba;
-import clasesPadre.Enemigos.KoopaVolador;
-import clasesPadre.Jugador.Personaje;
+import clasesInstanciables.Enemigos.Bowser;
+import clasesInstanciables.Enemigos.Koopa;
+import clasesInstanciables.Enemigos.Goomba;
+import clasesInstanciables.Enemigos.KoopaVolador;
+import clasesInstanciables.Jugador.Personaje;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
