@@ -3,11 +3,10 @@ package niveles;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 import graficos.GamePanel;
-import graficos.Gui;
+
 import utils.LoadSave;
 import constantes.Constantes.PANTALLA;
 

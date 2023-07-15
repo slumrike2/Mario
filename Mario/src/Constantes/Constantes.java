@@ -30,12 +30,13 @@ public class Constantes {
     public static class Jugador {
         public static final int MARIO_VELC = 2;
         public static final int MARIO_VELCIDAD_ANIMACION = 10;
-        public static final int INVENSIBILITY_FRAMES = 60;
-        public static final int MARIO_JUMP_FORCE = 10;
+        public static final int INVENSIBILITY_FRAMES = 500;
+        public static final int MARIO_JUMP_FORCE = 30;
         public static final int BIG_SPRITE_HEIGTH = 32;
         public static final int SPRITE_WIDTH = 16;
         public static final int SMALL_SPRITE_HEIGTH = 16;
         public static final int MARIO_BIG_DOWN_HEIGHT = 24;
+        public static final int CANT_FRAMES_MUERTE = 120;
     }
 
     public static class Globales {

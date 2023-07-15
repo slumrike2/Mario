@@ -62,4 +62,13 @@ public class Bowser extends Entidad {
     protected void InicializarHitbox() {
         Hitbox = new java.awt.Rectangle(posX, posY, 16, 32);
     }
+
+    public void DibujarHitbox(java.awt.Graphics g) {
+        g.drawRect(Hitbox.x, Hitbox.y, Hitbox.width, Hitbox.height);
+    }
+
+    public void updateFrames(java.awt.Graphics g) {
+        g.drawImage(animaciones[AccionAnimation][frameAniamcion], posX, posY, null);
+        
+    }
 }

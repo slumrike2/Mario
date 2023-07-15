@@ -2,16 +2,16 @@ package graficos;
 
 import javax.swing.JPanel;
 
-import clasesPadre.Entidad;
-import clasesPadre.Enemigos.Bowser;
-import clasesPadre.Enemigos.Goomba;
-import clasesPadre.Enemigos.Koopa;
-import clasesPadre.Enemigos.KoopaVolador;
-import clasesPadre.Jugador.Personaje;
+import clasesPadre.*;
 import constantes.Constantes;
-import constantes.Constantes.*;
+import constantes.Constantes.PANTALLA;
 import inputs.InptutMouse;
 import inputs.InputTeclado;
+import clasesPadre.Enemigos.Bowser;
+import clasesPadre.Enemigos.Koopa;
+import clasesPadre.Enemigos.Goomba;
+import clasesPadre.Enemigos.KoopaVolador;
+import clasesPadre.Jugador.Personaje;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
@@ -54,7 +54,7 @@ public class GamePanel extends JPanel {
         entidades.add(koopaVolador);
         entidades.add(bowser);
     }
- 
+
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         levelManager.draw(g);
