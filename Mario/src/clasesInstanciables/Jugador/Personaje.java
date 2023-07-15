@@ -129,8 +129,6 @@ public class Personaje extends Entidad {
 
         if (saltando == true) {
             accion = AccionPlayer.Saltar;
-            System.out.println("Saltando");
-
         }
 
         // * determina la accion a realizar y su direccion gracias al aux */
@@ -282,6 +280,7 @@ public class Personaje extends Entidad {
                 pequeño = false;
                 EnSuelo = true;
                 contFramesMuerte = 0;
+                saltando = false;
             }
 
         }
