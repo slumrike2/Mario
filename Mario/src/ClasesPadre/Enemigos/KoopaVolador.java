@@ -1,4 +1,4 @@
-package clasesPadre.Enemigos;
+package ClasesPadre.Enemigos;
 
 public class KoopaVolador extends Koopa {
 

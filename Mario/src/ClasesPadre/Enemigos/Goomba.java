@@ -1,9 +1,9 @@
-package clasesPadre.Enemigos;
+package ClasesPadre.Enemigos;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
-import clasesPadre.Entidad;
+import ClasesPadre.Entidad;
 
 public class Goomba extends Entidad {
 

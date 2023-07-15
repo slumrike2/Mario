@@ -1,14 +1,12 @@
 package niveles;
 
-import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 import graficos.GamePanel;
-import graficos.Gui;
+
 import utils.LoadSave;
-import constantes.Constantes.PANTALLA;
+import Constantes.Constantes.PANTALLA;
 
 public class LevelManager {
 
@@ -45,7 +43,11 @@ public class LevelManager {
     public static int[][] getLevelData() {
         int[][] levelData = new int[PANTALLA.TILES_IN_HEIGHT][PANTALLA.TILES_IN_WIDTH];
         BufferedImage img = LoadSave.GetLevelAtlas(LoadSave.LEVEL_ONE_DATA);
+        return levelData;
+    }
 
+    public void draw(java.awt.Graphics g) {
+        g.drawImage(imagen, 0, 0, null);
     }
 
 }

@@ -7,7 +7,7 @@ import java.awt.CardLayout;
 
 import javax.swing.JFrame;
 
-import constantes.Constantes;
+import Constantes.Constantes;
 
 public class Gui extends Canvas implements Runnable {
     // #region Variables
