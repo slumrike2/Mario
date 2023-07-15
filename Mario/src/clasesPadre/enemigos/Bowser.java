@@ -1,4 +1,4 @@
-package clasesPadre.Enemigos;
+package clasesPadre.enemigos;
 
 import clasesPadre.Entidad;
 //siva

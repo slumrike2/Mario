@@ -1,4 +1,4 @@
-package clasesPadre.Enemigos;
+package clasesPadre.enemigos;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
