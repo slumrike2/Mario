@@ -1,8 +1,8 @@
-package clasesPadre.Enemigos;
+package ClasesPadre.Enemigos;
 
-import clasesPadre.Entidad;
+import ClasesPadre.Entidad;
 
-import constantes.Constantes.PANTALLA;
+import Constantes.Constantes.PANTALLA;
 
 public class Bowser extends Entidad {
 

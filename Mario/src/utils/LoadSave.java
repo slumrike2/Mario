@@ -6,7 +6,7 @@ import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 
-import constantes.Constantes.PANTALLA;
+import Constantes.Constantes.PANTALLA;
 
 public class LoadSave {
 
@@ -26,7 +26,7 @@ public class LoadSave {
 
     public static int[][] getLevelData() {
         int[][] levelData = new int[PANTALLA.TILES_IN_HEIGHT][PANTALLA.TILES_IN_WIDTH];
-        BufferedImage img = LoadSave.GetLevelAtlas(LoadSave.LEVEL_ONE_DATA);        
+        BufferedImage img = LoadSave.GetLevelAtlas(LoadSave.LEVEL_ONE_DATA);
         for (int i = 0; i < img.getWidth(); i++)
             for (int j = 0; j < img.getHeight(); j++) {
                 Color color = new Color(img.getRGB(i, j));

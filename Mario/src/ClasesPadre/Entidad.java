@@ -1,4 +1,4 @@
-package clasesPadre;
+package ClasesPadre;
 
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
@@ -6,6 +6,8 @@ import java.awt.Graphics;
 
 import javax.imageio.ImageIO;
 import javax.swing.AbstractAction;
+
+import Constantes.Constantes.PANTALLA;
 
 public abstract class Entidad {
 
@@ -67,7 +69,7 @@ public abstract class Entidad {
     protected abstract void InicializarHitbox();
 
     public void DibujarHitbox(Graphics g) {
-        g.drawRect(Hitbox.x, Hitbox.y, Hitbox.width, Hitbox.height);
+        g.drawRect(Hitbox.x, Hitbox.y, Hitbox.width, (Hitbox.height));
     }
 
     public Rectangle getHitbox() {

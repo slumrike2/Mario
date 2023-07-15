@@ -1,7 +1,7 @@
-package clasesPadre.Enemigos;
+package ClasesPadre.Enemigos;
 
-import clasesPadre.Entidad;
-import constantes.Constantes.PANTALLA;
+import ClasesPadre.Entidad;
+import Constantes.Constantes.PANTALLA;
 
 public class Koopa extends Entidad {
 

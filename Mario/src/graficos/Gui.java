@@ -7,8 +7,8 @@ import java.awt.Dimension;
 
 import javax.swing.JFrame;
 
-import constantes.Constantes.*;
-import constantes.*;
+import Constantes.Constantes.*;
+import Constantes.*;
 
 public class Gui extends Canvas implements Runnable {
     // #region Variables

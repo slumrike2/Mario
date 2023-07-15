@@ -1,12 +1,12 @@
-package clasesPadre.Jugador;
+package ClasesPadre.Jugador;
 
 import java.awt.Graphics;
 
 import java.awt.image.BufferedImage;
 
-import clasesPadre.Entidad;
-import constantes.Constantes;
-import constantes.Constantes.*;
+import ClasesPadre.Entidad;
+import Constantes.Constantes;
+import Constantes.Constantes.*;
 
 import java.awt.Rectangle;
 
@@ -256,13 +256,13 @@ public class Personaje extends Entidad {
         InicializarHitbox();
         int newposy = posY;
         if (accion == AccionPlayer.Agacharse && !pequeño) {
-            newposy = posY + Jugador.BIG_SPRITE_HEIGTH - Jugador.MARIO_BIG_DOWN_HEIGHT;
-            Hitbox = new Rectangle(posX, posY, Jugador.SPRITE_WIDTH,
+            newposy = posY + Jugador.MARIO_BIG_DOWN_HEIGHT - Jugador.BIG_SPRITE_HEIGTH;
+            Hitbox = new Rectangle(posX, newposy, Jugador.SPRITE_WIDTH,
                     Jugador.MARIO_BIG_DOWN_HEIGHT);
         }
         if (pequeño) {
-            newposy = posY + Jugador.BIG_SPRITE_HEIGTH - Jugador.SMALL_SPRITE_HEIGTH;
-            Hitbox = new Rectangle(posX, posY, Jugador.SPRITE_WIDTH, Jugador.SMALL_SPRITE_HEIGTH);
+            newposy = posY + Jugador.SMALL_SPRITE_HEIGTH;
+            Hitbox = new Rectangle(posX, newposy, Jugador.SPRITE_WIDTH, Jugador.SMALL_SPRITE_HEIGTH);
         }
         Hitbox.setLocation(posX, newposy);
 

@@ -1,10 +1,10 @@
-package clasesPadre.Enemigos;
+package ClasesPadre.Enemigos;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
-import clasesPadre.Entidad;
-import constantes.Constantes.PANTALLA;
+import ClasesPadre.Entidad;
+import Constantes.Constantes.PANTALLA;
 
 public class Goomba extends Entidad {
 
@@ -30,7 +30,7 @@ public class Goomba extends Entidad {
     }
 
     public void updateFrames(Graphics g) {
-       g.drawImage(animaciones[AccionAnimation][frameAniamcion], posX, posY,
+        g.drawImage(animaciones[AccionAnimation][frameAniamcion], posX, posY,
                 PANTALLA.TILES_ACTUAL_SIZE * anchura_Tiles,
                 PANTALLA.TILES_ACTUAL_SIZE * altura_Tiles, null);
         DibujarHitbox(g);

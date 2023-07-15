@@ -1,9 +1,9 @@
-package inputs;
+package Inputs;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import clasesPadre.Jugador.Personaje.AccionPlayer;
+import ClasesPadre.Jugador.Personaje.AccionPlayer;
 import graficos.GamePanel;
 import graficos.Gui;
 

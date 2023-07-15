@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import constantes.*;
+import Constantes.*;
 
 public class Registro extends JPanel {
 

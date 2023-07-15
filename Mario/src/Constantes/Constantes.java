@@ -1,4 +1,4 @@
-package constantes;
+package Constantes;
 
 public class Constantes {
     public static class PANTALLA {
@@ -28,15 +28,16 @@ public class Constantes {
     }
 
     public static class Jugador {
+        private static final int FramesPerSecond = 120;
         public static final int MARIO_VELC = 2;
         public static final int MARIO_VELCIDAD_ANIMACION = 10;
-        public static final int INVENSIBILITY_FRAMES = 500;
+        public static final int INVENSIBILITY_FRAMES = 2 * FramesPerSecond;
         public static final int MARIO_JUMP_FORCE = 30;
-        public static final int BIG_SPRITE_HEIGTH = 32;
-        public static final int SPRITE_WIDTH = 16;
-        public static final int SMALL_SPRITE_HEIGTH = 16;
-        public static final int MARIO_BIG_DOWN_HEIGHT = 24;
-        public static final int CANT_FRAMES_MUERTE = 120;
+        public static final int BIG_SPRITE_HEIGTH = PANTALLA.TILES_ACTUAL_SIZE;
+        public static final int SPRITE_WIDTH = PANTALLA.TILES_ACTUAL_SIZE;
+        public static final int SMALL_SPRITE_HEIGTH = PANTALLA.TILES_ACTUAL_SIZE;
+        public static final int MARIO_BIG_DOWN_HEIGHT = PANTALLA.TILES_ACTUAL_SIZE + PANTALLA.TILES_ACTUAL_SIZE / 2;
+        public static final int CANT_FRAMES_MUERTE = 1 * FramesPerSecond;
     }
 
     public static class Globales {

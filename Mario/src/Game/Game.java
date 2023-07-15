@@ -1,4 +1,4 @@
-package game;
+package Game;
 
 import databases.Sesion;
 import databases.Usuario;

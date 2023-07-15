@@ -10,7 +10,7 @@ import javax.sound.midi.Patch;
 import graficos.GamePanel;
 
 import utils.LoadSave;
-import constantes.Constantes.PANTALLA;
+import Constantes.Constantes.PANTALLA;
 
 public class LevelManager {
 
@@ -45,7 +45,7 @@ public class LevelManager {
             for (int j = 0; j < 6; j++) {
                 int index = i * 6 + j;
                 levelSprite[index] = imagen.getSubimage(j * PANTALLA.TILES_DEFAULT_SIZE,
-                        i * PANTALLA.TILES_DEFAULT_SIZE, PANTALLA.TILES_DEFAULT_SIZE,PANTALLA.TILES_DEFAULT_SIZE);
+                        i * PANTALLA.TILES_DEFAULT_SIZE, PANTALLA.TILES_DEFAULT_SIZE, PANTALLA.TILES_DEFAULT_SIZE);
             }
         }
     }

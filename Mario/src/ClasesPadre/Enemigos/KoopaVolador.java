@@ -1,4 +1,4 @@
-package  clasesPadre.Enemigos;
+package ClasesPadre.Enemigos;
 
 public class KoopaVolador extends Koopa {
 
@@ -16,7 +16,6 @@ public class KoopaVolador extends Koopa {
         ActualizarFrame();
     }
 
-
-    //Todo añadir las fisicas en caso de estar en el aire y las hitboxes
+    // Todo añadir las fisicas en caso de estar en el aire y las hitboxes
 
 }
