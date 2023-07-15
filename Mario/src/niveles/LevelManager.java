@@ -1,5 +1,6 @@
 package niveles;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.InputStream;
@@ -17,15 +18,20 @@ public class LevelManager {
     private BufferedImage[] levelSprite;
     private int lvlIndex;
 
+    private Level level1;
+
     public LevelManager(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
         importarImagen();
         importOutsideSprites();
+
+        lvlIndex = 1;
+        level1 = new Level(LoadSave.getLevelData());
     }
 
     private void importarImagen() {
         try {
-            imagen = ImageIO.read(getClass().getResourceAsStream("res/level.png"));
+            imagen = LoadSave.GetLevelAtlas(LoadSave.LEVEL_ONE_IMAGE);
         } catch (Exception e) {
             System.out.println("Error al cargar la imagen");
         }
@@ -42,10 +48,16 @@ public class LevelManager {
         }
     }
 
-    public static int[][] getLevelData() {
-        int[][] levelData = new int[PANTALLA.TILES_IN_HEIGHT][PANTALLA.TILES_IN_WIDTH];
-        BufferedImage img = LoadSave.GetLevelAtlas(LoadSave.LEVEL_ONE_DATA);
-
+    public void draw(Graphics g) {
+        for (int i = 0; i < PANTALLA.TILES_IN_HEIGHT; i++) {
+            for (int j = 0; j < PANTALLA.TILES_IN_WIDTH; j++) {
+                int tile = level1.getTile(j, i);
+                    g.drawImage(levelSprite[tile], j * PANTALLA.TILES_DEFAULT_SIZE, i * PANTALLA.TILES_DEFAULT_SIZE,
+                            PANTALLA.TILES_DEFAULT_SIZE, PANTALLA.TILES_DEFAULT_SIZE,
+                            null);
+                }
+            }
+        }
     }
 
-}
+

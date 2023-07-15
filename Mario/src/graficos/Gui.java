@@ -4,10 +4,10 @@ import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.CardLayout;
 
-
 import javax.swing.JFrame;
 
-import constantes.Constantes;
+import constantes.Constantes.*;
+import constantes.*;
 
 public class Gui extends Canvas implements Runnable {
     // #region Variables
@@ -31,8 +31,6 @@ public class Gui extends Canvas implements Runnable {
     long referenciaActualizacion = System.nanoTime();
     private double tiempoTranscurrido, delta = 0;
 
-    public final static int WIDTH = 1080; // *altura y anchura de la ventana
-    public final static int HEIGHT = 720;
     private static volatile boolean Corriendo = false;
     // #endregion
 
@@ -40,7 +38,7 @@ public class Gui extends Canvas implements Runnable {
         // *se crea la ventana
         ventana = new JFrame("Mario");
         // *se le da un tamaño a la ventana
-        ventana.setSize(WIDTH, HEIGHT);
+        ventana.setSize(PANTALLA.SCREEN_WIDTH, PANTALLA.SCREEN_HEIGHT);
         // *se le da un comportamiento al cerrar la ventana
         // !sin esto no se cierra y queda en ejecucion
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -63,7 +61,7 @@ public class Gui extends Canvas implements Runnable {
         // *se crea la ventana
         ventana = new JFrame("Mario");
         // *se le da un tamaño a la ventana
-        ventana.setSize(WIDTH, HEIGHT);
+        ventana.setSize(PANTALLA.SCREEN_WIDTH, PANTALLA.SCREEN_HEIGHT);
         // *se le da un comportamiento al cerrar la ventana
         // !sin esto no se cierra y queda en ejecucion
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
