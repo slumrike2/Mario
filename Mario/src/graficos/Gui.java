@@ -7,8 +7,8 @@ import java.awt.Dimension;
 
 import javax.swing.JFrame;
 
-import Constantes.Constantes.*;
-import Constantes.*;
+import constantes.constantes.*;
+import constantes.*;
 
 public class Gui extends Canvas implements Runnable {
     // #region Variables
@@ -110,7 +110,7 @@ public class Gui extends Canvas implements Runnable {
 
     }
 
-    public static void switchPantallaMenu(Constantes.Pantallas_Menues pantalla) {
+    public static void switchPantallaMenu(constantes.Pantallas_Menues pantalla) {
         switch (pantalla) {
             case MENU_PRINCIPAL:
                 MenuPanel.menuPrincipal.SetBotonSesion();

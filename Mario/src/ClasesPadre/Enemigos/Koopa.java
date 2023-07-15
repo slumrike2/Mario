@@ -1,7 +1,7 @@
 package clasesPadre.Enemigos;
 
 import clasesPadre.Entidad;
-import Constantes.Constantes.PANTALLA;
+import constantes.constantes.PANTALLA;
 
 public class Koopa extends Entidad {
 

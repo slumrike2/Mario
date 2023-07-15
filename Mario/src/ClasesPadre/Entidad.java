@@ -5,9 +5,6 @@ import java.awt.image.BufferedImage;
 import java.awt.Graphics;
 
 import javax.imageio.ImageIO;
-import javax.swing.AbstractAction;
-
-import Constantes.Constantes.PANTALLA;
 
 public abstract class Entidad {
 

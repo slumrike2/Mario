@@ -4,7 +4,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 import clasesPadre.Entidad;
-import Constantes.Constantes.PANTALLA;
+import constantes.constantes.PANTALLA;
 
 public class Goomba extends Entidad {
 

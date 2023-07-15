@@ -1,23 +1,18 @@
 package clasesPadre.Jugador;
 
-
-
 import java.awt.image.BufferedImage;
 
 import clasesPadre.Entidad;
-import Constantes.Constantes;
-import Constantes.Constantes.*;
+import constantes.constantes;
+import constantes.constantes.*;
 
 import java.awt.Rectangle;
 
 public class Personaje extends Entidad {
 
-    // #region Constantes
+    // #region constantes
     private int gravedad = Globales.GRAVEDAD;
-    public int FuerzaSalto = Jugador.MARIO_JUMP_FORCE;
-    private int invensibilityFrames = Jugador.INVENSIBILITY_FRAMES,
-            velocidadAnimacion = Jugador.MARIO_VELCIDAD_ANIMACION,
-            velocidadAnimacionMuerte = Jugador.CANT_FRAMES_MUERTE;
+
     // #endregion
 
     // #region Variables
@@ -25,6 +20,7 @@ public class Personaje extends Entidad {
     // *Cada cuantos frames se actualiza la animacion
     private int contInvensibilityFrames = 0, AccionAnimation = 0, frameAniamcion = 0,
             contFrames = 0, contFramesMuerte = 0;
+    public int FuerzaSalto = 0;
     public BufferedImage[][] animaciones; // * todas las animaciones del personaje
     public Boolean enMovimiento = false, saltando = false, EnSuelo = true; // * Boleanos que determinaran acciones
     public Boolean MovDerecha = false, MovIzquierda = false, MovAbajo = false, MovArriba = false;
@@ -58,11 +54,12 @@ public class Personaje extends Entidad {
     public void update() {
 
         movimiento();
+        ActHitbox();
         ActualizarAccion();
         // *funcion que determina que animacion sigue y que frame de la animacion
         ActualizarFrame();
         VerificarMuerte();
-        ActHitbox();
+
         contInvensibilityFrames++;
     }
 
@@ -83,15 +80,17 @@ public class Personaje extends Entidad {
             return;
         }
 
-        if (contFrames >= velocidadAnimacion) {
+        if (accion == AccionPlayer.Saltar) {
+            frameAniamcion = 1;
+            return;
+        }
+        if (contFrames >= Jugador.MARIO_VELCIDAD_ANIMACION) {
             contFrames = 0;
             frameAniamcion++;
             if (frameAniamcion >= CantidadSprites(accion)) {
 
                 frameAniamcion = 0;
-                if (accion == AccionPlayer.Saltar) {
-                    frameAniamcion = 1;
-                }
+
             }
 
         }
@@ -128,14 +127,12 @@ public class Personaje extends Entidad {
             }
         }
 
-        if (saltando) {
+        if (saltando == true) {
             accion = AccionPlayer.Saltar;
+            System.out.println("Saltando");
+
         }
 
-        if (vivo == false) {
-            accion = AccionPlayer.Quieto;
-            aux = 18;
-        }
         // * determina la accion a realizar y su direccion gracias al aux */
         switch (accion) {
             case Quieto:
@@ -229,12 +226,12 @@ public class Personaje extends Entidad {
             // *Si esta por encima del enemigo salta sobre el
             // Todo Que el enemigo reciba el golpe perse
             if ((Hitbox.y + Hitbox.height) <= (HitboxEnemigo.y + HitboxEnemigo.height)) {
-                FuerzaSalto = Constantes.Jugador.MARIO_JUMP_FORCE;
-                System.out.println("Salto enemigo");
+                FuerzaSalto = Jugador.MARIO_JUMP_FORCE;
+                saltando = true;
                 return;
             }
             // * Sino le hara damage a mario */
-            if (contInvensibilityFrames >= invensibilityFrames) {
+            if (contInvensibilityFrames >= Jugador.INVENSIBILITY_FRAMES) {
                 // Todo VolverMarioChiquito con el golpe
                 if (pequeño == false) {
                     pequeño = true;
@@ -274,11 +271,11 @@ public class Personaje extends Entidad {
         if (vivo == false) {
             if (contFramesMuerte == 0) {
                 FuerzaSalto = 20;
-                EnSuelo = false;
+                
             }
 
             contFramesMuerte++;
-            if (contFramesMuerte >= velocidadAnimacionMuerte) {
+            if (contFramesMuerte >= Jugador.CANT_FRAMES_MUERTE) {
                 posX = 300;
                 posY = 300;
                 vivo = true;

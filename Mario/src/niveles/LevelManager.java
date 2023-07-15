@@ -1,16 +1,12 @@
 package niveles;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-
-import javax.imageio.ImageIO;
-import javax.sound.midi.Patch;
 
 import graficos.GamePanel;
 
 import utils.LoadSave;
-import Constantes.Constantes.PANTALLA;
+import constantes.constantes.PANTALLA;
 
 public class LevelManager {
 

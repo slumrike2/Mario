@@ -6,7 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import Constantes.*;
+import constantes.*;
 import databases.Sesion;
 import graficos.Gui;
 
@@ -62,7 +62,7 @@ public class MenuPrincipal extends JPanel {
     }
 
     private void botonIniciarSesionActionPerformed() {
-        Gui.switchPantallaMenu(Constantes.Pantallas_Menues.INICIO_SESION);
+        Gui.switchPantallaMenu(constantes.Pantallas_Menues.INICIO_SESION);
     }
 
     private void botonCerrarSesionActionPerformed() {
@@ -71,7 +71,7 @@ public class MenuPrincipal extends JPanel {
     }
 
     private void botonnRegistrarseActionPerformed() {
-        Gui.switchPantallaMenu(Constantes.Pantallas_Menues.REGISTRO);
+        Gui.switchPantallaMenu(constantes.Pantallas_Menues.REGISTRO);
     }
 
     private void botonOpcionesActionPerformed() {
