@@ -41,10 +41,12 @@ public class InputTeclado implements KeyListener {
                 panel.mario.accion = AccionPlayer.Agacharse;
                 break;
             case KeyEvent.VK_SPACE:
-                panel.mario.accion = AccionPlayer.Saltar;
-                panel.mario.saltando = true;
-                panel.mario.EnSuelo = false;
-                panel.mario.FuerzaSalto = 20;
+                if (panel.mario.FuerzaSalto == 0 && panel.mario.EnSuelo) {
+                    panel.mario.accion = AccionPlayer.Saltar;
+                    panel.mario.saltando = true;
+                    panel.mario.EnSuelo = false;
+                    panel.mario.FuerzaSalto = 40;
+                }
                 break;
             // !Para pruebas. Borrar
             case KeyEvent.VK_ESCAPE:

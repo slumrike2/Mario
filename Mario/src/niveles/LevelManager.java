@@ -26,6 +26,10 @@ public class LevelManager {
         level1 = new Level(LoadSave.getLevelData());
     }
 
+    public Level getLevel() {
+        return level1;
+    }
+
     private void importarImagen() {
         try {
             imagen = LoadSave.GetLevelAtlas(LoadSave.LEVEL_ONE_IMAGE);
@@ -47,10 +51,10 @@ public class LevelManager {
     }
 
     public void draw(Graphics g) {
-        for (int i = 0; i < PANTALLA.TILES_IN_HEIGHT; i++) {
-            for (int j = 0; j < PANTALLA.TILES_IN_WIDTH; j++) {
-                int tile = level1.getTile(j, i);
-                g.drawImage(levelSprite[tile], j * PANTALLA.TILES_ACTUAL_SIZE, i * PANTALLA.TILES_ACTUAL_SIZE,
+        for (int i = 0; i < PANTALLA.TILES_IN_WIDTH; i++) {
+            for (int j = 0; j < PANTALLA.TILES_IN_HEIGHT; j++) {
+                int tile = level1.getTile(i, j);
+                g.drawImage(levelSprite[tile], i * PANTALLA.TILES_ACTUAL_SIZE, j * PANTALLA.TILES_ACTUAL_SIZE,
                         PANTALLA.TILES_ACTUAL_SIZE, PANTALLA.TILES_ACTUAL_SIZE,
                         null);
             }

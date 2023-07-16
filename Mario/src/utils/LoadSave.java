@@ -25,7 +25,7 @@ public class LoadSave {
     }
 
     public static int[][] getLevelData() {
-        int[][] levelData = new int[PANTALLA.TILES_IN_HEIGHT][PANTALLA.TILES_IN_WIDTH];
+        int[][] levelData = new int[PANTALLA.TILES_IN_WIDTH][PANTALLA.TILES_IN_HEIGHT];
         BufferedImage img = LoadSave.GetLevelAtlas(LoadSave.LEVEL_ONE_DATA);
         for (int i = 0; i < img.getWidth(); i++)
             for (int j = 0; j < img.getHeight(); j++) {
@@ -33,7 +33,7 @@ public class LoadSave {
                 int value = color.getRed();
                 if (value > 12)
                     value = 0;
-                levelData[j][i] = value;
+                levelData[i][j] = value;
             }
         return levelData;
     }

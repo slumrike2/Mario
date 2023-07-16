@@ -8,10 +8,13 @@ import constantes.Constantes.*;
 
 import java.awt.Rectangle;
 
+import static utils.HelpMethods.canMoveHere;;
+
 public class Personaje extends Entidad {
 
     // #region Constantes
     private int gravedad = Globales.GRAVEDAD;
+    private int[][] currentLevelData;
 
     // #endregion
 
@@ -22,10 +25,11 @@ public class Personaje extends Entidad {
             contFrames = 0, contFramesMuerte = 0;
     public int FuerzaSalto = 0;
     public BufferedImage[][] animaciones; // * todas las animaciones del personaje
-    public Boolean enMovimiento = false, saltando = false, EnSuelo = true; // * Boleanos que determinaran acciones
+    public Boolean enMovimiento = false, saltando = false, EnSuelo = false; // * Boleanos que determinaran acciones
     public Boolean MovDerecha = false, MovIzquierda = false, MovAbajo = false, MovArriba = false;
     private Boolean pequeño = false;
 
+    private float actualSuelo = 0;
     // *se encarga de determinar la direccion del personaje
 
     // *se encarga de determinar la accion del personaje
@@ -48,6 +52,11 @@ public class Personaje extends Entidad {
     // *se encarga de cargar las animaciones del personaje
     public void GetAnimations() {
         animaciones = animacion(21, 0, 3, 16, 32);
+    }
+
+    // *Se encarga de cargar la informacion del nivel */
+    public void loadLevelData(int[][] currentLevelData) {
+        this.currentLevelData = currentLevelData;
     }
 
     // *se encarga de la actualizacion del personaje en acciones
@@ -157,38 +166,53 @@ public class Personaje extends Entidad {
     // *se encarga de mover al personaje
     public void movimiento() {
 
+        float xSpeed = 0;
+        float ySpeed = 0;
+
         if (MovAbajo != true && vivo == true) {
-
             if (MovDerecha == true && MovIzquierda == false) {
-                posX += velocidad;
-
+                xSpeed += velocidad;
             }
             if (MovIzquierda == true && MovDerecha == false) {
-                posX -= velocidad;
-
+                xSpeed -= velocidad;
             }
         }
         if (MovArriba == true && MovAbajo == false) {
-            posY -= velocidad;
+            ySpeed -= velocidad;
         }
         if (MovAbajo == true && MovArriba == false) {
-            posY += velocidad;
+            ySpeed += velocidad;
         }
 
         // Todo Actualizar el sistema de graveddad con mas presision y crear clase
         // vector
         // *Gravedad
         if (FuerzaSalto != 0) {
-            posY -= gravedad;
+            ySpeed -= gravedad;
             FuerzaSalto--;
-
+            EnSuelo = false;
         }
         // Todo Agregar colisiones para poner el en suelo activo y falso para el
         // funcionamiento del salto
-        if (EnSuelo == false && FuerzaSalto == 0) {
-            posY += gravedad;
+        if (FuerzaSalto == 0) {
+            ySpeed += gravedad;
         }
 
+        if (canMoveHere(posX, posY + ySpeed, anchura_Tiles * PANTALLA.TILES_ACTUAL_SIZE,
+                altura_Tiles * PANTALLA.TILES_ACTUAL_SIZE, currentLevelData)) {
+            posY += ySpeed;
+        } else {
+            if (ySpeed > 0)
+                EnSuelo = true;
+        }
+
+        if (canMoveHere(posX + xSpeed, posY, anchura_Tiles * PANTALLA.TILES_ACTUAL_SIZE,
+                altura_Tiles * PANTALLA.TILES_ACTUAL_SIZE, currentLevelData)) {
+            posX += xSpeed;
+            enMovimiento = true;
+        }
+
+        System.out.println(EnSuelo);
     }
 
     // *se encarga de deterinar cuantos frames tienen las animaciones

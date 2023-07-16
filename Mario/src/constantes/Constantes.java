@@ -6,8 +6,8 @@ public class Constantes {
         // !public static final int SCREEN_HEIGHT = 720;
         public static final int TILES_DEFAULT_SIZE = 16;
         public static final float PIXEL_SCALE = 1.5f;
-        public static final int TILES_IN_WIDTH = 30;
-        public static final int TILES_IN_HEIGHT = 20;
+        public static final int TILES_IN_WIDTH = 40;
+        public static final int TILES_IN_HEIGHT = 24;
         public static final int TILES_ACTUAL_SIZE = (int) (PIXEL_SCALE * TILES_DEFAULT_SIZE);
 
         public static final int SCREEN_WIDTH = TILES_IN_WIDTH * TILES_ACTUAL_SIZE;

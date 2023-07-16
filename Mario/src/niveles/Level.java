@@ -8,7 +8,11 @@ public class Level {
     }
 
     public int getTile(int x, int y) {
-        return levelData[y][x];
+        return levelData[x][y];
+    }
+
+    public int[][] getLevelData() {
+        return levelData;
     }
 
 }
