@@ -53,8 +53,8 @@ public class GamePanel extends JPanel {
         jugador = new Personaje(PANTALLA.MarioDir, 50, 50, 2);
         jugador.loadLevelData(levelManager.getLevel().getLevelData());
 
-        goomba = new Goomba(PANTALLA.GoombaDir, 500, 300, Constantes.Enemigos.GOOMBA_VELC);
-        koopa = new Koopa(PANTALLA.KoopaDir, 400, 400, -1);
+        goomba = new Goomba(PANTALLA.GoombaDir, 50, 50, Constantes.Enemigos.GOOMBA_VELC);
+        koopa = new Koopa(PANTALLA.KoopaDir, 200, 200, -1);
         koopaVolador = new KoopaVolador(PANTALLA.KoopaVoladorDir, 50, 100, 1);
         bowser = new Bowser(PANTALLA.BowserDir, 300, 300, 1);
 
@@ -69,24 +69,26 @@ public class GamePanel extends JPanel {
     }
 
     private void agregarEntidades() {
+
     }
 
     public void InicializarEntiendades() {
-        personajes.add(jugador);
+
         enemigos.add(goomba);
         // entidades.add(koopa);
         // entidades.add(koopaVolador);
         // entidades.add(bowser);
         entidades.addAll(enemigos);
-        entidades.addAll(personajes);
+
     }
 
     public void FrameUpdate() {
         veryfyCloseToBorder();
         jugador.update();
-        for (Entidad entidad : entidades) {
+        for (Enemigo entidad : enemigos) {
             entidad.update();
             jugador.HitEnemigo(entidad.getHitbox());
+            entidad.recibirHit(jugador);
         }
     }
 
@@ -114,7 +116,7 @@ public class GamePanel extends JPanel {
         levelManager.draw(g, xlvlOffset);
         jugador.updateFrames(g, xlvlOffset);
         // *se encarga de dibujar los frames del peronsaje
-        for (Entidad entidad : entidades) {
+        for (Enemigo entidad : enemigos) {
             entidad.updateFrames(g);
         }
     }

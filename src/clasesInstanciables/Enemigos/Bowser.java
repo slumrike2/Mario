@@ -1,6 +1,6 @@
 package clasesInstanciables.Enemigos;
 
-import clasesInstanciables.Entidad;
+
 import clasesInstanciables.Jugador.Personaje;
 //siva
 import constantes.Constantes.PANTALLA;

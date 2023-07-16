@@ -1,6 +1,6 @@
 package clasesInstanciables.PowerUps;
 
-import java.awt.Graphics;
+
 
 import clasesInstanciables.Entidad;
 

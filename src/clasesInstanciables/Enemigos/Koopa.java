@@ -1,8 +1,8 @@
 package clasesInstanciables.Enemigos;
 
-import clasesInstanciables.Entidad;
+
 import clasesInstanciables.Jugador.Personaje;
-import constantes.Constantes.Jugador;
+
 import constantes.Constantes.PANTALLA;
 
 public class Koopa extends Enemigo {
