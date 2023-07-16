@@ -1,6 +1,7 @@
 package clasesInstanciables.Jugador;
 
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 import clasesInstanciables.Entidad;
 
@@ -8,7 +9,8 @@ import constantes.Constantes.*;
 
 import java.awt.Rectangle;
 
-import static utils.HelpMethods.canMoveHere;;
+import static utils.HelpMethods.canMoveHere;
+import static utils.HelpMethods.VerenSuelo;
 
 public class Personaje extends Entidad {
 
@@ -28,6 +30,7 @@ public class Personaje extends Entidad {
     public Boolean enMovimiento = false, saltando = false, EnSuelo = false; // * Boleanos que determinaran acciones
     public Boolean MovDerecha = false, MovIzquierda = false, MovAbajo = false, MovArriba = false;
     private Boolean pequeño = false;
+    public int direccion;
 
     private float actualSuelo = 0;
     // *se encarga de determinar la direccion del personaje
@@ -116,18 +119,19 @@ public class Personaje extends Entidad {
 
         int aux = 0;
         if (pequeño)
-            aux = 5;
+            aux += 5;
+        if (direccion == -1)
+            aux += 10;
         // ! se suman 10 para que se pueda acceder a las animaciones de la izquierda
         accion = AccionPlayer.Quieto;
+
         // *confimacioines para la animacion y vista de la direccion
 
-        if (MovDerecha == true && MovIzquierda == false) {
-            accion = AccionPlayer.Correr;
+        if (MovDerecha != MovIzquierda && enMovimiento) {
 
-        } else if (MovIzquierda == true && MovDerecha == false) {
             accion = AccionPlayer.Correr;
-            aux += 10;
         }
+
         if (MovAbajo == true) {
             if (!pequeño) {
                 accion = AccionPlayer.Agacharse;
@@ -202,17 +206,17 @@ public class Personaje extends Entidad {
                 altura_Tiles * PANTALLA.TILES_ACTUAL_SIZE, currentLevelData)) {
             posY += ySpeed;
         } else {
-            if (ySpeed > 0)
-                EnSuelo = true;
+            FuerzaSalto = 0;
+            ActualizarSuelo();
         }
 
         if (canMoveHere(posX + xSpeed, posY, anchura_Tiles * PANTALLA.TILES_ACTUAL_SIZE,
                 altura_Tiles * PANTALLA.TILES_ACTUAL_SIZE, currentLevelData)) {
             posX += xSpeed;
             enMovimiento = true;
-        }
+        } else
+            enMovimiento = false;
 
-        System.out.println(EnSuelo);
     }
 
     // *se encarga de deterinar cuantos frames tienen las animaciones
@@ -310,4 +314,14 @@ public class Personaje extends Entidad {
         }
     }
 
+    public void ActualizarSuelo() {
+        if (!VerenSuelo(posX, posY + 1, anchura_Tiles * PANTALLA.TILES_ACTUAL_SIZE,
+                altura_Tiles * PANTALLA.TILES_ACTUAL_SIZE, currentLevelData)) {
+            EnSuelo = true;
+            saltando = false;
+            return;
+        }
+        EnSuelo = false;
+
+    }
 }
