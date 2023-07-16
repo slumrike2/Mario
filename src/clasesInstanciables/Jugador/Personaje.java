@@ -1,7 +1,6 @@
 package clasesInstanciables.Jugador;
 
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
 
 import clasesInstanciables.Entidad;
 
@@ -29,10 +28,9 @@ public class Personaje extends Entidad {
     public BufferedImage[][] animaciones; // * todas las animaciones del personaje
     public Boolean enMovimiento = false, saltando = false, EnSuelo = false; // * Boleanos que determinaran acciones
     public Boolean MovDerecha = false, MovIzquierda = false, MovAbajo = false, MovArriba = false;
-    private Boolean pequeño = false;
+    private Boolean pequeño = true;
     public int direccion;
 
-    private float actualSuelo = 0;
     // *se encarga de determinar la direccion del personaje
 
     // *se encarga de determinar la accion del personaje
@@ -202,16 +200,14 @@ public class Personaje extends Entidad {
             ySpeed += gravedad;
         }
 
-        if (canMoveHere(posX, posY + ySpeed, anchura_Tiles * PANTALLA.TILES_ACTUAL_SIZE,
-                altura_Tiles * PANTALLA.TILES_ACTUAL_SIZE, currentLevelData)) {
+        if (canMoveHere(Hitbox.x, Hitbox.y + ySpeed, Hitbox.width, Hitbox.height, currentLevelData)) {
             posY += ySpeed;
         } else {
             FuerzaSalto = 0;
             ActualizarSuelo();
         }
 
-        if (canMoveHere(posX + xSpeed, posY, anchura_Tiles * PANTALLA.TILES_ACTUAL_SIZE,
-                altura_Tiles * PANTALLA.TILES_ACTUAL_SIZE, currentLevelData)) {
+        if (canMoveHere(Hitbox.x + xSpeed, Hitbox.y, Hitbox.width, Hitbox.height, currentLevelData)) {
             posX += xSpeed;
             enMovimiento = true;
         } else
@@ -285,6 +281,7 @@ public class Personaje extends Entidad {
         }
         if (pequeño) {
             newposy = posY + Jugador.SMALL_SPRITE_HEIGTH;
+
             Hitbox = new Rectangle(posX, newposy, Jugador.SPRITE_WIDTH, Jugador.SMALL_SPRITE_HEIGTH);
         }
         Hitbox.setLocation(posX, newposy);
@@ -315,7 +312,7 @@ public class Personaje extends Entidad {
     }
 
     public void ActualizarSuelo() {
-        if (!VerenSuelo(posX, posY + 1, anchura_Tiles * PANTALLA.TILES_ACTUAL_SIZE,
+        if (VerenSuelo(posX, posY + 1, anchura_Tiles * PANTALLA.TILES_ACTUAL_SIZE,
                 altura_Tiles * PANTALLA.TILES_ACTUAL_SIZE, currentLevelData)) {
             EnSuelo = true;
             saltando = false;
