@@ -1,9 +1,11 @@
 package clasesInstanciables.Enemigos;
 
 import clasesInstanciables.Entidad;
+import clasesInstanciables.Jugador.Personaje;
+import constantes.Constantes.Jugador;
 import constantes.Constantes.PANTALLA;
 
-public class Koopa extends Entidad {
+public class Koopa extends Enemigo {
 
     public Koopa(String Dir) {
         super(Dir);
@@ -27,13 +29,14 @@ public class Koopa extends Entidad {
 
     public void updateFrames(java.awt.Graphics g) {
         g.drawImage(animaciones[AccionAnimation][frameAniamcion], posX, posY,
-                PANTALLA.TILES_ACTUAL_SIZE * anchura_Tiles,
-                PANTALLA.TILES_ACTUAL_SIZE * altura_Tiles, null);
+                (int) (PANTALLA.TILES_ACTUAL_SIZE * anchura_Tiles),
+                (int) (PANTALLA.TILES_ACTUAL_SIZE * altura_Tiles), null);
     }
 
     public void movimiento() {
         if (vivo == true)
             posX += velocidad;
+
     }
 
     public void cambiarDireccion() {
@@ -68,8 +71,12 @@ public class Koopa extends Entidad {
     }
 
     protected void InicializarHitbox() {
-        Hitbox = new java.awt.Rectangle(posX, posY, PANTALLA.TILES_ACTUAL_SIZE * anchura_Tiles,
-                PANTALLA.TILES_ACTUAL_SIZE * altura_Tiles);
+        Hitbox = new java.awt.Rectangle(posX, posY, (int) (PANTALLA.TILES_ACTUAL_SIZE * anchura_Tiles),
+                (int) (PANTALLA.TILES_ACTUAL_SIZE * altura_Tiles));
+    }
+
+    public void recibirHit(Personaje jugador) {
+        System.out.println("recibiendo hit");
     }
 
 }

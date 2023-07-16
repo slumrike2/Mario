@@ -8,6 +8,7 @@ import constantes.Constantes.PANTALLA;
 import inputs.InptutMouse;
 import inputs.InputTeclado;
 import clasesInstanciables.Enemigos.Bowser;
+import clasesInstanciables.Enemigos.Enemigo;
 import clasesInstanciables.Enemigos.Koopa;
 import clasesInstanciables.Enemigos.Goomba;
 import clasesInstanciables.Enemigos.KoopaVolador;
@@ -23,12 +24,14 @@ public class GamePanel extends JPanel {
 
     private InptutMouse mouseimput = new InptutMouse(this);
     // !warning, cambiar en un futuro lo de las direcciones
-    public Personaje mario;
+    public Personaje jugador;
     public Goomba goomba;
     public Koopa koopa;
     public KoopaVolador koopaVolador;
     public Bowser bowser;
-    public ArrayList<Entidad> entidades = new ArrayList<Entidad>();
+    public ArrayList<Enemigo> enemigos = new ArrayList<>();
+    public ArrayList<Personaje> personajes = new ArrayList<>();
+    public ArrayList<Entidad> entidades = new ArrayList<>();
 
     static int contador = 0;
     public BufferedImage aux;
@@ -40,8 +43,8 @@ public class GamePanel extends JPanel {
         levelManager = new LevelManager(this);
 
         // Se cargan las entidades
-        mario = new Personaje(PANTALLA.MarioDir, 50, 50, 2);
-        mario.loadLevelData(levelManager.getLevel().getLevelData());
+        jugador = new Personaje(PANTALLA.MarioDir, 50, 50, 2);
+        jugador.loadLevelData(levelManager.getLevel().getLevelData());
 
         goomba = new Goomba(PANTALLA.GoombaDir, 500, 300, Constantes.Enemigos.GOOMBA_VELC);
         koopa = new Koopa(PANTALLA.KoopaDir, 400, 400, -1);
@@ -59,11 +62,13 @@ public class GamePanel extends JPanel {
     }
 
     public void InicializarEntiendades() {
-        entidades.add(mario);
-        // entidades.add(goomba);
+        personajes.add(jugador);
+        enemigos.add(goomba);
         // entidades.add(koopa);
         // entidades.add(koopaVolador);
         // entidades.add(bowser);
+        entidades.addAll(enemigos);
+        entidades.addAll(personajes);
     }
 
     public void paintComponent(Graphics g) {
@@ -71,7 +76,6 @@ public class GamePanel extends JPanel {
         levelManager.draw(g);
         // *se encarga de dibujar los frames del peronsaje
         for (Entidad entidad : entidades) {
-
             entidad.updateFrames(g);
         }
     }
@@ -79,9 +83,11 @@ public class GamePanel extends JPanel {
     public void FrameUpdate() {
         for (Entidad entidad : entidades) {
             entidad.update();
-            if (!(entidad instanceof Personaje)) {
-
-                mario.HitEnemigo(entidad.getHitbox());
+        }
+        for (Personaje personaje : personajes) {
+            for (Enemigo enemigo : enemigos) {
+                personaje.HitEnemigo(enemigo.Hitbox);
+                enemigo.recibirHit(personaje);
             }
         }
 

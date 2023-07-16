@@ -8,8 +8,8 @@ import javax.imageio.ImageIO;
 
 public abstract class Entidad {
 
-    public int altura_Tiles;
-    public int anchura_Tiles;
+    public float altura_Tiles;
+    public float anchura_Tiles;
     public int velocidad; // velocidad en pixeles de forma horizontal
     public int posX, posY;
     public boolean vivo = true;
@@ -18,7 +18,7 @@ public abstract class Entidad {
     protected int AccionAnimation = 0, frameAniamcion = 0, contFrames = 0, velocidadAnimacion;
 
     // * Colliision
-    protected Rectangle Hitbox;
+    public Rectangle Hitbox;
 
     public Entidad(String Dir, int Posx, int Posy, int velocidad, int altura_Tiles, int anchura_Tiles) {
         importarImagen(Dir);
@@ -27,6 +27,13 @@ public abstract class Entidad {
         this.posX = Posx;
         this.posY = Posy;
         this.velocidad = velocidad;
+        InicializarHitbox();
+    }
+
+    public Entidad(String Dir, int posX, int posY, float altura_Tiles, float anchura_Tiles) {
+        importarImagen(Dir);
+        this.posX = posX;
+        this.posY = posY;
         InicializarHitbox();
     }
 
@@ -72,4 +79,7 @@ public abstract class Entidad {
     public Rectangle getHitbox() {
         return Hitbox;
     }
+
+    
+
 }

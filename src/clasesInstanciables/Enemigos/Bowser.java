@@ -1,10 +1,11 @@
 package clasesInstanciables.Enemigos;
 
 import clasesInstanciables.Entidad;
+import clasesInstanciables.Jugador.Personaje;
 //siva
 import constantes.Constantes.PANTALLA;
 
-public class Bowser extends Entidad {
+public class Bowser extends  Enemigo {
 
     private int velocidadAtaque = 80, contVelcAtaque = 0;
 
@@ -62,8 +63,8 @@ public class Bowser extends Entidad {
     }
 
     protected void InicializarHitbox() {
-        Hitbox = new java.awt.Rectangle(posX, posY, PANTALLA.TILES_ACTUAL_SIZE * anchura_Tiles,
-                PANTALLA.TILES_ACTUAL_SIZE * altura_Tiles);
+        Hitbox = new java.awt.Rectangle(posX, posY, (int) (PANTALLA.TILES_ACTUAL_SIZE * anchura_Tiles),
+                (int) (PANTALLA.TILES_ACTUAL_SIZE * altura_Tiles));
     }
 
     public void DibujarHitbox(java.awt.Graphics g) {
@@ -72,7 +73,12 @@ public class Bowser extends Entidad {
 
     public void updateFrames(java.awt.Graphics g) {
         g.drawImage(animaciones[AccionAnimation][frameAniamcion], posX, posY,
-                PANTALLA.TILES_ACTUAL_SIZE * anchura_Tiles,
-                PANTALLA.TILES_ACTUAL_SIZE * altura_Tiles, null);
+                (int) (PANTALLA.TILES_ACTUAL_SIZE * anchura_Tiles),
+                (int) (PANTALLA.TILES_ACTUAL_SIZE * altura_Tiles), null);
+    }
+
+    public  void recibirHit(Personaje jugador){
+        
+
     }
 }

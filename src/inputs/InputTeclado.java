@@ -26,31 +26,31 @@ public class InputTeclado implements KeyListener {
 
         switch (e.getKeyCode()) {
             case KeyEvent.VK_A:
-                panel.mario.MovIzquierda = true;
-                panel.mario.direccion = -1;
+                panel.jugador.MovIzquierda = true;
+                panel.jugador.direccion = -1;
 
                 break;
             case KeyEvent.VK_W:
-                panel.mario.MovArriba = true;
+                panel.jugador.MovArriba = true;
                 break;
             case KeyEvent.VK_D:
 
-                panel.mario.MovDerecha = true;
-                panel.mario.direccion = 1;
+                panel.jugador.MovDerecha = true;
+                panel.jugador.direccion = 1;
 
                 break;
             case KeyEvent.VK_S:
-                if (panel.mario.EnSuelo) {
-                    panel.mario.MovAbajo = true;
-                    panel.mario.accion = AccionPlayer.Agacharse;
+                if (panel.jugador.EnSuelo) {
+                    panel.jugador.MovAbajo = true;
+                    panel.jugador.accion = AccionPlayer.Agacharse;
                 }
                 break;
             case KeyEvent.VK_SPACE:
-                panel.mario.ActualizarSuelo();
-                if (panel.mario.FuerzaSalto == 0 && panel.mario.EnSuelo && panel.mario.saltando == false) {
-                    panel.mario.accion = AccionPlayer.Saltar;
-                    panel.mario.saltando = true;
-                    panel.mario.FuerzaSalto = Jugador.MARIO_JUMP_FORCE;
+                panel.jugador.ActualizarSuelo();
+                if (panel.jugador.FuerzaSalto == 0 && panel.jugador.EnSuelo && panel.jugador.saltando == false) {
+                    panel.jugador.accion = AccionPlayer.Saltar;
+                    panel.jugador.saltando = true;
+                    panel.jugador.FuerzaSalto = Jugador.MARIO_JUMP_FORCE;
                 }
                 break;
             // !Para pruebas. Borrar
@@ -72,24 +72,24 @@ public class InputTeclado implements KeyListener {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_A:
 
-                panel.mario.MovIzquierda = false;
-                if (panel.mario.MovDerecha && panel.mario.direccion == -1) {
-                    panel.mario.direccion = 1;
+                panel.jugador.MovIzquierda = false;
+                if (panel.jugador.MovDerecha && panel.jugador.direccion == -1) {
+                    panel.jugador.direccion = 1;
                 }
 
                 break;
             case KeyEvent.VK_W:
-                panel.mario.MovArriba = false;
+                panel.jugador.MovArriba = false;
                 break;
             case KeyEvent.VK_D:
-                panel.mario.MovDerecha = false;
-                if (panel.mario.MovIzquierda && panel.mario.direccion == 1) {
-                    panel.mario.direccion = -1;
+                panel.jugador.MovDerecha = false;
+                if (panel.jugador.MovIzquierda && panel.jugador.direccion == 1) {
+                    panel.jugador.direccion = -1;
 
                 }
                 break;
             case KeyEvent.VK_S:
-                panel.mario.MovAbajo = false;
+                panel.jugador.MovAbajo = false;
                 break;
             case KeyEvent.VK_SPACE:
 

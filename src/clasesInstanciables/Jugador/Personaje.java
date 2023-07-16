@@ -68,7 +68,7 @@ public class Personaje extends Entidad {
         ActualizarAccion();
         // *funcion que determina que animacion sigue y que frame de la animacion
         ActualizarFrame();
-        VerificarMuerte();
+        recibirHit();
 
         contInvensibilityFrames++;
     }
@@ -77,8 +77,8 @@ public class Personaje extends Entidad {
 
     public void updateFrames(java.awt.Graphics g) {
         g.drawImage(animaciones[AccionAnimation][frameAniamcion], posX, posY,
-                PANTALLA.TILES_ACTUAL_SIZE * anchura_Tiles,
-                PANTALLA.TILES_ACTUAL_SIZE * altura_Tiles, null);
+                (int) (PANTALLA.TILES_ACTUAL_SIZE * anchura_Tiles),
+                (int) (PANTALLA.TILES_ACTUAL_SIZE * altura_Tiles), null);
         DibujarHitbox(g);
     }
 
@@ -237,8 +237,8 @@ public class Personaje extends Entidad {
     // *Hitbox es del sistema de collisiones
     // ? se necesita actualizar o mostrarla para verificacion
     protected void InicializarHitbox() {
-        Hitbox = new java.awt.Rectangle(posX, posY, PANTALLA.TILES_ACTUAL_SIZE * anchura_Tiles,
-                PANTALLA.TILES_ACTUAL_SIZE * altura_Tiles);
+        Hitbox = new java.awt.Rectangle(posX, posY, (int) (PANTALLA.TILES_ACTUAL_SIZE * anchura_Tiles),
+                (int) (PANTALLA.TILES_ACTUAL_SIZE * altura_Tiles));
     }
 
     // *hitBox para enemigos
@@ -290,17 +290,16 @@ public class Personaje extends Entidad {
 
     // *Verifica vidas y si se va a morir se pone resetean variables */
     // Todo Poner Que se ponga en el spanw/
-    public void VerificarMuerte() {
+    public void recibirHit() {
         if (vivo == false) {
             if (contFramesMuerte == 0) {
-                FuerzaSalto = 20;
-
+                FuerzaSalto = 30;
             }
 
             contFramesMuerte++;
             if (contFramesMuerte >= Jugador.CANT_FRAMES_MUERTE) {
                 posX = 300;
-                posY = 300;
+                posY = 350;
                 vivo = true;
                 pequeño = false;
                 EnSuelo = true;
@@ -312,10 +311,11 @@ public class Personaje extends Entidad {
     }
 
     public void ActualizarSuelo() {
-        if (VerenSuelo(posX, posY + 1, anchura_Tiles * PANTALLA.TILES_ACTUAL_SIZE,
-                altura_Tiles * PANTALLA.TILES_ACTUAL_SIZE, currentLevelData)) {
+        if (VerenSuelo(posX, posY + 1, (int) (anchura_Tiles * PANTALLA.TILES_ACTUAL_SIZE),
+                (int) (altura_Tiles * PANTALLA.TILES_ACTUAL_SIZE), currentLevelData)) {
             EnSuelo = true;
             saltando = false;
+
             return;
         }
         EnSuelo = false;

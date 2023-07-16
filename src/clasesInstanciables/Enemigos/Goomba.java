@@ -1,12 +1,11 @@
 package clasesInstanciables.Enemigos;
 
-import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
-import clasesInstanciables.Entidad;
+import clasesInstanciables.Jugador.Personaje;
 import constantes.Constantes.PANTALLA;
 
-public class Goomba extends Entidad {
+public class Goomba extends Enemigo {
 
     // Todo Faltan la muerte y las hitboxes
     BufferedImage[][] animaciones;
@@ -29,11 +28,10 @@ public class Goomba extends Entidad {
 
     }
 
-    public void updateFrames(Graphics g) {
+    public void updateFrames(java.awt.Graphics g) {
         g.drawImage(animaciones[AccionAnimation][frameAniamcion], posX, posY,
-                PANTALLA.TILES_ACTUAL_SIZE * anchura_Tiles,
-                PANTALLA.TILES_ACTUAL_SIZE * altura_Tiles, null);
-        DibujarHitbox(g);
+                (int) (PANTALLA.TILES_ACTUAL_SIZE * anchura_Tiles),
+                (int) (PANTALLA.TILES_ACTUAL_SIZE * altura_Tiles), null);
     }
 
     public void movimiento() {
@@ -81,7 +79,14 @@ public class Goomba extends Entidad {
     }
 
     protected void InicializarHitbox() {
-        Hitbox = new java.awt.Rectangle(posX, posY, PANTALLA.TILES_ACTUAL_SIZE * anchura_Tiles,
-                PANTALLA.TILES_ACTUAL_SIZE * altura_Tiles);
+        Hitbox = new java.awt.Rectangle(posX, posY, (int) (PANTALLA.TILES_ACTUAL_SIZE * anchura_Tiles),
+                (int) (PANTALLA.TILES_ACTUAL_SIZE * altura_Tiles));
+    }
+
+    public void recibirHit(Personaje jugador) {
+        if (jugador.Hitbox.intersects(Hitbox)) {
+            vivo = false;
+        }
+
     }
 }
