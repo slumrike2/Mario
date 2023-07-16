@@ -85,12 +85,12 @@ public class Personaje extends Entidad {
         g.drawImage(animaciones[AccionAnimation][frameAniamcion], posX - offset, posY,
                 (int) (PANTALLA.TILES_ACTUAL_SIZE * anchura_Tiles),
                 (int) (PANTALLA.TILES_ACTUAL_SIZE * altura_Tiles), null);
-        DibujarHitboxWithOffset(g);
+        DibujarHitboxWithOffset(g, offset);
     }
 
-    private void DibujarHitboxWithOffset(Graphics g) {
+    private void DibujarHitboxWithOffset(Graphics g, int offset) {
         g.setColor(Color.RED);
-        g.drawRect(posX, posY, (int) Hitbox.getWidth(), (int) Hitbox.getHeight());
+        g.drawRect(Hitbox.x - offset, Hitbox.y, (int) Hitbox.getWidth(), (int) Hitbox.getHeight());
     }
 
     // *Determina la animacion que sigue
