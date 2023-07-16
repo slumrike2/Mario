@@ -9,7 +9,7 @@ import constantes.Constantes.*;
 import java.awt.Rectangle;
 
 import static utils.HelpMethods.canMoveHere;
-import static utils.HelpMethods.VerenSuelo;
+import static utils.HelpMethods.isInFloor;
 
 public class Personaje extends Entidad {
 
@@ -312,7 +312,7 @@ public class Personaje extends Entidad {
     }
 
     public void ActualizarSuelo() {
-        if (VerenSuelo(posX, posY + 1, anchura_Tiles * PANTALLA.TILES_ACTUAL_SIZE,
+        if (isInFloor(posX, posY + 1, anchura_Tiles * PANTALLA.TILES_ACTUAL_SIZE,
                 altura_Tiles * PANTALLA.TILES_ACTUAL_SIZE, currentLevelData)) {
             EnSuelo = true;
             saltando = false;

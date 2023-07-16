@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import interfaces.Identificable;
 
 public class ArchivoSerializable<T> {
-    private static String globalPath = "Mario\\src\\userData\\";
+    private static String globalPath = "src\\userData\\";
 
     private ObjectInputStream inputStream;
     private ObjectOutputStream outputStream;

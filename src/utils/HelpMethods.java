@@ -38,13 +38,13 @@ public class HelpMethods {
         return lvlData[(int) x][(int) y] != 11;
     }
 
-    public static boolean VerenSuelo(float x, float y, int width, int height, int[][] lvlData) {
+    public static boolean isInFloor(float x, float y, int width, int height, int[][] lvlData) {
 
-        
+        int x1 = (int) (x / PANTALLA.TILES_ACTUAL_SIZE);
         int x2 = (int) ((x + width) / PANTALLA.TILES_ACTUAL_SIZE);
         int y2 = (int) ((y + height) / PANTALLA.TILES_ACTUAL_SIZE);
 
-        if (isSolid(x2, y2, lvlData))
+        if (isSolid(x2, y2, lvlData) || isSolid(x1, y2, lvlData))
             return true;
         return false;
 
