@@ -1,6 +1,7 @@
 package clasesInstanciables.Enemigos;
 
 
+import clasesInstanciables.Entidad;
 import clasesInstanciables.Jugador.Personaje;
 
 import constantes.Constantes.PANTALLA;
@@ -75,8 +76,13 @@ public class Koopa extends Enemigo {
                 (int) (PANTALLA.TILES_ACTUAL_SIZE * altura_Tiles));
     }
 
-    public void recibirHit(Personaje jugador) {
-        System.out.println("recibiendo hit");
+    public void recibirHit(Entidad ob) {
+        if (ob instanceof Personaje) {
+            Personaje personaje = (Personaje) ob;
+            if (personaje.Hitbox.intersects(this.Hitbox)) {
+                
+            }
+        }
     }
 
 }

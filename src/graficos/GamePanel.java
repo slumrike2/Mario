@@ -53,7 +53,7 @@ public class GamePanel extends JPanel {
         jugador = new Personaje(PANTALLA.MarioDir, 50, 50, 2);
         jugador.loadLevelData(levelManager.getLevel().getLevelData());
 
-        goomba = new Goomba(PANTALLA.GoombaDir, 50, 50, Constantes.Enemigos.GOOMBA_VELC);
+        goomba = new Goomba(PANTALLA.GoombaDir, 200, 100, Constantes.Enemigos.GOOMBA_VELC);
         koopa = new Koopa(PANTALLA.KoopaDir, 200, 200, -1);
         koopaVolador = new KoopaVolador(PANTALLA.KoopaVoladorDir, 50, 100, 1);
         bowser = new Bowser(PANTALLA.BowserDir, 300, 300, 1);
@@ -64,11 +64,8 @@ public class GamePanel extends JPanel {
         addMouseListener(mouseimput);
         addMouseMotionListener(mouseimput);
         setFocusable(true);
-        agregarEntidades();
 
-    }
-
-    private void agregarEntidades() {
+        InicializarEntiendades();
 
     }
 
@@ -84,12 +81,14 @@ public class GamePanel extends JPanel {
 
     public void FrameUpdate() {
         veryfyCloseToBorder();
-        jugador.update();
+
         for (Enemigo entidad : enemigos) {
             entidad.update();
-            jugador.HitEnemigo(entidad.getHitbox());
             entidad.recibirHit(jugador);
+            jugador.HitEnemigo(entidad.getHitbox());
+
         }
+        jugador.update();
     }
 
     public void veryfyCloseToBorder() {

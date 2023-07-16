@@ -1,11 +1,11 @@
 package clasesInstanciables.Enemigos;
 
-
+import clasesInstanciables.Entidad;
 import clasesInstanciables.Jugador.Personaje;
 //siva
 import constantes.Constantes.PANTALLA;
 
-public class Bowser extends  Enemigo {
+public class Bowser extends Enemigo {
 
     private int velocidadAtaque = 80, contVelcAtaque = 0;
 
@@ -77,8 +77,12 @@ public class Bowser extends  Enemigo {
                 (int) (PANTALLA.TILES_ACTUAL_SIZE * altura_Tiles), null);
     }
 
-    public  void recibirHit(Personaje jugador){
-        
-
+    public void recibirHit(Entidad ob) {
+        if (ob instanceof Personaje) {
+            Personaje personaje = (Personaje) ob;
+            if (personaje.Hitbox.intersects(this.Hitbox)) {
+                
+            }
+        }
     }
 }
