@@ -32,9 +32,12 @@ public class HelpMethods {
 
     private static boolean isSolid(float x, float y, int[][] lvlData) {
 
-        if (x <= 0 || y <= 0 || x >= PANTALLA.TILES_IN_WIDTH || y >= PANTALLA.TILES_IN_HEIGHT) {
+        int maxWidth = lvlData.length * PANTALLA.TILES_ACTUAL_SIZE;
+
+        if (x <= 0 || y <= 0 || x >= maxWidth || y >= PANTALLA.TILES_IN_HEIGHT) {
             return true;
         }
+
         return lvlData[(int) x][(int) y] != 11;
     }
 
@@ -49,4 +52,5 @@ public class HelpMethods {
         return false;
 
     }
+
 }

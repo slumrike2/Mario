@@ -6,6 +6,8 @@ import clasesInstanciables.Entidad;
 
 import constantes.Constantes.*;
 
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.Rectangle;
 
 import static utils.HelpMethods.canMoveHere;
@@ -76,10 +78,20 @@ public class Personaje extends Entidad {
     // *se encarga de dibujar los frames del personaje
 
     public void updateFrames(java.awt.Graphics g) {
-        g.drawImage(animaciones[AccionAnimation][frameAniamcion], posX, posY,
+
+    }
+
+    public void updateFrames(Graphics g, int offset) {
+        g.drawImage(animaciones[AccionAnimation][frameAniamcion], posX - offset, posY,
                 PANTALLA.TILES_ACTUAL_SIZE * anchura_Tiles,
                 PANTALLA.TILES_ACTUAL_SIZE * altura_Tiles, null);
-        DibujarHitbox(g);
+        DibujarHitboxWithOffset(g, offset);
+    }
+
+    private void DibujarHitboxWithOffset(Graphics g, int offset) {
+        g.setColor(Color.RED);
+        g.drawRect(posX - offset, posY, PANTALLA.TILES_ACTUAL_SIZE * anchura_Tiles,
+                PANTALLA.TILES_ACTUAL_SIZE * altura_Tiles);
     }
 
     // *Determina la animacion que sigue
@@ -321,4 +333,168 @@ public class Personaje extends Entidad {
         EnSuelo = false;
 
     }
+
+    // #region Getters and Setters
+    public int getGravedad() {
+        return gravedad;
+    }
+
+    public void setGravedad(int gravedad) {
+        this.gravedad = gravedad;
+    }
+
+    public int[][] getCurrentLevelData() {
+        return currentLevelData;
+    }
+
+    public void setCurrentLevelData(int[][] currentLevelData) {
+        this.currentLevelData = currentLevelData;
+    }
+
+    public int getContInvensibilityFrames() {
+        return contInvensibilityFrames;
+    }
+
+    public void setContInvensibilityFrames(int contInvensibilityFrames) {
+        this.contInvensibilityFrames = contInvensibilityFrames;
+    }
+
+    public int getAccionAnimation() {
+        return AccionAnimation;
+    }
+
+    public void setAccionAnimation(int accionAnimation) {
+        AccionAnimation = accionAnimation;
+    }
+
+    public int getFrameAniamcion() {
+        return frameAniamcion;
+    }
+
+    public void setFrameAniamcion(int frameAniamcion) {
+        this.frameAniamcion = frameAniamcion;
+    }
+
+    public int getContFrames() {
+        return contFrames;
+    }
+
+    public void setContFrames(int contFrames) {
+        this.contFrames = contFrames;
+    }
+
+    public int getContFramesMuerte() {
+        return contFramesMuerte;
+    }
+
+    public void setContFramesMuerte(int contFramesMuerte) {
+        this.contFramesMuerte = contFramesMuerte;
+    }
+
+    public int getFuerzaSalto() {
+        return FuerzaSalto;
+    }
+
+    public void setFuerzaSalto(int fuerzaSalto) {
+        FuerzaSalto = fuerzaSalto;
+    }
+
+    public BufferedImage[][] getAnimaciones() {
+        return animaciones;
+    }
+
+    public void setAnimaciones(BufferedImage[][] animaciones) {
+        this.animaciones = animaciones;
+    }
+
+    public Boolean getEnMovimiento() {
+        return enMovimiento;
+    }
+
+    public void setEnMovimiento(Boolean enMovimiento) {
+        this.enMovimiento = enMovimiento;
+    }
+
+    public Boolean getSaltando() {
+        return saltando;
+    }
+
+    public void setSaltando(Boolean saltando) {
+        this.saltando = saltando;
+    }
+
+    public Boolean getEnSuelo() {
+        return EnSuelo;
+    }
+
+    public void setEnSuelo(Boolean enSuelo) {
+        EnSuelo = enSuelo;
+    }
+
+    public Boolean getMovDerecha() {
+        return MovDerecha;
+    }
+
+    public void setMovDerecha(Boolean movDerecha) {
+        MovDerecha = movDerecha;
+    }
+
+    public Boolean getMovIzquierda() {
+        return MovIzquierda;
+    }
+
+    public void setMovIzquierda(Boolean movIzquierda) {
+        MovIzquierda = movIzquierda;
+    }
+
+    public Boolean getMovAbajo() {
+        return MovAbajo;
+    }
+
+    public void setMovAbajo(Boolean movAbajo) {
+        MovAbajo = movAbajo;
+    }
+
+    public Boolean getMovArriba() {
+        return MovArriba;
+    }
+
+    public void setMovArriba(Boolean movArriba) {
+        MovArriba = movArriba;
+    }
+
+    public Boolean getPequeño() {
+        return pequeño;
+    }
+
+    public void setPequeño(Boolean pequeño) {
+        this.pequeño = pequeño;
+    }
+
+    public int getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(int direccion) {
+        this.direccion = direccion;
+    }
+
+    public AccionPlayer getAccion() {
+        return accion;
+    }
+
+    public void setAccion(AccionPlayer accion) {
+        this.accion = accion;
+    }
+
+    public AccionPlayer getAccionprevia() {
+        return Accionprevia;
+    }
+
+    public void setAccionprevia(AccionPlayer accionprevia) {
+        Accionprevia = accionprevia;
+    }
+
+    // #endregion
+
 }

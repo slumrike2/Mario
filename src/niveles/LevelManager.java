@@ -50,11 +50,11 @@ public class LevelManager {
         }
     }
 
-    public void draw(Graphics g) {
-        for (int i = 0; i < PANTALLA.TILES_IN_WIDTH; i++) {
+    public void draw(Graphics g, int offset) {
+        for (int i = 0; i < level1.getLevelData().length; i++) {
             for (int j = 0; j < PANTALLA.TILES_IN_HEIGHT; j++) {
                 int tile = level1.getTile(i, j);
-                g.drawImage(levelSprite[tile], i * PANTALLA.TILES_ACTUAL_SIZE, j * PANTALLA.TILES_ACTUAL_SIZE,
+                g.drawImage(levelSprite[tile], i * PANTALLA.TILES_ACTUAL_SIZE - offset, j * PANTALLA.TILES_ACTUAL_SIZE,
                         PANTALLA.TILES_ACTUAL_SIZE, PANTALLA.TILES_ACTUAL_SIZE,
                         null);
             }

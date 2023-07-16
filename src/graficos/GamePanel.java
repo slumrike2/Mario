@@ -18,6 +18,7 @@ import java.awt.image.BufferedImage;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import niveles.*;
+import utils.LoadSave;
 
 public class GamePanel extends JPanel {
 
@@ -35,12 +36,18 @@ public class GamePanel extends JPanel {
 
     public LevelManager levelManager;
 
+    private int xlvlOffset;
+    private int leftBorder = (int) (PANTALLA.SCREEN_WIDTH * 0.2);
+    private int rightBorder = (int) (PANTALLA.SCREEN_WIDTH * 0.8);
+    private int levelWide = LoadSave.getLevelData().length;
+    private int maxLvlOffsetX = (levelWide - PANTALLA.TILES_IN_WIDTH) * PANTALLA.TILES_ACTUAL_SIZE;
+
     public GamePanel() {
         // Se carga el nivel
         levelManager = new LevelManager(this);
 
         // Se cargan las entidades
-        mario = new Personaje(PANTALLA.MarioDir, 50, 50, 2);
+        mario = new Personaje(PANTALLA.MarioDir, 100, 100, 2);
         mario.loadLevelData(levelManager.getLevel().getLevelData());
 
         goomba = new Goomba(PANTALLA.GoombaDir, 500, 300, Constantes.Enemigos.GOOMBA_VELC);
@@ -54,37 +61,54 @@ public class GamePanel extends JPanel {
         addMouseListener(mouseimput);
         addMouseMotionListener(mouseimput);
         setFocusable(true);
-        InicializarEntiendades();
+        agregarEntidades();
 
     }
 
-    public void InicializarEntiendades() {
-        entidades.add(mario);
+    public void agregarEntidades() {
         // entidades.add(goomba);
         // entidades.add(koopa);
         // entidades.add(koopaVolador);
         // entidades.add(bowser);
     }
 
+    public void FrameUpdate() {
+        veryfyCloseToBorder();
+        mario.update();
+        for (Entidad entidad : entidades) {
+            entidad.update();
+            mario.HitEnemigo(entidad.getHitbox());
+        }
+    }
+
+    public void veryfyCloseToBorder() {
+
+        int PlayerX = (int) mario.getHitbox().x;
+        int difference = PlayerX - xlvlOffset;
+
+        if (difference > rightBorder) {
+            xlvlOffset += difference - rightBorder;
+        } else if (difference < leftBorder) {
+            xlvlOffset += difference - leftBorder;
+        }
+
+        if (xlvlOffset < 0) {
+            xlvlOffset = 0;
+        } else if (xlvlOffset > maxLvlOffsetX) {
+            xlvlOffset = maxLvlOffsetX;
+        }
+
+    }
+
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        levelManager.draw(g);
+        levelManager.draw(g, xlvlOffset);
+        mario.updateFrames(g, xlvlOffset);
         // *se encarga de dibujar los frames del peronsaje
         for (Entidad entidad : entidades) {
 
             entidad.updateFrames(g);
         }
-    }
-
-    public void FrameUpdate() {
-        for (Entidad entidad : entidades) {
-            entidad.update();
-            if (!(entidad instanceof Personaje)) {
-
-                mario.HitEnemigo(entidad.getHitbox());
-            }
-        }
-
     }
 
 }
