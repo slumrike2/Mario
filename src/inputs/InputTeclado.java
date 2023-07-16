@@ -6,6 +6,7 @@ import java.awt.event.KeyListener;
 import clasesInstanciables.Jugador.Personaje.AccionPlayer;
 import graficos.GamePanel;
 import graficos.Gui;
+import constantes.Constantes.Jugador;
 
 public class InputTeclado implements KeyListener {
 
@@ -26,6 +27,7 @@ public class InputTeclado implements KeyListener {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_A:
                 panel.mario.MovIzquierda = true;
+                panel.mario.direccion = -1;
 
                 break;
             case KeyEvent.VK_W:
@@ -34,18 +36,21 @@ public class InputTeclado implements KeyListener {
             case KeyEvent.VK_D:
 
                 panel.mario.MovDerecha = true;
+                panel.mario.direccion = 1;
 
                 break;
             case KeyEvent.VK_S:
-                panel.mario.MovAbajo = true;
-                panel.mario.accion = AccionPlayer.Agacharse;
+                if (panel.mario.EnSuelo) {
+                    panel.mario.MovAbajo = true;
+                    panel.mario.accion = AccionPlayer.Agacharse;
+                }
                 break;
             case KeyEvent.VK_SPACE:
-                if (panel.mario.FuerzaSalto == 0 && panel.mario.EnSuelo) {
+                panel.mario.ActualizarSuelo();
+                if (panel.mario.FuerzaSalto == 0 && panel.mario.EnSuelo && panel.mario.saltando == false) {
                     panel.mario.accion = AccionPlayer.Saltar;
                     panel.mario.saltando = true;
-                    panel.mario.EnSuelo = false;
-                    panel.mario.FuerzaSalto = 40;
+                    panel.mario.FuerzaSalto = Jugador.MARIO_JUMP_FORCE;
                 }
                 break;
             // !Para pruebas. Borrar
@@ -68,6 +73,9 @@ public class InputTeclado implements KeyListener {
             case KeyEvent.VK_A:
 
                 panel.mario.MovIzquierda = false;
+                if (panel.mario.MovDerecha && panel.mario.direccion == -1) {
+                    panel.mario.direccion = 1;
+                }
 
                 break;
             case KeyEvent.VK_W:
@@ -75,13 +83,15 @@ public class InputTeclado implements KeyListener {
                 break;
             case KeyEvent.VK_D:
                 panel.mario.MovDerecha = false;
+                if (panel.mario.MovIzquierda && panel.mario.direccion == 1) {
+                    panel.mario.direccion = -1;
 
+                }
                 break;
             case KeyEvent.VK_S:
                 panel.mario.MovAbajo = false;
                 break;
             case KeyEvent.VK_SPACE:
-                panel.mario.saltando = false;
 
                 break;
             default:

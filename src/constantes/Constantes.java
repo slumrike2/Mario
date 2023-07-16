@@ -32,7 +32,7 @@ public class Constantes {
         public static final int MARIO_VELC = 2;
         public static final int MARIO_VELCIDAD_ANIMACION = 10;
         public static final int INVENSIBILITY_FRAMES = 2 * FramesPerSecond;
-        public static final int MARIO_JUMP_FORCE = 30;
+        public static final int MARIO_JUMP_FORCE = 40;
         public static final int BIG_SPRITE_HEIGTH = PANTALLA.TILES_ACTUAL_SIZE;
         public static final int SPRITE_WIDTH = PANTALLA.TILES_ACTUAL_SIZE;
         public static final int SMALL_SPRITE_HEIGTH = PANTALLA.TILES_ACTUAL_SIZE;
