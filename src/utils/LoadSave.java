@@ -11,7 +11,7 @@ import constantes.Constantes.PANTALLA;
 public class LoadSave {
 
     public static String LEVEL_ONE_IMAGE = "res/level.png";
-    public static String LEVEL_ONE_DATA = "res/levelData.png";
+    public static String LEVEL_ONE_DATA = "res/levelDataLong.png";
 
     public static BufferedImage GetLevelAtlas(String path) {
         BufferedImage imagen = null;
@@ -25,8 +25,10 @@ public class LoadSave {
     }
 
     public static int[][] getLevelData() {
-        int[][] levelData = new int[PANTALLA.TILES_IN_WIDTH][PANTALLA.TILES_IN_HEIGHT];
         BufferedImage img = LoadSave.GetLevelAtlas(LoadSave.LEVEL_ONE_DATA);
+
+        int[][] levelData = new int[img.getWidth()][img.getHeight()];
+
         for (int i = 0; i < img.getWidth(); i++)
             for (int j = 0; j < img.getHeight(); j++) {
                 Color color = new Color(img.getRGB(i, j));

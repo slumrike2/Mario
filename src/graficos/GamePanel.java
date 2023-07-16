@@ -19,6 +19,7 @@ import java.awt.image.BufferedImage;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import niveles.*;
+import utils.LoadSave;
 
 public class GamePanel extends JPanel {
 
@@ -37,6 +38,12 @@ public class GamePanel extends JPanel {
     public BufferedImage aux;
 
     public LevelManager levelManager;
+
+    private int xlvlOffset;
+    private int leftBorder = (int) (PANTALLA.SCREEN_WIDTH * 0.2);
+    private int rightBorder = (int) (PANTALLA.SCREEN_WIDTH * 0.8);
+    private int levelWide = LoadSave.getLevelData().length;
+    private int maxLvlOffsetX = (levelWide - PANTALLA.TILES_IN_WIDTH) * PANTALLA.TILES_ACTUAL_SIZE;
 
     public GamePanel() {
         // Se carga el nivel
@@ -57,8 +64,11 @@ public class GamePanel extends JPanel {
         addMouseListener(mouseimput);
         addMouseMotionListener(mouseimput);
         setFocusable(true);
-        InicializarEntiendades();
+        agregarEntidades();
 
+    }
+
+    private void agregarEntidades() {
     }
 
     public void InicializarEntiendades() {
@@ -71,26 +81,42 @@ public class GamePanel extends JPanel {
         entidades.addAll(personajes);
     }
 
+    public void FrameUpdate() {
+        veryfyCloseToBorder();
+        jugador.update();
+        for (Entidad entidad : entidades) {
+            entidad.update();
+            jugador.HitEnemigo(entidad.getHitbox());
+        }
+    }
+
+    public void veryfyCloseToBorder() {
+
+        int PlayerX = (int) jugador.getHitbox().x;
+        int difference = PlayerX - xlvlOffset;
+
+        if (difference > rightBorder) {
+            xlvlOffset += difference - rightBorder;
+        } else if (difference < leftBorder) {
+            xlvlOffset += difference - leftBorder;
+        }
+
+        if (xlvlOffset < 0) {
+            xlvlOffset = 0;
+        } else if (xlvlOffset > maxLvlOffsetX) {
+            xlvlOffset = maxLvlOffsetX;
+        }
+
+    }
+
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        levelManager.draw(g);
+        levelManager.draw(g, xlvlOffset);
+        jugador.updateFrames(g, xlvlOffset);
         // *se encarga de dibujar los frames del peronsaje
         for (Entidad entidad : entidades) {
             entidad.updateFrames(g);
         }
-    }
-
-    public void FrameUpdate() {
-        for (Entidad entidad : entidades) {
-            entidad.update();
-        }
-        for (Personaje personaje : personajes) {
-            for (Enemigo enemigo : enemigos) {
-                personaje.HitEnemigo(enemigo.Hitbox);
-                enemigo.recibirHit(personaje);
-            }
-        }
-
     }
 
 }
