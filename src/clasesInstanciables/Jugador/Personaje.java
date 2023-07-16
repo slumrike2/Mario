@@ -212,7 +212,6 @@ public class Personaje extends Entidad {
             enMovimiento = true;
         }
 
-        System.out.println(EnSuelo);
     }
 
     // *se encarga de deterinar cuantos frames tienen las animaciones
