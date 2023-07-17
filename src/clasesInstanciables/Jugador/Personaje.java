@@ -178,7 +178,6 @@ public class Personaje extends Entidad {
 
     // *se encarga de mover al personaje
     public void movimiento() {
-
         float xSpeed = 0;
         float ySpeed = 0;
 

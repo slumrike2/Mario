@@ -27,8 +27,23 @@ public class Constantes {
         public static final int BOWSER_VELC = 1;
     }
 
-    public enum ENEMY_TYPE {
-        GOOMBA, KOOPA, KOOPA_VOLADOR, BOWSER
+    public static class ENTITY_TYPE {
+
+        public enum CHARACTERS {
+            MARIO, LUIGI, WARIO, WALUIGI
+        }
+
+        public enum ENEMIES {
+            GOOMBA, KOOPA, KOOPA_VOLADOR, BOWSER
+        }
+
+        public enum ITEMS {
+            MONEDA, FLOR, ESTRELLA, HONGO
+        }
+
+        public enum ATAQUES {
+            BOLA_FUEGO, BOLA_HIELO, CAPARAZON_AZUL
+        }
     }
 
     public static class Jugador {
@@ -55,4 +70,5 @@ public class Constantes {
     public enum Pantallas_Mundos {
         MUNDO_1, PANTALLA_2, PANTALLA_3, PANTALLA_4, PANTALLA_5
     }
+
 }
