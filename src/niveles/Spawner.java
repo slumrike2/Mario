@@ -10,7 +10,7 @@ import graficos.GamePanel;
 
 public class Spawner {
 
-    private  GamePanel gamePanel;
+    private GamePanel gamePanel;
 
     public Spawner(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
