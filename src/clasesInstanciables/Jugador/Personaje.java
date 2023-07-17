@@ -30,7 +30,7 @@ public class Personaje extends Entidad {
     public BufferedImage[][] animaciones; // * todas las animaciones del personaje
     public Boolean enMovimiento = false, saltando = false, EnSuelo = false; // * Boleanos que determinaran acciones
     public Boolean MovDerecha = false, MovIzquierda = false, MovAbajo = false, MovArriba = false;
-    private Boolean pequeño = true;
+    private Boolean pequeño = false;
     public int direccion;
 
     // *se encarga de determinar la direccion del personaje
@@ -254,7 +254,7 @@ public class Personaje extends Entidad {
 
     // *hitBox para enemigos
     public void HitEnemigo(Rectangle HitboxEnemigo) {
-        if (Hitbox.intersects(HitboxEnemigo)) {
+        if (Hitbox.intersects(HitboxEnemigo) && vivo == true) {
             // *Tiempo Entre golpes
             // *Si esta por encima del enemigo salta sobre el
             // Todo Que el enemigo reciba el golpe perse

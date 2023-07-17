@@ -1,9 +1,11 @@
 package clasesInstanciables.Enemigos;
 
 import clasesInstanciables.Entidad;
-import clasesInstanciables.Jugador.Personaje;
 
 public abstract class Enemigo extends Entidad {
+
+    protected int FramesInvensible = 10;
+    protected int contFramesInvensible = 0;
 
     public Enemigo(String Dir) {
         super(Dir);
@@ -17,7 +19,6 @@ public abstract class Enemigo extends Entidad {
         super(Dir, Posx, Posy, velocidad, altura_Tiles, anchura_Tiles);
     }
 
-    public void recibirHit(Personaje jugador) {
-        System.out.println(2);
-    }
+    public abstract void recibirHit(Entidad ob);
+
 }

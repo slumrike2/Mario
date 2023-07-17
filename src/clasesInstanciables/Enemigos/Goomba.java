@@ -2,6 +2,7 @@ package clasesInstanciables.Enemigos;
 
 import java.awt.image.BufferedImage;
 
+import clasesInstanciables.Entidad;
 import clasesInstanciables.Jugador.Personaje;
 import constantes.Constantes.PANTALLA;
 
@@ -11,7 +12,7 @@ public class Goomba extends Enemigo {
     BufferedImage[][] animaciones;
 
     private int AccionAnimation = 0, frameAniamcion = 0, contFrames = 0;
-    public boolean Vivo = true, enMovimiento = true;
+    public boolean enMovimiento = true;
 
     public Goomba(String Dir, int Posx, int Posy, int velocidad) {
         super(Dir, Posx, Posy, velocidad, 1, 1);
@@ -25,6 +26,7 @@ public class Goomba extends Enemigo {
         movimiento();
         ActualizarAccion();
         ActualizarFrame();
+        contFramesInvensible++;
 
     }
 
@@ -45,7 +47,7 @@ public class Goomba extends Enemigo {
 
     public void ActualizarAccion() {
         AccionAnimation = 1;
-        if (Vivo == false) {
+        if (vivo == false) {
             AccionAnimation = 2;
             return;
         }
@@ -62,7 +64,7 @@ public class Goomba extends Enemigo {
         if (contFrames >= velocidadAnimacion) {
             contFrames = 0;
             frameAniamcion++;
-            if (Vivo == false) {
+            if (vivo == false) {
                 frameAniamcion = 0;
                 return;
             }
@@ -83,10 +85,21 @@ public class Goomba extends Enemigo {
                 (int) (PANTALLA.TILES_ACTUAL_SIZE * altura_Tiles));
     }
 
-    public void recibirHit(Personaje jugador) {
-        if (jugador.Hitbox.intersects(Hitbox)) {
-            vivo = false;
+    public void recibirHit(Entidad ob) {
+        if (contFramesInvensible < FramesInvensible) {
+            return;
         }
+        if (ob instanceof Personaje) {
+            Personaje personaje = (Personaje) ob;
+            if (personaje.Hitbox.intersects(this.Hitbox) && personaje.vivo == true && vivo == true) {
+                if ((personaje.Hitbox.y * personaje.Hitbox.height) <= ((this.Hitbox.getY() * Hitbox.height))) {
+                    System.out.println("Muerto");
+                    vivo = false;
+                }
 
+            }
+        }
+        contFramesInvensible = 0;
     }
+
 }
