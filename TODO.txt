@@ -80,6 +80,24 @@ TODO:
 - [ ] cambiar constructores de entidades para que reciban una posicion 
 - [ ] cambiar medidas utilizadas de pixeles a tiles
 
+*niveles:
+
+- [ ] mundo 1 - 1
+- [ ] mundo 1 - 2
+- [ ] mundo 1 - 3
+- [ ] mundo 1 - 4
+- [ ] mundo 2 - 1
+- [ ] mundo 2 - 2
+- [ ] mundo 2 - 3
+- [ ] mundo 2 - 4
+- [ ] mundo 3 - 1
+- [ ] mundo 3 - 2
+- [ ] mundo 3 - 3
+- [ ] mundo 3 - 4
+- [ ] mundo 4 - 1
+- [ ] mundo 4 - 2
+- [ ] mundo 4 - 3
+- [ ] mundo 4 - 4
 !Bugs
 
 - [ ] Mario no toca el suelo al spawnear
