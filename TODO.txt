@@ -8,7 +8,7 @@ TODO:
 - [ ] colisiones entre entidades no jugadoras
 - [ ] multijugador
 - [ ] mejorar HUD
-- [ ] IA
+? [ ] IA
 - [ ] sistema de victoria
 - [ ] sistema de derrota
 - [ ] sistema de puntuacion
@@ -98,3 +98,6 @@ TODO:
 - [ ] mundo 4 - 2
 - [ ] mundo 4 - 3
 - [ ] mundo 4 - 4
+!Bugs
+
+- [ ] Mario no toca el suelo al spawnear

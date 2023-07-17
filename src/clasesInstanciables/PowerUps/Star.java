@@ -4,26 +4,24 @@ import java.awt.Graphics;
 
 import constantes.Constantes.PANTALLA;
 
+import constantes.Constantes.Items;
+
 public class Star extends Recolectable {
 
-    public Star(String Dir) {
-        super(Dir);
-    }
+    public Star(int Posx, int Posy) {
+        super(Posx, Posy);
+        animaciones = animacion(1, 0, 4, Items.ESTRELLA_WIDTH_TILES, Items.ESTRELLA_HIGH_TILES);
 
-    public Star(String Dir, int Posx, int Posy, float altura_Tiles, float anchura_Tiles) {
-        super(Dir, Posx, Posy, altura_Tiles, anchura_Tiles);
-        animaciones = animacion(1, 0, 3, 16, 16);
     }
 
     public void update() {
-        
+
     }
 
     public void updateFrames(Graphics g, int offset) {
         g.drawImage(animaciones[0][AccionAnimation], posX - offset, posY, null);
     }
 
-   
     public void ActualizarFrame() {
 
     }

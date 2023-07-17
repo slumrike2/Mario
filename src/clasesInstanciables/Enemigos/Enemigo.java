@@ -11,8 +11,8 @@ public abstract class Enemigo extends Entidad {
         super(Dir);
     }
 
-    public Enemigo(String Dir, int Posx, int Posy, float altura_Tiles, float anchura_Tiles) {
-        super(Dir, Posx, Posy, altura_Tiles, anchura_Tiles);
+    public Enemigo(String Dir, int Posx, int Posy) {
+        super(Dir, Posx, Posy);
     }
 
     public Enemigo(String Dir, int Posx, int Posy, int velocidad, int altura_Tiles, int anchura_Tiles) {

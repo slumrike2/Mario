@@ -15,7 +15,7 @@ public class Koopa extends Enemigo {
 
     public Koopa(String Dir, int Posx, int Posy, int velocidad) {
         super(Dir, Posx, Posy, velocidad, 2, 1);
-        animaciones = animacion(3, 0, 2, 16, 32);
+        animaciones = animacion(3, 0, 2, 1, 2);
         velocidadAnimacion = 12;
     }
 
