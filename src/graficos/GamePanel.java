@@ -3,22 +3,14 @@ package graficos;
 import javax.swing.JPanel;
 
 import clasesInstanciables.*;
-import constantes.Constantes;
 import constantes.Constantes.PANTALLA;
 import constantes.Constantes.ENTITY_TYPE.*;
 import inputs.InptutMouse;
 import inputs.InputTeclado;
-import clasesInstanciables.Enemigos.Bowser;
-import clasesInstanciables.Enemigos.Enemigo;
-import clasesInstanciables.Enemigos.Koopa;
-import clasesInstanciables.Enemigos.Goomba;
-import clasesInstanciables.Enemigos.KoopaVolador;
-import clasesInstanciables.Jugador.Personaje;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.awt.Dimension;
-import java.util.ArrayList;
 import niveles.*;
 import utils.LoadSave;
 

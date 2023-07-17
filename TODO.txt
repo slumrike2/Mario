@@ -52,7 +52,10 @@ TODO:
 - [ ] power ups
 - [ ] proyectiles
 - [ ] backgrounds
-- [ ] niveles 
+- [ ] mundo 1 - Overworld
+- [ ] mundo 1 - Underground
+- [ ] mundo 1 - Underwater
+- [ ] mundo 1 - Castle
 - [ ] menu
 - [ ] inicio de sesion
 - [ ] registro
