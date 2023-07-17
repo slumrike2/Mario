@@ -69,3 +69,10 @@ TODO:
 - [ ] bloques de monedas
 - [ ] power Ups
 
+*Refactors:
+- [ ] hacer que los recursos se obtengan de un solo lugar a traves de una clase Loader
+- [ ] hacer que los sprites se obtengan de un solo lugar a traves de una clase SpriteLoader
+- [ ] hacer que los sonidos se obtengan de un solo lugar a traves de una clase SoundLoader
+- [ ] hacer que los niveles se obtengan de un solo lugar a traves de una clase LevelLoader
+- [ ] cambiar constructores de entidades para que reciban una posicion 
+- [ ] cambiar medidas utilizadas de pixeles a tiles
