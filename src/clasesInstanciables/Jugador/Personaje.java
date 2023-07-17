@@ -76,7 +76,6 @@ public class Personaje extends Entidad {
         // *funcion que determina que animacion sigue y que frame de la animacion
         ActualizarFrame();
         recibirHit();
-        System.out.println(EnSuelo);
         contInvensibilityFrames++;
     }
 

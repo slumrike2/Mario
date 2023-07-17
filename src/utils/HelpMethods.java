@@ -45,6 +45,8 @@ public class HelpMethods {
         int x2 = (int) ((x + width) / PANTALLA.TILES_ACTUAL_SIZE);
         int y2 = (int) ((y + height) / PANTALLA.TILES_ACTUAL_SIZE);
 
+        System.out.println("x1: " + x1 + "y2: " + y2);
+        
         if (isSolid(x2, y2, lvlData) || isSolid(x1, y2, lvlData))
             return true;
         return false;
