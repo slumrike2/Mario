@@ -100,4 +100,4 @@ TODO:
 - [ ] mundo 4 - 4
 !Bugs
 
-- [ ] Mario no toca el suelo al spawnear
+- [X] Mario no toca el suelo al spawnear

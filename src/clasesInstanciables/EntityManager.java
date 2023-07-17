@@ -62,7 +62,7 @@ public class EntityManager {
     }
 
     public void initializeMainCharacter() {
-        mainCharacter = new Personaje(PANTALLA.TILES_ACTUAL_SIZE * 4, PANTALLA.TILES_ACTUAL_SIZE * 4);
+        mainCharacter = new Personaje(PANTALLA.TILES_ACTUAL_SIZE * 1, PANTALLA.TILES_ACTUAL_SIZE * 3);
         mainCharacter.loadLevelData(gamePanel.levelManager.getLevel().getLevelData());
         personajes.add(mainCharacter);
         entidades.add(mainCharacter);

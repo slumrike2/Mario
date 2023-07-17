@@ -22,12 +22,10 @@ public abstract class Entidad {
     // * Colliision
     public Rectangle Hitbox;
 
-    
-
     // ! Solo debe quedar este constructor
     public Entidad(int posX, int posY) {
         this.posX = posX;
-        this.posY = posY;
+        this.posY = posY - 1;
         InicializarHitbox();
     }
 
