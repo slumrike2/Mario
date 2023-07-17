@@ -18,7 +18,7 @@ public class Bowser extends Enemigo {
 
     public Bowser(String Dir, int Posx, int Posy, int velocidad) {
         super(Dir, Posx, Posy, velocidad, 2, 2);
-        animaciones = animacion(2, 0, 2, 32, 32);
+        animaciones = animacion(2, 0, 2, 2, 2);
         velocidadAnimacion = 30;
     }
 

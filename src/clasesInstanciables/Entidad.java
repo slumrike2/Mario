@@ -6,6 +6,8 @@ import java.awt.Graphics;
 
 import javax.imageio.ImageIO;
 
+import constantes.Constantes.PANTALLA;
+
 public abstract class Entidad {
 
     public float altura_Tiles;
@@ -30,8 +32,15 @@ public abstract class Entidad {
         InicializarHitbox();
     }
 
-    public Entidad(String Dir, int posX, int posY, float altura_Tiles, float anchura_Tiles) {
+    public Entidad(String Dir, int posX, int posY) {
         importarImagen(Dir);
+        this.posX = posX;
+        this.posY = posY;
+        InicializarHitbox();
+    }
+
+    // ! Solo debe quedar este constructor
+    public Entidad(int posX, int posY) {
         this.posX = posX;
         this.posY = posY;
         InicializarHitbox();
@@ -50,7 +59,9 @@ public abstract class Entidad {
         }
     }
 
-    public BufferedImage[][] animacion(int animaciones, int xInicial, int xfinal, int ancho, int alto) {
+    public BufferedImage[][] animacion(int animaciones, int xInicial, int xfinal, int ancho_Tiles, int alto_Tiles) {
+        int ancho = PANTALLA.TILES_DEFAULT_SIZE * ancho_Tiles;
+        int alto = PANTALLA.TILES_DEFAULT_SIZE * alto_Tiles;
         BufferedImage[][] animacion = new BufferedImage[animaciones][xfinal - xInicial];
         for (int j = 0; j < animaciones; j++) {
             for (int i = xInicial; i < xfinal; i++) {

@@ -8,7 +8,7 @@ TODO:
 - [ ] colisiones entre entidades no jugadoras
 - [ ] multijugador
 - [ ] mejorar HUD
-- [ ] IA
+? [ ] IA
 - [ ] sistema de victoria
 - [ ] sistema de derrota
 - [ ] sistema de puntuacion
@@ -79,3 +79,7 @@ TODO:
 - [ ] hacer que los niveles se obtengan de un solo lugar a traves de una clase LevelLoader
 - [ ] cambiar constructores de entidades para que reciban una posicion 
 - [ ] cambiar medidas utilizadas de pixeles a tiles
+
+!Bugs
+
+- [ ] Mario no toca el suelo al spawnear

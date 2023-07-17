@@ -16,7 +16,7 @@ public class Goomba extends Enemigo {
 
     public Goomba(String Dir, int Posx, int Posy, int velocidad) {
         super(Dir, Posx, Posy, velocidad, 1, 1);
-        animaciones = animacion(3, 0, 2, 16, 16);
+        animaciones = animacion(3, 0, 2, 1, 1);
         velocidadAnimacion = 12;
         InicializarHitbox();
     }

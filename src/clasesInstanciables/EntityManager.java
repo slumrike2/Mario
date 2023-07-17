@@ -11,7 +11,7 @@ import clasesInstanciables.Enemigos.*;
 import clasesInstanciables.Jugador.*;
 import constantes.Constantes.ENTITY_TYPE.*;
 import constantes.Constantes.PANTALLA;
-import constantes.Constantes.ENTITY_TYPE;
+
 import constantes.Constantes.Enemigos;
 import constantes.Constantes.Jugador;
 import graficos.GamePanel;
@@ -60,7 +60,7 @@ public class EntityManager {
     }
 
     public void initializeMainCharacter() {
-        mainCharacter = new Personaje(PANTALLA.MarioDir, 100, 100, Jugador.MARIO_VELC);
+        mainCharacter = new Personaje(PANTALLA.MarioDir, 100, 100);
         mainCharacter.loadLevelData(gamePanel.levelManager.getLevel().getLevelData());
         personajes.add(mainCharacter);
         entidades.add(mainCharacter);
@@ -106,15 +106,37 @@ public class EntityManager {
 
         tileX *= PANTALLA.TILES_ACTUAL_SIZE;
         tileY *= PANTALLA.TILES_ACTUAL_SIZE;
-
+        
         switch (entity) {
             case MARIO:
-                Personaje jugador = new Personaje(PANTALLA.MarioDir, tileX, tileY, 2);
+                Personaje jugador = new Personaje(PANTALLA.MarioDir, tileX, tileY);
                 jugador.loadLevelData(level.getLevelData());
                 personajes.add(jugador);
                 entidades.add(jugador);
                 break;
 
+            default:
+                break;
+        }
+    }
+
+    public void Spawn(ITEMS item, int tileX, int tileY, Level level) {
+        tileX *= PANTALLA.TILES_ACTUAL_SIZE;
+        tileY *= PANTALLA.TILES_ACTUAL_SIZE;
+
+        switch (item) {
+            case MONEDA:
+
+                break;
+            case FLOR:
+
+                break;
+            case ESTRELLA:
+                Star star = new Star(tileX, tileY);
+                break;
+            case HONGO:
+
+                break;
             default:
                 break;
         }

@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import clasesInstanciables.Entidad;
 
 import constantes.Constantes.*;
+import constantes.Constantes.Jugador;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -18,6 +19,7 @@ public class Personaje extends Entidad {
     // #region Constantes
     private int gravedad = Globales.GRAVEDAD;
     private int[][] currentLevelData;
+    private int velocidad = Jugador.MARIO_VELC;
 
     // #endregion
 
@@ -28,7 +30,7 @@ public class Personaje extends Entidad {
             contFrames = 0, contFramesMuerte = 0;
     public int FuerzaSalto = 0;
     public BufferedImage[][] animaciones; // * todas las animaciones del personaje
-    public Boolean enMovimiento = false, saltando = false, EnSuelo = false; // * Boleanos que determinaran acciones
+    public Boolean enMovimiento = false, saltando = false, EnSuelo = true; // * Boleanos que determinaran acciones
     public Boolean MovDerecha = false, MovIzquierda = false, MovAbajo = false, MovArriba = false;
     private Boolean pequeño = false;
     public int direccion;
@@ -46,15 +48,18 @@ public class Personaje extends Entidad {
 
     // #region Metodos
     // *Dir reseprenta la direccion de la hoja de sprite correspondiente */
-    public Personaje(String Dir, int Posx, int Posy, int velocidad) {
-        super(Dir, Posx, Posy, velocidad, 2, 1);
+    public Personaje(String Dir, int Posx, int Posy) {
+        super(Dir, Posx, Posy);
         GetAnimations();
+        altura_Tiles = 2;
+        anchura_Tiles = 1;
+        vivo = true;
 
     }
 
     // *se encarga de cargar las animaciones del personaje
     public void GetAnimations() {
-        animaciones = animacion(21, 0, 3, 16, 32);
+        animaciones = animacion(21, 0, 4, 1, 2);
     }
 
     // *Se encarga de cargar la informacion del nivel */
@@ -71,7 +76,7 @@ public class Personaje extends Entidad {
         // *funcion que determina que animacion sigue y que frame de la animacion
         ActualizarFrame();
         recibirHit();
-
+        System.out.println(EnSuelo);
         contInvensibilityFrames++;
     }
 
@@ -182,6 +187,7 @@ public class Personaje extends Entidad {
         float ySpeed = 0;
 
         if (MovAbajo != true && vivo == true) {
+
             if (MovDerecha == true && MovIzquierda == false) {
                 xSpeed += velocidad;
             }
@@ -218,6 +224,7 @@ public class Personaje extends Entidad {
         }
 
         if (canMoveHere(Hitbox.x + xSpeed, Hitbox.y, Hitbox.width, Hitbox.height, currentLevelData)) {
+
             posX += xSpeed;
             enMovimiento = true;
         } else

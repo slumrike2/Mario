@@ -25,6 +25,15 @@ public class Constantes {
         public static final int KOOPA_VELC = 1;
         public static final int KOOPA_VOLADOR_VELC = 1;
         public static final int BOWSER_VELC = 1;
+        public static final int GOOMBA_HIGH_TILES = 1;
+        public static final int GOOMBA_WIDTH_TILES = 1;
+        public static final int KOOPA_HIGH_TILES = 1;
+        public static final int KOOPA_WIDTH_TILES = 1;
+        public static final int KOOPA_VOLADOR_HIGH_TILES = 2;
+        public static final int KOOPA_VOLADOR_WIDTH_TILES = 1;
+        public static final int BOWSER_HIGH_TILES = 2;
+        public static final int BOWSER_WIDTH_TILES = 2;
+
     }
 
     public static class ENTITY_TYPE {
@@ -50,13 +59,25 @@ public class Constantes {
         private static final int FramesPerSecond = 120;
         public static final int MARIO_VELC = 2;
         public static final int MARIO_VELCIDAD_ANIMACION = 10;
-        public static final int INVENSIBILITY_FRAMES = 2 * FramesPerSecond;
+        public static final int INVENSIBILITY_FRAMES = 1 * FramesPerSecond;
         public static final int MARIO_JUMP_FORCE = 40;
         public static final int BIG_SPRITE_HEIGTH = PANTALLA.TILES_ACTUAL_SIZE;
         public static final int SPRITE_WIDTH = PANTALLA.TILES_ACTUAL_SIZE;
         public static final int SMALL_SPRITE_HEIGTH = PANTALLA.TILES_ACTUAL_SIZE;
         public static final int MARIO_BIG_DOWN_HEIGHT = PANTALLA.TILES_ACTUAL_SIZE + PANTALLA.TILES_ACTUAL_SIZE / 2;
         public static final int CANT_FRAMES_MUERTE = 1 * FramesPerSecond;
+    }
+
+    public static class Items {
+        public static final int MONEDA_HIGH_TILES = 1;
+        public static final int MONEDA_WIDTH_TILES = 1;
+        public static final int FLOR_HIGH_TILES = 1;
+        public static final int FLOR_WIDTH_TILES = 1;
+        public static final int ESTRELLA_HIGH_TILES = 1;
+        public static final int ESTRELLA_WIDTH_TILES = 1;
+        public static final int HONGO_HIGH_TILES = 1;
+        public static final int HONGO_WIDTH_TILES = 1;
+
     }
 
     public static class Globales {
