@@ -51,7 +51,7 @@ public abstract class Entidad {
         InicializarHitbox();
     }
 
-    private void importarImagen(String Dir) {
+    protected void importarImagen(String Dir) {
         try {
             imagen = ImageIO.read(getClass().getResourceAsStream(Dir));
         } catch (Exception e) {

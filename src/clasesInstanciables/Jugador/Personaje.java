@@ -30,9 +30,9 @@ public class Personaje extends Entidad {
             contFrames = 0, contFramesMuerte = 0;
     public int FuerzaSalto = 0;
     public BufferedImage[][] animaciones; // * todas las animaciones del personaje
-    public Boolean enMovimiento = false, saltando = false, EnSuelo = true; // * Boleanos que determinaran acciones
+    public Boolean enMovimiento = false, saltando = false, EnSuelo = false; // * Boleanos que determinaran acciones
     public Boolean MovDerecha = false, MovIzquierda = false, MovAbajo = false, MovArriba = false;
-    private Boolean pequeño = false;
+    private Boolean pequeño = true;
     public int direccion;
 
     // *se encarga de determinar la direccion del personaje
@@ -48,8 +48,9 @@ public class Personaje extends Entidad {
 
     // #region Metodos
     // *Dir reseprenta la direccion de la hoja de sprite correspondiente */
-    public Personaje(String Dir, int Posx, int Posy) {
-        super(Dir, Posx, Posy);
+    public Personaje(int Posx, int Posy) {
+        super(Posx, Posy);
+        importarImagen(PANTALLA.MarioDir);
         GetAnimations();
         altura_Tiles = 2;
         anchura_Tiles = 1;
@@ -301,6 +302,7 @@ public class Personaje extends Entidad {
 
             Hitbox = new Rectangle(posX, newposy, Jugador.SPRITE_WIDTH, Jugador.SMALL_SPRITE_HEIGTH);
         }
+
         Hitbox.setLocation(posX, newposy);
 
     }

@@ -14,10 +14,13 @@ public class Goomba extends Enemigo {
     private int AccionAnimation = 0, frameAniamcion = 0, contFrames = 0;
     public boolean enMovimiento = true;
 
-    public Goomba(String Dir, int Posx, int Posy, int velocidad) {
-        super(Dir, Posx, Posy, velocidad, 1, 1);
-        animaciones = animacion(3, 0, 2, 1, 1);
-        velocidadAnimacion = 12;
+    public Goomba(int Posx, int Posy) {
+        super(Posx, Posy);
+        importarImagen(PANTALLA.GoombaDir);
+        altura_Tiles = 1;
+        anchura_Tiles = 1;
+        animaciones = animacion(3, 0, 2, (int) anchura_Tiles, (int) altura_Tiles);
+        velocidadAnimacion = 20;
         InicializarHitbox();
     }
 

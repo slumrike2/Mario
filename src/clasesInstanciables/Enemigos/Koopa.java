@@ -19,6 +19,16 @@ public class Koopa extends Enemigo {
         velocidadAnimacion = 12;
     }
 
+    public Koopa(int Posx, int Posy) {
+        super(Posx, Posy);
+        importarImagen(PANTALLA.KoopaDir);
+        altura_Tiles = 1;
+        anchura_Tiles = 1;
+        animaciones = animacion(3, 0, 2, (int) anchura_Tiles, (int) altura_Tiles);
+        velocidadAnimacion = 20;
+        InicializarHitbox();
+    }
+
     public void update() {
 
         movimiento();

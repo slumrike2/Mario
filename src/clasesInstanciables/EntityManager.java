@@ -48,8 +48,10 @@ public class EntityManager {
     public void verifyEntityCollision() {
         for (Enemigo entidad : enemigos) {
             entidad.update();
-            entidad.recibirHit(mainCharacter);
-            mainCharacter.HitEnemigo(entidad.getHitbox());
+            if (entidad.vivo == true) {
+                entidad.recibirHit(mainCharacter);
+                mainCharacter.HitEnemigo(entidad.getHitbox());
+            }
         }
     }
 
@@ -60,7 +62,7 @@ public class EntityManager {
     }
 
     public void initializeMainCharacter() {
-        mainCharacter = new Personaje(PANTALLA.MarioDir, 100, 100);
+        mainCharacter = new Personaje(400, 100);
         mainCharacter.loadLevelData(gamePanel.levelManager.getLevel().getLevelData());
         personajes.add(mainCharacter);
         entidades.add(mainCharacter);
@@ -73,7 +75,7 @@ public class EntityManager {
 
         switch (entity) {
             case GOOMBA:
-                Goomba goomba = new Goomba(PANTALLA.GoombaDir, tileX, tileY, Enemigos.GOOMBA_VELC);
+                Goomba goomba = new Goomba(tileX, tileY);
                 enemigos.add(goomba);
                 entidades.add(goomba);
                 break;
@@ -106,10 +108,10 @@ public class EntityManager {
 
         tileX *= PANTALLA.TILES_ACTUAL_SIZE;
         tileY *= PANTALLA.TILES_ACTUAL_SIZE;
-        
+
         switch (entity) {
             case MARIO:
-                Personaje jugador = new Personaje(PANTALLA.MarioDir, tileX, tileY);
+                Personaje jugador = new Personaje(tileX, tileY);
                 jugador.loadLevelData(level.getLevelData());
                 personajes.add(jugador);
                 entidades.add(jugador);
