@@ -16,19 +16,18 @@ public class Star extends Recolectable {
     }
 
     public void update() {
-
+        
     }
 
     public void updateFrames(Graphics g, int offset) {
         g.drawImage(animaciones[0][AccionAnimation], posX - offset, posY, null);
     }
 
-    @Override
+   
     public void ActualizarFrame() {
 
     }
 
-    @Override
     protected void InicializarHitbox() {
         Hitbox = new java.awt.Rectangle(posX, posY, (int) (PANTALLA.TILES_ACTUAL_SIZE * anchura_Tiles),
                 (int) (PANTALLA.TILES_ACTUAL_SIZE * altura_Tiles));
