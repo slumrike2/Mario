@@ -1,0 +1,70 @@
+
+
+TODO:
+
+*Sistemas: 
+- [X] EntityManager  
+- [ ] SoundManager
+- [ ] colisiones entre entidades no jugadoras
+- [ ] multijugador
+- [ ] mejorar HUD
+- [ ] IA
+- [ ] sistema de victoria
+- [ ] sistema de derrota
+- [ ] sistema de puntuacion
+- [ ] sistema de niveles
+- [ ] sistema de guardado de estadisticas
+- [ ] sistema de configuracion de partida
+
+
+*Visuales:
+- [ ] mejorar Menu
+- [ ] mejorar HUD
+- [ ] mejorar niveles
+
+
+*Sonidos:
+- [ ] musica de fondo
+- [ ] sonidos de salto
+- [ ] sonidos de muerte
+- [ ] sonidos de victoria
+- [ ] sonidos de derrota
+- [ ] sonidos de power ups
+- [ ] sonidos de monedas
+- [ ] sonidos de bloques
+- [ ] sonidos de proyectiles
+- [ ] sonidos de colisiones
+- [ ] sonidos de menu
+
+
+*Sprites:
+- [ ] mario
+- [ ] luigi
+- [ ] toad
+- [ ] peach
+- [ ] goomba
+- [ ] koopa
+- [ ] koopa volador
+- [ ] bowser
+- [ ] bloques
+- [ ] monedas
+- [ ] power ups
+- [ ] proyectiles
+- [ ] backgrounds
+- [ ] niveles 
+- [ ] menu
+- [ ] inicio de sesion
+- [ ] registro
+- [ ] configuracion de partida
+- [ ] estadisticas
+
+
+*Mecanicas:
+- [ ] proyectiles
+- [ ] caparazon verde
+- [ ] caparazon azul
+- [ ] romper bloques
+- [ ] bloques de interrogacion
+- [ ] bloques de monedas
+- [ ] power Ups
+
