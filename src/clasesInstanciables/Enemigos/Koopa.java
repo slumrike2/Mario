@@ -7,25 +7,14 @@ import constantes.Constantes.PANTALLA;
 
 public class Koopa extends Enemigo {
 
-    public Koopa(String Dir) {
-        super(Dir);
-        velocidad = 1;
-        velocidadAnimacion = 12;
-    }
-
-    public Koopa(String Dir, int Posx, int Posy, int velocidad) {
-        super(Dir, Posx, Posy, velocidad, 2, 1);
-        animaciones = animacion(3, 0, 2, 1, 2);
-        velocidadAnimacion = 12;
-    }
-
     public Koopa(int Posx, int Posy) {
         super(Posx, Posy);
         importarImagen(PANTALLA.KoopaDir);
-        altura_Tiles = 1;
+        velocidad = 1;
+        altura_Tiles = 2;
         anchura_Tiles = 1;
         animaciones = animacion(3, 0, 2, (int) anchura_Tiles, (int) altura_Tiles);
-        velocidadAnimacion = 20;
+        velocidadAnimacion = 40;
         InicializarHitbox();
     }
 

@@ -29,7 +29,6 @@ public class Goomba extends Enemigo {
         movimiento();
         ActualizarAccion();
         ActualizarFrame();
-        contFramesInvensible++;
 
     }
 
@@ -89,20 +88,18 @@ public class Goomba extends Enemigo {
     }
 
     public void recibirHit(Entidad ob) {
-        if (contFramesInvensible < FramesInvensible) {
-            return;
-        }
+
         if (ob instanceof Personaje) {
             Personaje personaje = (Personaje) ob;
-            if (personaje.Hitbox.intersects(this.Hitbox) && personaje.vivo == true && vivo == true) {
-                if ((personaje.Hitbox.y * personaje.Hitbox.height) <= ((this.Hitbox.getY() * Hitbox.height))) {
-                    System.out.println("Muerto");
+
+            if (Hitbox.intersects(personaje.Hitbox) && personaje.vivo == true) {
+                if ((personaje.Hitbox.y + personaje.Hitbox.height) <= (this.Hitbox.getY() + this.Hitbox.height)) {
                     vivo = false;
                 }
 
             }
         }
-        contFramesInvensible = 0;
+
     }
 
 }

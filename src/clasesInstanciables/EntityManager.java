@@ -62,7 +62,7 @@ public class EntityManager {
     }
 
     public void initializeMainCharacter() {
-        mainCharacter = new Personaje(400, 100);
+        mainCharacter = new Personaje(PANTALLA.TILES_ACTUAL_SIZE * 4, PANTALLA.TILES_ACTUAL_SIZE * 4);
         mainCharacter.loadLevelData(gamePanel.levelManager.getLevel().getLevelData());
         personajes.add(mainCharacter);
         entidades.add(mainCharacter);
@@ -80,20 +80,19 @@ public class EntityManager {
                 entidades.add(goomba);
                 break;
             case KOOPA:
-                Koopa koopa = new Koopa(PANTALLA.KoopaDir, tileX, tileY, Enemigos.KOOPA_VELC);
+                Koopa koopa = new Koopa(tileX, tileY);
                 enemigos.add(koopa);
                 entidades.add(koopa);
 
                 break;
             case KOOPA_VOLADOR:
-                KoopaVolador koopaVolador = new KoopaVolador(PANTALLA.KoopaVoladorDir, tileX, tileY,
-                        Enemigos.KOOPA_VOLADOR_VELC);
+                KoopaVolador koopaVolador = new KoopaVolador(tileX, tileY);
                 enemigos.add(koopaVolador);
                 entidades.add(koopaVolador);
 
                 break;
             case BOWSER:
-                Bowser bowser = new Bowser(PANTALLA.BowserDir, tileX, tileY, Enemigos.BOWSER_VELC);
+                Bowser bowser = new Bowser(tileX, tileY);
                 enemigos.add(bowser);
                 entidades.add(bowser);
 

@@ -16,8 +16,12 @@ public class Bowser extends Enemigo {
     private Boolean Ensuelo, Saltando, atacando = false;
     private int tiempoSalto = 120 * 5;
 
-    public Bowser(String Dir, int Posx, int Posy, int velocidad) {
-        super(Dir, Posx, Posy, velocidad, 2, 2);
+    public Bowser(int Posx, int Posy) {
+        super(Posx, Posy);
+        importarImagen(PANTALLA.BowserDir);
+        altura_Tiles = 2;
+        anchura_Tiles = 2;
+        velocidad = 0;
         animaciones = animacion(2, 0, 2, 2, 2);
         velocidadAnimacion = 30;
     }
