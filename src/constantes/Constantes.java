@@ -27,6 +27,10 @@ public class Constantes {
         public static final int BOWSER_VELC = 1;
     }
 
+    public enum ENEMY_TYPE {
+        GOOMBA, KOOPA, KOOPA_VOLADOR, BOWSER
+    }
+
     public static class Jugador {
         private static final int FramesPerSecond = 120;
         public static final int MARIO_VELC = 2;

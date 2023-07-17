@@ -30,8 +30,8 @@ public class Goomba extends Enemigo {
 
     }
 
-    public void updateFrames(java.awt.Graphics g) {
-        g.drawImage(animaciones[AccionAnimation][frameAniamcion], posX, posY,
+    public void updateFrames(java.awt.Graphics g, int offset) {
+        g.drawImage(animaciones[AccionAnimation][frameAniamcion], posX - offset, posY,
                 (int) (PANTALLA.TILES_ACTUAL_SIZE * anchura_Tiles),
                 (int) (PANTALLA.TILES_ACTUAL_SIZE * altura_Tiles), null);
     }

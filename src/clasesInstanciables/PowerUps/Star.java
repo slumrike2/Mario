@@ -19,8 +19,8 @@ public class Star extends Recolectable {
 
     }
 
-    public void updateFrames(Graphics g) {
-        g.drawImage(animaciones[0][AccionAnimation], posX, posY, null);
+    public void updateFrames(Graphics g, int offset) {
+        g.drawImage(animaciones[0][AccionAnimation], posX - offset, posY, null);
     }
 
     @Override

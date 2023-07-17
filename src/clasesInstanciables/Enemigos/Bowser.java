@@ -2,6 +2,10 @@ package clasesInstanciables.Enemigos;
 
 import clasesInstanciables.Entidad;
 import clasesInstanciables.Jugador.Personaje;
+
+import java.awt.Graphics;
+import java.awt.Rectangle;
+
 //siva
 import constantes.Constantes.PANTALLA;
 
@@ -63,16 +67,16 @@ public class Bowser extends Enemigo {
     }
 
     protected void InicializarHitbox() {
-        Hitbox = new java.awt.Rectangle(posX, posY, (int) (PANTALLA.TILES_ACTUAL_SIZE * anchura_Tiles),
+        Hitbox = new Rectangle(posX, posY, (int) (PANTALLA.TILES_ACTUAL_SIZE * anchura_Tiles),
                 (int) (PANTALLA.TILES_ACTUAL_SIZE * altura_Tiles));
     }
 
-    public void DibujarHitbox(java.awt.Graphics g) {
+    public void DibujarHitbox(Graphics g) {
         g.drawRect(Hitbox.x, Hitbox.y, Hitbox.width, Hitbox.height);
     }
 
-    public void updateFrames(java.awt.Graphics g) {
-        g.drawImage(animaciones[AccionAnimation][frameAniamcion], posX, posY,
+    public void updateFrames(Graphics g, int offset) {
+        g.drawImage(animaciones[AccionAnimation][frameAniamcion], posX - offset, posY,
                 (int) (PANTALLA.TILES_ACTUAL_SIZE * anchura_Tiles),
                 (int) (PANTALLA.TILES_ACTUAL_SIZE * altura_Tiles), null);
     }
@@ -81,7 +85,7 @@ public class Bowser extends Enemigo {
         if (ob instanceof Personaje) {
             Personaje personaje = (Personaje) ob;
             if (personaje.Hitbox.intersects(this.Hitbox)) {
-                
+
             }
         }
     }

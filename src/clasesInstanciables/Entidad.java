@@ -62,7 +62,7 @@ public abstract class Entidad {
 
     public abstract void update();
 
-    public abstract void updateFrames(Graphics g);
+    public abstract void updateFrames(Graphics g, int offset);
 
     public abstract void ActualizarFrame();
 
