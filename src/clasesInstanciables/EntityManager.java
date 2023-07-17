@@ -48,8 +48,10 @@ public class EntityManager {
     public void verifyEntityCollision() {
         for (Enemigo entidad : enemigos) {
             entidad.update();
-            entidad.recibirHit(mainCharacter);
-            mainCharacter.HitEnemigo(entidad.getHitbox());
+            if (entidad.vivo == true) {
+                entidad.recibirHit(mainCharacter);
+                mainCharacter.HitEnemigo(entidad.getHitbox());
+            }
         }
     }
 
@@ -60,7 +62,7 @@ public class EntityManager {
     }
 
     public void initializeMainCharacter() {
-        mainCharacter = new Personaje(PANTALLA.MarioDir, 100, 100);
+        mainCharacter = new Personaje(PANTALLA.TILES_ACTUAL_SIZE * 4, PANTALLA.TILES_ACTUAL_SIZE * 4);
         mainCharacter.loadLevelData(gamePanel.levelManager.getLevel().getLevelData());
         personajes.add(mainCharacter);
         entidades.add(mainCharacter);
@@ -73,25 +75,24 @@ public class EntityManager {
 
         switch (entity) {
             case GOOMBA:
-                Goomba goomba = new Goomba(PANTALLA.GoombaDir, tileX, tileY, Enemigos.GOOMBA_VELC);
+                Goomba goomba = new Goomba(tileX, tileY);
                 enemigos.add(goomba);
                 entidades.add(goomba);
                 break;
             case KOOPA:
-                Koopa koopa = new Koopa(PANTALLA.KoopaDir, tileX, tileY, Enemigos.KOOPA_VELC);
+                Koopa koopa = new Koopa(tileX, tileY);
                 enemigos.add(koopa);
                 entidades.add(koopa);
 
                 break;
             case KOOPA_VOLADOR:
-                KoopaVolador koopaVolador = new KoopaVolador(PANTALLA.KoopaVoladorDir, tileX, tileY,
-                        Enemigos.KOOPA_VOLADOR_VELC);
+                KoopaVolador koopaVolador = new KoopaVolador(tileX, tileY);
                 enemigos.add(koopaVolador);
                 entidades.add(koopaVolador);
 
                 break;
             case BOWSER:
-                Bowser bowser = new Bowser(PANTALLA.BowserDir, tileX, tileY, Enemigos.BOWSER_VELC);
+                Bowser bowser = new Bowser(tileX, tileY);
                 enemigos.add(bowser);
                 entidades.add(bowser);
 
@@ -106,10 +107,10 @@ public class EntityManager {
 
         tileX *= PANTALLA.TILES_ACTUAL_SIZE;
         tileY *= PANTALLA.TILES_ACTUAL_SIZE;
-        
+
         switch (entity) {
             case MARIO:
-                Personaje jugador = new Personaje(PANTALLA.MarioDir, tileX, tileY);
+                Personaje jugador = new Personaje(tileX, tileY);
                 jugador.loadLevelData(level.getLevelData());
                 personajes.add(jugador);
                 entidades.add(jugador);

@@ -10,10 +10,6 @@ public abstract class Recolectable extends Entidad {
         super(Dir);
     }
 
-    public Recolectable(String Dir, int Posx, int Posy) {
-        super(Dir, Posx, Posy);
-    }
-
     public Recolectable(int Posx, int Posy) {
         super(Posx, Posy);
     }

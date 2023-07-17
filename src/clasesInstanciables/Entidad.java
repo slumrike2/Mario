@@ -22,22 +22,7 @@ public abstract class Entidad {
     // * Colliision
     public Rectangle Hitbox;
 
-    public Entidad(String Dir, int Posx, int Posy, int velocidad, int altura_Tiles, int anchura_Tiles) {
-        importarImagen(Dir);
-        this.altura_Tiles = altura_Tiles;
-        this.anchura_Tiles = anchura_Tiles;
-        this.posX = Posx;
-        this.posY = Posy;
-        this.velocidad = velocidad;
-        InicializarHitbox();
-    }
-
-    public Entidad(String Dir, int posX, int posY) {
-        importarImagen(Dir);
-        this.posX = posX;
-        this.posY = posY;
-        InicializarHitbox();
-    }
+    
 
     // ! Solo debe quedar este constructor
     public Entidad(int posX, int posY) {
@@ -51,7 +36,7 @@ public abstract class Entidad {
         InicializarHitbox();
     }
 
-    private void importarImagen(String Dir) {
+    protected void importarImagen(String Dir) {
         try {
             imagen = ImageIO.read(getClass().getResourceAsStream(Dir));
         } catch (Exception e) {

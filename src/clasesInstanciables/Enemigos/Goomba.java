@@ -14,10 +14,13 @@ public class Goomba extends Enemigo {
     private int AccionAnimation = 0, frameAniamcion = 0, contFrames = 0;
     public boolean enMovimiento = true;
 
-    public Goomba(String Dir, int Posx, int Posy, int velocidad) {
-        super(Dir, Posx, Posy, velocidad, 1, 1);
-        animaciones = animacion(3, 0, 2, 1, 1);
-        velocidadAnimacion = 12;
+    public Goomba(int Posx, int Posy) {
+        super(Posx, Posy);
+        importarImagen(PANTALLA.GoombaDir);
+        altura_Tiles = 1;
+        anchura_Tiles = 1;
+        animaciones = animacion(3, 0, 2, (int) anchura_Tiles, (int) altura_Tiles);
+        velocidadAnimacion = 20;
         InicializarHitbox();
     }
 
@@ -26,7 +29,6 @@ public class Goomba extends Enemigo {
         movimiento();
         ActualizarAccion();
         ActualizarFrame();
-        contFramesInvensible++;
 
     }
 
@@ -86,20 +88,18 @@ public class Goomba extends Enemigo {
     }
 
     public void recibirHit(Entidad ob) {
-        if (contFramesInvensible < FramesInvensible) {
-            return;
-        }
+
         if (ob instanceof Personaje) {
             Personaje personaje = (Personaje) ob;
-            if (personaje.Hitbox.intersects(this.Hitbox) && personaje.vivo == true && vivo == true) {
-                if ((personaje.Hitbox.y * personaje.Hitbox.height) <= ((this.Hitbox.getY() * Hitbox.height))) {
-                    System.out.println("Muerto");
+
+            if (Hitbox.intersects(personaje.Hitbox) && personaje.vivo == true) {
+                if ((personaje.Hitbox.y + personaje.Hitbox.height) <= (this.Hitbox.getY() + this.Hitbox.height)) {
                     vivo = false;
                 }
 
             }
         }
-        contFramesInvensible = 0;
+
     }
 
 }

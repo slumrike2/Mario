@@ -43,7 +43,7 @@ public class GamePanel extends JPanel {
         addMouseMotionListener(mouseimput);
         setFocusable(true);
 
-        entityManager.spawn(ENEMIES.GOOMBA, 1, 1, levelManager.getLevel());
+        entityManager.spawn(ENEMIES.GOOMBA, 3, 12, levelManager.getLevel());
         entityManager.spawn(ENEMIES.KOOPA, 2, 1, levelManager.getLevel());
         entityManager.spawn(ENEMIES.KOOPA_VOLADOR, 3, 1, levelManager.getLevel());
         entityManager.spawn(ENEMIES.BOWSER, 4, 1, levelManager.getLevel());
