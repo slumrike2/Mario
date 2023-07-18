@@ -126,7 +126,7 @@ public class Personaje extends Entidad {
 
     // *Determina la accion que sigue y su direccion
     public void ActualizarAccion() {
-        if (vivo == false) {
+        if (vidas <= 0) {
             AccionAnimation = 20;
             accion = AccionPlayer.Quieto;
             return;
@@ -148,7 +148,7 @@ public class Personaje extends Entidad {
         }
 
         if (MovAbajo == true) {
-            if (vidas != 1) {
+            if (vidas >= 2) {
                 accion = AccionPlayer.Agacharse;
             } else {
                 accion = AccionPlayer.Quieto;
@@ -273,13 +273,9 @@ public class Personaje extends Entidad {
             // * Sino le hara damage a mario */
             if (contInvensibilityFrames >= Jugador.INVENSIBILITY_FRAMES) {
                 // Todo VolverMarioChiquito con el golpe
-                if (vidas >= 2) {
-                    vidas--;
-                    System.out.println("Recibio golpe");
-                    contInvensibilityFrames = 0;
-                    return;
-                }
 
+                vidas--;
+                System.out.println("Recibio golpe");
                 contInvensibilityFrames = 0;
             }
         }
@@ -291,7 +287,7 @@ public class Personaje extends Entidad {
     public void ActHitbox() {
         InicializarHitbox();
         int newposy = posY;
-        if (accion == AccionPlayer.Agacharse && (vidas != 1)) {
+        if (accion == AccionPlayer.Agacharse && (vidas >= 2)) {
             newposy = posY + Jugador.MARIO_BIG_DOWN_HEIGHT - Jugador.BIG_SPRITE_HEIGTH;
             Hitbox = new Rectangle(posX, newposy, Jugador.SPRITE_WIDTH,
                     Jugador.MARIO_BIG_DOWN_HEIGHT);
@@ -311,7 +307,7 @@ public class Personaje extends Entidad {
     public void recibirHit() {
         if (vidas <= 0) {
             if (contFramesMuerte == 0) {
-                FuerzaSalto = 30;
+                FuerzaSalto = 40;
 
             }
 
@@ -319,7 +315,6 @@ public class Personaje extends Entidad {
             if (contFramesMuerte >= Jugador.CANT_FRAMES_MUERTE) {
                 posX = 300;
                 posY = 350;
-
                 vidas = 2;
                 EnSuelo = true;
                 contFramesMuerte = 0;
