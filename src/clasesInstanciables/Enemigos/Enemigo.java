@@ -2,19 +2,18 @@ package clasesInstanciables.Enemigos;
 
 import clasesInstanciables.Entidad;
 import constantes.Constantes.PANTALLA;
-import static utils.HelpMethods.canMoveHere;
+
 import static utils.HelpMethods.isInFloor;
-import java.awt.Color;
+
 import java.awt.Graphics;
 
 public abstract class Enemigo extends Entidad {
 
     protected int FramesInvensible = 10;
     protected int contFramesInvensible = 0;
-    protected int gravedad = 2;
+    protected int gravedad = 1;
     protected int[][] currentLevelData;
     protected boolean enSuelo;
-    
 
     public Enemigo(int Posx, int Posy) {
         super(Posx, Posy);

@@ -41,7 +41,8 @@ public class Koopa extends Enemigo {
                 posX += velocidad;
             else
                 cambiarDireccion();
-            if (!enSuelo && canMoveHere(Hitbox.x, Hitbox.y + gravedad, Hitbox.width, Hitbox.height, currentLevelData))
+            if (!enSuelo && canMoveHere(Hitbox.x, Hitbox.y + gravedad, Hitbox.width, Hitbox.height, currentLevelData)
+                    && vidas != 3)
                 posY += gravedad;
         }
     }
@@ -58,7 +59,7 @@ public class Koopa extends Enemigo {
                 AccionAnimation = 1;
             }
         } else
-            AccionAnimation = 3;
+            AccionAnimation = 2;
     }
 
     public void ActualizarFrame() {
@@ -67,13 +68,14 @@ public class Koopa extends Enemigo {
         if (contFrames >= velocidadAnimacion) {
             contFrames = 0;
             frameAniamcion++;
-            if (vivo == false) {
+            if (vidas >= 2 && frameAniamcion >= 2) {
                 frameAniamcion = 0;
                 return;
-            } else {
-                if (frameAniamcion >= 2)
-                    frameAniamcion = 0;
             }
+            if (vidas <= 1) {
+                frameAniamcion = 0;
+            }
+
         }
     }
 
@@ -85,10 +87,15 @@ public class Koopa extends Enemigo {
     public void recibirHit(Entidad ob) {
         if (ob instanceof Personaje) {
             Personaje personaje = (Personaje) ob;
-            if (personaje.Hitbox.intersects(this.Hitbox)) {
-
+            if (personaje.Hitbox.intersects(this.Hitbox)
+                    && personaje.posY + personaje.Hitbox.height <= this.posY + this.Hitbox.height / 2
+                    && personaje.vivo && vidas > 0) {
+                vidas--;
+                return;
             }
+            if (personaje.Hitbox.intersects(this.Hitbox) && personaje.vivo && vidas == 0)
+                vidas = 1;
+
         }
     }
-
 }

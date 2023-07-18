@@ -23,6 +23,7 @@ public class KoopaVolador extends Koopa {
         movimiento();
         ActualizarAccion();
         ActualizarFrame();
+        ActualizarPosHitbox();
     }
 
     // Todo añadir las fisicas en caso de estar en el aire y las hitboxes
