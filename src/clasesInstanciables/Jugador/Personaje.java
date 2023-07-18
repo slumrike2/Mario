@@ -32,7 +32,7 @@ public class Personaje extends Entidad {
     public BufferedImage[][] animaciones; // * todas las animaciones del personaje
     public Boolean enMovimiento = false, saltando = false, EnSuelo = false; // * Boleanos que determinaran acciones
     public Boolean MovDerecha = false, MovIzquierda = false, MovAbajo = false, MovArriba = false;
-    private Boolean pequeño = true;
+
     public int direccion;
 
     // *se encarga de determinar la direccion del personaje
@@ -54,6 +54,7 @@ public class Personaje extends Entidad {
         GetAnimations();
         altura_Tiles = 2;
         anchura_Tiles = 1;
+        vidas = 2;
         vivo = true;
 
     }
@@ -132,7 +133,7 @@ public class Personaje extends Entidad {
         }
 
         int aux = 0;
-        if (pequeño)
+        if (vidas == 1)
             aux += 5;
         if (direccion == -1)
             aux += 10;
@@ -147,7 +148,7 @@ public class Personaje extends Entidad {
         }
 
         if (MovAbajo == true) {
-            if (!pequeño) {
+            if (vidas != 1) {
                 accion = AccionPlayer.Agacharse;
             } else {
                 accion = AccionPlayer.Quieto;
@@ -272,14 +273,13 @@ public class Personaje extends Entidad {
             // * Sino le hara damage a mario */
             if (contInvensibilityFrames >= Jugador.INVENSIBILITY_FRAMES) {
                 // Todo VolverMarioChiquito con el golpe
-                if (pequeño == false) {
-                    pequeño = true;
+                if (vidas >= 2) {
+                    vidas--;
                     System.out.println("Recibio golpe");
                     contInvensibilityFrames = 0;
                     return;
                 }
-                vivo = false;
-                System.out.println("Muerto");
+
                 contInvensibilityFrames = 0;
             }
         }
@@ -291,12 +291,12 @@ public class Personaje extends Entidad {
     public void ActHitbox() {
         InicializarHitbox();
         int newposy = posY;
-        if (accion == AccionPlayer.Agacharse && !pequeño) {
+        if (accion == AccionPlayer.Agacharse && (vidas != 1)) {
             newposy = posY + Jugador.MARIO_BIG_DOWN_HEIGHT - Jugador.BIG_SPRITE_HEIGTH;
             Hitbox = new Rectangle(posX, newposy, Jugador.SPRITE_WIDTH,
                     Jugador.MARIO_BIG_DOWN_HEIGHT);
         }
-        if (pequeño) {
+        if (vidas == 1) {
             newposy = posY + Jugador.SMALL_SPRITE_HEIGTH;
 
             Hitbox = new Rectangle(posX, newposy, Jugador.SPRITE_WIDTH, Jugador.SMALL_SPRITE_HEIGTH);
@@ -309,7 +309,7 @@ public class Personaje extends Entidad {
     // *Verifica vidas y si se va a morir se pone resetean variables */
     // Todo Poner Que se ponga en el spanw/
     public void recibirHit() {
-        if (vivo == false) {
+        if (vidas <= 0) {
             if (contFramesMuerte == 0) {
                 FuerzaSalto = 30;
             }
@@ -319,7 +319,7 @@ public class Personaje extends Entidad {
                 posX = 300;
                 posY = 350;
                 vivo = true;
-                pequeño = false;
+                vidas = 2;
                 EnSuelo = true;
                 contFramesMuerte = 0;
                 saltando = false;
@@ -469,12 +469,12 @@ public class Personaje extends Entidad {
         MovArriba = movArriba;
     }
 
-    public Boolean getPequeño() {
-        return pequeño;
+    public void setVidas(int vidas) {
+        this.vidas = vidas;
     }
 
-    public void setPequeño(Boolean pequeño) {
-        this.pequeño = pequeño;
+    public int getVidas() {
+        return vidas;
     }
 
     public int getDireccion() {

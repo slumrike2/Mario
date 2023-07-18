@@ -9,7 +9,7 @@ import javax.imageio.ImageIO;
 import constantes.Constantes.PANTALLA;
 
 public abstract class Entidad {
-
+    protected int vidas;
     public float altura_Tiles;
     public float anchura_Tiles;
     public int velocidad; // velocidad en pixeles de forma horizontal
