@@ -22,6 +22,7 @@ public class Goomba extends Enemigo {
         animaciones = animacion(3, 0, 2, (int) anchura_Tiles, (int) altura_Tiles);
         velocidadAnimacion = 20;
         enSuelo = false;
+        vivo = true;
         vidas = 1;
         InicializarHitbox();
     }
@@ -33,7 +34,7 @@ public class Goomba extends Enemigo {
         ActualizarAccion();
         ActualizarFrame();
         ActualizarHitbox();
-
+        contFramesInvensible++;
     }
 
     public void updateFrames(java.awt.Graphics g, int offset) {
@@ -58,7 +59,7 @@ public class Goomba extends Enemigo {
 
     public void ActualizarAccion() {
         AccionAnimation = 1;
-        if (vivo == false) {
+        if (vidas <= 0) {
             AccionAnimation = 2;
             return;
         }
@@ -75,17 +76,13 @@ public class Goomba extends Enemigo {
         if (contFrames >= velocidadAnimacion) {
             contFrames = 0;
             frameAniamcion++;
-            if (vivo == false) {
+            if (vidas <= 0 || enMovimiento == false) {
                 frameAniamcion = 0;
                 return;
             }
-            if (enMovimiento == false) {
-                frameAniamcion = 0;
-                return;
-            }
+
             if (frameAniamcion > 1) {
                 frameAniamcion = 0;
-
             }
 
         }
@@ -102,7 +99,9 @@ public class Goomba extends Enemigo {
             Personaje personaje = (Personaje) ob;
 
             if (Hitbox.intersects(personaje.Hitbox) && personaje.vivo == true) {
-                if ((personaje.Hitbox.y + personaje.Hitbox.height) <= (this.Hitbox.getY() + this.Hitbox.height)) {
+                if ((personaje.Hitbox.y + personaje.Hitbox.height) <= (this.Hitbox.getY() + this.Hitbox.height)
+                        && personaje.vivo == true) {
+                    vidas--;
                     vivo = false;
                 }
 

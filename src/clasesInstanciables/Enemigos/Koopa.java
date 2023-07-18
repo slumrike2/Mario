@@ -17,6 +17,7 @@ public class Koopa extends Enemigo {
         animaciones = animacion(3, 0, 2, (int) anchura_Tiles, (int) altura_Tiles);
         velocidadAnimacion = 40;
         vidas = 2;
+        vivo = true;
         InicializarHitbox();
     }
 
@@ -26,6 +27,7 @@ public class Koopa extends Enemigo {
         ActualizarAccion();
         ActualizarFrame();
         ActualizarPosHitbox();
+        contFramesInvensible++;
     }
 
     public void updateFrames(java.awt.Graphics g, int offset) {
@@ -86,16 +88,21 @@ public class Koopa extends Enemigo {
 
     public void recibirHit(Entidad ob) {
         if (ob instanceof Personaje) {
+            if (contFramesInvensible < FramesInvensible)
+                return;
             Personaje personaje = (Personaje) ob;
             if (personaje.Hitbox.intersects(this.Hitbox)
                     && personaje.posY + personaje.Hitbox.height <= this.posY + this.Hitbox.height / 2
                     && personaje.vivo && vidas > 0) {
                 vidas--;
+                contFramesInvensible = 0;
+
                 return;
             }
-            if (personaje.Hitbox.intersects(this.Hitbox) && personaje.vivo && vidas == 0)
+            if (personaje.Hitbox.intersects(this.Hitbox) && personaje.vivo && vidas == 0) {
                 vidas = 1;
-
+                contFramesInvensible = 0;
+            }
         }
     }
 }

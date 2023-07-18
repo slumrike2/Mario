@@ -44,8 +44,8 @@ public class GamePanel extends JPanel {
         setFocusable(true);
 
         entityManager.spawn(ENEMIES.GOOMBA, 3, 12, levelManager.getLevel());
-        entityManager.spawn(ENEMIES.KOOPA,10, 8, levelManager.getLevel());
-        entityManager.spawn(ENEMIES.KOOPA_VOLADOR, 10, 5, levelManager.getLevel());
+        entityManager.spawn(ENEMIES.KOOPA, 10, 8, levelManager.getLevel());
+        entityManager.spawn(ENEMIES.KOOPA_VOLADOR, 10, 10, levelManager.getLevel());
         entityManager.spawn(ENEMIES.BOWSER, 10, 6, levelManager.getLevel());
         entityManager.spawn(ITEMS.HONGO, 5, 10, levelManager.getLevel());
         entityManager.spawn(ITEMS.HONGO_VENENOSO, 10, 10, levelManager.getLevel());

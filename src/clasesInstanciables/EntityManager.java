@@ -47,18 +47,30 @@ public class EntityManager {
     }
 
     public void verifyEntityCollision() {
+        ArrayList<Entidad> Eliminar = new ArrayList<>();
         for (Enemigo entidad : enemigos) {
 
             if (entidad.vivo == true) {
                 entidad.recibirHit(mainCharacter);
                 mainCharacter.HitEnemigo(entidad.getHitbox());
+                if (entidad.vivo == false) {
+                    Eliminar.add(entidad);
+                }
             }
         }
         for (Recolectable recolectable : recolectables) {
+
             if (recolectable.Active == true) {
                 recolectable.Colliision(mainCharacter);
+                if (recolectable.Active == false) {
+                    Eliminar.add(recolectable);
+                }
             }
         }
+        for (Entidad entidad : Eliminar) {
+            entidades.remove(entidad);
+        }
+
     }
 
     // TODO hacer que reciba un int[][] que mande a spawnear todas las entidades de
