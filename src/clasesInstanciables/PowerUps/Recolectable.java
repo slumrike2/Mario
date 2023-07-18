@@ -14,4 +14,6 @@ public abstract class Recolectable extends Entidad {
         super(Posx, Posy);
     }
 
+    public abstract void Colliision(Entidad ob);
+
 }

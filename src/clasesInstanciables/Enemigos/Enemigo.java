@@ -13,8 +13,6 @@ public abstract class Enemigo extends Entidad {
         super(Posx, Posy);
     }
 
-    
-
     public abstract void recibirHit(Entidad ob);
 
 }
