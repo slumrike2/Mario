@@ -21,14 +21,18 @@ public class Goomba extends Enemigo {
         anchura_Tiles = 1;
         animaciones = animacion(3, 0, 2, (int) anchura_Tiles, (int) altura_Tiles);
         velocidadAnimacion = 20;
+        enSuelo = false;
+        vidas = 1;
         InicializarHitbox();
     }
 
     public void update() {
 
         movimiento();
+
         ActualizarAccion();
         ActualizarFrame();
+        ActualizarHitbox();
 
     }
 
@@ -36,11 +40,16 @@ public class Goomba extends Enemigo {
         g.drawImage(animaciones[AccionAnimation][frameAniamcion], posX - offset, posY,
                 (int) (PANTALLA.TILES_ACTUAL_SIZE * anchura_Tiles),
                 (int) (PANTALLA.TILES_ACTUAL_SIZE * altura_Tiles), null);
+        DibujarHitboxWithOffset(g, offset);
     }
 
     public void movimiento() {
+        VerificarSuelo(currentLevelData);
         if (enMovimiento == true)
             posX -= velocidad;
+        if (!enSuelo) {
+            posY += gravedad;
+        }
     }
 
     public void cambiarDireccion() {

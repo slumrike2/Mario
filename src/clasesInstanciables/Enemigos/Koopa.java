@@ -2,6 +2,7 @@ package clasesInstanciables.Enemigos;
 
 import clasesInstanciables.Entidad;
 import clasesInstanciables.Jugador.Personaje;
+import static utils.HelpMethods.canMoveHere;
 
 import constantes.Constantes.PANTALLA;
 
@@ -15,6 +16,7 @@ public class Koopa extends Enemigo {
         anchura_Tiles = 1;
         animaciones = animacion(3, 0, 2, (int) anchura_Tiles, (int) altura_Tiles);
         velocidadAnimacion = 40;
+        vidas = 2;
         InicializarHitbox();
     }
 
@@ -33,9 +35,15 @@ public class Koopa extends Enemigo {
     }
 
     public void movimiento() {
-        if (vivo == true)
-            posX += velocidad;
-
+        VerificarSuelo(currentLevelData);
+        if (vidas >= 1) {
+            if (canMoveHere(Hitbox.x + velocidad, Hitbox.y, Hitbox.width, Hitbox.height, currentLevelData))
+                posX += velocidad;
+            else
+                cambiarDireccion();
+            if (!enSuelo && canMoveHere(Hitbox.x, Hitbox.y + gravedad, Hitbox.width, Hitbox.height, currentLevelData))
+                posY += gravedad;
+        }
     }
 
     public void cambiarDireccion() {
@@ -43,7 +51,7 @@ public class Koopa extends Enemigo {
     }
 
     public void ActualizarAccion() {
-        if (vivo == true) {
+        if (vidas >= 2) {
             if (velocidad == -1) {
                 AccionAnimation = 0;
             } else {

@@ -82,17 +82,20 @@ public class EntityManager {
         switch (entity) {
             case GOOMBA:
                 Goomba goomba = new Goomba(tileX, tileY);
+                goomba.loadLevelData(gamePanel.levelManager.getLevel().getLevelData());
                 enemigos.add(goomba);
                 entidades.add(goomba);
                 break;
             case KOOPA:
                 Koopa koopa = new Koopa(tileX, tileY);
                 enemigos.add(koopa);
+                koopa.loadLevelData(gamePanel.levelManager.getLevel().getLevelData());
                 entidades.add(koopa);
 
                 break;
             case KOOPA_VOLADOR:
                 KoopaVolador koopaVolador = new KoopaVolador(tileX, tileY);
+                koopaVolador.loadLevelData(gamePanel.levelManager.getLevel().getLevelData());
                 enemigos.add(koopaVolador);
                 entidades.add(koopaVolador);
 
