@@ -18,6 +18,12 @@ public class Constantes {
         public static final String KoopaDir = "Sprites/KoopaSprite.png";
         public static final String KoopaVoladorDir = "Sprites/KoopaVoladorSprite.png";
         public static final String BowserDir = "Sprites/BowserSprite.png";
+        public static final String MONEDA_DIR = "res/Coin.png";
+        public static final String FLOR_DIR = "res/FlorFuego.png";
+        public static final String ESTRELLA_DIR = "res/Star.png";
+        public static final String HONGO_DIR = "res/Hongo.png";
+        public static final String HONGO_VENENOSO_DIR = "res/HongoPoison.png";
+
     }
 
     public static class Enemigos {
@@ -47,7 +53,7 @@ public class Constantes {
         }
 
         public enum ITEMS {
-            MONEDA, FLOR, ESTRELLA, HONGO
+            MONEDA, FLOR, ESTRELLA, HONGO, HONGO_VENENOSO
         }
 
         public enum ATAQUES {

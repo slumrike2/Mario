@@ -24,6 +24,7 @@ public class EntityManager {
     public ArrayList<Personaje> personajes = new ArrayList<>();
     public ArrayList<Enemigo> enemigos = new ArrayList<>();
     public ArrayList<Entidad> entidades = new ArrayList<>();
+    public ArrayList<Recolectable> recolectables = new ArrayList<>();
 
     public EntityManager(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
@@ -47,10 +48,15 @@ public class EntityManager {
 
     public void verifyEntityCollision() {
         for (Enemigo entidad : enemigos) {
-            entidad.update();
+
             if (entidad.vivo == true) {
                 entidad.recibirHit(mainCharacter);
                 mainCharacter.HitEnemigo(entidad.getHitbox());
+            }
+        }
+        for (Recolectable recolectable : recolectables) {
+            if (recolectable.Active == true) {
+                recolectable.Colliision(mainCharacter);
             }
         }
     }
@@ -121,7 +127,7 @@ public class EntityManager {
         }
     }
 
-    public void Spawn(ITEMS item, int tileX, int tileY, Level level) {
+    public void spawn(ITEMS item, int tileX, int tileY, Level level) {
         tileX *= PANTALLA.TILES_ACTUAL_SIZE;
         tileY *= PANTALLA.TILES_ACTUAL_SIZE;
 
@@ -134,9 +140,19 @@ public class EntityManager {
                 break;
             case ESTRELLA:
                 Star star = new Star(tileX, tileY);
+                recolectables.add(star);
+                entidades.add(star);
+
                 break;
             case HONGO:
-
+                Hongo hongo = new Hongo(tileX, tileY);
+                recolectables.add(hongo);
+                entidades.add(hongo);
+                break;
+            case HONGO_VENENOSO:
+                HongoEnvenenado hongoEnvenenado = new HongoEnvenenado(tileX, tileY);
+                recolectables.add(hongoEnvenenado);
+                entidades.add(hongoEnvenenado);
                 break;
             default:
                 break;

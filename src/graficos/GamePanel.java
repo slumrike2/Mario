@@ -47,6 +47,8 @@ public class GamePanel extends JPanel {
         entityManager.spawn(ENEMIES.KOOPA, 2, 1, levelManager.getLevel());
         entityManager.spawn(ENEMIES.KOOPA_VOLADOR, 3, 1, levelManager.getLevel());
         entityManager.spawn(ENEMIES.BOWSER, 4, 1, levelManager.getLevel());
+        entityManager.spawn(ITEMS.HONGO, 5, 10, levelManager.getLevel());
+        entityManager.spawn(ITEMS.HONGO_VENENOSO, 10, 10, levelManager.getLevel());
 
     }
 
