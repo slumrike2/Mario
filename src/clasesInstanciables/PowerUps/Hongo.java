@@ -25,7 +25,7 @@ public class Hongo extends Recolectable {
             Personaje personaje = (Personaje) ob;
 
             if (Hitbox.intersects(personaje.Hitbox) && personaje.vivo == true) {
-                personaje.setPequeño(false);
+                personaje.setVidas(2);
                 Active = false;
             }
         }
