@@ -6,7 +6,7 @@ class Client {
 
     public static void main(String[] args) {
         try {
-            Socket socket = new Socket("localhost", 5000);
+            Socket socket = new Socket("localhost", 4444);
             System.out.println("Connected to server");
 
             Scanner scanner = new Scanner(System.in);

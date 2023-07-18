@@ -39,7 +39,7 @@ public class server {
 
     public static void main(String args[]) throws Exception {
         // Create a server socket listening on port 5000
-        ServerSocket serverSocket = new ServerSocket(5000, 4, null);
+        ServerSocket serverSocket = new ServerSocket(4444);
         server server = new server(serverSocket);
         server.startServer();
     }
