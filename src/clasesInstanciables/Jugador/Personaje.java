@@ -312,13 +312,14 @@ public class Personaje extends Entidad {
         if (vidas <= 0) {
             if (contFramesMuerte == 0) {
                 FuerzaSalto = 30;
+
             }
 
             contFramesMuerte++;
             if (contFramesMuerte >= Jugador.CANT_FRAMES_MUERTE) {
                 posX = 300;
                 posY = 350;
-                vivo = true;
+
                 vidas = 2;
                 EnSuelo = true;
                 contFramesMuerte = 0;
