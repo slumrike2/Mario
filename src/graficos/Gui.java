@@ -32,7 +32,7 @@ public class Gui extends Canvas implements Runnable {
     long referenciaActualizacion = System.nanoTime();
     private double tiempoTranscurrido, delta = 0;
 
-    private static volatile boolean Corriendo = false;
+    public static volatile boolean Corriendo = false;
     // #endregion
 
     public Gui(GamePanel panel) {

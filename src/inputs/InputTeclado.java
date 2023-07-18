@@ -7,17 +7,21 @@ import clasesInstanciables.Jugador.Personaje;
 import clasesInstanciables.Jugador.Personaje.AccionPlayer;
 import graficos.GamePanel;
 import graficos.Gui;
+import networking.PlayerInput;
 import constantes.Constantes.Jugador;
 
 public class InputTeclado implements KeyListener {
 
-    public GamePanel gamePanel;
     public Personaje jugador;
+    public PlayerInput playerInput;
 
     public InputTeclado(GamePanel gamePanel) {
-        this.gamePanel = gamePanel;
         this.jugador = gamePanel.getEntityManager().getMainCharacter();
 
+    }
+
+    public InputTeclado(PlayerInput playerInput) {
+        this.playerInput = playerInput;
     }
 
     public void keyTyped(java.awt.event.KeyEvent e) {
@@ -26,7 +30,6 @@ public class InputTeclado implements KeyListener {
 
     // *se encarga de detectar las teclas presionadas
     public void keyPressed(java.awt.event.KeyEvent e) {
-
         switch (e.getKeyCode()) {
             case KeyEvent.VK_A:
                 jugador.MovIzquierda = true;
