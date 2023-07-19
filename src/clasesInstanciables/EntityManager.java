@@ -48,6 +48,7 @@ public class EntityManager {
 
     public void verifyEntityCollision() {
         ArrayList<Entidad> Eliminar = new ArrayList<>();
+        
         for (Enemigo entidad : enemigos) {
             if (entidad.vivo == true) {
                 entidad.recibirHit(mainCharacter);
@@ -70,7 +71,6 @@ public class EntityManager {
         for (Personaje personaje : personajes) {
             if (personaje.disparar == true) {
                 personaje.disparar = false;
-                System.out.println("disparar");
                 spawn(Constantes.ENTITY_TYPE.Proyectiles.BOLA_FUEGO, personaje.posX, personaje.posY,
                         personaje.direccion, gamePanel.levelManager.getLevel());
 

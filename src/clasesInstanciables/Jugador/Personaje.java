@@ -16,6 +16,7 @@ import static utils.HelpMethods.isInFloor;
 
 public class Personaje extends Entidad {
 
+    // todo que el personaje solo pueda disparar dos bolas de fuego a la vez
     // #region Constantes
     private int gravedad = Globales.GRAVEDAD;
     private int[][] currentLevelData;

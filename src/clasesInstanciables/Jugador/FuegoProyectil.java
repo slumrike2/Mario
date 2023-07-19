@@ -33,7 +33,6 @@ public class FuegoProyectil extends Entidad {
         ActualizarFrame();
         movimiento();
         ActualizarHitbox();
-        System.out.println("posX: " + posX + " posY: " + posY + " direccion: " + direccion + " enSuelo: " + enSuelo);
 
     }
 
