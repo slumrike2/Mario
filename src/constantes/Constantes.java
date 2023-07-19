@@ -45,11 +45,11 @@ public class Constantes {
     public static class ENTITY_TYPE {
 
         public enum CHARACTERS {
-            MARIO, LUIGI, WARIO, WALUIGI
+            MAIN, MARIO, LUIGI, WARIO, WALUIGI
         }
 
         public enum ENEMIES {
-            GOOMBA, KOOPA, KOOPA_VOLADOR, BOWSER
+            BOWSER, KOOPA, KOOPA_VOLADOR, GOOMBA // ! el orden importa
         }
 
         public enum ITEMS {
@@ -94,11 +94,21 @@ public class Constantes {
         MENU_PRINCIPAL, REGISTRO, INICIO_SESION, MENU_GESTIONAR_COLECCION
     }
 
-    public enum Pantallas_Mundos {
-        MUNDO_1, PANTALLA_2, PANTALLA_3, PANTALLA_4, PANTALLA_5
+    public enum NIVEL {
+        NIVEL_1("res/level1/"),
+        NIVEL_2("res/level2/"),
+        NIVEL_3("res/level3/");
+
+        private final String path;
+
+        NIVEL(String path) {
+            this.path = path;
+        }
+
+        public String getPath() {
+            return path;
+        }
+
     }
-
-
-    
 
 }
