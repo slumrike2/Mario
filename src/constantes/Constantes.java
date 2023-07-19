@@ -102,7 +102,8 @@ public class Constantes {
     public enum NIVEL {
         NIVEL_1("res/level1/"),
         NIVEL_2("res/level2/"),
-        NIVEL_3("res/level3/");
+        NIVEL_3("res/level3/"),
+        NIVEL_4("res/level4/");
 
         private final String path;
 

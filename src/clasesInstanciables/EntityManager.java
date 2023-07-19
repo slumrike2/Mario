@@ -116,11 +116,25 @@ public class EntityManager {
 
     }
 
+    public void restart() {
+        personajes.clear();
+        enemigos.clear();
+        entidades.clear();
+        recolectables.clear();
+        fuegoProyectils.clear();
+    }
+
     public void spawnMainCharacter(int tileX, int tileY, Level level) {
-        mainCharacter = new Personaje(PANTALLA.TILES_ACTUAL_SIZE * tileX, PANTALLA.TILES_ACTUAL_SIZE * tileY);
+        if (mainCharacter == null) {
+            mainCharacter = new Personaje(PANTALLA.TILES_ACTUAL_SIZE * tileX, PANTALLA.TILES_ACTUAL_SIZE * tileY);
+        } else {
+            mainCharacter.restartStates();
+            mainCharacter.setPosX(tileX * PANTALLA.TILES_ACTUAL_SIZE);
+            mainCharacter.setPosY(tileY * PANTALLA.TILES_ACTUAL_SIZE);
+        }
         mainCharacter.loadLevelData(gamePanel.levelManager.getLevel().getLevelData());
-        personajes.add(mainCharacter);
         entidades.add(mainCharacter);
+        personajes.add(mainCharacter);
     }
 
     public void spawn(ENEMIES entity, int tileX, int tileY, Level level) {

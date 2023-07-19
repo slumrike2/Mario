@@ -1,6 +1,7 @@
 package niveles;
 
 import java.awt.Graphics;
+import java.awt.Point;
 import java.awt.image.BufferedImage;
 
 import clasesInstanciables.EntityManager;
@@ -13,6 +14,7 @@ public class LevelManager {
 
     GamePanel gamePanel;
     private BufferedImage[] levelSprite;
+    private Level[] levels;
     private int lvlIndex;
 
     // todo change to an arraylist of levels
@@ -21,9 +23,22 @@ public class LevelManager {
     public LevelManager(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
 
-        lvlIndex = 1;
-        actualLevel = new Level(NIVEL.NIVEL_1);
+        lvlIndex = 0;
+        levels = new Level[4];
 
+        levels[0] = new Level(NIVEL.NIVEL_1);
+        levels[1] = new Level(NIVEL.NIVEL_2);
+        levels[2] = new Level(NIVEL.NIVEL_3);
+        levels[3] = new Level(NIVEL.NIVEL_4);
+
+        actualLevel = levels[lvlIndex];
+
+        levelSprite = actualLevel.getLevelSprite();
+    }
+
+    public void nextLevel() {
+        lvlIndex++;
+        actualLevel = levels[lvlIndex];
         levelSprite = actualLevel.getLevelSprite();
     }
 

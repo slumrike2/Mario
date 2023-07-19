@@ -61,6 +61,18 @@ public class Personaje extends Entidad {
 
     }
 
+    public void restartStates(){
+        enMovimiento = false;
+        saltando = false;
+        EnSuelo = false;
+        MovDerecha = false;
+        MovIzquierda = false;
+        MovAbajo = false;
+        MovArriba = false;
+        disparar = false;
+        accion = AccionPlayer.Quieto;
+        Accionprevia = accion;
+    }
     // *se encarga de cargar las animaciones del personaje
     public void GetAnimations() {
         animaciones = animacion(31, 0, 4, 1, 2);

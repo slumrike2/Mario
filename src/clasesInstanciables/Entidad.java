@@ -116,7 +116,7 @@ public abstract class Entidad {
     }
 
     public void setPosY(int posY) {
-        this.posY = posY;
+        this.posY = posY - 1; //*coco */
     }
 
     public boolean isVivo() {

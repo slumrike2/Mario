@@ -17,7 +17,6 @@ public class InputTeclado implements KeyListener {
 
     public InputTeclado(GamePanel gamePanel) {
         this.jugador = gamePanel.getEntityManager().getMainCharacter();
-
     }
 
     public InputTeclado(PlayerInput playerInput) {
@@ -62,7 +61,7 @@ public class InputTeclado implements KeyListener {
             case KeyEvent.VK_C:
                 if (jugador.getVidas() == 3) {
                     jugador.disparar = true;
-                    
+
                 }
                 break;
             // !Para pruebas. Borrar

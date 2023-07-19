@@ -37,6 +37,7 @@ public class GamePanel extends JPanel {
         entityManager = new EntityManager(this);
         levelManager.startLevelEntities(entityManager);
 
+        // !warnings
         entityManager.spawn(ITEMS.FLOR, 4, 19, levelManager.getLevel());
 
         setPreferredSize(new Dimension(PANTALLA.SCREEN_WIDTH, PANTALLA.SCREEN_HEIGHT));
@@ -48,17 +49,14 @@ public class GamePanel extends JPanel {
 
     }
 
-    public void moveEntitieOffset() {
-
-    }
-
     public void FrameUpdate() {
-        veryfyCloseToBorder();
+        verifyLevelEnded();
+        verifyCloseToBorder();
         entityManager.update();
 
     }
 
-    public void veryfyCloseToBorder() {
+    public void verifyCloseToBorder() {
 
         int PlayerX = (int) entityManager.getMainCharacter().getHitbox().x;
 
@@ -83,6 +81,20 @@ public class GamePanel extends JPanel {
 
         levelManager.draw(g, xlvlOffset);
         entityManager.render(g, xlvlOffset);
+    }
+
+    public void verifyLevelEnded() {
+        if (entityManager.getMainCharacter().getHitbox().x > levelWide * PANTALLA.TILES_ACTUAL_SIZE - 50)
+            passNextLevel();
+    }
+
+    public void passNextLevel() {
+        xlvlOffset = 0;
+        levelManager.nextLevel();
+        levelWide = levelManager.getLevel().getLevelData().length;
+        maxLvlOffsetX = (levelWide - PANTALLA.TILES_IN_WIDTH) * PANTALLA.TILES_ACTUAL_SIZE;
+        entityManager.restart();
+        entityManager.startLevelEntities(levelManager.getLevel());
     }
 
     // #region Getters and Setters
