@@ -19,7 +19,7 @@ public class FuegoProyectil extends Entidad {
     public FuegoProyectil(int x, int y) {
         super(x, y);
 
-        velocidad = 1;
+        velocidad = 1.5f;
         velocidadAnimacion = 120;
         altura_Tiles = 1;
         anchura_Tiles = 1;
@@ -65,7 +65,7 @@ public class FuegoProyectil extends Entidad {
         Hitbox.x = posX;
 
         if (canMoveHere(Hitbox.x + velocidad, Hitbox.y, Hitbox.width, Hitbox.height, currentLevelData))
-            posX += velocidad * direccion;
+            posX += (velocidad + 1) * direccion;
         else
             Active = false;
         if (!enSuelo && canMoveHere(Hitbox.x, Hitbox.y + gravedad, Hitbox.width, Hitbox.height, currentLevelData))

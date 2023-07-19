@@ -20,7 +20,7 @@ public class Personaje extends Entidad {
     // #region Constantes
     private int gravedad = Globales.GRAVEDAD;
     private int[][] currentLevelData;
-    private int velocidad = Jugador.MARIO_VELC;
+    private float velocidad = Jugador.MARIO_VELC;
 
     // #endregion
 
@@ -196,11 +196,14 @@ public class Personaje extends Entidad {
         if (MovAbajo != true && vivo == true) {
 
             if (MovDerecha == true && MovIzquierda == false) {
-                xSpeed += velocidad;
+                xSpeed += velocidad + 1;
+
             }
             if (MovIzquierda == true && MovDerecha == false) {
                 xSpeed -= velocidad;
+
             }
+
         }
 
         // Todo Actualizar el sistema de graveddad con mas presision y crear clase
@@ -265,7 +268,7 @@ public class Personaje extends Entidad {
             // *Tiempo Entre golpes
             // *Si esta por encima del enemigo salta sobre el
             // Todo Que el enemigo reciba el golpe perse
-            if ((Hitbox.y + Hitbox.height) <= (HitboxEnemigo.y + HitboxEnemigo.height)) {
+            if ((Hitbox.y + Hitbox.height) < (HitboxEnemigo.y + HitboxEnemigo.height)) {
                 FuerzaSalto = Jugador.MARIO_JUMP_FORCE;
                 saltando = true;
                 return;
