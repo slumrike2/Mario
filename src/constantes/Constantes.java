@@ -98,4 +98,7 @@ public class Constantes {
         MUNDO_1, PANTALLA_2, PANTALLA_3, PANTALLA_4, PANTALLA_5
     }
 
+
+    
+
 }

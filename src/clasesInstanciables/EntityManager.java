@@ -48,7 +48,6 @@ public class EntityManager {
 
     public void verifyEntityCollision() {
         for (Enemigo entidad : enemigos) {
-
             if (entidad.vivo == true) {
                 entidad.recibirHit(mainCharacter);
                 mainCharacter.HitEnemigo(entidad.getHitbox());
