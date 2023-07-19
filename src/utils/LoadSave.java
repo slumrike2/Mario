@@ -9,8 +9,6 @@ import niveles.Level;
 import javax.imageio.ImageIO;
 
 import clasesInstanciables.Spawner;
-import constantes.Constantes;
-import constantes.Constantes.NIVEL;
 import constantes.Constantes.ENTITY_TYPE;
 import constantes.Constantes.ENTITY_TYPE.*;
 

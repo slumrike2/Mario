@@ -27,7 +27,6 @@ public class ArchivoSerializable<T> {
     static public void crearArchivo(String nombreArchivo) {
         try {
             File file = new File(globalPath + nombreArchivo + ".dat");
-            System.out.println(file.getAbsolutePath());
             if (!file.exists()) {
                 file.createNewFile();
                 // Se realiza la cabecera del archivo

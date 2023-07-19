@@ -1,8 +1,5 @@
 package clasesInstanciables.Enemigos;
 
-import clasesInstanciables.Entidad;
-import clasesInstanciables.Jugador.FuegoProyectil;
-import clasesInstanciables.Jugador.Personaje;
 import static utils.HelpMethods.canMoveHere;
 
 import constantes.Constantes.PANTALLA;

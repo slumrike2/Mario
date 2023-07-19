@@ -4,23 +4,16 @@ import databases.Sesion;
 import databases.Usuario;
 import graficos.GamePanel;
 import graficos.Gui;
-import networking.Client;
-import networking.Server;
 
 public class Game {
     GamePanel panel;
     Gui ventana;
-    Client client;
 
     public Game() {
 
         panel = new GamePanel();
         ventana = new Gui();
 
-        try {
-            client = new Client();
-        } catch (Exception e) {
-        }
 
         // panel.requestFocus();
         ventana.iniciar();

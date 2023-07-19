@@ -1,8 +1,5 @@
 package clasesInstanciables;
 
-import clasesInstanciables.Enemigos.Enemigo;
-import constantes.Constantes.ENTITY_TYPE;
-import constantes.Constantes.ENTITY_TYPE.*;
 
 public class Spawner<E> {
 

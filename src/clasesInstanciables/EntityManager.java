@@ -12,8 +12,6 @@ import clasesInstanciables.Jugador.*;
 import constantes.Constantes.ENTITY_TYPE.*;
 import constantes.Constantes.PANTALLA;
 import constantes.Constantes;
-import constantes.Constantes.Enemigos;
-import constantes.Constantes.Jugador;
 import graficos.GamePanel;
 
 public class EntityManager {

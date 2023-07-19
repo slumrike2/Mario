@@ -2,8 +2,6 @@ package clasesInstanciables.Enemigos;
 
 import java.awt.image.BufferedImage;
 
-import clasesInstanciables.Entidad;
-import clasesInstanciables.Jugador.Personaje;
 import constantes.Constantes.PANTALLA;
 
 public class Goomba extends Enemigo {

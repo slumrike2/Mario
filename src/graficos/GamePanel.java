@@ -12,7 +12,6 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.awt.Dimension;
 import niveles.*;
-import utils.LoadSave;
 
 public class GamePanel extends JPanel {
 

@@ -1,11 +1,8 @@
 package niveles;
 
 import java.awt.image.BufferedImage;
-import java.lang.reflect.Array;
-import java.nio.file.Path;
 import java.util.ArrayList;
 
-import clasesInstanciables.EntityManager;
 import clasesInstanciables.Spawner;
 import constantes.Constantes.NIVEL;
 import constantes.Constantes.PANTALLA;

@@ -16,6 +16,7 @@ class Client {
             Client client = new Client(socket, username);
             client.listenForMessage();
             client.sendMessage();
+            scanner.close();
 
         } catch (Exception e) {
             System.out.println("Error connecting to server");
@@ -56,6 +57,7 @@ class Client {
                 bufferedWriter.flush();
 
             }
+            scanner.close();
 
         } catch (Exception e) {
             closeEverything(socket, bufferedReader, bufferedWriter);
