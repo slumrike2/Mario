@@ -8,7 +8,7 @@ TODO:
 - [X] colisiones entre entidades no jugadoras
 - [ ] multijugador
 - [ ] mejorar HUD
-? [ ] IA
+- [ ] IA
 - [ ] sistema de victoria
 - [X] sistema de derrota
 - [ ] sistema de puntuacion
@@ -50,9 +50,8 @@ TODO:
 - [X] bloques
 - [ ] monedas
 - [X] power ups
-- [ ] proyectiles
-- [ ] backgrounds
-- [ ] mundo 1 - Overworld
+- [X] backgrounds
+- [X] mundo 1 - Overworld
 - [ ] mundo 1 - Underground
 - [ ] mundo 1 - Underwater
 - [ ] mundo 1 - Castle
@@ -64,7 +63,7 @@ TODO:
 
 
 *Mecanicas:
-- [ ] proyectiles
+- [X] proyectiles
 - [X] caparazon verde
 - [ ] caparazon azul
 - [ ] romper bloques
@@ -74,11 +73,11 @@ TODO:
 
 *Refactors:
 - [ ] hacer que los recursos se obtengan de un solo lugar a traves de una clase Loader
-- [ ] hacer que los sprites se obtengan de un solo lugar a traves de una clase SpriteLoader
+- [X] hacer que los sprites se obtengan de un solo lugar a traves de una clase SpriteLoader
 - [ ] hacer que los sonidos se obtengan de un solo lugar a traves de una clase SoundLoader
-- [ ] hacer que los niveles se obtengan de un solo lugar a traves de una clase LevelLoader
-- [ ] cambiar constructores de entidades para que reciban una posicion 
-- [ ] cambiar medidas utilizadas de pixeles a tiles
+- [X] hacer que los niveles se obtengan de un solo lugar a traves de una clase LevelLoader
+- [X] cambiar constructores de entidades para que reciban una posicion 
+- [X] cambiar medidas utilizadas de pixeles a tiles
 
 *niveles:
 
