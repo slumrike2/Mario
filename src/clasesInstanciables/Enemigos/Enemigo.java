@@ -22,6 +22,10 @@ public abstract class Enemigo extends Entidad {
 
     }
 
+    public void update() {
+        super.update();
+    }
+
     public void recibirHit(Entidad ob) {
         if (ob instanceof Personaje) {
             if (contFramesInvensible < FramesInvensible)

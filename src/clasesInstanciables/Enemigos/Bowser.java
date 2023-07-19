@@ -27,6 +27,7 @@ public class Bowser extends Enemigo {
     }
 
     public void update() {
+        super.update();
         movimiento();
         ActualizarAccion();
         ActualizarFrame();

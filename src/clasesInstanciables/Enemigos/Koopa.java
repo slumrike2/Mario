@@ -23,7 +23,7 @@ public class Koopa extends Enemigo {
     }
 
     public void update() {
-
+        super.update();
         movimiento();
         ActualizarAccion();
         ActualizarFrame();
@@ -45,6 +45,7 @@ public class Koopa extends Enemigo {
             else
                 cambiarDireccion();
         }
+
         if (!enSuelo && canMoveHere(Hitbox.x, Hitbox.y + gravedad, Hitbox.width, Hitbox.height, currentLevelData)
                 && vidas != 3)
             posY += gravedad;

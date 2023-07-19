@@ -73,7 +73,7 @@ public class Personaje extends Entidad {
 
     // *se encarga de la actualizacion del personaje en acciones
     public void update() {
-
+        super.update();
         movimiento();
         ActHitbox();
         ActualizarAccion();

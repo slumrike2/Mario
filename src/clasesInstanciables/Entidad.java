@@ -29,8 +29,6 @@ public abstract class Entidad {
         InicializarHitbox();
     }
 
-    
-
     protected void importarImagen(String Dir) {
         try {
             imagen = ImageIO.read(getClass().getResourceAsStream(Dir));
@@ -51,7 +49,15 @@ public abstract class Entidad {
         return animacion;
     }
 
-    public abstract void update();
+    public void update() {
+        verifyDeathFromHill();
+    }
+
+    public void verifyDeathFromHill() {
+        if (posY + altura_Tiles * PANTALLA.TILES_ACTUAL_SIZE + 1 >= PANTALLA.SCREEN_HEIGHT) {// *coco */
+            vidas = -1;
+        }
+    }
 
     public abstract void updateFrames(Graphics g, int offset);
 
