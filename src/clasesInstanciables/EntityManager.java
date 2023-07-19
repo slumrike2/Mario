@@ -96,7 +96,7 @@ public class EntityManager {
     }
 
     // TODO hacer que reciba un int[][] que mande a spawnear todas las entidades de
-    // un nivel dado
+   
 
     public void startLevelEntities(Level level) {
 

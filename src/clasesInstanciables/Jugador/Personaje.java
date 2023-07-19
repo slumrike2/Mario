@@ -29,6 +29,8 @@ public class Personaje extends Entidad {
     // *Cada cuantos frames se actualiza la animacion
     private int contInvensibilityFrames = 0, AccionAnimation = 0, frameAniamcion = 0,
             contFrames = 0, contFramesMuerte = 0;
+    private int InvensibilidadStar = 120 * 10, contInvensibility_Star = 0;
+    private Boolean starActive = false;
     public int FuerzaSalto = 0;
     public BufferedImage[][] animaciones; // * todas las animaciones del personaje
     public Boolean enMovimiento = false, saltando = false, EnSuelo = false; // * Boleanos que determinaran acciones
@@ -92,13 +94,24 @@ public class Personaje extends Entidad {
         // *funcion que determina que animacion sigue y que frame de la animacion
         ActualizarFrame();
         recibirHit();
+        ActualizarStar();
         contInvensibilityFrames++;
     }
 
     // *se encarga de dibujar los frames del personaje
 
-    public void updateFrames(java.awt.Graphics g) {
-
+    private void ActualizarStar() {
+        if (starActive == true) {
+            if (vidas == 1)
+                vidas = 2;
+            velocidad = Jugador.MARIO_VELC * 1.8f;
+            contInvensibility_Star++;
+            if (contInvensibility_Star >= InvensibilidadStar) {
+                starActive = false;
+                contInvensibility_Star = 0;
+            }
+        } else
+            velocidad = Jugador.MARIO_VELC;
     }
 
     public void updateFrames(Graphics g, int offset) {
@@ -232,12 +245,14 @@ public class Personaje extends Entidad {
         if (FuerzaSalto == 0) {
             ySpeed += gravedad;
         }
-
-        if (canMoveHere(Hitbox.x, Hitbox.y + ySpeed, Hitbox.width, Hitbox.height, currentLevelData)) {
+        // Todo hacer que no choque cuando muere
+        if (canMoveHere(Hitbox.x, Hitbox.y + ySpeed, Hitbox.width, Hitbox.height, currentLevelData) && vidas >= 1) {
             posY += ySpeed;
-        } else {
+        } else if (vidas >= 1) {
             FuerzaSalto = 0;
             ActualizarSuelo();
+        } else {
+            posY += ySpeed;
         }
 
         if (canMoveHere(Hitbox.x + xSpeed, Hitbox.y, Hitbox.width, Hitbox.height, currentLevelData)) {
@@ -277,7 +292,7 @@ public class Personaje extends Entidad {
 
     // *hitBox para enemigos
     public void HitEnemigo(Rectangle HitboxEnemigo) {
-        if (Hitbox.intersects(HitboxEnemigo) && vivo == true) {
+        if (Hitbox.intersects(HitboxEnemigo) && vidas >= 1) {
             // *Tiempo Entre golpes
             // *Si esta por encima del enemigo salta sobre el
             // Todo Que el enemigo reciba el golpe perse
@@ -287,7 +302,7 @@ public class Personaje extends Entidad {
                 return;
             }
             // * Sino le hara damage a mario */
-            if (contInvensibilityFrames >= Jugador.INVENSIBILITY_FRAMES) {
+            if (contInvensibilityFrames >= Jugador.INVENSIBILITY_FRAMES && starActive == false) {
                 vidas--;
                 System.out.println("Recibio golpe");
                 contInvensibilityFrames = 0;
@@ -320,9 +335,9 @@ public class Personaje extends Entidad {
     // Todo Poner Que se ponga en el spanw/
     public void recibirHit() {
         if (vidas <= 0) {
+            //
             if (contFramesMuerte == 0) {
                 FuerzaSalto = 40;
-
             }
 
             contFramesMuerte++;
@@ -333,6 +348,7 @@ public class Personaje extends Entidad {
                 EnSuelo = true;
                 contFramesMuerte = 0;
                 saltando = false;
+                setstarActive(false);
             }
 
         }
@@ -348,6 +364,14 @@ public class Personaje extends Entidad {
         }
         EnSuelo = false;
 
+    }
+
+    public Boolean getstarActive() {
+        return starActive;
+    }
+
+    public void setstarActive(Boolean starActive) {
+        this.starActive = starActive;
     }
 
     // #region Getters and Setters

@@ -37,8 +37,7 @@ public class GamePanel extends JPanel {
         entityManager = new EntityManager(this);
         levelManager.startLevelEntities(entityManager);
 
-        // !warnings
-        entityManager.spawn(ITEMS.FLOR, 4, 19, levelManager.getLevel());
+        entityManager.spawn(ITEMS.ESTRELLA, 4, 19, levelManager.getLevel());
 
         setPreferredSize(new Dimension(PANTALLA.SCREEN_WIDTH, PANTALLA.SCREEN_HEIGHT));
         // ? se encargan de agregar los inputs
