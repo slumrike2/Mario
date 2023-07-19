@@ -202,12 +202,6 @@ public class Personaje extends Entidad {
                 xSpeed -= velocidad;
             }
         }
-        if (MovArriba == true && MovAbajo == false) {
-            ySpeed -= velocidad;
-        }
-        if (MovAbajo == true && MovArriba == false) {
-            ySpeed += velocidad;
-        }
 
         // Todo Actualizar el sistema de graveddad con mas presision y crear clase
         // vector

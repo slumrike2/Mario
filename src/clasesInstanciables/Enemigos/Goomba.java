@@ -61,6 +61,7 @@ public class Goomba extends Enemigo {
         AccionAnimation = 1;
         if (vidas <= 0) {
             AccionAnimation = 2;
+            vivo = false;
             return;
         }
         if (enMovimiento == false) {
@@ -91,23 +92,6 @@ public class Goomba extends Enemigo {
     protected void InicializarHitbox() {
         Hitbox = new java.awt.Rectangle(posX, posY, (int) (PANTALLA.TILES_ACTUAL_SIZE * anchura_Tiles),
                 (int) (PANTALLA.TILES_ACTUAL_SIZE * altura_Tiles));
-    }
-
-    public void recibirHit(Entidad ob) {
-
-        if (ob instanceof Personaje) {
-            Personaje personaje = (Personaje) ob;
-
-            if (Hitbox.intersects(personaje.Hitbox) && personaje.vivo == true) {
-                if ((personaje.Hitbox.y + personaje.Hitbox.height) <= (this.Hitbox.getY() + this.Hitbox.height)
-                        && personaje.vivo == true) {
-                    vidas--;
-                    vivo = false;
-                }
-
-            }
-        }
-
     }
 
 }
