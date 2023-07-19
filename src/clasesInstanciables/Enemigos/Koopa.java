@@ -92,4 +92,20 @@ public class Koopa extends Enemigo {
                 (int) (PANTALLA.TILES_ACTUAL_SIZE * altura_Tiles));
     }
 
+    public void recibirHit(Entidad ob) {
+        super.recibirHit(ob);
+        Personaje personaje = (Personaje) ob;
+        if (personaje.Hitbox.intersects(this.Hitbox)
+                && personaje.getHitbox().getMaxY() < this.getHitbox().getMaxY()
+                && personaje.vivo && vidas > 0 && personaje.getVidas() > 0) {
+
+            if (personaje.getHitbox().getMaxX() - Hitbox.getMaxX() >= 0) {
+                velocidad = -1;
+            } else {
+                velocidad = 1;
+            }
+
+        }
+    }
+
 }

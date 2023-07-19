@@ -98,7 +98,8 @@ public class Personaje extends Entidad {
                 starActive = false;
                 contInvensibility_Star = 0;
             }
-        }
+        } else
+            velocidad = Jugador.MARIO_VELC;
     }
 
     public void updateFrames(Graphics g, int offset) {
@@ -335,6 +336,7 @@ public class Personaje extends Entidad {
                 EnSuelo = true;
                 contFramesMuerte = 0;
                 saltando = false;
+                setstarActive(false);
             }
 
         }
