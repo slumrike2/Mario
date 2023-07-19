@@ -28,13 +28,15 @@ public class GamePanel extends JPanel {
     private int xlvlOffset;
     private int leftBorder = (int) (PANTALLA.SCREEN_WIDTH * 0.2);
     private int rightBorder = (int) (PANTALLA.SCREEN_WIDTH * 0.8);
-    private int levelWide = LoadSave.getLevelData().length;
-    private int maxLvlOffsetX = (levelWide - PANTALLA.TILES_IN_WIDTH) * PANTALLA.TILES_ACTUAL_SIZE;
+    private int levelWide;
+    private int maxLvlOffsetX = (PANTALLA.TILES_IN_WIDTH - levelWide) * PANTALLA.TILES_ACTUAL_SIZE;
 
     public GamePanel() {
         // Se carga el nivel
         levelManager = new LevelManager(this);
+        levelWide = levelManager.getLevel().getLevelData().length;
         entityManager = new EntityManager(this);
+        levelManager.startLevelEntities(entityManager);
 
         setPreferredSize(new Dimension(PANTALLA.SCREEN_WIDTH, PANTALLA.SCREEN_HEIGHT));
         // ? se encargan de agregar los inputs
@@ -42,15 +44,6 @@ public class GamePanel extends JPanel {
         addMouseListener(mouseimput);
         addMouseMotionListener(mouseimput);
         setFocusable(true);
-
-        System.out.println(maxLvlOffsetX);
-
-        entityManager.spawn(ENEMIES.GOOMBA, 3, 12, levelManager.getLevel());
-        entityManager.spawn(ENEMIES.KOOPA, 10, 8, levelManager.getLevel());
-        entityManager.spawn(ENEMIES.KOOPA_VOLADOR, 10, 10, levelManager.getLevel());
-        entityManager.spawn(ENEMIES.BOWSER, 10, 6, levelManager.getLevel());
-        entityManager.spawn(ITEMS.FLOR, 5, 10, levelManager.getLevel());
-        entityManager.spawn(ITEMS.HONGO_VENENOSO, 10, 10, levelManager.getLevel());
 
     }
 
@@ -67,6 +60,7 @@ public class GamePanel extends JPanel {
     public void veryfyCloseToBorder() {
 
         int PlayerX = (int) entityManager.getMainCharacter().getHitbox().x;
+
         int difference = PlayerX - xlvlOffset;
 
         if (difference > rightBorder) {

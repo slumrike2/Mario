@@ -1,0 +1,49 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Client",
+            "request": "launch",
+            "mainClass": "Client",
+            "projectName": "Mario_47fff849"
+        },
+        {
+            "type": "java",
+            "name": "Game",
+            "request": "launch",
+            "mainClass": "game.Game",
+            "projectName": "Mario_47fff849"
+        },
+        {
+            "type": "java",
+            "name": "Client(1)",
+            "request": "launch",
+            "mainClass": "networking.Client",
+            "projectName": "Mario_47fff849"
+        },
+        {
+            "type": "java",
+            "name": "Server",
+            "request": "launch",
+            "mainClass": "networking.Server",
+            "projectName": "Mario_47fff849"
+        },
+        {
+            "type": "java",
+            "name": "server",
+            "request": "launch",
+            "mainClass": "server",
+            "projectName": "Mario_47fff849"
+        }
+    ]
+}

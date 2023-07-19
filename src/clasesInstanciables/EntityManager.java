@@ -29,7 +29,6 @@ public class EntityManager {
 
     public EntityManager(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
-        initialize();
     }
 
     public void render(Graphics g, int offset) {
@@ -96,12 +95,27 @@ public class EntityManager {
 
     // TODO hacer que reciba un int[][] que mande a spawnear todas las entidades de
     // un nivel dado
-    public void initialize() {
-        initializeMainCharacter();
+
+    public void startLevelEntities(Level level) {
+
+        Spawner<CHARACTERS> characterSpawn = level.getCharacterSpawn();
+        ArrayList<Spawner<ITEMS>> objectSpawners = level.getObjectSpawners();
+        ArrayList<Spawner<ENEMIES>> enemySpawners = level.getEnemySpawners();
+
+        spawnMainCharacter(characterSpawn.getX(), characterSpawn.getY(), level);
+
+        for (Spawner<ENEMIES> spawner : enemySpawners) {
+            spawn(spawner.getEntity(), spawner.getX(), spawner.getY(), level);
+        }
+
+        for (Spawner<ITEMS> spawner : objectSpawners) {
+            spawn(spawner.getEntity(), spawner.getX(), spawner.getY(), level);
+        }
+
     }
 
-    public void initializeMainCharacter() {
-        mainCharacter = new Personaje(PANTALLA.TILES_ACTUAL_SIZE * 1, PANTALLA.TILES_ACTUAL_SIZE * 3);
+    public void spawnMainCharacter(int tileX, int tileY, Level level) {
+        mainCharacter = new Personaje(PANTALLA.TILES_ACTUAL_SIZE * tileX, PANTALLA.TILES_ACTUAL_SIZE * tileY);
         mainCharacter.loadLevelData(gamePanel.levelManager.getLevel().getLevelData());
         personajes.add(mainCharacter);
         entidades.add(mainCharacter);

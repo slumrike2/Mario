@@ -75,8 +75,7 @@ public class Gui extends Canvas implements Runnable {
 
         estadoJuego = GameState.MENU;
         menu = new MenuPanel();
-        panel = new GamePanel();
-        // ventana.add(panel, "Juego");
+        
         ventana.getContentPane().add(menu, "Menu");
         menu.requestFocusInWindow();
         cardLayout.show(ventana.getContentPane(), "Menu");
