@@ -32,6 +32,7 @@ public class Personaje extends Entidad {
     public BufferedImage[][] animaciones; // * todas las animaciones del personaje
     public Boolean enMovimiento = false, saltando = false, EnSuelo = false; // * Boleanos que determinaran acciones
     public Boolean MovDerecha = false, MovIzquierda = false, MovAbajo = false, MovArriba = false;
+    public Boolean disparar = false;
 
     public int direccion;
 

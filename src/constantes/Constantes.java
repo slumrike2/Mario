@@ -23,6 +23,7 @@ public class Constantes {
         public static final String ESTRELLA_DIR = "res/Star.png";
         public static final String HONGO_DIR = "res/Hongo.png";
         public static final String HONGO_VENENOSO_DIR = "res/HongoPoison.png";
+        public static final String PROYECTIL_FUEGO_DIR = "res/DisparoFuego.png";
 
     }
 
@@ -43,6 +44,10 @@ public class Constantes {
     }
 
     public static class ENTITY_TYPE {
+
+        public enum Proyectiles {
+            BOLA_FUEGO
+        }
 
         public enum CHARACTERS {
             MARIO, LUIGI, WARIO, WALUIGI
@@ -97,8 +102,5 @@ public class Constantes {
     public enum Pantallas_Mundos {
         MUNDO_1, PANTALLA_2, PANTALLA_3, PANTALLA_4, PANTALLA_5
     }
-
-
-    
 
 }

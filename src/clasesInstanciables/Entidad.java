@@ -29,10 +29,7 @@ public abstract class Entidad {
         InicializarHitbox();
     }
 
-    public Entidad(String Dir) {
-        importarImagen(Dir);
-        InicializarHitbox();
-    }
+    
 
     protected void importarImagen(String Dir) {
         try {

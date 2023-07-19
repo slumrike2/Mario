@@ -11,7 +11,7 @@ import clasesInstanciables.Enemigos.*;
 import clasesInstanciables.Jugador.*;
 import constantes.Constantes.ENTITY_TYPE.*;
 import constantes.Constantes.PANTALLA;
-
+import constantes.Constantes;
 import constantes.Constantes.Enemigos;
 import constantes.Constantes.Jugador;
 import graficos.GamePanel;
@@ -25,6 +25,7 @@ public class EntityManager {
     public ArrayList<Enemigo> enemigos = new ArrayList<>();
     public ArrayList<Entidad> entidades = new ArrayList<>();
     public ArrayList<Recolectable> recolectables = new ArrayList<>();
+    public ArrayList<FuegoProyectil> fuegoProyectils = new ArrayList<>();
 
     public EntityManager(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
@@ -66,6 +67,23 @@ public class EntityManager {
                 }
             }
         }
+
+        for (Personaje personaje : personajes) {
+            if (personaje.disparar == true) {
+                personaje.disparar = false;
+                System.out.println("disparar");
+                spawn(Constantes.ENTITY_TYPE.Proyectiles.BOLA_FUEGO, personaje.posX, personaje.posY,
+                        personaje.direccion, gamePanel.levelManager.getLevel());
+
+            }
+        }
+
+        for (FuegoProyectil fuegoProyectil : fuegoProyectils) {
+            if (fuegoProyectil.getActive() == false) {
+                Eliminar.add(fuegoProyectil);
+            }
+        }
+
         for (Entidad entidad : Eliminar) {
             entidades.remove(entidad);
         }
@@ -170,6 +188,22 @@ public class EntityManager {
                 recolectables.add(hongoEnvenenado);
                 entidades.add(hongoEnvenenado);
                 break;
+            default:
+                break;
+        }
+    }
+
+    public void spawn(Proyectiles proyectil, int tileX, int tileY, int direccion, Level level) {
+
+        switch (proyectil) {
+            case BOLA_FUEGO:
+                FuegoProyectil bolaFuego = new FuegoProyectil(tileX, tileY);
+                bolaFuego.loadLevelData(gamePanel.levelManager.getLevel().getLevelData());
+                bolaFuego.direccion = direccion;
+                entidades.add(bolaFuego);
+                fuegoProyectils.add(bolaFuego);
+                break;
+
             default:
                 break;
         }

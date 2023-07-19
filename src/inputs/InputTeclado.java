@@ -60,8 +60,10 @@ public class InputTeclado implements KeyListener {
                 }
                 break;
             case KeyEvent.VK_C:
-                if (jugador.getVidas() == 3)
-                    System.out.println("Disparo");
+                if (jugador.getVidas() == 3) {
+                    jugador.disparar = true;
+                    
+                }
                 break;
             // !Para pruebas. Borrar
             case KeyEvent.VK_ESCAPE:
