@@ -14,6 +14,7 @@ public class KoopaVolador extends Koopa {
         anchura_Tiles = 1;
         animaciones = animacion(3, 0, 2, (int) anchura_Tiles, (int) altura_Tiles);
         velocidadAnimacion = 40;
+        vidas = 3;
         InicializarHitbox();
 
     }
@@ -22,6 +23,8 @@ public class KoopaVolador extends Koopa {
         movimiento();
         ActualizarAccion();
         ActualizarFrame();
+        ActualizarPosHitbox();
+        contFramesInvensible++;
     }
 
     // Todo añadir las fisicas en caso de estar en el aire y las hitboxes

@@ -37,7 +37,7 @@ class Client {
         } catch (Exception e) {
             closeEverything(socket, bufferedReader, bufferedWriter);
         }
-    }a
+    }
 
     public void sendMessage() {
         try {

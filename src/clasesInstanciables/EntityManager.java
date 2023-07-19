@@ -47,17 +47,29 @@ public class EntityManager {
     }
 
     public void verifyEntityCollision() {
+        ArrayList<Entidad> Eliminar = new ArrayList<>();
         for (Enemigo entidad : enemigos) {
             if (entidad.vivo == true) {
                 entidad.recibirHit(mainCharacter);
                 mainCharacter.HitEnemigo(entidad.getHitbox());
+                if (entidad.vivo == false) {
+                    Eliminar.add(entidad);
+                }
             }
         }
         for (Recolectable recolectable : recolectables) {
+
             if (recolectable.Active == true) {
                 recolectable.Colliision(mainCharacter);
+                if (recolectable.Active == false) {
+                    Eliminar.add(recolectable);
+                }
             }
         }
+        for (Entidad entidad : Eliminar) {
+            entidades.remove(entidad);
+        }
+
     }
 
     // TODO hacer que reciba un int[][] que mande a spawnear todas las entidades de
@@ -81,17 +93,20 @@ public class EntityManager {
         switch (entity) {
             case GOOMBA:
                 Goomba goomba = new Goomba(tileX, tileY);
+                goomba.loadLevelData(gamePanel.levelManager.getLevel().getLevelData());
                 enemigos.add(goomba);
                 entidades.add(goomba);
                 break;
             case KOOPA:
                 Koopa koopa = new Koopa(tileX, tileY);
                 enemigos.add(koopa);
+                koopa.loadLevelData(gamePanel.levelManager.getLevel().getLevelData());
                 entidades.add(koopa);
 
                 break;
             case KOOPA_VOLADOR:
                 KoopaVolador koopaVolador = new KoopaVolador(tileX, tileY);
+                koopaVolador.loadLevelData(gamePanel.levelManager.getLevel().getLevelData());
                 enemigos.add(koopaVolador);
                 entidades.add(koopaVolador);
 

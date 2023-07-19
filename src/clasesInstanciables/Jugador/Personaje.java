@@ -272,8 +272,6 @@ public class Personaje extends Entidad {
             }
             // * Sino le hara damage a mario */
             if (contInvensibilityFrames >= Jugador.INVENSIBILITY_FRAMES) {
-                // Todo VolverMarioChiquito con el golpe
-
                 vidas--;
                 System.out.println("Recibio golpe");
                 contInvensibilityFrames = 0;
