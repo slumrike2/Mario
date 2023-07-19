@@ -28,7 +28,7 @@ public class Goomba extends Enemigo {
     }
 
     public void update() {
-
+        super.update();
         movimiento();
 
         ActualizarAccion();
