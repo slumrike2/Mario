@@ -5,12 +5,12 @@ TODO:
 *Sistemas: 
 - [X] EntityManager  
 - [ ] SoundManager
-- [ ] colisiones entre entidades no jugadoras
+- [X] colisiones entre entidades no jugadoras
 - [ ] multijugador
 - [ ] mejorar HUD
 ? [ ] IA
 - [ ] sistema de victoria
-- [ ] sistema de derrota
+- [X] sistema de derrota
 - [ ] sistema de puntuacion
 - [ ] sistema de niveles
 - [ ] sistema de guardado de estadisticas
@@ -39,17 +39,17 @@ TODO:
 
 
 *Sprites:
-- [ ] mario
+- [X] mario
 - [ ] luigi
 - [ ] toad
 - [ ] peach
-- [ ] goomba
-- [ ] koopa
-- [ ] koopa volador
-- [ ] bowser
-- [ ] bloques
+- [X] goomba
+- [X] koopa
+- [X] koopa volador
+- [X] bowser
+- [X] bloques
 - [ ] monedas
-- [ ] power ups
+- [X] power ups
 - [ ] proyectiles
 - [ ] backgrounds
 - [ ] mundo 1 - Overworld
@@ -65,12 +65,12 @@ TODO:
 
 *Mecanicas:
 - [ ] proyectiles
-- [ ] caparazon verde
+- [X] caparazon verde
 - [ ] caparazon azul
 - [ ] romper bloques
 - [ ] bloques de interrogacion
 - [ ] bloques de monedas
-- [ ] power Ups
+- [X] power Ups
 
 *Refactors:
 - [ ] hacer que los recursos se obtengan de un solo lugar a traves de una clase Loader

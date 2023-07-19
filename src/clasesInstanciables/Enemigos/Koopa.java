@@ -43,10 +43,10 @@ public class Koopa extends Enemigo {
                 posX += velocidad;
             else
                 cambiarDireccion();
-            if (!enSuelo && canMoveHere(Hitbox.x, Hitbox.y + gravedad, Hitbox.width, Hitbox.height, currentLevelData)
-                    && vidas != 3)
-                posY += gravedad;
         }
+        if (!enSuelo && canMoveHere(Hitbox.x, Hitbox.y + gravedad, Hitbox.width, Hitbox.height, currentLevelData)
+                && vidas != 3)
+            posY += gravedad;
     }
 
     public void cambiarDireccion() {

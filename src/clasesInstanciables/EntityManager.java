@@ -150,7 +150,9 @@ public class EntityManager {
 
                 break;
             case FLOR:
-
+                FlorFuego flor = new FlorFuego(tileX, tileY);
+                recolectables.add(flor);
+                entidades.add(flor);
                 break;
             case ESTRELLA:
                 Star star = new Star(tileX, tileY);
