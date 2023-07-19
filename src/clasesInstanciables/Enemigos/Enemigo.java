@@ -32,8 +32,8 @@ public abstract class Enemigo extends Entidad {
                 return;
             Personaje personaje = (Personaje) ob;
             if (personaje.Hitbox.intersects(this.Hitbox)
-                    && personaje.posY + personaje.Hitbox.height <= this.posY + this.Hitbox.height / 2
-                    && personaje.vivo && vidas > 0) {
+                    && personaje.posY + personaje.Hitbox.height < this.posY + this.Hitbox.height
+                    && personaje.vivo && vidas > 0 && personaje.getVidas() > 0) {
                 vidas--;
                 contFramesInvensible = 0;
 

@@ -54,9 +54,8 @@ public class Star extends Recolectable {
                 Personaje personaje = (Personaje) ob;
 
                 if (Hitbox.intersects(personaje.Hitbox) && personaje.vivo == true) {
-                    personaje.setVelocidad((int) (personaje.getVelocidad() * 1.5f));
-                    // Todo agregar un timer para que vuelva a la normalidad
-                    // Todo el Personaje debe tener un contaddor de invensibilidad
+
+                    personaje.setstarActive(Active);
                     Active = false;
                     System.out.println("velocidad aumentada");
                 }
