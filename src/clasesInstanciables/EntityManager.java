@@ -79,6 +79,9 @@ public class EntityManager {
         }
 
         for (FuegoProyectil fuegoProyectil : fuegoProyectils) {
+            for (Enemigo enemigo : enemigos) {
+                enemigo.recibirHit(fuegoProyectil);
+            }
             if (fuegoProyectil.getActive() == false) {
                 Eliminar.add(fuegoProyectil);
             }
