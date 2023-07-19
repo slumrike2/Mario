@@ -190,10 +190,11 @@ public class Personaje extends Entidad {
 
     // *se encarga de mover al personaje
     public void movimiento() {
+
         float xSpeed = 0;
         float ySpeed = 0;
 
-        if (MovAbajo != true && vivo == true) {
+        if (MovAbajo != true && vidas >= 1) {
 
             if (MovDerecha == true && MovIzquierda == false) {
                 xSpeed += velocidad + 1;
