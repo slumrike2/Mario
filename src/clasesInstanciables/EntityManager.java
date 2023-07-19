@@ -53,9 +53,10 @@ public class EntityManager {
             if (entidad.vivo == true) {
                 entidad.recibirHit(mainCharacter);
                 mainCharacter.HitEnemigo(entidad.getHitbox());
-                if (entidad.vivo == false) {
-                    Eliminar.add(entidad);
-                }
+
+            }
+            if (entidad.vivo == false) {
+                Eliminar.add(entidad);
             }
         }
         for (Recolectable recolectable : recolectables) {

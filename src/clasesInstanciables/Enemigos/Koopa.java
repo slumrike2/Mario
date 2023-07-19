@@ -63,6 +63,10 @@ public class Koopa extends Enemigo {
             }
         } else
             AccionAnimation = 2;
+
+        if (vidas < 0) {
+            vivo = false;
+        }
     }
 
     public void ActualizarFrame() {
@@ -87,33 +91,4 @@ public class Koopa extends Enemigo {
                 (int) (PANTALLA.TILES_ACTUAL_SIZE * altura_Tiles));
     }
 
-    public void recibirHit(Entidad ob) {
-        if (ob instanceof Personaje) {
-            if (contFramesInvensible < FramesInvensible)
-                return;
-            Personaje personaje = (Personaje) ob;
-            if (personaje.Hitbox.intersects(this.Hitbox)
-                    && personaje.posY + personaje.Hitbox.height <= this.posY + this.Hitbox.height / 2
-                    && personaje.vivo && vidas > 0) {
-                vidas--;
-                contFramesInvensible = 0;
-
-                return;
-            }
-            if (personaje.Hitbox.intersects(this.Hitbox) && personaje.vivo && vidas == 0) {
-                vidas = 1;
-                contFramesInvensible = 0;
-            }
-        }
-        if (ob instanceof FuegoProyectil) {
-            FuegoProyectil proyectil = (FuegoProyectil) ob;
-            if (proyectil.Hitbox.intersects(this.Hitbox) && proyectil.getActive()) {
-                if (vidas > 0)
-                    vidas--;
-
-                proyectil.setActive(false);
-                System.out.println(vidas);
-            }
-        }
-    }
 }

@@ -1,6 +1,8 @@
 package clasesInstanciables.Enemigos;
 
 import clasesInstanciables.Entidad;
+import clasesInstanciables.Jugador.FuegoProyectil;
+import clasesInstanciables.Jugador.Personaje;
 import constantes.Constantes.PANTALLA;
 
 import static utils.HelpMethods.isInFloor;
@@ -20,7 +22,35 @@ public abstract class Enemigo extends Entidad {
 
     }
 
-    public abstract void recibirHit(Entidad ob);
+    public void recibirHit(Entidad ob) {
+        if (ob instanceof Personaje) {
+            if (contFramesInvensible < FramesInvensible)
+                return;
+            Personaje personaje = (Personaje) ob;
+            if (personaje.Hitbox.intersects(this.Hitbox)
+                    && personaje.posY + personaje.Hitbox.height <= this.posY + this.Hitbox.height / 2
+                    && personaje.vivo && vidas > 0) {
+                vidas--;
+                contFramesInvensible = 0;
+
+                return;
+            }
+            if (personaje.Hitbox.intersects(this.Hitbox) && personaje.vivo && vidas == 0) {
+                vidas = 1;
+                contFramesInvensible = 0;
+            }
+        }
+        if (ob instanceof FuegoProyectil) {
+            FuegoProyectil proyectil = (FuegoProyectil) ob;
+            if (proyectil.Hitbox.intersects(this.Hitbox) && proyectil.getActive()) {
+
+                vidas--;
+
+                proyectil.setActive(false);
+                System.out.println(vidas);
+            }
+        }
+    }
 
     public void loadLevelData(int[][] currentLevelData) {
         this.currentLevelData = currentLevelData;
