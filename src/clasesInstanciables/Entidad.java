@@ -54,7 +54,8 @@ public abstract class Entidad {
     }
 
     public void verifyDeathFromHill() {
-        if (posY + altura_Tiles * PANTALLA.TILES_ACTUAL_SIZE + 1 >= PANTALLA.SCREEN_HEIGHT) {// *coco */
+        if (posY + altura_Tiles * PANTALLA.TILES_ACTUAL_SIZE + 1 >= PANTALLA.SCREEN_HEIGHT
+                + altura_Tiles * PANTALLA.TILES_ACTUAL_SIZE) {// *coco */
             vidas = -1;
         }
     }
