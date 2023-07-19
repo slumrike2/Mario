@@ -59,6 +59,12 @@ public class InputTeclado implements KeyListener {
                     jugador.FuerzaSalto = Jugador.MARIO_JUMP_FORCE;
                 }
                 break;
+            case KeyEvent.VK_C:
+                if (jugador.getVidas() == 3) {
+                    jugador.disparar = true;
+                    
+                }
+                break;
             // !Para pruebas. Borrar
             case KeyEvent.VK_ESCAPE:
                 Gui.switchState();

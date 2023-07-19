@@ -32,6 +32,7 @@ public class Personaje extends Entidad {
     public BufferedImage[][] animaciones; // * todas las animaciones del personaje
     public Boolean enMovimiento = false, saltando = false, EnSuelo = false; // * Boleanos que determinaran acciones
     public Boolean MovDerecha = false, MovIzquierda = false, MovAbajo = false, MovArriba = false;
+    public Boolean disparar = false;
 
     public int direccion;
 
@@ -61,7 +62,7 @@ public class Personaje extends Entidad {
 
     // *se encarga de cargar las animaciones del personaje
     public void GetAnimations() {
-        animaciones = animacion(21, 0, 4, 1, 2);
+        animaciones = animacion(31, 0, 4, 1, 2);
     }
 
     // *Se encarga de cargar la informacion del nivel */
@@ -127,16 +128,20 @@ public class Personaje extends Entidad {
     // *Determina la accion que sigue y su direccion
     public void ActualizarAccion() {
         if (vidas <= 0) {
-            AccionAnimation = 20;
+            AccionAnimation = 30;
             accion = AccionPlayer.Quieto;
             return;
         }
 
         int aux = 0;
         if (vidas == 1)
-            aux += 5;
-        if (direccion == -1)
             aux += 10;
+        else if (vidas == 3) {
+            aux += 5;
+        }
+        if (direccion == -1)
+            aux += 15;
+
         // ! se suman 10 para que se pueda acceder a las animaciones de la izquierda
         accion = AccionPlayer.Quieto;
 

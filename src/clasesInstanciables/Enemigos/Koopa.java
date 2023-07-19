@@ -1,6 +1,7 @@
 package clasesInstanciables.Enemigos;
 
 import clasesInstanciables.Entidad;
+import clasesInstanciables.Jugador.FuegoProyectil;
 import clasesInstanciables.Jugador.Personaje;
 import static utils.HelpMethods.canMoveHere;
 
@@ -43,10 +44,10 @@ public class Koopa extends Enemigo {
                 posX += velocidad;
             else
                 cambiarDireccion();
-            if (!enSuelo && canMoveHere(Hitbox.x, Hitbox.y + gravedad, Hitbox.width, Hitbox.height, currentLevelData)
-                    && vidas != 3)
-                posY += gravedad;
         }
+        if (!enSuelo && canMoveHere(Hitbox.x, Hitbox.y + gravedad, Hitbox.width, Hitbox.height, currentLevelData)
+                && vidas != 3)
+            posY += gravedad;
     }
 
     public void cambiarDireccion() {
@@ -102,6 +103,16 @@ public class Koopa extends Enemigo {
             if (personaje.Hitbox.intersects(this.Hitbox) && personaje.vivo && vidas == 0) {
                 vidas = 1;
                 contFramesInvensible = 0;
+            }
+        }
+        if (ob instanceof FuegoProyectil) {
+            FuegoProyectil proyectil = (FuegoProyectil) ob;
+            if (proyectil.Hitbox.intersects(this.Hitbox) && proyectil.getActive()) {
+                if (vidas > 0)
+                    vidas--;
+
+                proyectil.setActive(false);
+                System.out.println(vidas);
             }
         }
     }
