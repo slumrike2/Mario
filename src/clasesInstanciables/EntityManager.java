@@ -48,7 +48,7 @@ public class EntityManager {
 
     public void verifyEntityCollision() {
         ArrayList<Entidad> Eliminar = new ArrayList<>();
-        
+
         for (Enemigo entidad : enemigos) {
             if (entidad.vivo == true) {
                 entidad.recibirHit(mainCharacter);
@@ -89,6 +89,10 @@ public class EntityManager {
 
         for (Entidad entidad : Eliminar) {
             entidades.remove(entidad);
+            // *coco */
+            entidad.setPosY(10000);
+            entidad.Hitbox.y = 10000;
+
         }
 
     }
