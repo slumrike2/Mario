@@ -8,12 +8,12 @@ TODO:
 - [X] colisiones entre entidades no jugadoras
 - [ ] multijugador
 - [ ] mejorar HUD
-? [ ] IA
+- [ ] IA
 - [ ] sistema de victoria
 - [X] sistema de derrota
 - [ ] sistema de puntuacion
 - [ ] sistema de niveles
-- [ ] sistema de guardado de estadisticas
+- [X] sistema de guardado de estadisticas
 - [ ] sistema de configuracion de partida
 - [ ] pausa
 

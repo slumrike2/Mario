@@ -12,7 +12,7 @@ public abstract class Entidad {
     protected int vidas;
     public float altura_Tiles;
     public float anchura_Tiles;
-    public int velocidad; // velocidad en pixeles de forma horizontal
+    public float velocidad; // velocidad en pixeles de forma horizontal
     public int posX, posY;
     public boolean vivo = true;
     protected BufferedImage imagen;
@@ -28,8 +28,6 @@ public abstract class Entidad {
         this.posY = posY - 1;
         InicializarHitbox();
     }
-
-    
 
     protected void importarImagen(String Dir) {
         try {
@@ -88,7 +86,7 @@ public abstract class Entidad {
         this.anchura_Tiles = anchura_Tiles;
     }
 
-    public int getVelocidad() {
+    public float getVelocidad() {
         return velocidad;
     }
 

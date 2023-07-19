@@ -68,7 +68,7 @@ public class Constantes {
 
     public static class Jugador {
         private static final int FramesPerSecond = 120;
-        public static final int MARIO_VELC = 2;
+        public static final float MARIO_VELC = 1.3f;
         public static final int MARIO_VELCIDAD_ANIMACION = 10;
         public static final int INVENSIBILITY_FRAMES = 1 * FramesPerSecond;
         public static final int MARIO_JUMP_FORCE = 40;
