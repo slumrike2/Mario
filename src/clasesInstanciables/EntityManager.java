@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.Point;
 import java.util.ArrayList;
 
+import audio.AudioManager;
 import clasesInstanciables.Enemigos.*;
 import clasesInstanciables.Jugador.*;
 import constantes.Constantes.ENTITY_TYPE.*;
@@ -68,6 +69,7 @@ public class EntityManager {
                 Eliminar.add(entidad);
             }
         }
+
         for (Recolectable recolectable : recolectables) {
 
             if (recolectable.Active == true) {
@@ -110,11 +112,31 @@ public class EntityManager {
             }
         }
 
+
+
         for (Entidad entidad : Eliminar) {
             entidades.remove(entidad);
             // *coco */
             entidad.setPosY(10000);
             entidad.Hitbox.y = 10000;
+
+            if (entidad instanceof Enemigo) {
+                enemigos.remove(entidad);
+            }
+
+            if (entidad instanceof Recolectable) {
+                recolectables.remove(entidad);
+            }
+
+            if (entidad instanceof FuegoProyectil) {
+                fuegoProyectils.remove(entidad);
+            }
+
+            if (entidad instanceof BloqueMisterioso) {
+                bloquesMisteriosos.remove(entidad);
+            }
+
+
 
         }
 
@@ -277,6 +299,10 @@ public class EntityManager {
 
         switch (proyectil) {
             case BOLA_FUEGO:
+                if (fuegoProyectils.size() > 2)
+                    return;
+
+                gamePanel.audioManager.playEffect(AudioManager.FIREBALL);
                 FuegoProyectil bolaFuego = new FuegoProyectil(tileX, tileY);
                 bolaFuego.loadLevelData(gamePanel.levelManager.getLevel().getLevelData());
                 bolaFuego.direccion = direccion;

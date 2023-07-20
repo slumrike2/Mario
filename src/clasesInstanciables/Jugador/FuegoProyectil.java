@@ -37,7 +37,7 @@ public class FuegoProyectil extends Entidad {
     }
 
     public void updateFrames(Graphics g, int offset) {
-        g.drawImage(animaciones[0][frameAniamcion], Hitbox.x - offset, Hitbox.y, null);
+        g.drawImage(animaciones[0][frameAniamcion], Hitbox.x - offset, Hitbox.y, Hitbox.width + 5, Hitbox.height + 5, null);
     }
 
     public void ActualizarFrame() {
