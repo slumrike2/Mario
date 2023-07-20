@@ -74,7 +74,10 @@ public class Personaje extends Entidad {
         disparar = false;
         direccion = 1;
         starActive = false;
+<<<<<<< Updated upstream
         vivo = true;
+=======
+>>>>>>> Stashed changes
         vidas = 1;
         Accionprevia = accion;
     }
@@ -347,11 +350,11 @@ public class Personaje extends Entidad {
             }
 
             contFramesMuerte++;
-            System.out.println(contFramesMuerte);
-            if (contFramesMuerte >= Jugador.CANT_FRAMES_MUERTE) {
+
+            if (contFramesMuerte > Jugador.CANT_FRAMES_MUERTE) {
                 vivo = false;
-                setstarActive(false);
-                // Todo Reiniciar Nivel
+                restartStates();
+                contFramesMuerte = 0;
             }
 
         }

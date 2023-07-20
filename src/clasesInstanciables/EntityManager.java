@@ -45,6 +45,7 @@ public class EntityManager {
         if (mainCharacter.vivo == false) {
             restart();
             startLevelEntities(gamePanel.levelManager.getLevel());
+            mainCharacter.vivo = true;
         }
 
         verifyEntityCollision();
