@@ -26,9 +26,9 @@ public class LevelManager {
         levels = new Level[4];
 
         levels[0] = new Level(NIVEL.NIVEL_1);
-        levels[1] = new Level(NIVEL.NIVEL_2);
-        levels[2] = new Level(NIVEL.NIVEL_3);
-        levels[3] = new Level(NIVEL.NIVEL_4);
+        // levels[1] = new Level(NIVEL.NIVEL_2);
+        // levels[2] = new Level(NIVEL.NIVEL_3);
+        // levels[3] = new Level(NIVEL.NIVEL_4);
 
         actualLevel = levels[lvlIndex];
 
@@ -56,6 +56,7 @@ public class LevelManager {
                 g.drawImage(levelSprite[tile], i * PANTALLA.TILES_ACTUAL_SIZE - offset, j * PANTALLA.TILES_ACTUAL_SIZE,
                         PANTALLA.TILES_ACTUAL_SIZE, PANTALLA.TILES_ACTUAL_SIZE,
                         null);
+
             }
         }
     }

@@ -50,7 +50,7 @@ public class LoadSave {
                     characterSpawn = new Spawner<>(i, j, 2021, ENTITY_TYPE.CHARACTERS.MAIN);
                 } else {
 
-                    if (red <= 11)
+                    if (red <= 23)
                         levelData[i][j] = red;
                     else {
                         levelData[i][j] = 11;
