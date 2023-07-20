@@ -63,7 +63,7 @@ public class GamePanel extends JPanel {
 
         if (entityManager.getMainCharacter().saltando && entityManager.getMainCharacter().EnSuelo)
             audioManager.playEffect(AudioManager.JUMP);
-        if (entityManager.getMainCharacter().getVidas() < 0 && !audioManager.isSongMute()) {
+        if (entityManager.getMainCharacter().getVidas() <= 0 && !audioManager.isSongMute()) {
             audioManager.stopSong();
             audioManager.playEffect(AudioManager.DIE);
         }
