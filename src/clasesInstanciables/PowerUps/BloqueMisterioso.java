@@ -4,18 +4,32 @@ import java.awt.Graphics;
 
 import clasesInstanciables.Entidad;
 import clasesInstanciables.Jugador.Personaje;
+import constantes.Constantes;
 import constantes.Constantes.PANTALLA;
+import constantes.Constantes.ENTITY_TYPE.ITEMS;
 
 public class BloqueMisterioso extends Entidad {
 
+    public ITEMS ItemSpawn = null;
+    public int tileX, tileY;
+
     public BloqueMisterioso(int Posx, int Posy) {
         super(Posx, Posy);
+        tileX = Posx / PANTALLA.TILES_ACTUAL_SIZE;
+        tileY = Posy / PANTALLA.TILES_ACTUAL_SIZE;
         importarImagen(PANTALLA.MISTERY_BLOCK_DIR);
         anchura_Tiles = 1;
         altura_Tiles = 1;
+        velocidadAnimacion = 40;
         InicializarHitbox();
         animaciones = animacion(1, 0, 4, 1, 1);
         vivo = true;
+
+    }
+
+    public void update() {
+        ActualizarFrame();
+
     }
 
     public void updateFrames(Graphics g, int offset) {
@@ -32,7 +46,7 @@ public class BloqueMisterioso extends Entidad {
 
     public void ActualizarFrame() {
         contFrames++;
-        if (vivo = false) {
+        if (vivo == false) {
             frameAniamcion = 3;
             return;
         }
@@ -52,13 +66,25 @@ public class BloqueMisterioso extends Entidad {
     public void recibirHit(Entidad ob) {
         if (ob instanceof Personaje) {
             Personaje personaje = (Personaje) ob;
-            if (personaje.Hitbox.intersects(this.Hitbox) && personaje.vivo
-                    && personaje.getHitbox().getMinY() >= this.Hitbox.getMaxY() - this.getHitbox().height / 2) {
 
+            if (personaje.Hitbox.intersects(this.Hitbox) && personaje.vivo
+                    && personaje.getHitbox().getMaxY() >= this.Hitbox.getMaxY() - this.getHitbox().height / 2) {
                 vivo = false;
-                System.out.println("Spanear item");
+                DeterminarItem();
             }
         }
+    }
+
+    private void DeterminarItem() {
+        int random = (int) (Math.random() * 100);
+        if (random < 25)
+            ItemSpawn = ITEMS.MONEDA;
+        else if (random < 50)
+            ItemSpawn = ITEMS.HONGO;
+        else if (random < 70)
+            ItemSpawn = ITEMS.FLOR;
+        else if (random < 100)
+            ItemSpawn = ITEMS.ESTRELLA;
     }
 
 }
