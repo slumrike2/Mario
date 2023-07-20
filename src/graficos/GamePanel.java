@@ -2,6 +2,8 @@ package graficos;
 
 import javax.swing.JPanel;
 
+import audio.AudioManager;
+import audio.audioManager;
 import clasesInstanciables.*;
 import constantes.Constantes.PANTALLA;
 import constantes.Constantes.ENTITY_TYPE.*;
@@ -18,11 +20,11 @@ public class GamePanel extends JPanel {
     private InptutMouse mouseimput = new InptutMouse(this);
 
     public EntityManager entityManager;
+    public LevelManager levelManager;
+    public AudioManager audioManager;
 
     static int contador = 0;
     public BufferedImage aux;
-
-    public LevelManager levelManager;
 
     private int xlvlOffset;
     private int leftBorder = (int) (PANTALLA.SCREEN_WIDTH * 0.2);
@@ -38,6 +40,9 @@ public class GamePanel extends JPanel {
         entityManager = new EntityManager(this);
         levelManager.startLevelEntities(entityManager);
 
+        // Se cargan los audios
+        audioManager = new AudioManager();
+
         entityManager.spawn(ITEMS.BLOQUE_MISTERIOSO, 4, 15, levelManager.getLevel());
 
         setPreferredSize(new Dimension(PANTALLA.SCREEN_WIDTH, PANTALLA.SCREEN_HEIGHT));
@@ -52,8 +57,17 @@ public class GamePanel extends JPanel {
     public void FrameUpdate() {
         verifyLevelEnded();
         verifyCloseToBorder();
+        playEffects();
         entityManager.update();
+    }
 
+    public void playEffects() {
+        if (entityManager.getMainCharacter().saltando && entityManager.getMainCharacter().EnSuelo)
+            audioManager.playEffect(AudioManager.JUMP);
+        if (entityManager.getMainCharacter().getVidas() < 0 && !audioManager.isSongMute()) {
+            audioManager.stopSong();
+            audioManager.playEffect(AudioManager.DIE);
+        }
     }
 
     public void verifyCloseToBorder() {

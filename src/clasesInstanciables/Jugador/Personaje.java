@@ -307,7 +307,6 @@ public class Personaje extends Entidad {
             // * Sino le hara damage a mario */
             if (contInvensibilityFrames >= Jugador.INVENSIBILITY_FRAMES && starActive == false) {
                 vidas--;
-                System.out.println("Recibio golpe");
                 contInvensibilityFrames = 0;
             }
         }
@@ -340,6 +339,7 @@ public class Personaje extends Entidad {
         if (vidas <= 0) {
             //
             if (contFramesMuerte == 0) {
+                
                 FuerzaSalto = 40;
                 setstarActive(false);
 
@@ -365,7 +365,7 @@ public class Personaje extends Entidad {
 
             return;
         }
-        
+
         EnSuelo = false;
 
     }

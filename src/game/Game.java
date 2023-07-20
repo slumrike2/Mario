@@ -11,7 +11,6 @@ public class Game {
 
     public Game() {
 
-        panel = new GamePanel();
         ventana = new Gui();
 
 

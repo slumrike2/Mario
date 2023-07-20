@@ -35,29 +35,6 @@ public class Gui extends Canvas implements Runnable {
     public static volatile boolean Corriendo = false;
     // #endregion
 
-    public Gui(GamePanel panel) {
-        // *se crea la ventana
-        ventana = new JFrame("Mario");
-        // *se le da un tamaño a la ventana
-        ventana.setPreferredSize(new Dimension(PANTALLA.SCREEN_WIDTH, PANTALLA.SCREEN_HEIGHT));
-        // *se le da un comportamiento al cerrar la ventana
-        // !sin esto no se cierra y queda en ejecucion
-        ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        // *para que no se pueda cambiar el tamaño de la ventana
-        ventana.setResizable(false);
-        // *para que la ventana se centre en la pantalla
-        ventana.setLayout(new BorderLayout());
-        // *para que la ventana se muestre en el centro de la pantalla
-        ventana.setLocationRelativeTo(null);
-        ventana.getContentPane().add(panel);
-        Gui.panel = panel;
-
-        // *para que la ventana se muestre
-        ventana.setVisible(true);
-        // *para que la ventana se muestre en el centro de la pantalla
-        ventana.add(this, BorderLayout.CENTER);
-    }
-
     public Gui() {
         // *se crea la ventana
         ventana = new JFrame("Mario");
