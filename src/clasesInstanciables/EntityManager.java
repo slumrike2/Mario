@@ -2,8 +2,6 @@ package clasesInstanciables;
 
 import clasesInstanciables.PowerUps.*;
 
-import niveles.Level;
-
 import java.awt.Graphics;
 import java.awt.Point;
 import java.util.ArrayList;
@@ -14,6 +12,7 @@ import constantes.Constantes.ENTITY_TYPE.*;
 import constantes.Constantes.PANTALLA;
 import constantes.Constantes;
 import graficos.GamePanel;
+import niveles.Level;
 
 public class EntityManager {
 

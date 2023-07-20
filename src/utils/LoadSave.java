@@ -5,13 +5,13 @@ import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.io.InputStream;
 import java.util.ArrayList;
-import niveles.Level;
 
 import javax.imageio.ImageIO;
 
 import clasesInstanciables.Spawner;
 import constantes.Constantes.ENTITY_TYPE;
 import constantes.Constantes.ENTITY_TYPE.*;
+import niveles.Level;
 
 public class LoadSave {
 

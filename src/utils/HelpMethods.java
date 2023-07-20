@@ -39,7 +39,8 @@ public class HelpMethods {
         if (y <= 0 || y >= lvlData[0].length)
             return false;
 
-        return lvlData[(int) x][(int) y] != 11;
+        return lvlData[(int) x][(int) y] < 11 && lvlData[(int) x][(int) y] > 17;
+
     }
 
     public static boolean isInFloor(float x, float y, int width, int height, int[][] lvlData) {

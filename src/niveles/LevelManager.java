@@ -6,7 +6,6 @@ import java.awt.image.BufferedImage;
 
 import clasesInstanciables.EntityManager;
 import graficos.GamePanel;
-
 import constantes.Constantes.NIVEL;
 import constantes.Constantes.PANTALLA;
 
