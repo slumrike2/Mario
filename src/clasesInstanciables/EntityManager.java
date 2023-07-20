@@ -57,6 +57,11 @@ public class EntityManager {
 
         for (Enemigo entidad : enemigos) {
             if (entidad.vivo == true) {
+                if (entidad instanceof Bowser) {
+                    Bowser bowser = (Bowser) entidad;
+                    bowser.VerificarDistancia(mainCharacter);
+
+                }
                 entidad.recibirHit(mainCharacter);
                 mainCharacter.HitEnemigo(entidad.getHitbox());
                 for (Enemigo enemigo : enemigos) {
