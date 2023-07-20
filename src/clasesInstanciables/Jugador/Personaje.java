@@ -74,10 +74,6 @@ public class Personaje extends Entidad {
         disparar = false;
         direccion = 1;
         starActive = false;
-<<<<<<< Updated upstream
-        vivo = true;
-=======
->>>>>>> Stashed changes
         vidas = 1;
         Accionprevia = accion;
     }
