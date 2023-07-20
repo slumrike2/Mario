@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import clasesInstanciables.Entidad;
 
 import constantes.Constantes.*;
+import constantes.Constantes.Jugador;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -74,8 +75,6 @@ public class Personaje extends Entidad {
         direccion = 0;
         starActive = false;
         Accionprevia = accion;
-        vidas = 1;
-
     }
 
     // *se encarga de cargar las animaciones del personaje
@@ -345,9 +344,13 @@ public class Personaje extends Entidad {
 
             contFramesMuerte++;
             if (contFramesMuerte >= Jugador.CANT_FRAMES_MUERTE) {
-                restartStates();
+                posX = 300;
+                posY = 350;
+                vidas = 2;
+                EnSuelo = true;
+                contFramesMuerte = 0;
+                saltando = false;
                 setstarActive(false);
-                
                 // Todo Reiniciar Nivel
             }
 
