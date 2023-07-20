@@ -75,6 +75,7 @@ public class Personaje extends Entidad {
         direccion = 1;
         starActive = false;
         vivo = true;
+        vidas = 1;
         Accionprevia = accion;
     }
 
