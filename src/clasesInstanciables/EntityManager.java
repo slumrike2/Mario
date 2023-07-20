@@ -42,7 +42,7 @@ public class EntityManager {
             entidades.get(i).update();
         }
 
-        if (mainCharacter.getVidas() <= 0) {
+        if (mainCharacter.vivo == false) {
             restart();
             startLevelEntities(gamePanel.levelManager.getLevel());
         }

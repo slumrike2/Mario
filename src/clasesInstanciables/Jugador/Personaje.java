@@ -57,7 +57,7 @@ public class Personaje extends Entidad {
         GetAnimations();
         altura_Tiles = 2;
         anchura_Tiles = 1;
-        vidas = 2;
+        vidas = 1;
         vivo = true;
 
     }
@@ -71,8 +71,9 @@ public class Personaje extends Entidad {
         MovAbajo = false;
         MovArriba = false;
         disparar = false;
-        direccion = 0;
+        direccion = 1;
         starActive = false;
+        vivo = true;
         Accionprevia = accion;
         vidas = 1;
 
@@ -341,13 +342,16 @@ public class Personaje extends Entidad {
             //
             if (contFramesMuerte == 0) {
                 FuerzaSalto = 40;
+                setstarActive(false);
+
             }
 
             contFramesMuerte++;
+            System.out.println(contFramesMuerte);
             if (contFramesMuerte >= Jugador.CANT_FRAMES_MUERTE) {
                 restartStates();
-                setstarActive(false);
-                
+                vivo = false;
+                contFramesMuerte = 0;
                 // Todo Reiniciar Nivel
             }
 
