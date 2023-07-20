@@ -77,13 +77,13 @@ public class BloqueMisterioso extends Entidad {
 
     private void DeterminarItem() {
         int random = (int) (Math.random() * 100);
-        if (random < 25)
+        if (random < 40)
             ItemSpawn = ITEMS.MONEDA;
-        else if (random < 50)
-            ItemSpawn = ITEMS.HONGO;
         else if (random < 70)
+            ItemSpawn = ITEMS.HONGO;
+        else if (random < 90)
             ItemSpawn = ITEMS.FLOR;
-        else if (random < 100)
+        else if (random <= 100)
             ItemSpawn = ITEMS.ESTRELLA;
     }
 
