@@ -340,7 +340,7 @@ public class Personaje extends Entidad {
             //
             if (contFramesMuerte == 60) {
 
-                FuerzaSalto = 40;
+                FuerzaSalto = 80;
                 setstarActive(false);
 
             }

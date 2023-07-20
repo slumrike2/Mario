@@ -63,14 +63,15 @@ public class GamePanel extends JPanel {
 
         if (entityManager.getMainCharacter().saltando && entityManager.getMainCharacter().EnSuelo)
             audioManager.playEffect(AudioManager.JUMP);
-        if (entityManager.getMainCharacter().getVidas() <= 0 && !audioManager.isSongMute()) {
-            audioManager.stopSong();
-            audioManager.playEffect(AudioManager.DIE);
-        }
-        if (entityManager.getMainCharacter().getstarActive()) {
-            audioManager.playSong(AudioManager.STAR);
+
+        if (entityManager.getMainCharacter().getVidas() <= 0) {
+            audioManager.playSong(AudioManager.DIE);
         } else {
-            audioManager.playSong(levelManager.getLvlIndex());
+            if (entityManager.getMainCharacter().getstarActive()) {
+                audioManager.playSong(AudioManager.STAR);
+            } else {
+                audioManager.playSong(levelManager.getLvlIndex());
+            }
         }
     }
 
@@ -104,7 +105,7 @@ public class GamePanel extends JPanel {
     public void verifyLevelEnded() {
         if (entityManager.getMainCharacter().getHitbox().x > levelWide * PANTALLA.TILES_ACTUAL_SIZE - 50) {
             audioManager.stopSong();
-            audioManager.playEffect(AudioManager.STAGE_CLEAR);
+            audioManager.playSong(AudioManager.STAGE_CLEAR);
             passNextLevel();
         }
     }

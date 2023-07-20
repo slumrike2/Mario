@@ -2,12 +2,10 @@ package audio;
 
 import java.io.InputStream;
 
-
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.BooleanControl;
 import javax.sound.sampled.Clip;
-
 
 public class AudioManager {
 
@@ -16,11 +14,11 @@ public class AudioManager {
     public static int LEVEL_3 = 2;
     public static int LEVEL_4 = 3;
     public static int STAR = 4;
+    public static int DIE = 5;
+    public static int STAGE_CLEAR = 6;
 
-    public static int DIE = 0;
-    public static int JUMP = 1;
-    public static int FIREBALL = 2;
-    public static int STAGE_CLEAR = 3;
+    public static int JUMP = 0;
+    public static int FIREBALL = 1;
 
     private Clip[] songs, effects;
     private int currentSongId = -1;
@@ -33,7 +31,8 @@ public class AudioManager {
     }
 
     private void loadSongs() {
-        String[] songNames = { "level1.wav", "level2.wav", "level3.wav", "level4.wav", "star.wav" };
+        String[] songNames = { "level1.wav", "level2.wav", "level3.wav", "level4.wav", "star.wav", "die.wav",
+                "stage_clear.wav" };
         songs = new Clip[songNames.length];
         for (int i = 0; i < songNames.length; i++) {
             songs[i] = getGClip(songNames[i]);
@@ -41,7 +40,7 @@ public class AudioManager {
     }
 
     private void loadEffects() {
-        String[] effectNames = { "die.wav", "jump.wav", "fireball.wav", "stage_clear.wav" };
+        String[] effectNames = { "jump.wav", "fireball.wav" };
         effects = new Clip[effectNames.length];
         for (int i = 0; i < effectNames.length; i++) {
             effects[i] = getGClip(effectNames[i]);
@@ -86,14 +85,14 @@ public class AudioManager {
     }
 
     public void playSong(int id) {
-        System.out.println("Playing song " + id + " actual song " + currentSongId);
         if (currentSongId == id)
             return;
         if (currentSongId != -1)
             stopSong();
-            
+
         songMute = false;
 
+        System.out.println("Playing song " + id);
         currentSongId = id;
         songs[currentSongId].setMicrosecondPosition(0);
         songs[currentSongId].loop(Clip.LOOP_CONTINUOUSLY);
