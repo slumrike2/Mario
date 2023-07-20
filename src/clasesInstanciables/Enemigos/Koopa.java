@@ -87,7 +87,7 @@ public class Koopa extends Enemigo {
 
         }
     }
-
+//
     private void deleteInviWalls() {
         for (int i = 0; i < currentLevelData.length; i++)
             for (int j = 0; j < currentLevelData[0].length; j++)
