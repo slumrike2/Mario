@@ -59,6 +59,12 @@ public abstract class Enemigo extends Entidad {
                 System.out.println(vidas);
             }
         }
+        if (ob instanceof Koopa || ob instanceof KoopaVolador) {
+            Koopa koopa = (Koopa) ob;
+            if (koopa.Hitbox.intersects(this.Hitbox) && koopa.vidas == 1) {
+                this.vidas = 0;
+            }
+        }
     }
 
     public void loadLevelData(int[][] currentLevelData) {

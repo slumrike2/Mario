@@ -24,6 +24,7 @@ public class Constantes {
         public static final String HONGO_DIR = "res/Hongo.png";
         public static final String HONGO_VENENOSO_DIR = "res/HongoPoison.png";
         public static final String PROYECTIL_FUEGO_DIR = "res/DisparoFuego.png";
+        public static final String MISTERY_BLOCK_DIR = "res/MisteryBlock.png";
 
     }
 
@@ -58,7 +59,7 @@ public class Constantes {
         }
 
         public enum ITEMS {
-            MONEDA, FLOR, ESTRELLA, HONGO, HONGO_VENENOSO
+            MONEDA, FLOR, ESTRELLA, HONGO, HONGO_VENENOSO , BLOQUE_MISTERIOSO
         }
 
         public enum ATAQUES {

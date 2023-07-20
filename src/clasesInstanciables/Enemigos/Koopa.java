@@ -39,8 +39,10 @@ public class Koopa extends Enemigo {
 
     public void movimiento() {
         VerificarSuelo(currentLevelData);
+
         if (vidas >= 1) {
             if (canMoveHere(Hitbox.x + velocidad, Hitbox.y, Hitbox.width, Hitbox.height, currentLevelData))
+
                 posX += velocidad;
             else
                 cambiarDireccion();
@@ -87,7 +89,8 @@ public class Koopa extends Enemigo {
 
         }
     }
-//
+
+    //
     private void deleteInviWalls() {
         for (int i = 0; i < currentLevelData.length; i++)
             for (int j = 0; j < currentLevelData[0].length; j++)
