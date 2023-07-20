@@ -3,7 +3,7 @@ package graficos;
 import javax.swing.JPanel;
 
 import audio.AudioManager;
-import audio.audioManager;
+
 import clasesInstanciables.*;
 import constantes.Constantes.PANTALLA;
 import constantes.Constantes.ENTITY_TYPE.*;
@@ -40,14 +40,10 @@ public class GamePanel extends JPanel {
         entityManager = new EntityManager(this);
         levelManager.startLevelEntities(entityManager);
 
-<<<<<<< Updated upstream
         // Se cargan los audios
         audioManager = new AudioManager();
 
         entityManager.spawn(ITEMS.BLOQUE_MISTERIOSO, 4, 15, levelManager.getLevel());
-=======
-        entityManager.spawn(ITEMS.BLOQUE_MISTERIOSO, 5, 17, levelManager.getLevel());
->>>>>>> Stashed changes
 
         setPreferredSize(new Dimension(PANTALLA.SCREEN_WIDTH, PANTALLA.SCREEN_HEIGHT));
         // ? se encargan de agregar los inputs
@@ -68,7 +64,7 @@ public class GamePanel extends JPanel {
     public void playEffects() {
         if (entityManager.getMainCharacter().saltando && entityManager.getMainCharacter().EnSuelo)
             audioManager.playEffect(AudioManager.JUMP);
-        if (entityManager.getMainCharacter().getVidas() < 0 && !audioManager.isSongMute()) {
+        if (entityManager.getMainCharacter().getVidas() <= 0 && !audioManager.isSongMute()) {
             audioManager.stopSong();
             audioManager.playEffect(AudioManager.DIE);
         }

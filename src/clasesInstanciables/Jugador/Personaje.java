@@ -245,7 +245,7 @@ public class Personaje extends Entidad {
         }
         // Todo Agregar colisiones para poner el en suelo activo y falso para el
         // funcionamiento del salto
-        if (FuerzaSalto == 0) {
+        if (FuerzaSalto == 0 && (contFramesMuerte == 0 || contFramesMuerte >= 60)) {
             ySpeed += gravedad;
         }
         // Todo hacer que no choque cuando muere
@@ -338,8 +338,8 @@ public class Personaje extends Entidad {
     public void recibirHit() {
         if (vidas <= 0) {
             //
-            if (contFramesMuerte == 0) {
-                
+            if (contFramesMuerte == 60) {
+
                 FuerzaSalto = 40;
                 setstarActive(false);
 
@@ -347,7 +347,7 @@ public class Personaje extends Entidad {
 
             contFramesMuerte++;
 
-            if (contFramesMuerte > Jugador.CANT_FRAMES_MUERTE) {
+            if (contFramesMuerte > Jugador.CANT_FRAMES_MUERTE * 3) {
                 vivo = false;
                 restartStates();
                 contFramesMuerte = 0;

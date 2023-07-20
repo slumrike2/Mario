@@ -1,14 +1,13 @@
 package audio;
 
 import java.io.InputStream;
-import java.net.URL;
-import java.util.zip.InflaterInputStream;
+
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.BooleanControl;
 import javax.sound.sampled.Clip;
-import javax.sound.sampled.FloatControl;
+
 
 public class AudioManager {
 
