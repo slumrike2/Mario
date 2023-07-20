@@ -2,7 +2,9 @@ package clasesInstanciables.Enemigos;
 
 import java.awt.image.BufferedImage;
 
+import constantes.Constantes.Enemigos;
 import constantes.Constantes.PANTALLA;
+import static utils.HelpMethods.canMoveHere;
 
 public class Goomba extends Enemigo {
 
@@ -15,8 +17,9 @@ public class Goomba extends Enemigo {
     public Goomba(int Posx, int Posy) {
         super(Posx, Posy);
         importarImagen(PANTALLA.GoombaDir);
-        altura_Tiles = 1;
-        anchura_Tiles = 1;
+        velocidad = Enemigos.GOOMBA_VELC;
+        altura_Tiles = Enemigos.GOOMBA_HIGH_TILES;
+        anchura_Tiles = Enemigos.GOOMBA_WIDTH_TILES;
         animaciones = animacion(3, 0, 2, (int) anchura_Tiles, (int) altura_Tiles);
         velocidadAnimacion = 20;
         enSuelo = false;
@@ -28,7 +31,6 @@ public class Goomba extends Enemigo {
     public void update() {
         super.update();
         movimiento();
-
         ActualizarAccion();
         ActualizarFrame();
         ActualizarHitbox();
@@ -44,11 +46,15 @@ public class Goomba extends Enemigo {
 
     public void movimiento() {
         VerificarSuelo(currentLevelData);
-        if (enMovimiento == true)
-            posX -= velocidad;
-        if (!enSuelo) {
+
+        if (canMoveHere(Hitbox.x + velocidad, Hitbox.y, Hitbox.width, Hitbox.height, currentLevelData))
+            posX += velocidad;
+        else
+            cambiarDireccion();
+
+        if (!enSuelo && canMoveHere(Hitbox.x, Hitbox.y + gravedad, Hitbox.width, Hitbox.height, currentLevelData)
+                && vidas != 3)
             posY += gravedad;
-        }
     }
 
     public void cambiarDireccion() {

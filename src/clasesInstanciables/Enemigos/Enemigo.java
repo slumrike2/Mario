@@ -8,6 +8,8 @@ import constantes.Constantes.PANTALLA;
 import static utils.HelpMethods.isInFloor;
 
 import java.awt.Graphics;
+import java.awt.Point;
+import java.util.ArrayList;
 
 public abstract class Enemigo extends Entidad {
 
@@ -61,6 +63,7 @@ public abstract class Enemigo extends Entidad {
 
     public void loadLevelData(int[][] currentLevelData) {
         this.currentLevelData = currentLevelData;
+
     }
 
     public void ActualizarHitbox() {

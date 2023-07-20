@@ -1,5 +1,6 @@
 package niveles;
 
+import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
@@ -16,6 +17,7 @@ public class Level {
     private int levelData[][];
     private ArrayList<Spawner<ENEMIES>> enemySpawners = new ArrayList<>();
     private ArrayList<Spawner<ITEMS>> objectSpawners = new ArrayList<>();
+    private ArrayList<Point> invisibleWalls = new ArrayList<>();
     private Spawner<CHARACTERS> characterSpawn;
 
     public Level(NIVEL nivel) {
@@ -57,7 +59,6 @@ public class Level {
     public void setLevelData(int[][] levelData) {
         this.levelData = levelData;
     }
-    
 
     public BufferedImage[] getLevelSprite() {
         return levelSprite;
@@ -97,6 +98,14 @@ public class Level {
 
     public void setCharacterSpawn(Spawner<CHARACTERS> characterSpawn) {
         this.characterSpawn = characterSpawn;
+    }
+
+    public ArrayList<Point> getInvisibleWalls() {
+        return invisibleWalls;
+    }
+
+    public void setInvisibleWalls(ArrayList<Point> invisibleWalls) {
+        this.invisibleWalls = invisibleWalls;
     }
 
     // #endregion

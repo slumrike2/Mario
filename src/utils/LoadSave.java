@@ -1,6 +1,7 @@
 package utils;
 
 import java.awt.Color;
+import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -31,6 +32,7 @@ public class LoadSave {
         Spawner<CHARACTERS> characterSpawn = null;
         ArrayList<Spawner<ITEMS>> objectSpawners = new ArrayList<Spawner<ITEMS>>();
         ArrayList<Spawner<ENEMIES>> enemySpawners = new ArrayList<Spawner<ENEMIES>>();
+        ArrayList<Point> inviBlocks = new ArrayList<Point>();
 
         int[][] levelData = new int[img.getWidth()][img.getHeight()];
 
@@ -53,6 +55,8 @@ public class LoadSave {
                     else {
                         levelData[i][j] = 11;
 
+                        if (blue + red + green == 255 * 3) // white
+                            inviBlocks.add(new Point(i, j));
                         if (green <= 7)
                             objectSpawners.add(new Spawner<>(i, j, green, ENTITY_TYPE.ITEMS.values()[green]));
                         if (blue <= 7)
@@ -61,12 +65,11 @@ public class LoadSave {
                 }
             }
 
-
-
         level.setLevelData(levelData);
         level.setCharacterSpawn(characterSpawn);
         level.setObjectSpawners(objectSpawners);
         level.setEnemySpawners(enemySpawners);
+        level.setInvisibleWalls(inviBlocks);
 
     }
 

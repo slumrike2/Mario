@@ -12,7 +12,7 @@ TODO:
 - [ ] sistema de victoria
 - [X] sistema de derrota
 - [ ] sistema de puntuacion
-- [ ] sistema de niveles
+- [X] sistema de niveles
 - [X] sistema de guardado de estadisticas
 - [ ] sistema de configuracion de partida
 - [ ] pausa

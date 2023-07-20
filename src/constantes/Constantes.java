@@ -28,7 +28,7 @@ public class Constantes {
     }
 
     public static class Enemigos {
-        public static final int GOOMBA_VELC = 0;
+        public static final int GOOMBA_VELC = 1;
         public static final int KOOPA_VELC = 1;
         public static final int KOOPA_VOLADOR_VELC = 1;
         public static final int BOWSER_VELC = 1;

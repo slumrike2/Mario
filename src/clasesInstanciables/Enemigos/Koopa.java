@@ -2,6 +2,9 @@ package clasesInstanciables.Enemigos;
 
 import static utils.HelpMethods.canMoveHere;
 
+import clasesInstanciables.Entidad;
+import clasesInstanciables.Jugador.Personaje;
+import constantes.Constantes.Enemigos;
 import constantes.Constantes.PANTALLA;
 
 public class Koopa extends Enemigo {
@@ -9,7 +12,7 @@ public class Koopa extends Enemigo {
     public Koopa(int Posx, int Posy) {
         super(Posx, Posy);
         importarImagen(PANTALLA.KoopaDir);
-        velocidad = 1;
+        velocidad = Enemigos.KOOPA_VELC;
         altura_Tiles = 2;
         anchura_Tiles = 1;
         animaciones = animacion(3, 0, 2, (int) anchura_Tiles, (int) altura_Tiles);
@@ -91,17 +94,20 @@ public class Koopa extends Enemigo {
 
     public void recibirHit(Entidad ob) {
         super.recibirHit(ob);
-        Personaje personaje = (Personaje) ob;
-        if (personaje.Hitbox.intersects(this.Hitbox)
-                && personaje.getHitbox().getMaxY() < this.getHitbox().getMaxY()
-                && personaje.vivo && vidas > 0 && personaje.getVidas() > 0) {
+        if (ob instanceof Personaje) {
 
-            if (personaje.getHitbox().getMaxX() - Hitbox.getMaxX() >= 0) {
-                velocidad = -1;
-            } else {
-                velocidad = 1;
+            Personaje personaje = (Personaje) ob;
+            if (personaje.Hitbox.intersects(this.Hitbox)
+                    && personaje.getHitbox().getMaxY() < this.getHitbox().getMaxY()
+                    && personaje.vivo && vidas > 0 && personaje.getVidas() > 0) {
+
+                if (personaje.getHitbox().getMaxX() - Hitbox.getMaxX() >= 0) {
+                    velocidad = -1;
+                } else {
+                    velocidad = 1;
+                }
+
             }
-
         }
     }
 
