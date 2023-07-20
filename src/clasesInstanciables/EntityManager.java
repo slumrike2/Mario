@@ -97,8 +97,17 @@ public class EntityManager {
         }
 
         for (BloqueMisterioso bloqueMisterioso : bloquesMisteriosos) {
-            if (bloqueMisterioso.vivo)
+
+            if (bloqueMisterioso.vivo == true) {
                 bloqueMisterioso.recibirHit(mainCharacter);
+                if (bloqueMisterioso.ItemSpawn != null) {
+                    spawn(bloqueMisterioso.ItemSpawn, bloqueMisterioso.tileX, bloqueMisterioso.tileY - 1,
+                            gamePanel.levelManager.getLevel());
+                    bloqueMisterioso.ItemSpawn = null;
+                    System.out.println("Spanear item");
+
+                }
+            }
         }
 
         for (Entidad entidad : Eliminar) {
@@ -247,11 +256,13 @@ public class EntityManager {
                 break;
             case HONGO_VENENOSO:
                 HongoEnvenenado hongoEnvenenado = new HongoEnvenenado(tileX, tileY);
+
                 recolectables.add(hongoEnvenenado);
                 entidades.add(hongoEnvenenado);
                 break;
             case BLOQUE_MISTERIOSO:
                 BloqueMisterioso bloqueMisterioso = new BloqueMisterioso(tileX, tileY);
+                System.out.println("bloque misterioso creado + " + bloqueMisterioso.vivo);
                 bloquesMisteriosos.add(bloqueMisterioso);
                 entidades.add(bloqueMisterioso);
                 break;
