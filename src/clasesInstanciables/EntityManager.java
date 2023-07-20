@@ -24,6 +24,7 @@ public class EntityManager {
     public ArrayList<Entidad> entidades = new ArrayList<>();
     public ArrayList<Recolectable> recolectables = new ArrayList<>();
     public ArrayList<FuegoProyectil> fuegoProyectils = new ArrayList<>();
+    public ArrayList<BloqueMisterioso> bloquesMisteriosos = new ArrayList<>();
 
     public EntityManager(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
@@ -57,7 +58,11 @@ public class EntityManager {
             if (entidad.vivo == true) {
                 entidad.recibirHit(mainCharacter);
                 mainCharacter.HitEnemigo(entidad.getHitbox());
-
+                for (Enemigo enemigo : enemigos) {
+                    if (enemigo != entidad) {
+                        enemigo.recibirHit(entidad);
+                    }
+                }
             }
             if (entidad.vivo == false) {
                 Eliminar.add(entidad);
@@ -89,6 +94,11 @@ public class EntityManager {
             if (fuegoProyectil.getActive() == false) {
                 Eliminar.add(fuegoProyectil);
             }
+        }
+
+        for (BloqueMisterioso bloqueMisterioso : bloquesMisteriosos) {
+            if (bloqueMisterioso.vivo)
+                bloqueMisterioso.recibirHit(mainCharacter);
         }
 
         for (Entidad entidad : Eliminar) {
@@ -239,6 +249,11 @@ public class EntityManager {
                 HongoEnvenenado hongoEnvenenado = new HongoEnvenenado(tileX, tileY);
                 recolectables.add(hongoEnvenenado);
                 entidades.add(hongoEnvenenado);
+                break;
+            case BLOQUE_MISTERIOSO:
+                BloqueMisterioso bloqueMisterioso = new BloqueMisterioso(tileX, tileY);
+                bloquesMisteriosos.add(bloqueMisterioso);
+                entidades.add(bloqueMisterioso);
                 break;
             default:
                 break;
