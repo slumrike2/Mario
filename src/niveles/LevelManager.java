@@ -23,7 +23,7 @@ public class LevelManager {
     public LevelManager(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
 
-        lvlIndex = 0;
+        lvlIndex = 2;i
         levels = new Level[4];
 
         levels[0] = new Level(NIVEL.NIVEL_1);
