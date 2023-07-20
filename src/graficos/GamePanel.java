@@ -17,12 +17,12 @@ public class GamePanel extends JPanel {
 
     private InptutMouse mouseimput = new InptutMouse(this);
 
-    public EntityManager entityManager;
+    public  EntityManager entityManager;
 
     static int contador = 0;
     public BufferedImage aux;
 
-    public LevelManager levelManager;
+    public  LevelManager levelManager;
 
     private int xlvlOffset;
     private int leftBorder = (int) (PANTALLA.SCREEN_WIDTH * 0.2);
