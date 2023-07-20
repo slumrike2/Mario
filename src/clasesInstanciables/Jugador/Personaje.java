@@ -351,6 +351,7 @@ public class Personaje extends Entidad {
                 contFramesMuerte = 0;
                 saltando = false;
                 setstarActive(false);
+                // Todo Reiniciar Nivel
             }
 
         }
