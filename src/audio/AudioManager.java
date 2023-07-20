@@ -92,7 +92,6 @@ public class AudioManager {
 
         songMute = false;
 
-        System.out.println("Playing song " + id);
         currentSongId = id;
         songs[currentSongId].setMicrosecondPosition(0);
         songs[currentSongId].loop(Clip.LOOP_CONTINUOUSLY);
