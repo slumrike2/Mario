@@ -152,7 +152,7 @@ public class EntityManager {
         }
 
         for (Point point : level.getInvisibleWalls()) {
-            enemyLevelData[point.x][point.y] = 0;
+            enemyLevelData[point.x][point.y] = 100;
         }
 
         switch (entity) {

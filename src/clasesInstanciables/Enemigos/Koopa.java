@@ -82,9 +82,17 @@ public class Koopa extends Enemigo {
             }
             if (vidas <= 1) {
                 frameAniamcion = 0;
+                deleteInviWalls();
             }
 
         }
+    }
+
+    private void deleteInviWalls() {
+        for (int i = 0; i < currentLevelData.length; i++)
+            for (int j = 0; j < currentLevelData[0].length; j++)
+                if (currentLevelData[i][j] == 100)
+                    currentLevelData[i][j] = 11;
     }
 
     protected void InicializarHitbox() {

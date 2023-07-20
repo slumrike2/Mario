@@ -26,14 +26,15 @@ public class GamePanel extends JPanel {
 
     private int xlvlOffset;
     private int leftBorder = (int) (PANTALLA.SCREEN_WIDTH * 0.2);
-    private int rightBorder = (int) (PANTALLA.SCREEN_WIDTH * 0.8);
+    private int rightBorder = (int) (PANTALLA.SCREEN_WIDTH * 0.6);
     private int levelWide;
-    private int maxLvlOffsetX = (PANTALLA.TILES_IN_WIDTH - levelWide) * PANTALLA.TILES_ACTUAL_SIZE;
+    private int maxLvlOffsetX;
 
     public GamePanel() {
         // Se carga el nivel
         levelManager = new LevelManager(this);
         levelWide = levelManager.getLevel().getLevelData().length;
+        maxLvlOffsetX = (levelWide - PANTALLA.TILES_IN_WIDTH) * PANTALLA.TILES_ACTUAL_SIZE;
         entityManager = new EntityManager(this);
         levelManager.startLevelEntities(entityManager);
 
