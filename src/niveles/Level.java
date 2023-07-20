@@ -37,8 +37,8 @@ public class Level {
     }
 
     private void importOutsideSprites() {
-        levelSprite = new BufferedImage[12];
-        for (int i = 0; i < 2; i++) {
+        levelSprite = new BufferedImage[24];
+        for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 6; j++) {
                 int index = i * 6 + j;
                 levelSprite[index] = levelAtlas.getSubimage(j * PANTALLA.TILES_DEFAULT_SIZE,
