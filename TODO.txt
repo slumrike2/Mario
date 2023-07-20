@@ -102,3 +102,9 @@ TODO:
 - [X] Mario no toca el suelo al spawnear
 
 
+TODO (en orden de prioridad):
+?Niveles funcionales
+?goomba comportamiento
+?bowser Comportamiento
+?Puntaje
+?Monedas
