@@ -33,6 +33,7 @@ public class LoadSave {
         ArrayList<Spawner<ITEMS>> objectSpawners = new ArrayList<Spawner<ITEMS>>();
         ArrayList<Spawner<ENEMIES>> enemySpawners = new ArrayList<Spawner<ENEMIES>>();
         ArrayList<Point> inviBlocks = new ArrayList<Point>();
+        ArrayList<Point> backGroundTiles = new ArrayList<Point>();
 
         int[][] levelData = new int[img.getWidth()][img.getHeight()];
 
