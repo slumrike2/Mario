@@ -359,11 +359,13 @@ public class Personaje extends Entidad {
     public void ActualizarSuelo() {
         if (isInFloor(posX, posY + 1, (int) (anchura_Tiles * PANTALLA.TILES_ACTUAL_SIZE),
                 (int) (altura_Tiles * PANTALLA.TILES_ACTUAL_SIZE), currentLevelData)) {
+
             EnSuelo = true;
             saltando = false;
 
             return;
         }
+        
         EnSuelo = false;
 
     }
