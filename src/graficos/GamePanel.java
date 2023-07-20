@@ -40,10 +40,14 @@ public class GamePanel extends JPanel {
         entityManager = new EntityManager(this);
         levelManager.startLevelEntities(entityManager);
 
+<<<<<<< Updated upstream
         // Se cargan los audios
         audioManager = new AudioManager();
 
         entityManager.spawn(ITEMS.BLOQUE_MISTERIOSO, 4, 15, levelManager.getLevel());
+=======
+        entityManager.spawn(ITEMS.BLOQUE_MISTERIOSO, 5, 17, levelManager.getLevel());
+>>>>>>> Stashed changes
 
         setPreferredSize(new Dimension(PANTALLA.SCREEN_WIDTH, PANTALLA.SCREEN_HEIGHT));
         // ? se encargan de agregar los inputs
