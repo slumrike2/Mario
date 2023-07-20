@@ -16,25 +16,25 @@ public class AudioManager {
     public static int LEVEL_2 = 1;
     public static int LEVEL_3 = 2;
     public static int LEVEL_4 = 3;
+    public static int STAR = 4;
 
     public static int DIE = 0;
     public static int JUMP = 1;
     public static int FIREBALL = 2;
-    public static int STAGE_CLEAR = 6;
+    public static int STAGE_CLEAR = 3;
 
     private Clip[] songs, effects;
-    private int currentSongId;
+    private int currentSongId = -1;
     private float volume = 0.5f;
     private boolean songMute, effectMute;
 
     public AudioManager() {
         loadSongs();
         loadEffects();
-        playSong(0);
     }
 
     private void loadSongs() {
-        String[] songNames = { "level1.wav", "level2.wav", "level3.wav", "level4.wav" };
+        String[] songNames = { "level1.wav", "level2.wav", "level3.wav", "level4.wav", "star.wav" };
         songs = new Clip[songNames.length];
         for (int i = 0; i < songNames.length; i++) {
             songs[i] = getGClip(songNames[i]);
@@ -87,7 +87,12 @@ public class AudioManager {
     }
 
     public void playSong(int id) {
-        stopSong();
+        System.out.println("Playing song " + id + " actual song " + currentSongId);
+        if (currentSongId == id)
+            return;
+        if (currentSongId != -1)
+            stopSong();
+            
         songMute = false;
 
         currentSongId = id;
@@ -141,8 +146,4 @@ public class AudioManager {
         }
     }
 
-    public void levelCompleted() {
-        stopSong();
-        playEffect(STAGE_CLEAR);
-    }
 }

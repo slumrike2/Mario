@@ -60,4 +60,46 @@ public class LevelManager {
             }
         }
     }
+
+    public GamePanel getGamePanel() {
+        return gamePanel;
+    }
+
+    public void setGamePanel(GamePanel gamePanel) {
+        this.gamePanel = gamePanel;
+    }
+
+    public BufferedImage[] getLevelSprite() {
+        return levelSprite;
+    }
+
+    public void setLevelSprite(BufferedImage[] levelSprite) {
+        this.levelSprite = levelSprite;
+    }
+
+    public Level[] getLevels() {
+        return levels;
+    }
+
+    public void setLevels(Level[] levels) {
+        this.levels = levels;
+    }
+
+    public int getLvlIndex() {
+        return lvlIndex;
+    }
+
+    public void setLvlIndex(int lvlIndex) {
+        this.lvlIndex = lvlIndex;
+    }
+
+    public Level getActualLevel() {
+        return actualLevel;
+    }
+
+    public void setActualLevel(Level actualLevel) {
+        this.actualLevel = actualLevel;
+    }
+
+    
 }

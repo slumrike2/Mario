@@ -3,7 +3,6 @@ package graficos;
 import javax.swing.JPanel;
 
 import audio.AudioManager;
-import audio.audioManager;
 import clasesInstanciables.*;
 import constantes.Constantes.PANTALLA;
 import constantes.Constantes.ENTITY_TYPE.*;
@@ -33,6 +32,8 @@ public class GamePanel extends JPanel {
     private int maxLvlOffsetX;
 
     public GamePanel() {
+        // Se cargan los audios
+        audioManager = new AudioManager();
         // Se carga el nivel
         levelManager = new LevelManager(this);
         levelWide = levelManager.getLevel().getLevelData().length;
@@ -40,10 +41,7 @@ public class GamePanel extends JPanel {
         entityManager = new EntityManager(this);
         levelManager.startLevelEntities(entityManager);
 
-        // Se cargan los audios
-        audioManager = new AudioManager();
-
-        entityManager.spawn(ITEMS.BLOQUE_MISTERIOSO, 4, 15, levelManager.getLevel());
+        entityManager.spawn(ITEMS.ESTRELLA, 4, 15, levelManager.getLevel());
 
         setPreferredSize(new Dimension(PANTALLA.SCREEN_WIDTH, PANTALLA.SCREEN_HEIGHT));
         // ? se encargan de agregar los inputs
@@ -62,11 +60,17 @@ public class GamePanel extends JPanel {
     }
 
     public void playEffects() {
+
         if (entityManager.getMainCharacter().saltando && entityManager.getMainCharacter().EnSuelo)
             audioManager.playEffect(AudioManager.JUMP);
         if (entityManager.getMainCharacter().getVidas() < 0 && !audioManager.isSongMute()) {
             audioManager.stopSong();
             audioManager.playEffect(AudioManager.DIE);
+        }
+        if (entityManager.getMainCharacter().getstarActive()) {
+            audioManager.playSong(AudioManager.STAR);
+        } else {
+            audioManager.playSong(levelManager.getLvlIndex());
         }
     }
 
@@ -98,8 +102,11 @@ public class GamePanel extends JPanel {
     }
 
     public void verifyLevelEnded() {
-        if (entityManager.getMainCharacter().getHitbox().x > levelWide * PANTALLA.TILES_ACTUAL_SIZE - 50)
+        if (entityManager.getMainCharacter().getHitbox().x > levelWide * PANTALLA.TILES_ACTUAL_SIZE - 50) {
+            audioManager.stopSong();
+            audioManager.playEffect(AudioManager.STAGE_CLEAR);
             passNextLevel();
+        }
     }
 
     public void passNextLevel() {

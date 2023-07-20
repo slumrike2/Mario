@@ -138,6 +138,8 @@ public class EntityManager {
             spawn(spawner.getEntity(), spawner.getX(), spawner.getY(), level);
         }
 
+        gamePanel.audioManager.playSong(gamePanel.levelManager.getLvlIndex());
+
     }
 
     public void restart() {
