@@ -57,6 +57,11 @@ public class EntityManager {
 
         for (Enemigo entidad : enemigos) {
             if (entidad.vivo == true) {
+                if (entidad instanceof Bowser) {
+                    Bowser bowser = (Bowser) entidad;
+                    bowser.VerificarDistancia(mainCharacter);
+
+                }
                 entidad.recibirHit(mainCharacter);
                 mainCharacter.HitEnemigo(entidad.getHitbox());
                 for (Enemigo enemigo : enemigos) {
@@ -112,8 +117,6 @@ public class EntityManager {
             }
         }
 
-
-
         for (Entidad entidad : Eliminar) {
             entidades.remove(entidad);
             // *coco */
@@ -135,8 +138,6 @@ public class EntityManager {
             if (entidad instanceof BloqueMisterioso) {
                 bloquesMisteriosos.remove(entidad);
             }
-
-
 
         }
 

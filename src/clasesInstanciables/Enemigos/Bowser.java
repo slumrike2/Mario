@@ -12,12 +12,11 @@ import static utils.HelpMethods.isInFloor;
 import constantes.Constantes.PANTALLA;
 
 public class Bowser extends Enemigo {
-
+    private int VelocidadSeleccionAccion = 600, contSeleccionAccion = 0;
     private int velocidadAtaque = 80, contVelcAtaque = 0;
-
+    private int direccion = -1;
     private Boolean Ensuelo, Saltando, atacando = false;
-    private int tiempoSalto = 120 * 5;
-    private float velcodiadHorizontal;
+
     private int gravedad = 1;
     private int FuerzaSalto = 0;
 
@@ -27,7 +26,9 @@ public class Bowser extends Enemigo {
         altura_Tiles = 2;
         anchura_Tiles = 2;
         velocidad = 1f;
-
+        Saltando = false;
+        FuerzaSalto = 0;
+        vidas = 20;
         animaciones = animacion(2, 0, 2, 2, 2);
         velocidadAnimacion = 30;
         InicializarHitbox();
@@ -39,19 +40,31 @@ public class Bowser extends Enemigo {
         ActualizarAccion();
         ActualizarFrame();
         ActualizarHitbox();
+        SeleccionarAccion();
+
     }
 
     // Todo añadir las fisicas en caso de estar en el aire y las hitboxes y ganar el
     // juego
     public void movimiento() {
         // Saltos con el tiempo
+        ActualizarSuelo();
 
-        if (canMoveHere(Hitbox.x + velocidad, Hitbox.y, Hitbox.width, Hitbox.height, currentLevelData))
+        ActualizarDireccion();
+
+        if (canMoveHere(Hitbox.x + velocidad * direccion, Hitbox.y, Hitbox.width, Hitbox.height, currentLevelData))
             posX += velocidad;
         else
-            velocidad *= -1;
-        if (canMoveHere(Hitbox.x, Hitbox.y + gravedad, Hitbox.width, Hitbox.height, currentLevelData) && vidas >= 1) {
+            posX -= velocidad;
+
+        if (canMoveHere(Hitbox.x, Hitbox.y + gravedad, Hitbox.width, Hitbox.height, currentLevelData) && vidas >= 1
+                && FuerzaSalto == 0) {
             posY += gravedad;
+        }
+
+        if (FuerzaSalto != 0) {
+            posY -= gravedad;
+            FuerzaSalto--;
         }
 
     }
@@ -122,9 +135,9 @@ public class Bowser extends Enemigo {
     }
 
     public void Saltar() {
+        ActualizarSuelo();
         if (Ensuelo == true) {
-            Saltando = true;
-            FuerzaSalto = 40;
+            FuerzaSalto = 80;
         }
     }
 
@@ -134,7 +147,32 @@ public class Bowser extends Enemigo {
 
     public void VerificarDistancia(Entidad ob) {
         if (ob instanceof Personaje) {
-            System.out.println("Bowser ha detectado al personaje");
+            Personaje personaje = (Personaje) ob;
+            if (personaje.getHitbox().getMinX() - Hitbox.getMinX() <= 32 * PANTALLA.TILES_ACTUAL_SIZE
+                    && personaje.getHitbox().getMinX() - Hitbox.getMinX() >= 0) {
+                direccion = 1;
+            } else if (personaje.getHitbox().getMinX() - Hitbox.getMinX() >= -32 * PANTALLA.TILES_ACTUAL_SIZE
+                    && personaje.getHitbox().getMinX() - Hitbox.getMinX() <= 0) {
+                direccion = -1;
+
+            }
+
+        }
+    }
+
+    private void SeleccionarAccion() {
+        contSeleccionAccion++;
+
+        if (contSeleccionAccion >= VelocidadSeleccionAccion) {
+            Saltar();
+            contSeleccionAccion = 0;
+            System.out.println("Bowser ha saltado");
+        }
+    }
+
+    private void ActualizarDireccion() {
+        if (Ensuelo) {
+            velocidad = direccion;
         }
     }
 }
