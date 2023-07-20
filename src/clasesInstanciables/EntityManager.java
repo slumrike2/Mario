@@ -19,12 +19,12 @@ public class EntityManager {
 
     private GamePanel gamePanel;
 
-    public static Personaje mainCharacter;
-    public static ArrayList<Personaje> personajes = new ArrayList<>();
-    public static ArrayList<Enemigo> enemigos = new ArrayList<>();
-    public static ArrayList<Entidad> entidades = new ArrayList<>();
-    public static ArrayList<Recolectable> recolectables = new ArrayList<>();
-    public static ArrayList<FuegoProyectil> fuegoProyectils = new ArrayList<>();
+    public Personaje mainCharacter;
+    public ArrayList<Personaje> personajes = new ArrayList<>();
+    public ArrayList<Enemigo> enemigos = new ArrayList<>();
+    public ArrayList<Entidad> entidades = new ArrayList<>();
+    public ArrayList<Recolectable> recolectables = new ArrayList<>();
+    public ArrayList<FuegoProyectil> fuegoProyectils = new ArrayList<>();
 
     public EntityManager(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
@@ -57,6 +57,7 @@ public class EntityManager {
             if (entidad.vivo == true) {
                 entidad.recibirHit(mainCharacter);
                 mainCharacter.HitEnemigo(entidad.getHitbox());
+
             }
             if (entidad.vivo == false) {
                 Eliminar.add(entidad);

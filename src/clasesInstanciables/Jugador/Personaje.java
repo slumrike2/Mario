@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import clasesInstanciables.Entidad;
 
 import constantes.Constantes.*;
+import constantes.Constantes.Jugador;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -75,8 +76,6 @@ public class Personaje extends Entidad {
         starActive = false;
         vivo = true;
         Accionprevia = accion;
-        vidas = 1;
-
     }
 
     // *se encarga de cargar las animaciones del personaje
@@ -349,9 +348,8 @@ public class Personaje extends Entidad {
             contFramesMuerte++;
             System.out.println(contFramesMuerte);
             if (contFramesMuerte >= Jugador.CANT_FRAMES_MUERTE) {
-                restartStates();
                 vivo = false;
-                contFramesMuerte = 0;
+                setstarActive(false);
                 // Todo Reiniciar Nivel
             }
 
