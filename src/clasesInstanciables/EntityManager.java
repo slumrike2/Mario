@@ -227,6 +227,7 @@ public class EntityManager {
                 break;
             case BOWSER:
                 Bowser bowser = new Bowser(tileX, tileY);
+                bowser.loadLevelData(enemyLevelData);
                 enemigos.add(bowser);
                 entidades.add(bowser);
 
