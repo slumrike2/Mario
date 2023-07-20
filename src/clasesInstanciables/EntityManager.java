@@ -150,6 +150,7 @@ public class EntityManager {
         Spawner<CHARACTERS> characterSpawn = level.getCharacterSpawn();
         ArrayList<Spawner<ITEMS>> objectSpawners = level.getObjectSpawners();
         ArrayList<Spawner<ENEMIES>> enemySpawners = level.getEnemySpawners();
+        ArrayList<Point> misteryBlocks = level.getMisteryBlocks();
 
         spawnMainCharacter(characterSpawn.getX(), characterSpawn.getY(), level);
 
@@ -159,6 +160,10 @@ public class EntityManager {
 
         for (Spawner<ITEMS> spawner : objectSpawners) {
             spawn(spawner.getEntity(), spawner.getX(), spawner.getY(), level);
+        }
+
+        for (Point point : misteryBlocks) {
+            spawn(ITEMS.BLOQUE_MISTERIOSO, point.x, point.y, level);
         }
 
         gamePanel.audioManager.playSong(gamePanel.levelManager.getLvlIndex());

@@ -33,7 +33,7 @@ public class LoadSave {
         ArrayList<Spawner<ITEMS>> objectSpawners = new ArrayList<Spawner<ITEMS>>();
         ArrayList<Spawner<ENEMIES>> enemySpawners = new ArrayList<Spawner<ENEMIES>>();
         ArrayList<Point> inviBlocks = new ArrayList<Point>();
-        ArrayList<Point> backGroundTiles = new ArrayList<Point>();
+        ArrayList<Point> misteryBlocks = new ArrayList<Point>();
 
         int[][] levelData = new int[img.getWidth()][img.getHeight()];
 
@@ -51,9 +51,11 @@ public class LoadSave {
                     characterSpawn = new Spawner<>(i, j, 2021, ENTITY_TYPE.CHARACTERS.MAIN);
                 } else {
 
-                    if (red <= 23)
+                    if (red <= 23) {
+                        if (red == 2)
+                            misteryBlocks.add(new Point(i, j));
                         levelData[i][j] = red;
-                    else {
+                    } else {
                         levelData[i][j] = 11;
 
                         if (blue + red + green == 255 * 3) // white
@@ -71,6 +73,7 @@ public class LoadSave {
         level.setObjectSpawners(objectSpawners);
         level.setEnemySpawners(enemySpawners);
         level.setInvisibleWalls(inviBlocks);
+        level.setMisteryBlocks(misteryBlocks);
 
     }
 

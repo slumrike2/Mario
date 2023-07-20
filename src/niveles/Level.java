@@ -18,7 +18,9 @@ public class Level {
     private ArrayList<Spawner<ENEMIES>> enemySpawners = new ArrayList<>();
     private ArrayList<Spawner<ITEMS>> objectSpawners = new ArrayList<>();
     private ArrayList<Point> invisibleWalls = new ArrayList<>();
+    private ArrayList<Point> misteryBlocks = new ArrayList<>();
     private Spawner<CHARACTERS> characterSpawn;
+
 
     public Level(NIVEL nivel) {
 
@@ -107,6 +109,14 @@ public class Level {
 
     public void setInvisibleWalls(ArrayList<Point> invisibleWalls) {
         this.invisibleWalls = invisibleWalls;
+    }
+
+    public ArrayList<Point> getMisteryBlocks() {
+        return misteryBlocks;
+    }
+
+    public void setMisteryBlocks(ArrayList<Point> misteryBlocks) {
+        this.misteryBlocks = misteryBlocks;
     }
 
     // #endregion
