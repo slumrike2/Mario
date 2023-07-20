@@ -39,7 +39,7 @@ public class HelpMethods {
         if (y <= 0 || y >= lvlData[0].length)
             return false;
 
-        return lvlData[(int) x][(int) y] != 11 || lvlData[(int) x][(int) y] > 17;
+        return lvlData[(int) x][(int) y] < 11 || lvlData[(int) x][(int) y] > 17;
 
     }
 
