@@ -48,6 +48,7 @@ public class Level {
     }
 
     public int getTile(int x, int y) {
+
         return levelData[x][y];
     }
 
