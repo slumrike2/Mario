@@ -48,7 +48,7 @@ public class Goomba extends Enemigo {
         g.drawImage(animaciones[AccionAnimation][frameAniamcion], posX - offset, posY,
                 (int) (PANTALLA.TILES_ACTUAL_SIZE * anchura_Tiles),
                 (int) (PANTALLA.TILES_ACTUAL_SIZE * altura_Tiles), null);
-        DibujarHitboxWithOffset(g, offset);
+       
     }
 
     public void movimiento() {

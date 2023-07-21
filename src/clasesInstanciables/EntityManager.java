@@ -201,7 +201,7 @@ public class EntityManager {
 
         for (Point point : coins) {
             spawn(ITEMS.MONEDA, point.x, point.y, level);
-            System.out.println("Moneda spawnenada");
+            
         }
 
         gamePanel.restartGame();
@@ -308,7 +308,7 @@ public class EntityManager {
                 Moneda moneda = new Moneda(tileX, tileY);
                 recolectables.add(moneda);
                 entidades.add(moneda);
-                System.out.println("Moneda spawnenada");
+                
                 break;
             case FLOR:
                 FlorFuego flor = new FlorFuego(tileX, tileY);

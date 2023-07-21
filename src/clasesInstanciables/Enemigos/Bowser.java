@@ -133,7 +133,7 @@ public class Bowser extends Enemigo {
         if (ob instanceof Personaje) {
             Personaje personaje = (Personaje) ob;
             if (personaje.Hitbox.intersects(this.Hitbox) && personaje.getContInvensibility_Star() > 0) {
-                System.out.println("Bowser ha sido golpeado");
+                
                 vidas = 0;
             }
         }
@@ -184,12 +184,12 @@ public class Bowser extends Enemigo {
                     && personaje.getHitbox().getMinX() - Hitbox.getMinX() >= 0) {
                 direccion = 1;
                 contFinPelea++;
-                System.out.println("xds");
+                
             } else if (personaje.getHitbox().getMinX() - Hitbox.getMinX() >= -32 * PANTALLA.TILES_ACTUAL_SIZE
                     && personaje.getHitbox().getMinX() - Hitbox.getMinX() <= 0) {
                 direccion = -1;
                 contFinPelea++;
-                System.out.println("xs");
+                
 
             } else
                 direccion = 0;

@@ -59,7 +59,7 @@ public class Star extends Recolectable {
 
                     personaje.setstarActive(Active);
                     Active = false;
-                    System.out.println("velocidad aumentada");
+                    
                 }
             }
         }

@@ -126,7 +126,7 @@ public class Personaje extends Entidad {
         g.drawImage(animaciones[AccionAnimation][frameAniamcion], posX - offset, posY,
                 (int) (PANTALLA.TILES_ACTUAL_SIZE * anchura_Tiles),
                 (int) (PANTALLA.TILES_ACTUAL_SIZE * altura_Tiles), null);
-        DibujarHitboxWithOffset(g, offset);
+
     }
 
     private void DibujarHitboxWithOffset(Graphics g, int offset) {
@@ -385,7 +385,6 @@ public class Personaje extends Entidad {
 
     }
 
- 
     // #region Getters and Setters
 
     public Boolean getstarActive() {

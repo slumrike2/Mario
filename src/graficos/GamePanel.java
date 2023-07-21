@@ -50,7 +50,7 @@ public class GamePanel extends JPanel {
 
         userInterface = new HUD(this);
 
-        entityManager.spawn(ITEMS.BLOQUE_MISTERIOSO, 4, 15, levelManager.getLevel());
+       
 
         setPreferredSize(new Dimension(PANTALLA.SCREEN_WIDTH, PANTALLA.SCREEN_HEIGHT));
         // ? se encargan de agregar los inputs

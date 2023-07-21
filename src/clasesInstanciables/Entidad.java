@@ -95,7 +95,7 @@ public abstract class Entidad {
     protected abstract void InicializarHitbox();
 
     public void DibujarHitbox(Graphics g) {
-        g.drawRect(Hitbox.x, Hitbox.y, Hitbox.width, (Hitbox.height));
+        // g.drawRect(Hitbox.x, Hitbox.y, Hitbox.width, (Hitbox.height));
     }
 
     public Rectangle getHitbox() {
