@@ -49,6 +49,9 @@ public class MenuPanel extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         menuPrincipal.paintComponent(g);
+        registro.paintComponent(g);
+        inicioSesion.paintComponent(g);
+
         // *se encarga de dibujar los frames del peronsaje
     }
 
