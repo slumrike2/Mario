@@ -385,24 +385,7 @@ public class Personaje extends Entidad {
 
     }
 
-    // *respecto al manejo de vidas */
-
-    public void kill() {
-        vidas = 0;
-    }
-
-    public void decVidas() {
-        vidas--;
-    }
-
-    public void setVidas(int vidas) {
-        if (vidas > 0) {
-            if (vidas < this.vidas)
-                return;
-            this.vidas = vidas;
-        }
-    }
-
+ 
     // #region Getters and Setters
 
     public Boolean getstarActive() {

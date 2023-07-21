@@ -56,7 +56,30 @@ public abstract class Entidad {
     public void verifyDeathFromHill() {
         if (posY + altura_Tiles * PANTALLA.TILES_ACTUAL_SIZE + 1 >= PANTALLA.SCREEN_HEIGHT
                 + altura_Tiles * PANTALLA.TILES_ACTUAL_SIZE) {// *coco */
-            vidas = -1;
+            kill();
+        }
+    }
+
+    // *respecto a las vidas */
+    // *respecto al manejo de vidas */
+
+    public void kill() {
+        vidas = 0;
+    }
+
+    public void decVidas() {
+        vidas--;
+    }
+
+    public void incVidas() {
+        vidas++;
+    }
+
+    public void setVidas(int vidas) {
+        if (vidas > 0) {
+            if (vidas < this.vidas)
+                return;
+            this.vidas = vidas;
         }
     }
 
@@ -116,7 +139,7 @@ public abstract class Entidad {
     }
 
     public void setPosY(int posY) {
-        this.posY = posY - 1; //*coco */
+        this.posY = posY - 1; // *coco */
     }
 
     public boolean isVivo() {

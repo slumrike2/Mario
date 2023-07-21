@@ -86,7 +86,7 @@ public class Constantes {
         public static final int SPRITE_WIDTH = PANTALLA.TILES_ACTUAL_SIZE;
         public static final int SMALL_SPRITE_HEIGTH = PANTALLA.TILES_ACTUAL_SIZE;
         public static final int MARIO_BIG_DOWN_HEIGHT = PANTALLA.TILES_ACTUAL_SIZE + PANTALLA.TILES_ACTUAL_SIZE / 2;
-        public static final int CANT_FRAMES_MUERTE = 1 * FramesPerSecond - 15;
+        public static final int CANT_FRAMES_MUERTE = 1 * FramesPerSecond - 20;
     }
 
     public static class Items {
