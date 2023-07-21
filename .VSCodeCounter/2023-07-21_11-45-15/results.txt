@@ -1,0 +1,100 @@
+Date : 2023-07-21 11:45:15
+Directory : c:\Users\edwardo contreras\Desktop\Programs\Java\Mario
+Total : 51 files,  3991 codes, 190 comments, 1166 blanks, all 5347 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| Java     |         50 |      3,981 |        190 |      1,157 |      5,328 |
+| Markdown |          1 |         10 |          0 |          9 |         19 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++-----------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                        | files      | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                           |         51 |      3,991 |        190 |      1,166 |      5,347 |
+| server                                                                                                                      |         10 |        344 |          7 |         49 |        400 |
+| server (Files)                                                                                                              |          1 |         10 |          0 |          9 |         19 |
+| server\bin                                                                                                                  |          5 |        137 |          0 |          0 |        137 |
+| server\src                                                                                                                  |          4 |        197 |          7 |         40 |        244 |
+| src                                                                                                                         |         41 |      3,647 |        183 |      1,117 |      4,947 |
+| src\audio                                                                                                                   |          1 |        118 |          0 |         28 |        146 |
+| src\clasesInstanciables                                                                                                     |         18 |      1,867 |         68 |        538 |      2,473 |
+| src\clasesInstanciables (Files)                                                                                             |          3 |        482 |         10 |        132 |        624 |
+| src\clasesInstanciables\Enemigos                                                                                            |          6 |        553 |         10 |        156 |        719 |
+| src\clasesInstanciables\Jugador                                                                                             |          2 |        512 |         47 |        158 |        717 |
+| src\clasesInstanciables\recolectables                                                                                       |          7 |        320 |          1 |         92 |        413 |
+| src\clasesInstanciables\recolectables (Files)                                                                               |          1 |         22 |          0 |         11 |         33 |
+| src\clasesInstanciables\recolectables\PowerUps                                                                              |          6 |        298 |          1 |         81 |        380 |
+| src\constantes                                                                                                              |          1 |        103 |          2 |         33 |        138 |
+| src\databases                                                                                                               |          4 |        297 |         26 |         83 |        406 |
+| src\game                                                                                                                    |          1 |         17 |          3 |          8 |         28 |
+| src\graficos                                                                                                                |          8 |        809 |         77 |        275 |      1,161 |
+| src\graficos (Files)                                                                                                        |          5 |        451 |         44 |        152 |        647 |
+| src\graficos\pantallas                                                                                                      |          3 |        358 |         33 |        123 |        514 |
+| src\inputs                                                                                                                  |          2 |        118 |          4 |         44 |        166 |
+| src\interfaces                                                                                                              |          1 |          4 |          0 |          4 |          8 |
+| src\networking                                                                                                              |          1 |         15 |          0 |          5 |         20 |
+| src\niveles                                                                                                                 |          2 |        189 |          3 |         62 |        254 |
+| src\utils                                                                                                                   |          2 |        110 |          0 |         37 |        147 |
++-----------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-----------------------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                                                                                    | language | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\server\README.md                                                     | Markdown |         10 |          0 |          9 |         19 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\server\bin\Client$1.class                                            | Java     |         14 |          0 |          0 |         14 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\server\bin\Client.class                                              | Java     |         42 |          0 |          0 |         42 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\server\bin\ClientHandler.class                                       | Java     |         43 |          0 |          0 |         43 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\server\bin\personaje.class                                           | Java     |          8 |          0 |          0 |          8 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\server\bin\server.class                                              | Java     |         30 |          0 |          0 |         30 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\server\src\Client.java                                               | Java     |         81 |          3 |         18 |        102 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\server\src\ClientHandler.java                                        | Java     |         73 |          0 |         10 |         83 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\server\src\personaje.java                                            | Java     |          9 |          0 |          4 |         13 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\server\src\server.java                                               | Java     |         34 |          4 |          8 |         46 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\src\audio\AudioManager.java                                          | Java     |        118 |          0 |         28 |        146 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\src\clasesInstanciables\Enemigos\Bowser.java                         | Java     |        173 |          5 |         43 |        221 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\src\clasesInstanciables\Enemigos\BowserFireball.java                 | Java     |         69 |          0 |         18 |         87 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\src\clasesInstanciables\Enemigos\Enemigo.java                        | Java     |        107 |          2 |         40 |        149 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\src\clasesInstanciables\Enemigos\Goomba.java                         | Java     |         81 |          1 |         21 |        103 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\src\clasesInstanciables\Enemigos\Koopa.java                          | Java     |        102 |          1 |         24 |        127 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\src\clasesInstanciables\Enemigos\KoopaVolador.java                   | Java     |         21 |          1 |         10 |         32 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\src\clasesInstanciables\Entidad.java                                 | Java     |        153 |          6 |         50 |        209 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\src\clasesInstanciables\EntityManager.java                           | Java     |        303 |          4 |         68 |        375 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\src\clasesInstanciables\Jugador\FuegoProyectil.java                  | Java     |         79 |          0 |         25 |        104 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\src\clasesInstanciables\Jugador\Personaje.java                       | Java     |        433 |         47 |        133 |        613 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\src\clasesInstanciables\Spawner.java                                 | Java     |         26 |          0 |         14 |         40 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\src\clasesInstanciables\recolectables\PowerUps\BloqueMisterioso.java | Java     |         76 |          0 |         17 |         93 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\src\clasesInstanciables\recolectables\PowerUps\FlorFuego.java        | Java     |         41 |          0 |         11 |         52 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\src\clasesInstanciables\recolectables\PowerUps\Hongo.java            | Java     |         41 |          0 |         12 |         53 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\src\clasesInstanciables\recolectables\PowerUps\HongoEnvenenado.java  | Java     |         41 |          1 |         12 |         54 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\src\clasesInstanciables\recolectables\PowerUps\Moneda.java           | Java     |         45 |          0 |         14 |         59 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\src\clasesInstanciables\recolectables\PowerUps\Star.java             | Java     |         54 |          0 |         15 |         69 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\src\clasesInstanciables\recolectables\Recolectable.java              | Java     |         22 |          0 |         11 |         33 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\src\constantes\Constantes.java                                       | Java     |        103 |          2 |         33 |        138 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\src\databases\ArchivoSerializable.java                               | Java     |        138 |          9 |         30 |        177 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\src\databases\Database.java                                          | Java     |         47 |          5 |         14 |         66 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\src\databases\Sesion.java                                            | Java     |         26 |          4 |         10 |         40 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\src\databases\Usuario.java                                           | Java     |         86 |          8 |         29 |        123 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\src\game\Game.java                                                   | Java     |         17 |          3 |          8 |         28 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\src\graficos\GamePanel.class                                         | Java     |         11 |          0 |          0 |         11 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\src\graficos\GamePanel.java                                          | Java     |        197 |          7 |         66 |        270 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\src\graficos\Gui.java                                                | Java     |        114 |         31 |         34 |        179 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\src\graficos\HUD.java                                                | Java     |         92 |          0 |         32 |        124 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\src\graficos\MenuPanel.java                                          | Java     |         37 |          6 |         20 |         63 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\src\graficos\pantallas\InicioSesion.java                             | Java     |         93 |         11 |         31 |        135 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\src\graficos\pantallas\MenuPrincipal.java                            | Java     |        141 |         11 |         52 |        204 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\src\graficos\pantallas\Registro.java                                 | Java     |        124 |         11 |         40 |        175 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\src\inputs\InptutMouse.java                                          | Java     |         33 |          1 |         19 |         53 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\src\inputs\InputTeclado.java                                         | Java     |         85 |          3 |         25 |        113 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\src\interfaces\Identificable.java                                    | Java     |          4 |          0 |          4 |          8 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\src\networking\PlayerInput.java                                      | Java     |         15 |          0 |          5 |         20 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\src\niveles\Level.java                                               | Java     |        108 |          2 |         35 |        145 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\src\niveles\LevelManager.java                                        | Java     |         81 |          1 |         27 |        109 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\src\utils\HelpMethods.java                                           | Java     |         39 |          0 |         20 |         59 |
+| c:\Users\edwardo contreras\Desktop\Programs\Java\Mario\src\utils\LoadSave.java                                              | Java     |         71 |          0 |         17 |         88 |
+| Total                                                                                                                       |          |      3,991 |        190 |      1,166 |      5,347 |
++-----------------------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+

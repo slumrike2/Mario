@@ -29,6 +29,7 @@ public class LevelManager {
         levels[1] = new Level(NIVEL.NIVEL_2, 40);
         levels[2] = new Level(NIVEL.NIVEL_3, 40);
         levels[3] = new Level(NIVEL.NIVEL_4, 100);
+        levels[4] = new Level(NIVEL.NIVEL_FINAL, 999);
 
         actualLevel = levels[lvlIndex];
 
