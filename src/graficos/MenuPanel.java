@@ -3,7 +3,9 @@ package graficos;
 import javax.swing.JPanel;
 
 import constantes.Constantes.*;
-import graficos.pantallas.menues.*;
+import graficos.pantallas.InicioSesion;
+import graficos.pantallas.MenuPrincipal;
+import graficos.pantallas.Registro;
 
 import java.awt.Graphics;
 
@@ -46,6 +48,7 @@ public class MenuPanel extends JPanel {
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+        menuPrincipal.paintComponent(g);
         // *se encarga de dibujar los frames del peronsaje
     }
 

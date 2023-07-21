@@ -143,7 +143,7 @@ public class Gui extends Canvas implements Runnable {
         // *Llama a la actualizacion del panel en funcionalidad */
         if (estadoJuego == GameState.JUEGO) {
             panel.FrameUpdate();
-        }
+        } 
 
     }
 

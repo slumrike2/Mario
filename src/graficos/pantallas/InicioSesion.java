@@ -1,4 +1,4 @@
-package graficos.pantallas.menues;
+package graficos.pantallas;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;

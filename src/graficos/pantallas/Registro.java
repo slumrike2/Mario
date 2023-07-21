@@ -1,4 +1,4 @@
-package graficos.pantallas.menues;
+package graficos.pantallas;
 
 import databases.Database;
 import databases.Usuario;
