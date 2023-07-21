@@ -1,9 +1,10 @@
-package clasesInstanciables.PowerUps;
+package clasesInstanciables.recolectables.PowerUps;
 
 import java.awt.Graphics;
 
 import clasesInstanciables.Entidad;
 import clasesInstanciables.Jugador.Personaje;
+import clasesInstanciables.recolectables.Recolectable;
 import constantes.Constantes.PANTALLA;
 
 import constantes.Constantes.Items;
@@ -15,6 +16,7 @@ public class Star extends Recolectable {
         anchura_Tiles = 1;
         altura_Tiles = 1;
         velocidadAnimacion = 20;
+        puntajeDado = Items.ESTRELLA_POINTS;
         Active = true;
         importarImagen(PANTALLA.ESTRELLA_DIR);
         animaciones = animacion(1, 0, 4, Items.ESTRELLA_WIDTH_TILES, Items.ESTRELLA_HIGH_TILES);

@@ -8,6 +8,7 @@ import java.awt.Rectangle;
 import static utils.HelpMethods.canMoveHere;
 import static utils.HelpMethods.isInFloor;
 
+import constantes.Constantes.Enemigos;
 //siva
 import constantes.Constantes.PANTALLA;
 
@@ -25,6 +26,7 @@ public class Bowser extends Enemigo {
     public Bowser(int Posx, int Posy) {
         super(Posx, Posy);
         importarImagen(PANTALLA.BowserDir);
+        puntajeDado = Enemigos.BOWSER_POINTS;
         altura_Tiles = 2;
         anchura_Tiles = 2;
         velocidad = 1f;

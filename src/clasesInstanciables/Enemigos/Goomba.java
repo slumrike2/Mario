@@ -21,6 +21,7 @@ public class Goomba extends Enemigo {
         altura_Tiles = Enemigos.GOOMBA_HIGH_TILES;
         anchura_Tiles = Enemigos.GOOMBA_WIDTH_TILES;
         animaciones = animacion(3, 0, 2, (int) anchura_Tiles, (int) altura_Tiles);
+        puntajeDado = Enemigos.GOOMBA_POINTS;
         velocidadAnimacion = 20;
         enSuelo = false;
         vivo = true;

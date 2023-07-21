@@ -2,6 +2,7 @@ package niveles;
 
 import java.awt.Point;
 import java.awt.image.BufferedImage;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import clasesInstanciables.Spawner;
@@ -19,6 +20,7 @@ public class Level {
     private ArrayList<Spawner<ITEMS>> objectSpawners = new ArrayList<>();
     private ArrayList<Point> invisibleWalls = new ArrayList<>();
     private ArrayList<Point> misteryBlocks = new ArrayList<>();
+    private ArrayList<Point> coins = new ArrayList<>();
     private Spawner<CHARACTERS> characterSpawn;
 
     private int maxTime;
@@ -127,6 +129,14 @@ public class Level {
 
     public void setMaxTime(int maxTime) {
         this.maxTime = maxTime;
+    }
+
+    public ArrayList<Point> getCoins() {
+        return coins;
+    }
+
+    public void setCoins(ArrayList<Point> coins) {
+        this.coins = coins;
     }
 
     // #endregion

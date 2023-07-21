@@ -19,6 +19,8 @@ public abstract class Enemigo extends Entidad {
     protected int[][] currentLevelData;
     protected boolean enSuelo;
 
+    protected int puntajeDado;
+
     public Enemigo(int Posx, int Posy) {
         super(Posx, Posy);
 
@@ -49,6 +51,7 @@ public abstract class Enemigo extends Entidad {
                 contFramesInvensible = 0;
             }
         }
+
         if (ob instanceof FuegoProyectil) {
             FuegoProyectil proyectil = (FuegoProyectil) ob;
             if (proyectil.Hitbox.intersects(this.Hitbox) && proyectil.getActive()) {
@@ -65,6 +68,7 @@ public abstract class Enemigo extends Entidad {
                 this.vidas = 0;
             }
         }
+
     }
 
     public void loadLevelData(int[][] currentLevelData) {
@@ -88,4 +92,57 @@ public abstract class Enemigo extends Entidad {
                 (int) (altura_Tiles * PANTALLA.TILES_ACTUAL_SIZE), currentLevelData);
     }
 
+    //region getters and setters
+    public int getFramesInvensible() {
+        return FramesInvensible;
+    }
+
+    public void setFramesInvensible(int framesInvensible) {
+        FramesInvensible = framesInvensible;
+    }
+
+    public int getContFramesInvensible() {
+        return contFramesInvensible;
+    }
+
+    public void setContFramesInvensible(int contFramesInvensible) {
+        this.contFramesInvensible = contFramesInvensible;
+    }
+
+    public int getGravedad() {
+        return gravedad;
+    }
+
+    public void setGravedad(int gravedad) {
+        this.gravedad = gravedad;
+    }
+
+    public int[][] getCurrentLevelData() {
+        return currentLevelData;
+    }
+
+    public void setCurrentLevelData(int[][] currentLevelData) {
+        this.currentLevelData = currentLevelData;
+    }
+
+    public boolean isEnSuelo() {
+        return enSuelo;
+    }
+
+    public void setEnSuelo(boolean enSuelo) {
+        this.enSuelo = enSuelo;
+    }
+
+    public int getPuntajeDado() {
+        return puntajeDado;
+    }
+
+    public void setPuntajeDado(int puntajeDado) {
+        this.puntajeDado = puntajeDado;
+    }
+
+
+    //endregion 
+
+    
 }

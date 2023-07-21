@@ -1,4 +1,4 @@
-package clasesInstanciables.PowerUps;
+package clasesInstanciables.recolectables.PowerUps;
 
 import java.awt.Graphics;
 
@@ -83,8 +83,10 @@ public class BloqueMisterioso extends Entidad {
             ItemSpawn = ITEMS.HONGO;
         else if (random < 90)
             ItemSpawn = ITEMS.FLOR;
-        else if (random <= 100)
+        else if (random < 99)
             ItemSpawn = ITEMS.ESTRELLA;
+        else if (random == 99)
+            ItemSpawn = ITEMS.HONGO_VENENOSO;
     }
 
 }

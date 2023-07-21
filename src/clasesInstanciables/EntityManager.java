@@ -1,7 +1,5 @@
 package clasesInstanciables;
 
-import clasesInstanciables.PowerUps.*;
-
 import java.awt.Graphics;
 import java.awt.Point;
 import java.util.ArrayList;
@@ -9,6 +7,8 @@ import java.util.ArrayList;
 import audio.AudioManager;
 import clasesInstanciables.Enemigos.*;
 import clasesInstanciables.Jugador.*;
+import clasesInstanciables.recolectables.Recolectable;
+import clasesInstanciables.recolectables.PowerUps.*;
 import constantes.Constantes.ENTITY_TYPE.*;
 import constantes.Constantes.PANTALLA;
 import constantes.Constantes;
@@ -77,6 +77,7 @@ public class EntityManager {
             }
             if (entidad.vivo == false) {
                 Eliminar.add(entidad);
+                mainCharacter.addPuntaje(entidad.getPuntajeDado());
             }
         }
 
@@ -86,6 +87,7 @@ public class EntityManager {
                 recolectable.Colliision(mainCharacter);
                 if (recolectable.Active == false) {
                     Eliminar.add(recolectable);
+                    mainCharacter.addPuntaje(recolectable.getPuntajeDado());
                 }
             }
         }
@@ -156,6 +158,7 @@ public class EntityManager {
         ArrayList<Spawner<ITEMS>> objectSpawners = level.getObjectSpawners();
         ArrayList<Spawner<ENEMIES>> enemySpawners = level.getEnemySpawners();
         ArrayList<Point> misteryBlocks = level.getMisteryBlocks();
+        ArrayList<Point> coins = level.getCoins();
 
         spawnMainCharacter(characterSpawn.getX(), characterSpawn.getY(), level);
 
@@ -169,6 +172,11 @@ public class EntityManager {
 
         for (Point point : misteryBlocks) {
             spawn(ITEMS.BLOQUE_MISTERIOSO, point.x, point.y, level);
+        }
+
+        for (Point point : coins) {
+            spawn(ITEMS.MONEDA, point.x, point.y, level);
+            System.out.println("Moneda spawnenada");
         }
 
         gamePanel.audioManager.playSong(gamePanel.levelManager.getLvlIndex());
@@ -272,7 +280,10 @@ public class EntityManager {
 
         switch (item) {
             case MONEDA:
-
+                Moneda moneda = new Moneda(tileX, tileY);
+                recolectables.add(moneda);
+                entidades.add(moneda);
+                System.out.println("Moneda spawnenada");
                 break;
             case FLOR:
                 FlorFuego flor = new FlorFuego(tileX, tileY);
@@ -298,7 +309,6 @@ public class EntityManager {
                 break;
             case BLOQUE_MISTERIOSO:
                 BloqueMisterioso bloqueMisterioso = new BloqueMisterioso(tileX, tileY);
-                System.out.println("bloque misterioso creado + " + bloqueMisterioso.vivo);
                 bloquesMisteriosos.add(bloqueMisterioso);
                 entidades.add(bloqueMisterioso);
                 break;
