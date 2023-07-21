@@ -27,9 +27,9 @@ public class HUD {
         coins = 0;
         level = 1;
         time = 60;
+        loadTextImages();
         this.gamePanel = gamePanel;
 
-        loadTextImages();
     }
 
     private void drawNumber(Graphics g, int number, int x, int y, int maxDigits) {
@@ -91,6 +91,7 @@ public class HUD {
     }
 
     private void loadTextImages() {
+
         try {
             InputStream is = HUD.class.getResourceAsStream("res/numbers.png");
             BufferedImage imagen = ImageIO.read(is);
@@ -113,7 +114,8 @@ public class HUD {
             levelText = ImageIO.read(is);
 
         } catch (Exception e) {
-            System.out.println("Error al cargar la imagen");
+            System.out.println("Error al cargar la imagen xd");
+
         }
     }
 }
