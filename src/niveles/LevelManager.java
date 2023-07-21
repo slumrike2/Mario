@@ -22,13 +22,14 @@ public class LevelManager {
     public LevelManager(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
 
-        lvlIndex = 0;
-        levels = new Level[4];
+        lvlIndex = 2;
+        levels = new Level[5];
 
         levels[0] = new Level(NIVEL.NIVEL_1, 40);
         levels[1] = new Level(NIVEL.NIVEL_2, 40);
         levels[2] = new Level(NIVEL.NIVEL_3, 40);
         levels[3] = new Level(NIVEL.NIVEL_4, 100);
+        levels[4] = new Level(NIVEL.NIVEL_FINAL, 999);
 
         actualLevel = levels[lvlIndex];
 

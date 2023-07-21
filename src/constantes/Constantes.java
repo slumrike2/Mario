@@ -121,7 +121,7 @@ public class Constantes {
         NIVEL_2("res/level2/"),
         NIVEL_3("res/level3/"),
         NIVEL_4("res/level4/"),
-        NIVEL_FINAL("res/finalLevel");
+        NIVEL_FINAL("res/finalLevel/");
 
         private final String path;
 
