@@ -1,4 +1,4 @@
-package niveles;
+package userData;
 
 import java.awt.Graphics;
 import java.awt.Point;
@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 
 import clasesInstanciables.EntityManager;
 import graficos.GamePanel;
+import niveles.Level;
 import constantes.Constantes.NIVEL;
 import constantes.Constantes.PANTALLA;
 
@@ -22,7 +23,7 @@ public class LevelManager {
     public LevelManager(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
 
-        lvlIndex = 2;
+        lvlIndex = 3;
         levels = new Level[5];
 
         levels[0] = new Level(NIVEL.NIVEL_1, 40);

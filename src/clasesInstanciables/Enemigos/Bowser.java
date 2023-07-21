@@ -14,7 +14,7 @@ import constantes.Constantes.PANTALLA;
 
 public class Bowser extends Enemigo {
     private int VelocidadSeleccionAccion = (int) (Math.random() * 50) + 100, contSeleccionAccion = 0;
-    private int SegundosFinal = 120 * 5, contFinPelea = 0;
+    private int SegundosFinal = 120 * 30, contFinPelea = 0;
     private int velocidadAtaque = 80, contVelcAtaque = 0;
     private boolean quieto = false;
     public int direccion = -1;
@@ -34,7 +34,7 @@ public class Bowser extends Enemigo {
         velocidad = 1f;
 
         FuerzaSalto = 0;
-        vidas = 20;
+        vidas = 40000000;
         animaciones = animacion(4, 0, 2, 2, 2);
         velocidadAnimacion = 30;
         InicializarHitbox();
