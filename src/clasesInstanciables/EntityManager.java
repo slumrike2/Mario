@@ -76,7 +76,8 @@ public class EntityManager {
                     }
                     if (bowser.vidas == 0) {
                         Eliminar.add(bowser);
-                        // Todo Funcion Ganar Partida
+                        mainCharacter.addPuntaje(bowser.getPuntajeDado());
+                        gamePanel.passNextLevel();
                     }
                 }
                 entidad.recibirHit(mainCharacter);

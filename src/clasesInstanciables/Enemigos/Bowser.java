@@ -34,7 +34,7 @@ public class Bowser extends Enemigo {
         velocidad = 1f;
 
         FuerzaSalto = 0;
-        vidas = 20;
+        vidas = 40000000;
         animaciones = animacion(4, 0, 2, 2, 2);
         velocidadAnimacion = 30;
         InicializarHitbox();
