@@ -13,7 +13,6 @@ public class Game {
 
         ventana = new Gui();
 
-
         // panel.requestFocus();
         ventana.iniciar();
     }
