@@ -21,7 +21,7 @@ public class Usuario implements Comparable<Usuario>, Serializable, Identificable
 
     public Usuario(String nombre, String nombreUsuario, String contrasenia) {
         this.nombre = nombre;
-        //ss
+        // ss
         this.nombreUsuario = nombreUsuario;
         this.contrasenia = contrasenia;
 

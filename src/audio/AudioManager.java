@@ -13,9 +13,9 @@ public class AudioManager {
     public static int LEVEL_2 = 1;
     public static int LEVEL_3 = 2;
     public static int LEVEL_4 = 3;
-    public static int STAR = 4;
-    public static int DIE = 5;
-    public static int STAGE_CLEAR = 6;
+    public static int STAGE_CLEAR = 4;
+    public static int STAR = 5;
+    public static int DIE = 6;
 
     public static int JUMP = 0;
     public static int FIREBALL = 1;
@@ -31,8 +31,8 @@ public class AudioManager {
     }
 
     private void loadSongs() {
-        String[] songNames = { "level1.wav", "level2.wav", "level3.wav", "level4.wav", "star.wav", "die.wav",
-                "stage_clear.wav" };
+        String[] songNames = { "level1.wav", "level2.wav", "level3.wav", "level4.wav", "stage_clear.wav", "star.wav",
+                "die.wav" };
         songs = new Clip[songNames.length];
         for (int i = 0; i < songNames.length; i++) {
             songs[i] = getGClip(songNames[i]);

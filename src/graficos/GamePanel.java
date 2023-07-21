@@ -6,6 +6,9 @@ import audio.AudioManager;
 import clasesInstanciables.*;
 import constantes.Constantes.PANTALLA;
 import constantes.Constantes.ENTITY_TYPE.*;
+import databases.ArchivoSerializable;
+import databases.Sesion;
+import databases.Usuario;
 import inputs.InptutMouse;
 import inputs.InputTeclado;
 
@@ -13,7 +16,6 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.awt.Dimension;
 import niveles.*;
-import userData.LevelManager;
 
 public class GamePanel extends JPanel {
 
@@ -133,12 +135,31 @@ public class GamePanel extends JPanel {
     }
 
     public void passNextLevel() {
+        if (levelManager.getLvlIndex() == levelManager.getLevels().length - 1) {
+            writeScore();
+            audioManager.stopAll();
+            Gui.switchState();
+            return;
+        }
         xlvlOffset = 0;
         levelManager.nextLevel();
         levelWide = levelManager.getLevel().getLevelData().length;
         maxLvlOffsetX = (levelWide - PANTALLA.TILES_IN_WIDTH) * PANTALLA.TILES_ACTUAL_SIZE;
         entityManager.restart();
         entityManager.startLevelEntities(levelManager.getLevel());
+    }
+
+    public void writeScore() {
+        Usuario usuario = Sesion.INSTANCE.getUsuario();
+        ArchivoSerializable<Usuario> archivoSerializable = new ArchivoSerializable(usuario.getEstadisticas_fileName());
+        usuario.setCantidadPartidasJugadas(usuario.getCantidadPartidasJugadas() + 1);
+        if (entityManager.getMainCharacter().getVidas() > 0) {
+            usuario.setCantidadPartidasGanadas(usuario.getCantidadPartidasGanadas() + 1);
+        } else {
+            usuario.setCantidadPartidasPerdidas(usuario.getCantidadPartidasPerdidas() + 1);
+        }
+        archivoSerializable.sobrescribirArchivo(usuario);
+
     }
 
     // #endregion

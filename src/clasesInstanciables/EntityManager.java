@@ -76,8 +76,7 @@ public class EntityManager {
                     }
                     if (bowser.vidas == 0) {
                         Eliminar.add(bowser);
-                        // mainCharacter.addPuntaje(bowser.getPuntajeDado());
-                        gamePanel.passNextLevel();
+
                     }
                 }
                 entidad.recibirHit(mainCharacter);
@@ -148,6 +147,10 @@ public class EntityManager {
             // *coco */
             entidad.setPosY(10000);
             entidad.Hitbox.y = 10000;
+
+            if (entidad instanceof Bowser) {
+                mainCharacter.posX = 10000; // *coco */
+            }
 
             if (entidad instanceof Enemigo) {
                 enemigos.remove(entidad);
