@@ -27,7 +27,7 @@ public class HongoEnvenenado extends Recolectable {
             Personaje personaje = (Personaje) ob;
 
             if (Hitbox.intersects(personaje.Hitbox) && personaje.vivo == true) {
-                personaje.setVidas(personaje.getVidas() - 1);
+                personaje.decVidas();
                 Active = false;
 
             }

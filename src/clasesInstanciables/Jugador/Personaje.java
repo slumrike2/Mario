@@ -311,7 +311,7 @@ public class Personaje extends Entidad {
             }
             // * Sino le hara damage a mario */
             if (contInvensibilityFrames >= Jugador.INVENSIBILITY_FRAMES && starActive == false) {
-                vidas--;
+                decVidas();
                 contInvensibilityFrames = 0;
             }
         }
@@ -522,8 +522,16 @@ public class Personaje extends Entidad {
         MovArriba = movArriba;
     }
 
+    public void decVidas() {
+        vidas--;
+    }
+
     public void setVidas(int vidas) {
-        this.vidas = vidas;
+        if (vidas > 0) {
+            if (vidas < this.vidas)
+                return;
+            this.vidas = vidas;
+        }
     }
 
     public int getVidas() {
