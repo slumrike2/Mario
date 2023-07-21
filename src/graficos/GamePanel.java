@@ -75,6 +75,16 @@ public class GamePanel extends JPanel {
             gameTime++;
             framesElapsed = 0;
         }
+
+        if (gameTime == levelManager.getLevel().getMaxTime()) {
+            audioManager.stopSong();
+            entityManager.getMainCharacter().kill();
+        }
+    }
+
+    public void restartGame() {
+        audioManager.playSong(levelManager.getLvlIndex());
+        gameTime = 0;
     }
 
     public void playEffects() {
@@ -253,8 +263,6 @@ public class GamePanel extends JPanel {
     public void setFramesElapsed(int framesElapsed) {
         this.framesElapsed = framesElapsed;
     }
-
-    
 
     // #endregion
 

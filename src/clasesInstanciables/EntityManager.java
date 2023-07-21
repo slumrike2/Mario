@@ -179,7 +179,7 @@ public class EntityManager {
             System.out.println("Moneda spawnenada");
         }
 
-        gamePanel.audioManager.playSong(gamePanel.levelManager.getLvlIndex());
+        gamePanel.restartGame();
 
     }
 

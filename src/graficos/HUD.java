@@ -39,7 +39,7 @@ public class HUD {
         int height = 16;
         int offset = 0;
 
-        if (number == 0) {
+        if (number <= 0) {
             for (int i = 0; i < maxDigits; i++) {
                 g.drawImage(numbers[0], x + offset, y, width, height, null);
                 offset += width;

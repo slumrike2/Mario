@@ -385,6 +385,26 @@ public class Personaje extends Entidad {
 
     }
 
+    // *respecto al manejo de vidas */
+
+    public void kill() {
+        vidas = 0;
+    }
+
+    public void decVidas() {
+        vidas--;
+    }
+
+    public void setVidas(int vidas) {
+        if (vidas > 0) {
+            if (vidas < this.vidas)
+                return;
+            this.vidas = vidas;
+        }
+    }
+
+    // #region Getters and Setters
+
     public Boolean getstarActive() {
         return starActive;
     }
@@ -393,7 +413,6 @@ public class Personaje extends Entidad {
         this.starActive = starActive;
     }
 
-    // #region Getters and Setters
     public int getGravedad() {
         return gravedad;
     }
@@ -520,18 +539,6 @@ public class Personaje extends Entidad {
 
     public void setMovArriba(Boolean movArriba) {
         MovArriba = movArriba;
-    }
-
-    public void decVidas() {
-        vidas--;
-    }
-
-    public void setVidas(int vidas) {
-        if (vidas > 0) {
-            if (vidas < this.vidas)
-                return;
-            this.vidas = vidas;
-        }
     }
 
     public int getVidas() {
