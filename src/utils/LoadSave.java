@@ -11,9 +11,12 @@ import javax.imageio.ImageIO;
 import clasesInstanciables.Spawner;
 import constantes.Constantes.ENTITY_TYPE;
 import constantes.Constantes.ENTITY_TYPE.*;
+import graficos.GamePanel;
+import graficos.Gui;
 import niveles.Level;
 
 public class LoadSave {
+
 
     public static BufferedImage GetLevelAtlas(String path) {
         BufferedImage imagen = null;

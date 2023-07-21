@@ -21,13 +21,15 @@ public class Level {
     private ArrayList<Point> misteryBlocks = new ArrayList<>();
     private Spawner<CHARACTERS> characterSpawn;
 
+    private int maxTime;
 
-    public Level(NIVEL nivel) {
+    public Level(NIVEL nivel, int maxTime) {
 
         importarImagen(nivel.getPath());
         importOutsideSprites();
         LoadSave.loadLevelData(this, nivel.getPath());
 
+        this.maxTime = maxTime;
     }
 
     private void importarImagen(String path) {
@@ -117,6 +119,14 @@ public class Level {
 
     public void setMisteryBlocks(ArrayList<Point> misteryBlocks) {
         this.misteryBlocks = misteryBlocks;
+    }
+
+    public int getMaxTime() {
+        return maxTime;
+    }
+
+    public void setMaxTime(int maxTime) {
+        this.maxTime = maxTime;
     }
 
     // #endregion

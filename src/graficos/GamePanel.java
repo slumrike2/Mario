@@ -21,9 +21,13 @@ public class GamePanel extends JPanel {
     public EntityManager entityManager;
     public LevelManager levelManager;
     public AudioManager audioManager;
+    public HUD userInterface;
 
     static int contador = 0;
     public BufferedImage aux;
+
+    private int gameTime;
+    private int framesElapsed;
 
     private int xlvlOffset;
     private int leftBorder = (int) (PANTALLA.SCREEN_WIDTH * 0.2);
@@ -41,7 +45,9 @@ public class GamePanel extends JPanel {
         entityManager = new EntityManager(this);
         levelManager.startLevelEntities(entityManager);
 
-        entityManager.spawn(ITEMS.BLOQUE_MISTERIOSO , 4, 15, levelManager.getLevel());
+        userInterface = new HUD(this);
+
+        entityManager.spawn(ITEMS.BLOQUE_MISTERIOSO, 4, 15, levelManager.getLevel());
 
         setPreferredSize(new Dimension(PANTALLA.SCREEN_WIDTH, PANTALLA.SCREEN_HEIGHT));
         // ? se encargan de agregar los inputs
@@ -57,6 +63,18 @@ public class GamePanel extends JPanel {
         verifyCloseToBorder();
         playEffects();
         entityManager.update();
+
+        elapseTime();
+    }
+
+    // #region gameFunctions
+
+    public void elapseTime() {
+        framesElapsed++;
+        if (framesElapsed == 120) {
+            gameTime++;
+            framesElapsed = 0;
+        }
     }
 
     public void playEffects() {
@@ -95,13 +113,6 @@ public class GamePanel extends JPanel {
 
     }
 
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-
-        levelManager.draw(g, xlvlOffset);
-        entityManager.render(g, xlvlOffset);
-    }
-
     public void verifyLevelEnded() {
         if (entityManager.getMainCharacter().getHitbox().x > levelWide * PANTALLA.TILES_ACTUAL_SIZE - 50) {
             audioManager.stopSong();
@@ -117,6 +128,16 @@ public class GamePanel extends JPanel {
         maxLvlOffsetX = (levelWide - PANTALLA.TILES_IN_WIDTH) * PANTALLA.TILES_ACTUAL_SIZE;
         entityManager.restart();
         entityManager.startLevelEntities(levelManager.getLevel());
+    }
+
+    // #endregion
+
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+
+        levelManager.draw(g, xlvlOffset);
+        entityManager.render(g, xlvlOffset);
+        userInterface.draw(g);
     }
 
     // #region Getters and Setters
@@ -200,6 +221,40 @@ public class GamePanel extends JPanel {
     public void setMaxLvlOffsetX(int maxLvlOffsetX) {
         this.maxLvlOffsetX = maxLvlOffsetX;
     }
+
+    public AudioManager getAudioManager() {
+        return audioManager;
+    }
+
+    public void setAudioManager(AudioManager audioManager) {
+        this.audioManager = audioManager;
+    }
+
+    public HUD getUserInterface() {
+        return userInterface;
+    }
+
+    public void setUserInterface(HUD userInterface) {
+        this.userInterface = userInterface;
+    }
+
+    public int getGameTime() {
+        return gameTime;
+    }
+
+    public void setGameTime(int gameTime) {
+        this.gameTime = gameTime;
+    }
+
+    public int getFramesElapsed() {
+        return framesElapsed;
+    }
+
+    public void setFramesElapsed(int framesElapsed) {
+        this.framesElapsed = framesElapsed;
+    }
+
+    
 
     // #endregion
 

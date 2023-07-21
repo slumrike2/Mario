@@ -25,10 +25,10 @@ public class LevelManager {
         lvlIndex = 0;
         levels = new Level[4];
 
-        levels[0] = new Level(NIVEL.NIVEL_1);
-        levels[1] = new Level(NIVEL.NIVEL_2);
-        levels[2] = new Level(NIVEL.NIVEL_3);
-        levels[3] = new Level(NIVEL.NIVEL_4);
+        levels[0] = new Level(NIVEL.NIVEL_1, 40);
+        levels[1] = new Level(NIVEL.NIVEL_2, 40);
+        levels[2] = new Level(NIVEL.NIVEL_3, 40);
+        levels[3] = new Level(NIVEL.NIVEL_4, 60);
 
         actualLevel = levels[lvlIndex];
 

@@ -4,6 +4,9 @@ import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.CardLayout;
 import java.awt.Dimension;
+import java.awt.Font;
+import java.io.File;
+import java.io.InputStream;
 
 import javax.swing.JFrame;
 
@@ -52,7 +55,7 @@ public class Gui extends Canvas implements Runnable {
 
         estadoJuego = GameState.MENU;
         menu = new MenuPanel();
-        
+
         ventana.getContentPane().add(menu, "Menu");
         menu.requestFocusInWindow();
         cardLayout.show(ventana.getContentPane(), "Menu");
@@ -64,6 +67,8 @@ public class Gui extends Canvas implements Runnable {
         ventana.add(this, BorderLayout.CENTER);
 
     }
+
+ 
 
     // #region funciones de cambio de pantalla y estado
     public static void switchState() {

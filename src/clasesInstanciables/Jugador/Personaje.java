@@ -24,14 +24,18 @@ public class Personaje extends Entidad {
 
     // #endregion
 
+    // #region variables de partida
+    public int puntaje = 0;
+    // #endregion
+
     // #region Variables
 
     // *Cada cuantos frames se actualiza la animacion
     private int contInvensibilityFrames = 0, AccionAnimation = 0, frameAniamcion = 0,
             contFrames = 0, contFramesMuerte = 0;
     private int InvensibilidadStar = 120 * 10, contInvensibility_Star = 0;
-    private Boolean starActive = false;
     public int FuerzaSalto = 0;
+    private Boolean starActive = false;
     public BufferedImage[][] animaciones; // * todas las animaciones del personaje
     public Boolean enMovimiento = false, saltando = false, EnSuelo = false; // * Boleanos que determinaran acciones
     public Boolean MovDerecha = false, MovIzquierda = false, MovAbajo = false, MovArriba = false;
