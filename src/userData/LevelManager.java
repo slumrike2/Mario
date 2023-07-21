@@ -24,6 +24,10 @@ public class LevelManager {
         this.gamePanel = gamePanel;
 
         lvlIndex = 3;
+<<<<<<< HEAD
+=======
+
+>>>>>>> bb1094ef7ccb40fa73e05d86531aea0d819838cb
         levels = new Level[5];
 
         levels[0] = new Level(NIVEL.NIVEL_1, 40);
