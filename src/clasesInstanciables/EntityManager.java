@@ -76,7 +76,7 @@ public class EntityManager {
                     }
                     if (bowser.vidas == 0) {
                         Eliminar.add(bowser);
-                        mainCharacter.addPuntaje(bowser.getPuntajeDado());
+                        // mainCharacter.addPuntaje(bowser.getPuntajeDado());
                         gamePanel.passNextLevel();
                     }
                 }

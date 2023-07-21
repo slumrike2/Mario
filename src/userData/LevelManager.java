@@ -24,11 +24,7 @@ public class LevelManager {
         this.gamePanel = gamePanel;
 
         lvlIndex = 3;
-<<<<<<< HEAD:src/userData/LevelManager.java
         levels = new Level[5];
-=======
-        levels = new Level[4];
->>>>>>> f30e9a0b0718f958770c6aa916c3e9baae672119:src/niveles/LevelManager.java
 
         levels[0] = new Level(NIVEL.NIVEL_1, 40);
         levels[1] = new Level(NIVEL.NIVEL_2, 40);
