@@ -22,7 +22,11 @@ public class LevelManager {
     public LevelManager(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
 
+<<<<<<< Updated upstream
         lvlIndex = 0;
+=======
+        lvlIndex = 1;
+>>>>>>> Stashed changes
         levels = new Level[4];
 
         levels[0] = new Level(NIVEL.NIVEL_1, 40);
