@@ -1,48 +1,58 @@
-package clasesInstanciables.PowerUps;
+package clasesInstanciables.recolectables.PowerUps;
+
+import java.awt.Graphics;
+import java.awt.Rectangle;
 
 import clasesInstanciables.Entidad;
 import clasesInstanciables.Jugador.Personaje;
+import clasesInstanciables.recolectables.Recolectable;
 import constantes.Constantes.Items;
 import constantes.Constantes.PANTALLA;
 
-public class FlorFuego extends Recolectable {
+public class Moneda extends Recolectable {
 
-    public FlorFuego(int posX, int posY) {
-        super(posX, posY);
+    public Moneda(int Posx, int Posy) {
+        super(Posx, Posy);
         anchura_Tiles = 1;
         altura_Tiles = 1;
         velocidadAnimacion = 20;
+        puntajeDado = Items.MONEDA_POINTS;
         Active = true;
-        importarImagen(PANTALLA.FLOR_DIR);
-        animaciones = animacion(1, 0, 1, Items.HONGO_WIDTH_TILES, Items.HONGO_HIGH_TILES);
+        importarImagen(PANTALLA.MONEDA_DIR);
+        animaciones = animacion(1, 0, 4, 1, 1);
         InicializarHitbox();
+        vivo = true;
+
     }
 
+    @Override
     public void Colliision(Entidad ob) {
         if (ob instanceof Personaje) {
             Personaje personaje = (Personaje) ob;
+
             if (Hitbox.intersects(personaje.Hitbox) && personaje.vivo == true) {
-                personaje.setVidas(3);
+                personaje.addMonedas();
                 Active = false;
             }
         }
     }
 
-    public void update() {
-
-    }
-
+    @Override
     public void ActualizarFrame() {
         AccionAnimation = 0;
+
     }
 
+    @Override
     protected void InicializarHitbox() {
-        Hitbox = new java.awt.Rectangle(posX, posY, (int) (PANTALLA.TILES_ACTUAL_SIZE * anchura_Tiles),
-                (int) (PANTALLA.TILES_ACTUAL_SIZE * altura_Tiles));
+        Hitbox = new Rectangle(posX, posY, (int) (anchura_Tiles * PANTALLA.TILES_ACTUAL_SIZE),
+                (int) (altura_Tiles * PANTALLA.TILES_ACTUAL_SIZE));
     }
 
-    public void updateFrames(java.awt.Graphics g, int offset) {
+    @Override
+    public void updateFrames(Graphics g, int offset) {
         g.drawImage(animaciones[0][AccionAnimation], posX - offset, posY, null);
+
     }
 
 }

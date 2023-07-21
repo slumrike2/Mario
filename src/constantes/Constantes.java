@@ -33,14 +33,23 @@ public class Constantes {
         public static final int KOOPA_VELC = 1;
         public static final int KOOPA_VOLADOR_VELC = 1;
         public static final int BOWSER_VELC = 1;
+
         public static final int GOOMBA_HIGH_TILES = 1;
         public static final int GOOMBA_WIDTH_TILES = 1;
+
         public static final int KOOPA_HIGH_TILES = 1;
         public static final int KOOPA_WIDTH_TILES = 1;
+
         public static final int KOOPA_VOLADOR_HIGH_TILES = 2;
         public static final int KOOPA_VOLADOR_WIDTH_TILES = 1;
+
         public static final int BOWSER_HIGH_TILES = 2;
         public static final int BOWSER_WIDTH_TILES = 2;
+
+        public static final int GOOMBA_POINTS = 100;
+        public static final int KOOPA_POINTS = 200;
+        public static final int KOOPA_VOLADOR_POINTS = 300;
+        public static final int BOWSER_POINTS = 500;
 
     }
 
@@ -83,12 +92,21 @@ public class Constantes {
     public static class Items {
         public static final int MONEDA_HIGH_TILES = 1;
         public static final int MONEDA_WIDTH_TILES = 1;
+
         public static final int FLOR_HIGH_TILES = 1;
         public static final int FLOR_WIDTH_TILES = 1;
+
         public static final int ESTRELLA_HIGH_TILES = 1;
         public static final int ESTRELLA_WIDTH_TILES = 1;
+
         public static final int HONGO_HIGH_TILES = 1;
         public static final int HONGO_WIDTH_TILES = 1;
+
+        public static final int MONEDA_POINTS = 100;
+        public static final int FLOR_POINTS = 200;
+        public static final int HONGO_POINTS = 300;
+        public static final int ESTRELLA_POINTS = 500;
+        public static final int HONGO_VENENOSO_POINTS = -500;
 
     }
 

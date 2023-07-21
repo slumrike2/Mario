@@ -70,6 +70,8 @@ public class HUD {
     private void actualizarNumeros() {
         level = gamePanel.getLevelManager().getLvlIndex() + 1;
         time = gamePanel.getLevelManager().getLevel().getMaxTime() - gamePanel.getGameTime();
+        score = gamePanel.getEntityManager().getMainCharacter().getPuntaje();
+        coins = gamePanel.getEntityManager().getMainCharacter().getMonedas();
     }
 
     public void draw(Graphics g) {

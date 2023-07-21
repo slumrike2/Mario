@@ -1,4 +1,4 @@
-package clasesInstanciables.PowerUps;
+package clasesInstanciables.recolectables.PowerUps;
 
 import java.awt.Graphics;
 
@@ -35,7 +35,7 @@ public class BloqueMisterioso extends Entidad {
     public void updateFrames(Graphics g, int offset) {
         g.drawImage(animaciones[0][frameAniamcion], posX - offset, posY,
                 (int) (PANTALLA.TILES_ACTUAL_SIZE * anchura_Tiles),
-                (int) (PANTALLA.TILES_ACTUAL_SIZE * altura_Tiles), null); 
+                (int) (PANTALLA.TILES_ACTUAL_SIZE * altura_Tiles), null);
         DrawHitbox(g, offset);
     }
 
@@ -60,8 +60,8 @@ public class BloqueMisterioso extends Entidad {
 
     protected void InicializarHitbox() {
         Hitbox = new java.awt.Rectangle(posX, posY, (int) (anchura_Tiles * PANTALLA.TILES_ACTUAL_SIZE),
-                (int) (altura_Tiles * PANTALLA.TILES_ACTUAL_SIZE) + 5); //*coco */
-     }
+                (int) (altura_Tiles * PANTALLA.TILES_ACTUAL_SIZE) + 5); // *coco */
+    }
 
     public void recibirHit(Entidad ob) {
         if (ob instanceof Personaje) {
@@ -83,8 +83,10 @@ public class BloqueMisterioso extends Entidad {
             ItemSpawn = ITEMS.HONGO;
         else if (random < 90)
             ItemSpawn = ITEMS.FLOR;
-        else if (random <= 100)
+        else if (random < 99)
             ItemSpawn = ITEMS.ESTRELLA;
+        else if (random == 99)
+            ItemSpawn = ITEMS.HONGO_VENENOSO;
     }
 
 }

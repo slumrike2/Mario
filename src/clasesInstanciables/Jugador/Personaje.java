@@ -26,6 +26,7 @@ public class Personaje extends Entidad {
 
     // #region variables de partida
     public int puntaje = 0;
+    public int monedas = 0;
     // #endregion
 
     // #region Variables
@@ -316,6 +317,16 @@ public class Personaje extends Entidad {
         }
     }
 
+    // *añade puntos a mario */
+    public void addPuntaje(int puntos) {
+        puntaje += puntos;
+    }
+
+    // *añade monedas a mario */
+    public void addMonedas() {
+        this.monedas++;
+    }
+
     // * Se sobre escribio por mas comodidad
     // * Cambia la posicion de la hitbox y se adapta a la accion
 
@@ -541,6 +552,62 @@ public class Personaje extends Entidad {
 
     public void setAccionprevia(AccionPlayer accionprevia) {
         Accionprevia = accionprevia;
+    }
+
+    public float getVelocidad() {
+        return velocidad;
+    }
+
+    public void setVelocidad(float velocidad) {
+        this.velocidad = velocidad;
+    }
+
+    public int getPuntaje() {
+        return puntaje;
+    }
+
+    public void setPuntaje(int puntaje) {
+        this.puntaje = puntaje;
+    }
+
+    public int getInvensibilidadStar() {
+        return InvensibilidadStar;
+    }
+
+    public void setInvensibilidadStar(int invensibilidadStar) {
+        InvensibilidadStar = invensibilidadStar;
+    }
+
+    public int getContInvensibility_Star() {
+        return contInvensibility_Star;
+    }
+
+    public void setContInvensibility_Star(int contInvensibility_Star) {
+        this.contInvensibility_Star = contInvensibility_Star;
+    }
+
+    public Boolean getStarActive() {
+        return starActive;
+    }
+
+    public void setStarActive(Boolean starActive) {
+        this.starActive = starActive;
+    }
+
+    public Boolean getDisparar() {
+        return disparar;
+    }
+
+    public void setDisparar(Boolean disparar) {
+        this.disparar = disparar;
+    }
+
+    public int getMonedas() {
+        return monedas;
+    }
+
+    public void setMonedas(int monedas) {
+        this.monedas = monedas;
     }
 
     // #endregion

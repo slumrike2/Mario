@@ -17,7 +17,6 @@ import niveles.Level;
 
 public class LoadSave {
 
-
     public static BufferedImage GetLevelAtlas(String path) {
         BufferedImage imagen = null;
         InputStream is = LoadSave.class.getResourceAsStream(path);
@@ -37,6 +36,7 @@ public class LoadSave {
         ArrayList<Spawner<ENEMIES>> enemySpawners = new ArrayList<Spawner<ENEMIES>>();
         ArrayList<Point> inviBlocks = new ArrayList<Point>();
         ArrayList<Point> misteryBlocks = new ArrayList<Point>();
+        ArrayList<Point> coins = new ArrayList<Point>();
 
         int[][] levelData = new int[img.getWidth()][img.getHeight()];
 
@@ -53,11 +53,14 @@ public class LoadSave {
                     levelData[i][j] = 11;
                     characterSpawn = new Spawner<>(i, j, 2021, ENTITY_TYPE.CHARACTERS.MAIN);
                 } else {
-
                     if (red <= 23) {
+                        levelData[i][j] = red;
                         if (red == 2)
                             misteryBlocks.add(new Point(i, j));
-                        levelData[i][j] = red;
+                        if (red == 8) {
+                            coins.add(new Point(i, j));
+                            levelData[i][j] = 11;
+                        }
                     } else {
                         levelData[i][j] = 11;
 
@@ -77,6 +80,7 @@ public class LoadSave {
         level.setEnemySpawners(enemySpawners);
         level.setInvisibleWalls(inviBlocks);
         level.setMisteryBlocks(misteryBlocks);
+        level.setCoins(coins);
 
     }
 

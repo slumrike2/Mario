@@ -1,21 +1,24 @@
-package clasesInstanciables.PowerUps;
+package clasesInstanciables.recolectables.PowerUps;
 
 import java.awt.Graphics;
 
 import clasesInstanciables.Entidad;
 import clasesInstanciables.Jugador.Personaje;
+import clasesInstanciables.recolectables.Recolectable;
+import constantes.Constantes.Items;
 import constantes.Constantes.PANTALLA;
 
-public class HongoEnvenenado extends Recolectable {
+public class Hongo extends Recolectable {
 
-    public HongoEnvenenado(int Posx, int Posy) {
+    public Hongo(int Posx, int Posy) {
         super(Posx, Posy);
         anchura_Tiles = 1;
         altura_Tiles = 1;
         velocidadAnimacion = 20;
+        puntajeDado = Items.HONGO_POINTS;
         Active = true;
-        importarImagen(PANTALLA.HONGO_VENENOSO_DIR);
-        animaciones = animacion(1, 0, 1, 1, 1);
+        importarImagen(PANTALLA.HONGO_DIR);
+        animaciones = animacion(1, 0, 1, Items.HONGO_WIDTH_TILES, Items.HONGO_HIGH_TILES);
         InicializarHitbox();
     }
 
@@ -24,15 +27,14 @@ public class HongoEnvenenado extends Recolectable {
             Personaje personaje = (Personaje) ob;
 
             if (Hitbox.intersects(personaje.Hitbox) && personaje.vivo == true) {
-                personaje.setVidas(personaje.getVidas() - 1);
+                personaje.setVidas(2);
                 Active = false;
-
             }
         }
     }
 
     public void update() {
-        // * Utilizar si se quieren mover los hongos con sus hitboxs
+
     }
 
     public void updateFrames(Graphics g, int offset) {
