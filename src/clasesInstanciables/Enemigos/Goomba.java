@@ -10,7 +10,7 @@ public class Goomba extends Enemigo {
 
     // Todo Faltan la muerte y las hitboxes
     BufferedImage[][] animaciones;
-
+    private int contFramesMuerte = 0;
     private int AccionAnimation = 0, frameAniamcion = 0, contFrames = 0;
     public boolean enMovimiento = true;
 
@@ -36,6 +36,12 @@ public class Goomba extends Enemigo {
         ActualizarFrame();
         ActualizarHitbox();
         contFramesInvensible++;
+        if (vidas <= 0) {
+            contFramesMuerte++;
+            if (contFramesMuerte >= 40) {
+                vivo = false;
+            }
+        }
     }
 
     public void updateFrames(java.awt.Graphics g, int offset) {
@@ -47,11 +53,12 @@ public class Goomba extends Enemigo {
 
     public void movimiento() {
         VerificarSuelo(currentLevelData);
-
-        if (canMoveHere(Hitbox.x + velocidad, Hitbox.y, Hitbox.width, Hitbox.height, currentLevelData))
-            posX += velocidad;
-        else
-            cambiarDireccion();
+        if (vidas > 0) {
+            if (canMoveHere(Hitbox.x + velocidad, Hitbox.y, Hitbox.width, Hitbox.height, currentLevelData))
+                posX += velocidad;
+            else
+                cambiarDireccion();
+        }
 
         if (!enSuelo && canMoveHere(Hitbox.x, Hitbox.y + gravedad, Hitbox.width, Hitbox.height, currentLevelData)
                 && vidas != 3)
@@ -66,7 +73,6 @@ public class Goomba extends Enemigo {
         AccionAnimation = 1;
         if (vidas <= 0) {
             AccionAnimation = 2;
-            vivo = false;
             return;
         }
         if (enMovimiento == false) {
