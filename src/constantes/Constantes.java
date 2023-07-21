@@ -72,7 +72,6 @@ public class Constantes {
             MONEDA, FLOR, ESTRELLA, HONGO, HONGO_VENENOSO, BLOQUE_MISTERIOSO
         }
 
-        
     }
 
     public static class Jugador {
@@ -121,7 +120,8 @@ public class Constantes {
         NIVEL_1("res/level1/"),
         NIVEL_2("res/level2/"),
         NIVEL_3("res/level3/"),
-        NIVEL_4("res/level4/");
+        NIVEL_4("res/level4/"),
+        NIVEL_FINAL("res/finalLevel");
 
         private final String path;
 
