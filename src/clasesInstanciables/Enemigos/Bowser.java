@@ -14,10 +14,12 @@ import constantes.Constantes.PANTALLA;
 
 public class Bowser extends Enemigo {
     private int VelocidadSeleccionAccion = (int) (Math.random() * 50) + 100, contSeleccionAccion = 0;
+    private int SegundosFinal = 120 * 5, contFinPelea = 0;
     private int velocidadAtaque = 80, contVelcAtaque = 0;
     private boolean quieto = false;
     public int direccion = -1;
-    private Boolean Ensuelo, Saltando, atacando = false;
+    private Boolean Ensuelo, atacando = false;
+    public Boolean SpawnStrella = false;
 
     private int gravedad = 1;
     private int FuerzaSalto = 0;
@@ -30,7 +32,7 @@ public class Bowser extends Enemigo {
         altura_Tiles = 2;
         anchura_Tiles = 2;
         velocidad = 1f;
-        Saltando = false;
+
         FuerzaSalto = 0;
         vidas = 20;
         animaciones = animacion(2, 0, 2, 2, 2);
@@ -46,6 +48,11 @@ public class Bowser extends Enemigo {
         ActualizarFrame();
         ActualizarHitbox();
         SeleccionarAccion();
+        contFinPelea++;
+        if (contFinPelea >= SegundosFinal) {
+            SpawnStrella = true;
+            contFinPelea = -300;
+        }
 
     }
 
@@ -124,8 +131,9 @@ public class Bowser extends Enemigo {
     public void recibirHit(Entidad ob) {
         if (ob instanceof Personaje) {
             Personaje personaje = (Personaje) ob;
-            if (personaje.Hitbox.intersects(this.Hitbox)) {
+            if (personaje.Hitbox.intersects(this.Hitbox) && personaje.getContInvensibility_Star() > 0) {
                 System.out.println("Bowser ha sido golpeado");
+                vidas = 0;
             }
         }
     }
@@ -135,7 +143,6 @@ public class Bowser extends Enemigo {
                 (int) (altura_Tiles * PANTALLA.TILES_ACTUAL_SIZE), currentLevelData)) {
 
             Ensuelo = true;
-            Saltando = false;
 
             return;
         }
