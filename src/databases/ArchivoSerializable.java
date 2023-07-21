@@ -50,12 +50,10 @@ public class ArchivoSerializable<T> {
         }
     }
 
-    public void agregarColeccion(ArrayList<T> peliculas) {
+    public void sobrescribirArchivo(T objeto) {
         try {
-            outputStream = new ObjectOutputStream(new FileOutputStream(file, true));
-            for (T objeto : peliculas) {
-                outputStream.writeObject(objeto);
-            }
+            outputStream = new ObjectOutputStream(new FileOutputStream(file, false));
+            outputStream.writeObject(objeto);
             outputStream.close();
         } catch (Exception e) {
             System.out.println(e.getClass().getName());
