@@ -14,7 +14,7 @@ import constantes.Constantes.PANTALLA;
 
 public class Bowser extends Enemigo {
     private int VelocidadSeleccionAccion = (int) (Math.random() * 50) + 100, contSeleccionAccion = 0;
-    private int SegundosFinal = 120 * 5, contFinPelea = 0;
+    private int SegundosFinal = 120 * 30, contFinPelea = 0;
     private int velocidadAtaque = 80, contVelcAtaque = 0;
     private boolean quieto = false;
     public int direccion = -1;
@@ -48,7 +48,7 @@ public class Bowser extends Enemigo {
         ActualizarFrame();
         ActualizarHitbox();
         SeleccionarAccion();
-        contFinPelea++;
+
         if (contFinPelea >= SegundosFinal) {
             SpawnStrella = true;
             contFinPelea = -300;
@@ -183,9 +183,13 @@ public class Bowser extends Enemigo {
             if (personaje.getHitbox().getMinX() - Hitbox.getMinX() <= 32 * PANTALLA.TILES_ACTUAL_SIZE
                     && personaje.getHitbox().getMinX() - Hitbox.getMinX() >= 0) {
                 direccion = 1;
+                contFinPelea++;
+                System.out.println("xds");
             } else if (personaje.getHitbox().getMinX() - Hitbox.getMinX() >= -32 * PANTALLA.TILES_ACTUAL_SIZE
                     && personaje.getHitbox().getMinX() - Hitbox.getMinX() <= 0) {
                 direccion = -1;
+                contFinPelea++;
+                System.out.println("xs");
 
             } else
                 direccion = 0;
