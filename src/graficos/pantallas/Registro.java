@@ -5,7 +5,11 @@ import databases.Usuario;
 import graficos.Gui;
 
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.InputStream;
 
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -31,12 +35,16 @@ public class Registro extends JPanel {
     JTextField txtConfirmarContrasenia = new JTextField(16);
 
     // #endregion textFields
+
+    BufferedImage imagenFondo;
+
     JButton bttRegistrar = new JButton("Registrarse");
     JButton bttVolver = new JButton("Volver");
 
     public Registro() {
         setPreferredSize(new Dimension(1080, 720));
         setLayout(null);
+        loadImages();
 
         inicializarBotones();
         inicializarPosiciones();
@@ -58,6 +66,21 @@ public class Registro extends JPanel {
         add(bttVolver);
 
         setVisible(true);
+    }
+
+    private void loadImages() {
+        InputStream is = MenuPrincipal.class.getResourceAsStream("res/menuBackground.png");
+
+        try {
+            imagenFondo = ImageIO.read(is);
+
+        } catch (Exception e) {
+            System.out.println("Error al cargar la imagen");
+        }
+    }
+
+    public void paintComponent(Graphics g) {
+        g.drawImage(imagenFondo, 0, 0, null);
     }
 
     // #region botonesAcciones
@@ -94,8 +117,8 @@ public class Registro extends JPanel {
     }
 
     private void inicializarPosiciones() {
-        bttRegistrar.setBounds(0, 550, 400, 50);
-        bttVolver.setBounds(400, 550, 400, 50);
+        bttRegistrar.setBounds(0, 530, 490, 50);
+        bttVolver.setBounds(490, 530, 490, 50);
 
         lbHeader.setBounds(200, 10, 700, 50);
         lbIngresarNombre.setBounds(0, 100, 300, 50);

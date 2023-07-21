@@ -1,5 +1,11 @@
 package graficos.pantallas;
 
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.InputStream;
+
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -32,11 +38,15 @@ public class InicioSesion extends JPanel {
     JTextField txtContrasenia = new JTextField(16);
     // #endregion textFields
 
+    BufferedImage imagenFondo;
+
     // #endregion variables
 
     public InicioSesion() {
 
         setLayout(null);
+
+        loadImages();
 
         iniciarBotones();
         add(bttIniciarSesion);
@@ -52,6 +62,21 @@ public class InicioSesion extends JPanel {
         add(txtContrasenia);
         iniciarPosiciones();
 
+    }
+
+    private void loadImages() {
+        InputStream is = MenuPrincipal.class.getResourceAsStream("res/menuBackground.png");
+
+        try {
+            imagenFondo = ImageIO.read(is);
+
+        } catch (Exception e) {
+            System.out.println("Error al cargar la imagen");
+        }
+    }
+
+    public void paintComponent(Graphics g) {
+        g.drawImage(imagenFondo, 0, 0, null);
     }
 
     private void accion_btt_IniciarSesion() {
@@ -70,8 +95,8 @@ public class InicioSesion extends JPanel {
 
     private void iniciarLabels() {
         lbHeader.setBounds(100, 50, 300, 30);
-        lbIngresarNombreUsuario.setBounds(100, 100, 300, 30);
-        lbIngresarContrasenia.setBounds(100, 150, 300, 30);
+        lbIngresarNombreUsuario.setBounds(100, 90, 300, 30);
+        lbIngresarContrasenia.setBounds(100, 140, 300, 30);
     }
 
     private void iniciarTextFields() {
