@@ -66,6 +66,17 @@ public class EntityManager {
                                 bowser.direccion, gamePanel.levelManager.getLevel());
                     }
 
+                    if (bowser.SpawnStrella) {
+                        bowser.SpawnStrella = false;
+                        spawn(Constantes.ENTITY_TYPE.ITEMS.ESTRELLA, bowser.posX / PANTALLA.TILES_ACTUAL_SIZE,
+                                bowser.posY / PANTALLA.TILES_ACTUAL_SIZE,
+                                gamePanel.levelManager.getLevel());
+                        System.out.println("Spawnenado estrella");
+                    }
+                    if (bowser.vidas == 0) {
+                        Eliminar.add(bowser);
+                        // Todo Funcion Ganar Partida
+                    }
                 }
                 entidad.recibirHit(mainCharacter);
                 mainCharacter.HitEnemigo(entidad.getHitbox());
