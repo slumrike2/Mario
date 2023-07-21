@@ -11,16 +11,17 @@ import static utils.HelpMethods.canMoveHere;
 public class FuegoProyectil extends Entidad {
 
     public int direccion;
-    private int[][] currentLevelData;
+    protected int[][] currentLevelData;
     private int gravedad = 2;
     private Boolean enSuelo = true;
-    private boolean Active;
+    protected boolean Active;
+    protected int contFrames;
 
     public FuegoProyectil(int x, int y) {
         super(x, y);
 
         velocidad = 1.5f;
-        velocidadAnimacion = 120;
+        velocidadAnimacion = 10;
         altura_Tiles = 1;
         anchura_Tiles = 1;
         Active = true;
@@ -37,15 +38,20 @@ public class FuegoProyectil extends Entidad {
     }
 
     public void updateFrames(Graphics g, int offset) {
-        g.drawImage(animaciones[0][frameAniamcion], Hitbox.x - offset, Hitbox.y, Hitbox.width + 5, Hitbox.height + 5, null);
+        g.drawImage(animaciones[0][frameAniamcion], Hitbox.x - offset, Hitbox.y, Hitbox.width + 5, Hitbox.height + 5,
+                null);
     }
 
     public void ActualizarFrame() {
-        if (frameAniamcion >= animaciones[0].length - 1) {
-            frameAniamcion = 0;
-        } else {
-            frameAniamcion++;
+        contFrames++;
+        if (contFrames >= velocidadAnimacion) {
+            contFrames = 0;
+            if (frameAniamcion == animaciones[0].length - 1)
+                frameAniamcion = 0;
+            else
+                frameAniamcion++;
         }
+
     }
 
     protected void InicializarHitbox() {
@@ -62,7 +68,7 @@ public class FuegoProyectil extends Entidad {
         VerificarSuelo(currentLevelData);
 
         posX += velocidad * direccion;
-        Hitbox.x = posX;
+        
 
         if (canMoveHere(Hitbox.x + velocidad, Hitbox.y, Hitbox.width, Hitbox.height, currentLevelData))
             posX += (velocidad + 1) * direccion;
