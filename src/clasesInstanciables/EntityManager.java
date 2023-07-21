@@ -25,6 +25,7 @@ public class EntityManager {
     public ArrayList<Entidad> entidades = new ArrayList<>();
     public ArrayList<Recolectable> recolectables = new ArrayList<>();
     public ArrayList<FuegoProyectil> fuegoProyectils = new ArrayList<>();
+    public ArrayList<BowserFireball> bowserFireballs = new ArrayList<>();
     public ArrayList<BloqueMisterioso> bloquesMisteriosos = new ArrayList<>();
 
     public EntityManager(GamePanel gamePanel) {
@@ -62,7 +63,7 @@ public class EntityManager {
                     bowser.VerificarDistancia(mainCharacter);
                     if (bowser.Ataque) {
                         bowser.Ataque = false;
-                        spawn(Constantes.ENTITY_TYPE.Proyectiles.BOLA_FUEGO, bowser.posX, bowser.posY,
+                        spawn(Constantes.ENTITY_TYPE.Proyectiles.FIREBALL_BOWSER, bowser.posX, bowser.posY + 8,
                                 bowser.direccion, gamePanel.levelManager.getLevel());
                     }
 
@@ -71,7 +72,7 @@ public class EntityManager {
                         spawn(Constantes.ENTITY_TYPE.ITEMS.ESTRELLA, bowser.posX / PANTALLA.TILES_ACTUAL_SIZE,
                                 bowser.posY / PANTALLA.TILES_ACTUAL_SIZE,
                                 gamePanel.levelManager.getLevel());
-                        System.out.println("Spawnenado estrella");
+
                     }
                     if (bowser.vidas == 0) {
                         Eliminar.add(bowser);
@@ -121,6 +122,13 @@ public class EntityManager {
             }
         }
 
+        for (BowserFireball bowserFireball : bowserFireballs) {
+            mainCharacter.HitEnemigo(bowserFireball.getHitbox());
+            if (bowserFireball.getActive() == false) {
+                Eliminar.add(bowserFireball);
+            }
+        }
+
         for (BloqueMisterioso bloqueMisterioso : bloquesMisteriosos) {
 
             if (bloqueMisterioso.vivo == true) {
@@ -129,7 +137,6 @@ public class EntityManager {
                     spawn(bloqueMisterioso.ItemSpawn, bloqueMisterioso.tileX, bloqueMisterioso.tileY - 1,
                             gamePanel.levelManager.getLevel());
                     bloqueMisterioso.ItemSpawn = null;
-                    System.out.println("Spanear item");
 
                 }
             }
@@ -155,6 +162,9 @@ public class EntityManager {
 
             if (entidad instanceof BloqueMisterioso) {
                 bloquesMisteriosos.remove(entidad);
+            }
+            if (entidad instanceof BowserFireball) {
+                bowserFireballs.remove(entidad);
             }
 
         }
@@ -341,6 +351,16 @@ public class EntityManager {
                 bolaFuego.direccion = direccion;
                 entidades.add(bolaFuego);
                 fuegoProyectils.add(bolaFuego);
+                break;
+
+            case FIREBALL_BOWSER:
+
+                gamePanel.audioManager.playEffect(AudioManager.FIREBALL);
+                BowserFireball bowserFireball = new BowserFireball(tileX, tileY);
+                bowserFireball.loadLevelData(gamePanel.levelManager.getLevel().getLevelData());
+                bowserFireball.direccion = direccion;
+                entidades.add(bowserFireball);
+                bowserFireballs.add(bowserFireball);
                 break;
 
             default:

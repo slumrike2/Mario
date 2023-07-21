@@ -27,6 +27,7 @@ public abstract class Entidad {
         this.posX = posX;
         this.posY = posY - 1;
         InicializarHitbox();
+
     }
 
     protected void importarImagen(String Dir) {

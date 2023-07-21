@@ -35,7 +35,7 @@ public class Bowser extends Enemigo {
 
         FuerzaSalto = 0;
         vidas = 20;
-        animaciones = animacion(2, 0, 2, 2, 2);
+        animaciones = animacion(4, 0, 2, 2, 2);
         velocidadAnimacion = 30;
         InicializarHitbox();
     }
@@ -83,6 +83,8 @@ public class Bowser extends Enemigo {
     }
 
     public void ActualizarAccion() {
+        int aux = 0;
+
         if (Ataque == true) {
             contVelcAtaque = 0;
             atacando = true;
@@ -94,11 +96,14 @@ public class Bowser extends Enemigo {
             atacando = false;
         }
         // *Determina cuando deja de atacar
+        if (direccion == 1) {
+            aux = 2;
+        }
 
         if (atacando == true) {
-            AccionAnimation = 1;
+            AccionAnimation = 1 + aux;
         } else {
-            AccionAnimation = 0;
+            AccionAnimation = 0 + aux;
         }
     }
 
@@ -116,10 +121,6 @@ public class Bowser extends Enemigo {
     protected void InicializarHitbox() {
         Hitbox = new Rectangle(posX, posY, (int) (PANTALLA.TILES_ACTUAL_SIZE * anchura_Tiles),
                 (int) (PANTALLA.TILES_ACTUAL_SIZE * altura_Tiles));
-    }
-
-    public void DibujarHitbox(Graphics g) {
-        g.drawRect(Hitbox.x, Hitbox.y, Hitbox.width, Hitbox.height);
     }
 
     public void updateFrames(Graphics g, int offset) {
@@ -155,26 +156,21 @@ public class Bowser extends Enemigo {
         ActualizarSuelo();
         Moverse();
         if (Ensuelo == true) {
-            FuerzaSalto = 80;
+            FuerzaSalto = 90;
         }
-        System.out.println("Bowser ha saltado");
+
     }
 
     public void Atacar() {
         Ataque = true;
-        System.out.println("Bowser ha atacado");
     }
 
     public void Quieto() {
-
         quieto = true;
-        System.out.println("Bowser se ha detenido");
     }
 
     public void Moverse() {
-
         quieto = false;
-        System.out.println("Bowser se ha movido");
     }
 
     public void setCurrentLevelData(int[][] currentLevelData) {
@@ -212,7 +208,7 @@ public class Bowser extends Enemigo {
 
             VelocidadSeleccionAccion = (int) (Math.random() * 100) + 100;
             contSeleccionAccion = 0;
-            System.out.println("Bowser ha realizado Accion");
+
         }
     }
 
