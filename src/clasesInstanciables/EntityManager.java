@@ -60,6 +60,11 @@ public class EntityManager {
                 if (entidad instanceof Bowser) {
                     Bowser bowser = (Bowser) entidad;
                     bowser.VerificarDistancia(mainCharacter);
+                    if (bowser.Ataque) {
+                        bowser.Ataque = false;
+                        spawn(Constantes.ENTITY_TYPE.Proyectiles.BOLA_FUEGO, bowser.posX, bowser.posY,
+                                bowser.direccion, gamePanel.levelManager.getLevel());
+                    }
 
                 }
                 entidad.recibirHit(mainCharacter);

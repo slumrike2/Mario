@@ -13,13 +13,15 @@ import constantes.Constantes.Enemigos;
 import constantes.Constantes.PANTALLA;
 
 public class Bowser extends Enemigo {
-    private int VelocidadSeleccionAccion = 600, contSeleccionAccion = 0;
+    private int VelocidadSeleccionAccion = (int) (Math.random() * 50) + 100, contSeleccionAccion = 0;
     private int velocidadAtaque = 80, contVelcAtaque = 0;
-    private int direccion = -1;
+    private boolean quieto = false;
+    public int direccion = -1;
     private Boolean Ensuelo, Saltando, atacando = false;
 
     private int gravedad = 1;
     private int FuerzaSalto = 0;
+    public Boolean Ataque = false;
 
     public Bowser(int Posx, int Posy) {
         super(Posx, Posy);
@@ -38,7 +40,8 @@ public class Bowser extends Enemigo {
 
     public void update() {
         super.update();
-        movimiento();
+        if (!quieto)
+            movimiento();
         ActualizarAccion();
         ActualizarFrame();
         ActualizarHitbox();
@@ -50,6 +53,7 @@ public class Bowser extends Enemigo {
     // juego
     public void movimiento() {
         // Saltos con el tiempo
+
         ActualizarSuelo();
 
         ActualizarDireccion();
@@ -72,11 +76,15 @@ public class Bowser extends Enemigo {
     }
 
     public void ActualizarAccion() {
-        contVelcAtaque++;
-        // *Determina cuando ataca
-        if (contVelcAtaque >= velocidadAtaque) {
+        if (Ataque == true) {
             contVelcAtaque = 0;
             atacando = true;
+        }
+        contVelcAtaque++;
+
+        if (contVelcAtaque >= velocidadAtaque && atacando == true) {
+            contVelcAtaque = 0;
+            atacando = false;
         }
         // *Determina cuando deja de atacar
 
@@ -138,9 +146,28 @@ public class Bowser extends Enemigo {
 
     public void Saltar() {
         ActualizarSuelo();
+        Moverse();
         if (Ensuelo == true) {
             FuerzaSalto = 80;
         }
+        System.out.println("Bowser ha saltado");
+    }
+
+    public void Atacar() {
+        Ataque = true;
+        System.out.println("Bowser ha atacado");
+    }
+
+    public void Quieto() {
+
+        quieto = true;
+        System.out.println("Bowser se ha detenido");
+    }
+
+    public void Moverse() {
+
+        quieto = false;
+        System.out.println("Bowser se ha movido");
     }
 
     public void setCurrentLevelData(int[][] currentLevelData) {
@@ -157,18 +184,28 @@ public class Bowser extends Enemigo {
                     && personaje.getHitbox().getMinX() - Hitbox.getMinX() <= 0) {
                 direccion = -1;
 
-            }
+            } else
+                direccion = 0;
 
         }
     }
 
     private void SeleccionarAccion() {
         contSeleccionAccion++;
+        int random = (int) (Math.random() * 100);
+        if (contSeleccionAccion >= VelocidadSeleccionAccion && direccion != 0) {
+            if (random < 25)
+                Saltar();
+            else if (random < 60) {
+                Atacar();
+            } else if (random < 90)
+                Moverse();
+            else
+                Quieto();
 
-        if (contSeleccionAccion >= VelocidadSeleccionAccion) {
-            Saltar();
+            VelocidadSeleccionAccion = (int) (Math.random() * 100) + 100;
             contSeleccionAccion = 0;
-            System.out.println("Bowser ha saltado");
+            System.out.println("Bowser ha realizado Accion");
         }
     }
 
